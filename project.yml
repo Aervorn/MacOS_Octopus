@@ -1,0 +1,68 @@
+# Projet XcodeGen : `xcodegen generate` crée Octopus.xcodeproj
+name: Octopus
+options:
+  bundleIdPrefix: io.github.aervorn
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  developmentLanguage: fr
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    # Sparkle compare ce numéro : l'augmenter à chaque version publiée
+    CURRENT_PROJECT_VERSION: "1"
+
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: "2.6.0"
+  # Émulateur de terminal (PTY) pour les commandes interactives de Mole
+  SwiftTerm:
+    url: https://github.com/migueldeicaza/SwiftTerm
+    from: "1.2.0"
+
+targets:
+  Octopus:
+    type: application
+    platform: macOS
+    sources:
+      - path: Octopus
+        excludes:
+          - "Resources/**"
+      - path: Octopus/Resources
+        buildPhase: resources
+    dependencies:
+      - package: Sparkle
+      - package: SwiftTerm
+    info:
+      path: Support/Info.plist
+      properties:
+        CFBundleDisplayName: Octopus
+        CFBundleDevelopmentRegion: fr
+        CFBundleShortVersionString: "$(MARKETING_VERSION)"
+        CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
+        LSApplicationCategoryType: public.app-category.utilities
+        LSMinimumSystemVersion: "$(MACOSX_DEPLOYMENT_TARGET)"
+        # Sparkle : appcast.xml à la racine du dépôt, réécrit par scripts/make-dmg.sh
+        SUFeedURL: https://raw.githubusercontent.com/Aervorn/MacOS_Octopus/main/appcast.xml
+        SUPublicEDKey: "$(SPARKLE_PUBLIC_ED_KEY)"
+        SUEnableAutomaticChecks: true
+        SUScheduledCheckInterval: 86400
+        SUAutomaticallyUpdate: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.github.aervorn.octopus
+        PRODUCT_NAME: Octopus
+        # Clé publique EdDSA de Sparkle, partagée avec Flux et Vestora
+        SPARKLE_PUBLIC_ED_KEY: "eZCHe74IeZ8DBTAY+tVftTLA2+kKJT3xD5e/QmhV2sE="
+        # Icône à venir : décommenter quand Octopus/AppIcon.icon existera
+        # ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # Signature locale ("Sign to Run Locally") : pas besoin de compte développeur
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        DEVELOPMENT_TEAM: ""
+        ENABLE_HARDENED_RUNTIME: NO
+        # Pas de sandbox : l'app lance mo, sudo et brew
+        ENABLE_APP_SANDBOX: NO

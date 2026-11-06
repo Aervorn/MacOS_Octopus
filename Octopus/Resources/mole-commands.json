@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "testedMoleVersions": [],
+  "categories": [
+    { "id": "cleanup",  "title": "Nettoyage", "symbol": "sparkles" },
+    { "id": "apps",     "title": "Apps",      "symbol": "square.grid.2x2" },
+    { "id": "system",   "title": "Système",   "symbol": "gauge.with.dots.needle.67percent" },
+    { "id": "security", "title": "Sécurité",  "symbol": "checkmark.shield" },
+    { "id": "settings", "title": "Réglages",  "symbol": "gearshape" }
+  ],
+  "commands": [
+    {
+      "id": "clean",
+      "category": "cleanup",
+      "title": "Nettoyer le disque",
+      "subtitle": "Caches, logs, fichiers temporaires et restes d'apps déjà désinstallées",
+      "symbol": "trash",
+      "argv": ["clean"],
+      "mode": "terminal",
+      "destructive": true,
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true },
+        { "flag": "--external", "type": "path", "label": "Nettoyer les métadonnées d'un volume externe", "pathKind": "volume" },
+        { "flag": "--debug", "type": "toggle", "label": "Logs détaillés" }
+      ],
+      "actions": [
+        { "id": "whitelist", "title": "Chemins protégés…", "argv": ["clean", "--whitelist"] }
+      ]
+    },
+    {
+      "id": "purge",
+      "category": "cleanup",
+      "title": "Artefacts de projets",
+      "subtitle": "Supprime les vieux artefacts de build (node_modules, DerivedData…)",
+      "symbol": "hammer",
+      "argv": ["purge"],
+      "mode": "terminal",
+      "destructive": true,
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true },
+        { "flag": "--include-empty", "type": "toggle", "label": "Afficher les dossiers vides" },
+        { "flag": "--yes", "type": "toggle", "label": "Confirmer sans interaction", "danger": true, "excludes": ["--dry-run"] },
+        { "flag": "--debug", "type": "toggle", "label": "Logs détaillés" }
+      ],
+      "actions": [
+        { "id": "paths", "title": "Dossiers à scanner…", "argv": ["purge", "--paths"] }
+      ]
+    },
+    {
+      "id": "installer",
+      "category": "cleanup",
+      "title": "Fichiers d'installation",
+      "subtitle": ".dmg, .pkg, .iso, .xip, .zip",
+      "symbol": "shippingbox",
+      "argv": ["installer"],
+      "mode": "terminal",
+      "destructive": true,
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true },
+        { "flag": "--debug", "type": "toggle", "label": "Logs détaillés" }
+      ]
+    },
+    {
+      "id": "uninstall",
+      "category": "apps",
+      "title": "Désinstaller des apps",
+      "subtitle": "Supprime une app et tous ses fichiers associés",
+      "symbol": "xmark.app",
+      "argv": ["uninstall"],
+      "mode": "terminal",
+      "destructive": true,
+      "positional": { "type": "text", "label": "Apps (noms séparés par des espaces, vide = sélecteur)", "multiple": true },
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true },
+        { "flag": "--with-data", "type": "toggle", "label": "Présélectionner les données personnelles" },
+        { "flag": "--permanent", "type": "toggle", "label": "Supprimer sans passer par la Corbeille", "danger": true },
+        { "flag": "--debug", "type": "toggle", "label": "Logs détaillés" }
+      ],
+      "actions": [
+        { "id": "list", "title": "Lister les apps…", "argv": ["uninstall", "--list"] }
+      ]
+    },
+    {
+      "id": "slim",
+      "category": "apps",
+      "title": "Alléger les apps universelles",
+      "subtitle": "Retire le code Intel (Apple Silicon uniquement, revient à chaque mise à jour)",
+      "symbol": "scissors",
+      "argv": ["slim"],
+      "mode": "terminal",
+      "destructive": true,
+      "requiresAppleSilicon": true,
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Lister les apps et l'espace récupérable", "default": true },
+        { "flag": "--debug", "type": "toggle", "label": "Expliquer les apps ignorées" }
+      ]
+    },
+    {
+      "id": "status",
+      "nativeView": "status",
+      "category": "system",
+      "title": "État du système",
+      "subtitle": "CPU, GPU, mémoire, disque, réseau en direct",
+      "symbol": "waveform.path.ecg",
+      "argv": ["status"],
+      "mode": "terminal",
+      "options": [
+        { "flag": "--proc-cpu-threshold", "type": "number", "label": "Seuil d'alerte CPU (%)" },
+        { "flag": "--proc-cpu-window", "type": "text", "label": "Durée avant alerte (ex. 5m)" }
+      ]
+    },
+    {
+      "id": "analyze",
+      "nativeView": "analyze",
+      "category": "system",
+      "title": "Explorer le disque",
+      "subtitle": "Vue globale ou analyse d'un dossier",
+      "symbol": "chart.pie",
+      "argv": ["analyze"],
+      "mode": "terminal",
+      "positional": { "type": "path", "label": "Dossier à analyser (vide = tout le Mac)" }
+    },
+    {
+      "id": "optimize",
+      "category": "system",
+      "title": "Optimiser",
+      "subtitle": "Rafraîchit caches et services, répare les problèmes de maintenance sûrs",
+      "symbol": "bolt",
+      "argv": ["optimize"],
+      "mode": "terminal",
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true },
+        { "flag": "--debug", "type": "toggle", "label": "Logs détaillés" }
+      ],
+      "actions": [
+        { "id": "whitelist", "title": "Éléments protégés…", "argv": ["optimize", "--whitelist"] }
+      ]
+    },
+    {
+      "id": "history",
+      "nativeView": "history",
+      "category": "system",
+      "title": "Historique",
+      "subtitle": "Opérations et suppressions récentes",
+      "symbol": "clock.arrow.circlepath",
+      "argv": ["history"],
+      "mode": "terminal",
+      "options": [
+        { "flag": "--limit", "type": "number", "label": "Nombre d'entrées (1-200)" }
+      ]
+    },
+    {
+      "id": "touchid",
+      "category": "settings",
+      "title": "Touch ID pour sudo",
+      "subtitle": "Valider les commandes administrateur avec le doigt",
+      "symbol": "touchid",
+      "argv": ["touchid"],
+      "mode": "terminal",
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification" }
+      ],
+      "actions": [
+        { "id": "status",  "title": "État",       "argv": ["touchid", "status"] },
+        { "id": "enable",  "title": "Activer",    "argv": ["touchid", "enable"] },
+        { "id": "disable", "title": "Désactiver", "argv": ["touchid", "disable"] }
+      ]
+    },
+    {
+      "id": "completion",
+      "category": "settings",
+      "title": "Complétion du shell",
+      "subtitle": "Installe la complétion de mo dans ton shell",
+      "symbol": "text.cursor",
+      "argv": ["completion"],
+      "mode": "terminal",
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true }
+      ]
+    },
+    {
+      "id": "update",
+      "category": "settings",
+      "title": "Mettre à jour Mole",
+      "subtitle": "Via Homebrew si Mole a été installé avec, sinon via mo update",
+      "symbol": "arrow.down.circle",
+      "argv": ["update"],
+      "mode": "update",
+      "options": [
+        { "flag": "--nightly", "type": "toggle", "label": "Version de développement (main)", "excludes": ["--force"] },
+        { "flag": "--force", "type": "toggle", "label": "Forcer la réinstallation", "excludes": ["--nightly"] }
+      ]
+    },
+    {
+      "id": "remove",
+      "category": "settings",
+      "title": "Désinstaller Mole",
+      "subtitle": "Les logs dans ~/Library/Logs/mole sont conservés",
+      "symbol": "minus.circle",
+      "argv": ["remove"],
+      "mode": "terminal",
+      "destructive": true,
+      "options": [
+        { "flag": "--dry-run", "type": "toggle", "label": "Aperçu sans modification", "default": true }
+      ]
+    }
+  ]
+}
