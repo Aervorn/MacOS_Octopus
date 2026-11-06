@@ -1,0 +1,831 @@
+{
+  "sourceLanguage": "fr",
+  "strings": {
+    ".dmg, .pkg, .iso, .xip, .zip": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": ".dmg, .pkg, .iso, .xip, .zip"
+          }
+        }
+      }
+    },
+    "Activer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable"
+          }
+        }
+      }
+    },
+    "Adresses, DNS, diagnostic et fichier hosts": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Addresses, DNS, diagnostics and hosts file"
+          }
+        }
+      }
+    },
+    "Afficher les dossiers vides": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show empty folders"
+          }
+        }
+      }
+    },
+    "Alléger les apps universelles": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slim universal apps"
+          }
+        }
+      }
+    },
+    "Aperçu sans modification": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview without changes"
+          }
+        }
+      }
+    },
+    "Apps (noms séparés par des espaces, vide = sélecteur)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apps (names separated by spaces, empty = picker)"
+          }
+        }
+      }
+    },
+    "Apps par défaut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Default apps"
+          }
+        }
+      }
+    },
+    "Artefacts de projets": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Project artifacts"
+          }
+        }
+      }
+    },
+    "CPU, GPU, mémoire, disque, réseau en direct": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Live CPU, GPU, memory, disk and network"
+          }
+        }
+      }
+    },
+    "Caches, logs, fichiers temporaires et restes d'apps déjà désinstallées": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caches, logs, temporary files and leftovers of uninstalled apps"
+          }
+        }
+      }
+    },
+    "Chemins protégés…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protected paths…"
+          }
+        }
+      }
+    },
+    "Clés SSH": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SSH keys"
+          }
+        }
+      }
+    },
+    "Clés, hôtes de ~/.ssh/config et hôtes connus": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keys, ~/.ssh/config hosts and known hosts"
+          }
+        }
+      }
+    },
+    "Complétion du shell": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shell completion"
+          }
+        }
+      }
+    },
+    "Confirmer sans interaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirm without prompting"
+          }
+        }
+      }
+    },
+    "Copies locales de Time Machine qui occupent de la place": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local Time Machine copies taking up space"
+          }
+        }
+      }
+    },
+    "Dossier à analyser (vide = tout le Mac)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folder to analyze (empty = whole Mac)"
+          }
+        }
+      }
+    },
+    "Dossiers à scanner…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Folders to scan…"
+          }
+        }
+      }
+    },
+    "Durée avant alerte (ex. 5m)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time before alert (e.g. 5m)"
+          }
+        }
+      }
+    },
+    "Désactiver": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disable"
+          }
+        }
+      }
+    },
+    "Désinstaller Mole": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall Mole"
+          }
+        }
+      }
+    },
+    "Désinstaller des apps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Uninstall apps"
+          }
+        }
+      }
+    },
+    "Expliquer les apps ignorées": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explain skipped apps"
+          }
+        }
+      }
+    },
+    "Explorer le disque": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disk explorer"
+          }
+        }
+      }
+    },
+    "Fichiers d'installation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installer files"
+          }
+        }
+      }
+    },
+    "Finder, captures d'écran, Dock, maintenance": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Finder, screenshots, Dock, maintenance"
+          }
+        }
+      }
+    },
+    "Forcer la réinstallation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Force reinstall"
+          }
+        }
+      }
+    },
+    "Gestion des apps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App management"
+          }
+        }
+      }
+    },
+    "Historique": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History"
+          }
+        }
+      }
+    },
+    "Homebrew": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Homebrew"
+          }
+        }
+      }
+    },
+    "Inspecteur d'app": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "App inspector"
+          }
+        }
+      }
+    },
+    "Installe la complétion de mo dans ton shell": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Installs mo completion in your shell"
+          }
+        }
+      }
+    },
+    "Instantanés Time Machine": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Time Machine snapshots"
+          }
+        }
+      }
+    },
+    "LaunchAgents et LaunchDaemons installés par des apps": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "LaunchAgents and LaunchDaemons installed by apps"
+          }
+        }
+      }
+    },
+    "Les logs dans ~/Library/Logs/mole sont conservés": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Logs in ~/Library/Logs/mole are kept"
+          }
+        }
+      }
+    },
+    "Lister les apps et l'espace récupérable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "List apps and reclaimable space"
+          }
+        }
+      }
+    },
+    "Lister les apps…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "List apps…"
+          }
+        }
+      }
+    },
+    "Logs détaillés": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detailed logs"
+          }
+        }
+      }
+    },
+    "Mettre à jour Mole": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Update Mole"
+          }
+        }
+      }
+    },
+    "Mises à jour, paquets, services et entretien": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updates, packages, services and upkeep"
+          }
+        }
+      }
+    },
+    "Nettoyage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cleanup"
+          }
+        }
+      }
+    },
+    "Nettoyer le disque": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clean the disk"
+          }
+        }
+      }
+    },
+    "Nettoyer les métadonnées d'un volume externe": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clean an external volume's metadata"
+          }
+        }
+      }
+    },
+    "Nombre d'entrées (1-200)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Number of entries (1-200)"
+          }
+        }
+      }
+    },
+    "Optimiser": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optimize"
+          }
+        }
+      }
+    },
+    "Opérations et suppressions récentes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recent operations and deletions"
+          }
+        }
+      }
+    },
+    "Outils": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tools"
+          }
+        }
+      }
+    },
+    "Ports réseau": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network ports"
+          }
+        }
+      }
+    },
+    "Présélectionner les données personnelles": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preselect personal data"
+          }
+        }
+      }
+    },
+    "Quel processus écoute sur quel port": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Which process listens on which port"
+          }
+        }
+      }
+    },
+    "Quelle app ouvre quel type de fichier": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Which app opens which file type"
+          }
+        }
+      }
+    },
+    "Rafraîchit caches et services, répare les problèmes de maintenance sûrs": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refreshes caches and services, fixes safe maintenance issues"
+          }
+        }
+      }
+    },
+    "Retire le code Intel (Apple Silicon uniquement, revient à chaque mise à jour)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removes Intel code (Apple Silicon only, comes back with each update)"
+          }
+        }
+      }
+    },
+    "Réglages": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "Réglages cachés": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hidden settings"
+          }
+        }
+      }
+    },
+    "Réseau": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Network"
+          }
+        }
+      }
+    },
+    "SIP, Gatekeeper, FileVault, XProtect, mises à jour de sécurité": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SIP, Gatekeeper, FileVault, XProtect, security updates"
+          }
+        }
+      }
+    },
+    "Seuil d'alerte CPU (%)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CPU alert threshold (%)"
+          }
+        }
+      }
+    },
+    "Signature, notarisation, quarantaine et droits d'une app": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An app's signature, notarization, quarantine and entitlements"
+          }
+        }
+      }
+    },
+    "Supprime les vieux artefacts de build (node_modules, DerivedData…)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removes old build artifacts (node_modules, DerivedData…)"
+          }
+        }
+      }
+    },
+    "Supprime une app et tous ses fichiers associés": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Removes an app and all its related files"
+          }
+        }
+      }
+    },
+    "Supprimer sans passer par la Corbeille": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete without using the Trash"
+          }
+        }
+      }
+    },
+    "Système": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System"
+          }
+        }
+      }
+    },
+    "Sécurité": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Security"
+          }
+        }
+      }
+    },
+    "Touch ID pour sudo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Touch ID for sudo"
+          }
+        }
+      }
+    },
+    "Valider les commandes administrateur avec le doigt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Approve administrator commands with your finger"
+          }
+        }
+      }
+    },
+    "Version de développement (main)": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Development version (main)"
+          }
+        }
+      }
+    },
+    "Via Homebrew si Mole a été installé avec, sinon via mo update": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "With Homebrew if Mole was installed with it, otherwise with mo update"
+          }
+        }
+      }
+    },
+    "Vue globale ou analyse d'un dossier": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overview or analysis of a folder"
+          }
+        }
+      }
+    },
+    "Vérifications": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checks"
+          }
+        }
+      }
+    },
+    "Éléments de démarrage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Startup items"
+          }
+        }
+      }
+    },
+    "Éléments protégés…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protected items…"
+          }
+        }
+      }
+    },
+    "État": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        }
+      }
+    },
+    "État du système": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "System status"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

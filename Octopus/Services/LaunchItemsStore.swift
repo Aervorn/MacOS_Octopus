@@ -17,9 +17,9 @@ struct LaunchItem: Identifiable, Equatable {
 
         var title: String {
             switch self {
-            case .user: "Mon compte"
-            case .allUsers: "Tous les utilisateurs"
-            case .system: "Système (root)"
+            case .user: String(localized: "Mon compte")
+            case .allUsers: String(localized: "Tous les utilisateurs")
+            case .system: String(localized: "Système (root)")
             }
         }
 
@@ -47,12 +47,12 @@ struct LaunchItem: Identifiable, Equatable {
 
         var title: String {
             switch self {
-            case .running(let pid): "En cours (PID \(pid))"
-            case .loaded(let code?) where code != 0: "Arrêté (code \(code))"
-            case .loaded: "Prêt"
-            case .notLoaded: "Non chargé"
-            case .disabled: "Désactivé"
-            case .unknown: "Inconnu"
+            case .running(let pid): String(localized: "En cours (PID \(pid))")
+            case .loaded(let code?) where code != 0: String(localized: "Arrêté (code \(code))")
+            case .loaded: String(localized: "Prêt")
+            case .notLoaded: String(localized: "Non chargé")
+            case .disabled: String(localized: "Désactivé")
+            case .unknown: String(localized: "Inconnu")
             }
         }
     }
@@ -68,8 +68,8 @@ struct LaunchItem: Identifiable, Equatable {
             switch self {
             case .apple: "Apple"
             case .developer(let name, _): name
-            case .adHoc: "Signature locale"
-            case .unsigned: "Non signé"
+            case .adHoc: String(localized: "Signature locale")
+            case .unsigned: String(localized: "Non signé")
             case .unknown: "—"
             }
         }
@@ -130,15 +130,15 @@ struct LaunchItem: Identifiable, Equatable {
     }
 
     var schedule: String {
-        if keepAlive { return "Permanent" }
+        if keepAlive { return String(localized: "Permanent") }
         if let interval = startInterval {
-            return interval >= 3600 && interval % 3600 == 0 ? "Toutes les \(interval / 3600) h"
-                : interval >= 60 ? "Toutes les \(interval / 60) min" : "Toutes les \(interval) s"
+            return interval >= 3600 && interval % 3600 == 0 ? String(localized: "Toutes les \(interval / 3600) h")
+                : interval >= 60 ? String(localized: "Toutes les \(interval / 60) min") : String(localized: "Toutes les \(interval) s")
         }
-        if hasCalendarInterval { return "Planifié" }
-        if watchesPaths { return "Sur modification" }
-        if runAtLoad { return scope == .system ? "Au démarrage" : "À l'ouverture de session" }
-        return "À la demande"
+        if hasCalendarInterval { return String(localized: "Planifié") }
+        if watchesPaths { return String(localized: "Sur modification") }
+        if runAtLoad { return scope == .system ? String(localized: "Au démarrage") : String(localized: "À l'ouverture de session") }
+        return String(localized: "À la demande")
     }
 
     /// App à laquelle l'élément appartient, déduite des identifiants déclarés ou du chemin du programme.
@@ -218,7 +218,7 @@ final class LaunchItemsStore {
 
     /// Arrête les éléments et empêche launchd de les relancer (réversible avec `enable`).
     func disable(_ items: [LaunchItem]) async {
-        await perform(items, success: "désactivé") { item in
+        await perform(items, success: .disabled) { item in
             [
                 "/bin/launchctl bootout \(item.scope.domain) \(Shell.quote(item.path)) 2>/dev/null",
                 "/bin/launchctl disable \(item.scope.domain)/\(Shell.quote(item.label))",
@@ -227,7 +227,7 @@ final class LaunchItemsStore {
     }
 
     func enable(_ items: [LaunchItem]) async {
-        await perform(items, success: "réactivé") { item in
+        await perform(items, success: .enabled) { item in
             [
                 "/bin/launchctl enable \(item.scope.domain)/\(Shell.quote(item.label))",
                 "/bin/launchctl bootstrap \(item.scope.domain) \(Shell.quote(item.path)) 2>/dev/null",
@@ -265,14 +265,16 @@ final class LaunchItemsStore {
             }
         }
         message = failures.isEmpty
-            ? (items.count == 1 ? "« \(items[0].fileName) » est dans la Corbeille." : "\(items.count) éléments sont dans la Corbeille.")
-            : "Échec pour : \(failures.joined(separator: ", "))"
+            ? (items.count == 1 ? String(localized: "« \(items[0].fileName) » est dans la Corbeille.") : String(localized: "\(items.count) éléments sont dans la Corbeille."))
+            : String(localized: "Échec pour : \(failures.joined(separator: ", "))")
         await reload()
     }
 
     /// Lance les commandes de chaque élément : sans droits pour la session, avec une seule
     /// autorisation administrateur pour tous les éléments système.
-    private func perform(_ items: [LaunchItem], success: String, commands: (LaunchItem) -> [String]) async {
+    private enum Outcome { case disabled, enabled }
+
+    private func perform(_ items: [LaunchItem], success: Outcome, commands: (LaunchItem) -> [String]) async {
         guard !items.isEmpty else { return }
         var errors: [String] = []
         let session = items.filter { $0.scope != .system }
@@ -293,7 +295,12 @@ final class LaunchItemsStore {
         if let error = errors.first {
             message = error
         } else {
-            message = items.count == 1 ? "« \(items[0].label) » est \(success)." : "\(items.count) éléments ont été \(success)s."
+            switch (success, items.count == 1) {
+            case (.disabled, true): message = String(localized: "« \(items[0].label) » est désactivé.")
+            case (.disabled, false): message = String(localized: "\(items.count) éléments ont été désactivés.")
+            case (.enabled, true): message = String(localized: "« \(items[0].label) » est réactivé.")
+            case (.enabled, false): message = String(localized: "\(items.count) éléments ont été réactivés.")
+            }
         }
         await reload()
     }

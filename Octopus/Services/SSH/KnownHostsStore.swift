@@ -14,7 +14,7 @@ struct KnownHost: Identifiable, Equatable {
     var id: Int { line }
 
     var displayName: String {
-        guard let hosts else { return "Hôte haché" }
+        guard let hosts else { return String(localized: "Hôte haché") }
         return hosts.joined(separator: ", ")
     }
 
@@ -62,9 +62,9 @@ final class KnownHostsStore {
                 .filter { !lines.contains($0.offset + 1) }
                 .map(\.element)
             try kept.joined(separator: "\n").write(to: Self.url, atomically: true, encoding: .utf8)
-            message = lines.count == 1 ? "1 entrée supprimée." : "\(lines.count) entrées supprimées."
+            message = lines.count == 1 ? String(localized: "1 entrée supprimée.") : String(localized: "\(lines.count) entrées supprimées.")
         } catch {
-            message = "Suppression impossible : \(error.localizedDescription)"
+            message = String(localized: "Suppression impossible : \(error.localizedDescription)")
         }
         reload()
     }
@@ -75,9 +75,9 @@ final class KnownHostsStore {
         guard !host.isEmpty else { return }
         let result = await SystemCommand.run("/usr/bin/ssh-keygen", ["-R", host, "-f", Self.url.path])
         if result.output.contains("updated") {
-            message = "Clés de « \(host) » supprimées (copie dans known_hosts.old)."
+            message = String(localized: "Clés de « \(host) » supprimées (copie dans known_hosts.old).")
         } else if result.succeeded {
-            message = "Aucune entrée pour « \(host) »."
+            message = String(localized: "Aucune entrée pour « \(host) ».")
         } else {
             message = result.output.trimmingCharacters(in: .whitespacesAndNewlines)
         }

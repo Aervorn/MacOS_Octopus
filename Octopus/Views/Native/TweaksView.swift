@@ -12,7 +12,7 @@ struct TweaksView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
                 HStack {
-                    Text("Chaque réglage s'applique immédiatement ; le Finder, le Dock ou le serveur des captures sont relancés si besoin. Clic droit sur un réglage pour revenir à la valeur de macOS.")
+                    Text(String(localized: "Chaque réglage s'applique immédiatement ; le Finder, le Dock ou le serveur des captures sont relancés si besoin. Clic droit sur un réglage pour revenir à la valeur de macOS."))
                         .font(.callout)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
@@ -29,7 +29,7 @@ struct TweaksView: View {
                             ForEach(group.tweaks) { tweak in
                                 TweakRow(tweak: tweak, store: store)
                                     .contextMenu {
-                                        Button("Revenir au réglage par défaut") {
+                                        Button(String(localized: "Revenir au réglage par défaut")) {
                                             Task { await store.reset(tweak) }
                                         }
                                     }
@@ -45,7 +45,7 @@ struct TweaksView: View {
     }
 
     private var maintenanceCard: some View {
-        DashboardCard(title: "Maintenance", symbol: "wrench.and.screwdriver") {
+        DashboardCard(title: String(localized: "Maintenance"), symbol: "wrench.and.screwdriver") {
             ForEach(TweaksStore.Maintenance.allCases) { action in
                 HStack(alignment: .top, spacing: 10) {
                     Image(systemName: action.symbol)
@@ -56,7 +56,7 @@ struct TweaksView: View {
                             Text(action.title).fontWeight(.medium)
                             if action.needsAdmin {
                                 Image(systemName: "touchid").font(.caption).foregroundStyle(.secondary)
-                                    .help("Demande les droits administrateur")
+                                    .help(String(localized: "Demande les droits administrateur"))
                             }
                         }
                         Text(action.detail)
@@ -137,7 +137,7 @@ private struct TweakRow: View {
                     .foregroundStyle(.secondary)
                     .lineLimit(1)
                     .truncationMode(.head)
-                Button("Choisir…") { chooseFolder() }
+                Button(String(localized: "Choisir…")) { chooseFolder() }
             }
         }
     }
@@ -178,14 +178,14 @@ private struct NumberTweak: View {
 
     var body: some View {
         HStack {
-            Text(title)
+            Text(LocalizedStringKey(title))
             Spacer()
             if isOutOfRange && !overriding {
                 Text("\(value.formatted(.number.precision(.fractionLength(0...1)))) \(unit)")
                     .monospacedDigit()
                     .foregroundStyle(.orange)
-                    .help("Valeur fixée par une autre app (DockDoor, par exemple, masque ainsi le Dock). La modifier peut perturber cette app.")
-                Button("Modifier…") { overriding = true }
+                    .help(String(localized: "Valeur fixée par une autre app (DockDoor, par exemple, masque ainsi le Dock). La modifier peut perturber cette app."))
+                Button(String(localized: "Modifier…")) { overriding = true }
                     .controlSize(.small)
             } else {
                 Slider(value: Binding(get: { draft ?? min(max(value, range.lowerBound), range.upperBound) },

@@ -68,11 +68,11 @@ struct BrewService: Identifiable, Equatable {
 
     var statusTitle: String {
         switch status {
-        case "started": "En cours"
-        case "scheduled": "Planifié"
-        case "stopped": "Arrêté"
-        case "none": "Non lancé"
-        case "error": "Erreur" + (exitCode.map { " (code \($0))" } ?? "")
+        case "started": String(localized: "En cours")
+        case "scheduled": String(localized: "Planifié")
+        case "stopped": String(localized: "Arrêté")
+        case "none": String(localized: "Non lancé")
+        case "error": exitCode.map { String(localized: "Erreur (code \($0))") } ?? "Erreur"
         default: status
         }
     }
@@ -139,7 +139,7 @@ final class HomebrewStore {
         isUpdatingIndex = true
         defer { isUpdatingIndex = false }
         let result = await brew(["update"])
-        message = result.succeeded ? nil : "brew update a échoué : " + (result.output.split(separator: "\n").last.map(String.init) ?? "")
+        message = result.succeeded ? nil : String(localized: "brew update a échoué : ") + (result.output.split(separator: "\n").last.map(String.init) ?? "")
         lastIndexUpdate = .now
         await reload()
     }
@@ -216,7 +216,7 @@ final class HomebrewStore {
             await reload()
             return true
         } catch {
-            message = "Réparation impossible : \(error.localizedDescription)"
+            message = String(localized: "Réparation impossible : \(error.localizedDescription)")
             return false
         }
     }

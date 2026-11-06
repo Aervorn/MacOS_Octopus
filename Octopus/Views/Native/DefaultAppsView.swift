@@ -35,8 +35,8 @@ struct DefaultAppsView: View {
                                 EntryRow(entry: entry, store: store)
                                     .tag(entry.id)
                                     .contextMenu {
-                                        if entry.family == "Ajoutés" {
-                                            Button("Retirer de la liste") { store.removeCustom(entry) }
+                                        if entry.family == String(localized: "Ajoutés") {
+                                            Button(String(localized: "Retirer de la liste")) { store.removeCustom(entry) }
                                         }
                                     }
                             }
@@ -57,11 +57,11 @@ struct DefaultAppsView: View {
 
     private var toolbar: some View {
         HStack(spacing: 10) {
-            TextField("Rechercher", text: $search, prompt: Text("Type, extension ou app"))
+            TextField("Rechercher", text: $search, prompt: Text(String(localized: "Type, extension ou app")))
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 240)
             Spacer()
-            Text("Autre extension :").foregroundStyle(.secondary)
+            Text(String(localized: "Autre extension :")).foregroundStyle(.secondary)
             TextField("", text: $newExtension, prompt: Text(".toml"))
                 .textFieldStyle(.roundedBorder)
                 .frame(width: 90)
@@ -70,7 +70,7 @@ struct DefaultAppsView: View {
             Button("Ajouter", action: addExtension)
                 .disabled(newExtension.trimmingCharacters(in: .whitespaces).isEmpty)
             if extensionError {
-                Text("Extension inconnue").font(.caption).foregroundStyle(.red)
+                Text(String(localized: "Extension inconnue")).font(.caption).foregroundStyle(.red)
             }
         }
         .padding(.horizontal, 14)
@@ -80,14 +80,14 @@ struct DefaultAppsView: View {
     private var footer: some View {
         HStack(spacing: 10) {
             if selection.count > 1 {
-                Text("\(selection.count) types sélectionnés")
+                Text(String(localized: "\(selection.count) types sélectionnés"))
                     .foregroundStyle(.secondary)
-                AppMenu(title: "Tout ouvrir avec…", candidates: unionCandidates) { app in
+                AppMenu(title: String(localized: "Tout ouvrir avec…"), candidates: unionCandidates) { app in
                     Task { await store.setDefault(app, for: selectedEntries) }
                 }
                 .fixedSize()
             } else {
-                Text("⌘-clic ou ⇧-clic pour changer plusieurs types d'un coup (par exemple tout le code vers ton éditeur).")
+                Text(String(localized: "⌘-clic ou ⇧-clic pour changer plusieurs types d'un coup (par exemple tout le code vers ton éditeur)."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -139,7 +139,7 @@ private struct EntryRow: View {
                     .lineLimit(1)
             }
             Spacer()
-            AppMenu(title: entry.defaultApp.map(appName) ?? "Aucune app",
+            AppMenu(title: entry.defaultApp.map(appName) ?? String(localized: "Aucune app"),
                     icon: entry.defaultApp,
                     candidates: entry.candidates) { app in
                 Task { await store.setDefault(app, for: [entry]) }
@@ -173,13 +173,13 @@ private struct AppMenu: View {
                 }
             }
             if !candidates.isEmpty { Divider() }
-            Button("Autre app…") { chooseApp() }
+            Button(String(localized: "Autre app…")) { chooseApp() }
         } label: {
             HStack(spacing: 6) {
                 if let icon {
                     Image(nsImage: smallIcon(icon))
                 }
-                Text(title)
+                Text(LocalizedStringKey(title))
             }
         }
     }

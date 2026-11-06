@@ -51,13 +51,13 @@ struct AppReport: Equatable {
         var title: String {
             switch self {
             case .apple: "Apple"
-            case .appStore: "Mac App Store"
+            case .appStore: String(localized: "Mac App Store")
             case .developerID(let name): name
-            case .development(let name): "\(name) (développement)"
-            case .adHoc: "Signature locale (ad hoc)"
-            case .selfSigned(let name): "\(name) (certificat personnel)"
-            case .unsigned: "Non signée"
-            case .unknown: "Inconnue"
+            case .development(let name): String(localized: "\(name) (développement)")
+            case .adHoc: String(localized: "Signature locale (ad hoc)")
+            case .selfSigned(let name): String(localized: "\(name) (certificat personnel)")
+            case .unsigned: String(localized: "Non signée")
+            case .unknown: String(localized: "Inconnue")
             }
         }
     }
@@ -72,12 +72,12 @@ struct AppReport: Equatable {
 
         var title: String {
             switch self {
-            case .notarized: "Notarisée par Apple"
-            case .developerID: "Developer ID, non notarisée"
-            case .appStore: "Mac App Store"
-            case .apple: "Système Apple"
-            case .rejected(let reason): "Refusée (\(reason))"
-            case .unknown: "Inconnu"
+            case .notarized: String(localized: "Notarisée par Apple")
+            case .developerID: String(localized: "Developer ID, non notarisée")
+            case .appStore: String(localized: "Mac App Store")
+            case .apple: String(localized: "Système Apple")
+            case .rejected(let reason): String(localized: "Refusée (\(reason))")
+            case .unknown: String(localized: "Inconnu")
             }
         }
 
@@ -126,20 +126,20 @@ struct AppReport: Equatable {
     }
 
     var verdictTitle: String {
-        if signatureValid == false { return "Signature invalide : l'app a été modifiée depuis sa signature" }
+        if signatureValid == false { return String(localized: "Signature invalide : l'app a été modifiée depuis sa signature") }
         switch signature {
-        case .unsigned: return "App non signée : son origine ne peut pas être vérifiée"
-        case .adHoc: return "Signature locale, sans identité de développeur"
-        case .selfSigned: return "Signée avec un certificat personnel, non reconnu par Apple"
+        case .unsigned: return String(localized: "App non signée : son origine ne peut pas être vérifiée")
+        case .adHoc: return String(localized: "Signature locale, sans identité de développeur")
+        case .selfSigned: return String(localized: "Signée avec un certificat personnel, non reconnu par Apple")
         default: break
         }
         switch gatekeeper {
-        case .notarized: return "Signée et notarisée par Apple"
-        case .appStore: return "Distribuée par le Mac App Store"
-        case .apple: return "App du système, signée par Apple"
-        case .developerID: return "Signée par un développeur identifié, mais pas notarisée"
-        case .rejected: return "Gatekeeper refuserait de l'ouvrir"
-        case .unknown: return "Vérification incomplète"
+        case .notarized: return String(localized: "Signée et notarisée par Apple")
+        case .appStore: return String(localized: "Distribuée par le Mac App Store")
+        case .apple: return String(localized: "App du système, signée par Apple")
+        case .developerID: return String(localized: "Signée par un développeur identifié, mais pas notarisée")
+        case .rejected: return String(localized: "Gatekeeper refuserait de l'ouvrir")
+        case .unknown: return String(localized: "Vérification incomplète")
         }
     }
 }
@@ -267,7 +267,7 @@ enum AppInspector {
             }
         }
         if out.contains("rejected") {
-            return .rejected(source.isEmpty ? "signature non reconnue" : source)
+            return .rejected(source.isEmpty ? String(localized: "signature non reconnue") : source)
         }
         return .unknown
     }
@@ -315,65 +315,65 @@ enum AppInspector {
     ]
 
     static let entitlementNames: [String: String] = [
-        "com.apple.security.app-sandbox": "Bac à sable (sandbox) activé",
-        "com.apple.security.network.client": "Connexions réseau sortantes",
-        "com.apple.security.network.server": "Accepte des connexions réseau entrantes",
-        "com.apple.security.files.user-selected.read-only": "Lit les fichiers que tu choisis",
-        "com.apple.security.files.user-selected.read-write": "Lit et modifie les fichiers que tu choisis",
-        "com.apple.security.files.downloads.read-write": "Accès au dossier Téléchargements",
-        "com.apple.security.files.all": "Accès à tous les fichiers",
-        "com.apple.security.device.camera": "Caméra",
-        "com.apple.security.device.audio-input": "Micro",
-        "com.apple.security.device.microphone": "Micro",
-        "com.apple.security.device.usb": "Périphériques USB",
+        "com.apple.security.app-sandbox": String(localized: "Bac à sable (sandbox) activé"),
+        "com.apple.security.network.client": String(localized: "Connexions réseau sortantes"),
+        "com.apple.security.network.server": String(localized: "Accepte des connexions réseau entrantes"),
+        "com.apple.security.files.user-selected.read-only": String(localized: "Lit les fichiers que tu choisis"),
+        "com.apple.security.files.user-selected.read-write": String(localized: "Lit et modifie les fichiers que tu choisis"),
+        "com.apple.security.files.downloads.read-write": String(localized: "Accès au dossier Téléchargements"),
+        "com.apple.security.files.all": String(localized: "Accès à tous les fichiers"),
+        "com.apple.security.device.camera": String(localized: "Caméra"),
+        "com.apple.security.device.audio-input": String(localized: "Micro"),
+        "com.apple.security.device.microphone": String(localized: "Micro"),
+        "com.apple.security.device.usb": String(localized: "Périphériques USB"),
         "com.apple.security.device.bluetooth": "Bluetooth",
-        "com.apple.security.personal-information.location": "Localisation",
-        "com.apple.security.personal-information.addressbook": "Contacts",
-        "com.apple.security.personal-information.calendars": "Calendriers",
-        "com.apple.security.personal-information.photos-library": "Photothèque",
-        "com.apple.security.automation.apple-events": "Pilote d'autres apps (AppleScript)",
-        "com.apple.security.cs.allow-jit": "Compilation à la volée (JIT)",
-        "com.apple.security.cs.allow-unsigned-executable-memory": "Exécute du code non signé en mémoire",
-        "com.apple.security.cs.disable-library-validation": "Charge des bibliothèques non signées par son éditeur",
-        "com.apple.security.cs.allow-dyld-environment-variables": "Accepte l'injection de bibliothèques (DYLD)",
-        "com.apple.security.cs.disable-executable-page-protection": "Désactive la protection de la mémoire exécutable",
-        "com.apple.security.get-task-allow": "Débogable par d'autres processus (build de développement)",
-        "com.apple.security.cs.debugger": "Peut déboguer d'autres processus",
-        "com.apple.security.virtualization": "Virtualisation",
-        "com.apple.security.hypervisor": "Hyperviseur",
-        "com.apple.developer.system-extension.install": "Installe des extensions système",
-        "com.apple.developer.endpoint-security.client": "Surveillance de la sécurité du système (Endpoint Security)",
-        "com.apple.developer.networking.networkextension": "Extension réseau (VPN, filtre)",
-        "com.apple.application-identifier": "Identifiant d'application",
-        "com.apple.developer.team-identifier": "Identifiant d'équipe",
-        "keychain-access-groups": "Groupes du trousseau",
-        "com.apple.security.application-groups": "Groupes d'apps (données partagées)",
+        "com.apple.security.personal-information.location": String(localized: "Localisation"),
+        "com.apple.security.personal-information.addressbook": String(localized: "Contacts"),
+        "com.apple.security.personal-information.calendars": String(localized: "Calendriers"),
+        "com.apple.security.personal-information.photos-library": String(localized: "Photothèque"),
+        "com.apple.security.automation.apple-events": String(localized: "Pilote d'autres apps (AppleScript)"),
+        "com.apple.security.cs.allow-jit": String(localized: "Compilation à la volée (JIT)"),
+        "com.apple.security.cs.allow-unsigned-executable-memory": String(localized: "Exécute du code non signé en mémoire"),
+        "com.apple.security.cs.disable-library-validation": String(localized: "Charge des bibliothèques non signées par son éditeur"),
+        "com.apple.security.cs.allow-dyld-environment-variables": String(localized: "Accepte l'injection de bibliothèques (DYLD)"),
+        "com.apple.security.cs.disable-executable-page-protection": String(localized: "Désactive la protection de la mémoire exécutable"),
+        "com.apple.security.get-task-allow": String(localized: "Débogable par d'autres processus (build de développement)"),
+        "com.apple.security.cs.debugger": String(localized: "Peut déboguer d'autres processus"),
+        "com.apple.security.virtualization": String(localized: "Virtualisation"),
+        "com.apple.security.hypervisor": String(localized: "Hyperviseur"),
+        "com.apple.developer.system-extension.install": String(localized: "Installe des extensions système"),
+        "com.apple.developer.endpoint-security.client": String(localized: "Surveillance de la sécurité du système (Endpoint Security)"),
+        "com.apple.developer.networking.networkextension": String(localized: "Extension réseau (VPN, filtre)"),
+        "com.apple.application-identifier": String(localized: "Identifiant d'application"),
+        "com.apple.developer.team-identifier": String(localized: "Identifiant d'équipe"),
+        "keychain-access-groups": String(localized: "Groupes du trousseau"),
+        "com.apple.security.application-groups": String(localized: "Groupes d'apps (données partagées)"),
     ]
 
     static let privacyNames: [String: String] = [
-        "NSCameraUsageDescription": "Caméra",
-        "NSMicrophoneUsageDescription": "Micro",
-        "NSContactsUsageDescription": "Contacts",
-        "NSCalendarsUsageDescription": "Calendriers",
-        "NSCalendarsFullAccessUsageDescription": "Calendriers (accès complet)",
-        "NSRemindersUsageDescription": "Rappels",
-        "NSRemindersFullAccessUsageDescription": "Rappels (accès complet)",
-        "NSPhotoLibraryUsageDescription": "Photothèque",
-        "NSLocationUsageDescription": "Localisation",
-        "NSLocationWhenInUseUsageDescription": "Localisation",
-        "NSAppleEventsUsageDescription": "Pilotage d'autres apps",
+        "NSCameraUsageDescription": String(localized: "Caméra"),
+        "NSMicrophoneUsageDescription": String(localized: "Micro"),
+        "NSContactsUsageDescription": String(localized: "Contacts"),
+        "NSCalendarsUsageDescription": String(localized: "Calendriers"),
+        "NSCalendarsFullAccessUsageDescription": String(localized: "Calendriers (accès complet)"),
+        "NSRemindersUsageDescription": String(localized: "Rappels"),
+        "NSRemindersFullAccessUsageDescription": String(localized: "Rappels (accès complet)"),
+        "NSPhotoLibraryUsageDescription": String(localized: "Photothèque"),
+        "NSLocationUsageDescription": String(localized: "Localisation"),
+        "NSLocationWhenInUseUsageDescription": String(localized: "Localisation"),
+        "NSAppleEventsUsageDescription": String(localized: "Pilotage d'autres apps"),
         "NSBluetoothAlwaysUsageDescription": "Bluetooth",
-        "NSSpeechRecognitionUsageDescription": "Reconnaissance vocale",
-        "NSDesktopFolderUsageDescription": "Dossier Bureau",
-        "NSDocumentsFolderUsageDescription": "Dossier Documents",
-        "NSDownloadsFolderUsageDescription": "Dossier Téléchargements",
-        "NSRemovableVolumesUsageDescription": "Volumes amovibles",
-        "NSNetworkVolumesUsageDescription": "Volumes réseau",
-        "NSSystemAdministrationUsageDescription": "Administration du système",
-        "NSLocalNetworkUsageDescription": "Réseau local",
-        "NSFaceIDUsageDescription": "Touch ID / Face ID",
-        "NSHomeKitUsageDescription": "Maison (HomeKit)",
-        "NSMotionUsageDescription": "Mouvements",
+        "NSSpeechRecognitionUsageDescription": String(localized: "Reconnaissance vocale"),
+        "NSDesktopFolderUsageDescription": String(localized: "Dossier Bureau"),
+        "NSDocumentsFolderUsageDescription": String(localized: "Dossier Documents"),
+        "NSDownloadsFolderUsageDescription": String(localized: "Dossier Téléchargements"),
+        "NSRemovableVolumesUsageDescription": String(localized: "Volumes amovibles"),
+        "NSNetworkVolumesUsageDescription": String(localized: "Volumes réseau"),
+        "NSSystemAdministrationUsageDescription": String(localized: "Administration du système"),
+        "NSLocalNetworkUsageDescription": String(localized: "Réseau local"),
+        "NSFaceIDUsageDescription": String(localized: "Touch ID / Face ID"),
+        "NSHomeKitUsageDescription": String(localized: "Maison (HomeKit)"),
+        "NSMotionUsageDescription": String(localized: "Mouvements"),
     ]
 }
 

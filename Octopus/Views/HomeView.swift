@@ -59,7 +59,7 @@ struct HomeView: View {
                 .frame(width: 64, height: 64)
             VStack(alignment: .leading, spacing: 4) {
                 Text("Octopus").font(.largeTitle.bold())
-                Text("Nettoyage, apps, sécurité et outils système pour ton Mac.")
+                Text(String(localized: "Nettoyage, apps, sécurité et outils système pour ton Mac."))
                     .foregroundStyle(.secondary)
                 Text("Certaines fonctions sont basées sur l'utilitaire en ligne de commande **Mole**.")
                     .foregroundStyle(.secondary)
@@ -76,28 +76,28 @@ struct HomeView: View {
             case .checking:
                 ProgressView().controlSize(.small)
             case .missing:
-                Label("Non installé", systemImage: "exclamationmark.triangle.fill").foregroundStyle(.orange)
-                Text("La plupart des fonctions de nettoyage en ont besoin.")
+                Label(String(localized: "Non installé"), systemImage: "exclamationmark.triangle.fill").foregroundStyle(.orange)
+                Text(String(localized: "La plupart des fonctions de nettoyage en ont besoin."))
                     .font(.callout).foregroundStyle(.secondary)
-                Button("Installer Mole") {
-                    session.start(title: "Installation de Mole", commandLine: MoleService.installCommand())
+                Button(String(localized: "Installer Mole")) {
+                    session.start(title: String(localized: "Installation de Mole"), commandLine: MoleService.installCommand())
                 }
                 .disabled(session.isRunning)
             case .installed(_, let version, let method):
-                BigValue(value: version ?? "?", caption: method == .script ? "installé avec le script officiel" : "installé avec Homebrew")
+                BigValue(value: version ?? "?", caption: method == .script ? String(localized: "installé avec le script officiel") : String(localized: "installé avec Homebrew"))
                 if mole.updateAvailable, let latest = mole.latestVersion {
                     Label("Version \(latest) disponible", systemImage: "arrow.down.circle.fill")
                         .foregroundStyle(.blue)
                     if let command = mole.updateCommand(arguments: ["update"]) {
-                        Button("Mettre à jour") {
-                            session.start(title: "Mise à jour de Mole", commandLine: command)
+                        Button(String(localized: "Mettre à jour")) {
+                            session.start(title: String(localized: "Mise à jour de Mole"), commandLine: command)
                         }
                         .disabled(session.isRunning)
                     }
                 } else if mole.latestVersion != nil {
-                    Label("À jour", systemImage: "checkmark.circle.fill").foregroundStyle(.green)
+                    Label(String(localized: "À jour"), systemImage: "checkmark.circle.fill").foregroundStyle(.green)
                 } else {
-                    Label("Dernière version inconnue (hors ligne ?)", systemImage: "questionmark.circle")
+                    Label(String(localized: "Dernière version inconnue (hors ligne ?)"), systemImage: "questionmark.circle")
                         .foregroundStyle(.secondary)
                 }
             }
@@ -105,27 +105,27 @@ struct HomeView: View {
     }
 
     private var healthCard: some View {
-        DashboardCard(title: "Santé du Mac", symbol: "heart.text.square") {
+        DashboardCard(title: String(localized: "Santé du Mac"), symbol: "heart.text.square") {
             if let status {
                 HStack(alignment: .top, spacing: 0) {
                     let score = Double(status.healthScore ?? 0)
-                    RingGauge(fraction: score / 100, value: "\(Int(score))", label: "Santé",
+                    RingGauge(fraction: score / 100, value: "\(Int(score))", label: String(localized: "Santé"),
                               color: healthColor(status.healthScore))
                     if let disk = status.disks?.first(where: { $0.mount == "/" }), let used = disk.usedPercent {
-                        RingGauge(fraction: used / 100, value: Fmt.percent(used), label: "Disque",
+                        RingGauge(fraction: used / 100, value: Fmt.percent(used), label: String(localized: "Disque"),
                                   color: LevelBar.color(for: used / 100))
                     }
                     if let used = status.memory?.usedPercent {
-                        RingGauge(fraction: used / 100, value: Fmt.percent(used), label: "Mémoire",
+                        RingGauge(fraction: used / 100, value: Fmt.percent(used), label: String(localized: "Mémoire"),
                                   color: LevelBar.color(for: used / 100))
                     }
                 }
                 if let message = status.healthScoreMsg, !message.isEmpty {
                     Text(message).font(.callout).foregroundStyle(.secondary)
                 }
-                Button("État du système") { select("status") }
+                Button(String(localized: "État du système")) { select("status") }
             } else if mole.executablePath == nil {
-                Text("Disponible une fois Mole installé.").foregroundStyle(.secondary)
+                Text(String(localized: "Disponible une fois Mole installé.")).foregroundStyle(.secondary)
             } else {
                 ProgressView().controlSize(.small)
             }
@@ -133,18 +133,18 @@ struct HomeView: View {
     }
 
     private var securityCard: some View {
-        DashboardCard(title: "Sécurité", symbol: "checkmark.shield") {
+        DashboardCard(title: String(localized: "Sécurité"), symbol: "checkmark.shield") {
             if security.checks.isEmpty {
                 ProgressView().controlSize(.small)
             } else {
                 let problems = security.problemCount
-                Label(problems == 0 ? "Tout est en ordre" : (problems == 1 ? "1 point à vérifier" : "\(problems) points à vérifier"),
+                Label(problems == 0 ? String(localized: "Tout est en ordre") : (problems == 1 ? String(localized: "1 point à vérifier") : String(localized: "\(problems) points à vérifier")),
                       systemImage: problems == 0 ? "checkmark.shield.fill" : "exclamationmark.shield.fill")
                     .font(.headline)
                     .foregroundStyle(problems == 0 ? Color.green : Color.orange)
-                Text("SIP, Gatekeeper, FileVault, XProtect, démarrage sécurisé…")
+                Text(String(localized: "SIP, Gatekeeper, FileVault, XProtect, démarrage sécurisé…"))
                     .font(.callout).foregroundStyle(.secondary)
-                Button("Vérifications") { select("security") }
+                Button(String(localized: "Vérifications")) { select("security") }
             }
         }
     }
@@ -153,15 +153,15 @@ struct HomeView: View {
         DashboardCard(title: "Autorisations", symbol: "lock.shield") {
             switch permissions.fullDiskAccess {
             case .granted:
-                Label("Accès complet au disque accordé", systemImage: "checkmark.circle.fill").foregroundStyle(.green)
+                Label(String(localized: "Accès complet au disque accordé"), systemImage: "checkmark.circle.fill").foregroundStyle(.green)
             case .missing:
-                Label("Accès complet au disque manquant", systemImage: "exclamationmark.circle.fill").foregroundStyle(.orange)
-                Text("Mole ne peut pas nettoyer les dossiers protégés.").font(.callout).foregroundStyle(.secondary)
-                Button("Autoriser…") { Permissions.open(Permissions.fullDiskAccessURL) }
+                Label(String(localized: "Accès complet au disque manquant"), systemImage: "exclamationmark.circle.fill").foregroundStyle(.orange)
+                Text(String(localized: "Mole ne peut pas nettoyer les dossiers protégés.")).font(.callout).foregroundStyle(.secondary)
+                Button(String(localized: "Autoriser…")) { Permissions.open(Permissions.fullDiskAccessURL) }
             case .unknown:
-                Label("Accès complet au disque : état inconnu", systemImage: "questionmark.circle").foregroundStyle(.secondary)
+                Label(String(localized: "Accès complet au disque : état inconnu"), systemImage: "questionmark.circle").foregroundStyle(.secondary)
             }
-            SettingsLink { Text("Réglages des autorisations…") }
+            SettingsLink { Text(String(localized: "Réglages des autorisations…")) }
         }
     }
 
@@ -197,7 +197,7 @@ private struct RingGauge: View {
                     .padding(.horizontal, 6)
             }
             .frame(width: 64, height: 64)
-            Text(label).font(.caption).foregroundStyle(.secondary)
+            Text(LocalizedStringKey(label)).font(.caption).foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
     }

@@ -8,6 +8,8 @@ struct HomebrewView: View {
         case installed = "Installés"
         case services = "Services"
         case maintenance = "Entretien"
+
+        var title: String { String(localized: String.LocalizationValue(rawValue)) }
         var id: Self { self }
     }
 
@@ -58,20 +60,20 @@ struct HomebrewView: View {
 
     private func label(for tab: Tab) -> String {
         switch tab {
-        case .updates where !store.outdated.isEmpty: "\(tab.rawValue) (\(store.outdated.count))"
-        case .installed where !store.packages.isEmpty: "\(tab.rawValue) (\(store.packages.count))"
-        default: tab.rawValue
+        case .updates where !store.outdated.isEmpty: "\(tab.title) (\(store.outdated.count))"
+        case .installed where !store.packages.isEmpty: "\(tab.title) (\(store.packages.count))"
+        default: tab.title
         }
     }
 
     private var notInstalled: some View {
         ContentUnavailableView {
-            Label("Homebrew n'est pas installé", systemImage: "mug")
+            Label(String(localized: "Homebrew n'est pas installé"), systemImage: "mug")
         } description: {
-            Text("Homebrew installe les outils en ligne de commande et de nombreuses apps. L'installation officielle se fait dans le terminal et demande ton mot de passe.")
+            Text(String(localized: "Homebrew installe les outils en ligne de commande et de nombreuses apps. L'installation officielle se fait dans le terminal et demande ton mot de passe."))
         } actions: {
-            Button("Installer Homebrew") {
-                session.start(title: "Installation de Homebrew", commandLine: HomebrewStore.installCommand)
+            Button(String(localized: "Installer Homebrew")) {
+                session.start(title: String(localized: "Installation de Homebrew"), commandLine: HomebrewStore.installCommand)
             }
             .buttonStyle(.borderedProminent)
             .disabled(session.isRunning)
@@ -95,7 +97,7 @@ private struct BrewUpdatesView: View {
                     .padding(.top, 8)
             }
             HStack {
-                Button("Rechercher les mises à jour", systemImage: "arrow.triangle.2.circlepath") {
+                Button(String(localized: "Rechercher les mises à jour"), systemImage: "arrow.triangle.2.circlepath") {
                     Task { await store.updateIndex() }
                 }
                 .disabled(store.isUpdatingIndex || session.isRunning)
@@ -103,18 +105,18 @@ private struct BrewUpdatesView: View {
                     ProgressView().controlSize(.small)
                     Text("brew update…").font(.caption).foregroundStyle(.secondary)
                 } else if let date = store.lastIndexUpdate {
-                    Text("Vérifié à \(date.formatted(date: .omitted, time: .shortened))")
+                    Text(String(localized: "Vérifié à \(date.formatted(date: .omitted, time: .shortened))"))
                         .font(.caption).foregroundStyle(.secondary)
                 }
                 Spacer()
                 if !selection.isEmpty {
-                    Button("Mettre à jour la sélection (\(selection.count))") {
+                    Button(String(localized: "Mettre à jour la sélection (\(selection.count))")) {
                         let items = store.outdated.filter { selection.contains($0.id) }
                         session.start(title: "brew upgrade", commandLine: store.upgradeCommand(items))
                     }
                     .disabled(session.isRunning)
                 }
-                Button("Tout mettre à jour") {
+                Button(String(localized: "Tout mettre à jour")) {
                     session.start(title: "brew upgrade", commandLine: store.command(["upgrade"]))
                 }
                 .buttonStyle(.borderedProminent)
@@ -129,22 +131,22 @@ private struct BrewUpdatesView: View {
                         BrewIcon(kind: item.kind,
                                  appNames: store.packages.first { $0.id == item.id }?.appNames ?? [])
                         Text(item.name)
-                        if item.pinned { Badge(text: "épinglé", color: .orange) }
+                        if item.pinned { Badge(text: String(localized: "épinglé"), color: .orange) }
                     }
                     .frame(height: 22)
                 }
                 .width(min: 160, ideal: 240)
-                TableColumn("Type") { item in Text(item.kind.rawValue).foregroundStyle(.secondary) }
+                TableColumn("Type") { item in Text(LocalizedStringKey(item.kind.rawValue)).foregroundStyle(.secondary) }
                     .width(min: 70, ideal: 90)
-                TableColumn("Installée") { item in Text(item.installed).monospacedDigit().foregroundStyle(.secondary) }
+                TableColumn(String(localized: "Installée")) { item in Text(item.installed).monospacedDigit().foregroundStyle(.secondary) }
                 TableColumn("Disponible") { item in Text(item.available).monospacedDigit().fontWeight(.medium) }
             }
             .confirmationDialog(
-                "Réparer la mise à jour de « \(repairing?.cask ?? "") » ?",
+                String(localized: "Réparer la mise à jour de « \(repairing?.cask ?? "") » ?"),
                 isPresented: Binding(get: { repairing != nil }, set: { if !$0 { repairing = nil } }),
                 presenting: repairing
             ) { stuck in
-                Button("Réparer et mettre à jour") {
+                Button(String(localized: "Réparer et mettre à jour")) {
                     Task {
                         if await store.repair(stuck) {
                             session.start(title: "brew upgrade --cask \(stuck.cask)",
@@ -152,18 +154,18 @@ private struct BrewUpdatesView: View {
                         }
                     }
                 }
-                Button("Réparer seulement") {
+                Button(String(localized: "Réparer seulement")) {
                     Task { _ = await store.repair(stuck) }
                 }
             } message: { stuck in
-                Text("L'ancienne copie de \(stuck.appName) restée dans le Caskroom part à la Corbeille. L'app utilisée, dans /Applications, n'est pas touchée.")
+                Text(String(localized: "L'ancienne copie de \(stuck.appName) restée dans le Caskroom part à la Corbeille. L'app utilisée, dans /Applications, n'est pas touchée."))
             }
             .overlay {
                 if store.outdated.isEmpty && !store.isLoading {
                     ContentUnavailableView {
-                        Label("Tout est à jour", systemImage: "checkmark.circle")
+                        Label(String(localized: "Tout est à jour"), systemImage: "checkmark.circle")
                     } description: {
-                        Text("D'après la dernière liste téléchargée. « Rechercher les mises à jour » la rafraîchit (brew update).")
+                        Text(String(localized: "D'après la dernière liste téléchargée. « Rechercher les mises à jour » la rafraîchit (brew update)."))
                     }
                 }
             }
@@ -206,11 +208,11 @@ private struct BrewInstalledView: View {
                 .pickerStyle(.segmented)
                 .labelsHidden()
                 .fixedSize()
-                Toggle("Installés par moi", isOn: $requestedOnly)
+                Toggle(String(localized: "Installés par moi"), isOn: $requestedOnly)
                     .toggleStyle(.checkbox)
-                    .help("Masque les dépendances installées automatiquement par d'autres paquets")
+                    .help(String(localized: "Masque les dépendances installées automatiquement par d'autres paquets"))
                 Spacer()
-                TextField("Rechercher", text: $search, prompt: Text("Nom ou description"))
+                TextField("Rechercher", text: $search, prompt: Text(String(localized: "Nom ou description")))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: 240)
             }
@@ -222,9 +224,9 @@ private struct BrewInstalledView: View {
                     HStack(spacing: 6) {
                         BrewIcon(kind: package.kind, appNames: package.appNames)
                         Text(package.name).fontWeight(.medium)
-                        if package.outdated { Badge(text: "mise à jour", color: .blue) }
-                        if package.pinned { Badge(text: "épinglé", color: .orange) }
-                        if !package.onRequest { Badge(text: "dépendance") }
+                        if package.outdated { Badge(text: String(localized: "mise à jour"), color: .blue) }
+                        if package.pinned { Badge(text: String(localized: "épinglé"), color: .orange) }
+                        if !package.onRequest { Badge(text: String(localized: "dépendance")) }
                     }
                     .frame(height: 22)
                 }
@@ -237,7 +239,7 @@ private struct BrewInstalledView: View {
                     Text(package.descriptionText).foregroundStyle(.secondary).lineLimit(1).help(package.descriptionText)
                 }
                 .width(min: 200, ideal: 400)
-                TableColumn("Installé le", value: \.installedSort) { package in
+                TableColumn(String(localized: "Installé le"), value: \.installedSort) { package in
                     Text(package.installedOn.map { $0.formatted(date: .abbreviated, time: .omitted) } ?? "—")
                         .foregroundStyle(.secondary)
                 }
@@ -247,36 +249,36 @@ private struct BrewInstalledView: View {
                 let targets = store.packages.filter { ids.contains($0.id) }
                 if targets.count == 1, let package = targets.first {
                     if let homepage = package.homepage, let url = URL(string: homepage) {
-                        Button("Ouvrir le site du projet") { NSWorkspace.shared.open(url) }
+                        Button(String(localized: "Ouvrir le site du projet")) { NSWorkspace.shared.open(url) }
                     }
-                    Button("Infos détaillées (brew info)") {
+                    Button(String(localized: "Infos détaillées (brew info)")) {
                         session.start(title: "brew info \(package.name)",
                                       commandLine: store.command(["info", package.kind == .cask ? "--cask" : "--formula", package.name]))
                     }
                     if package.kind == .formula {
-                        Button(package.pinned ? "Désépingler" : "Épingler (bloquer les mises à jour)") {
+                        Button(package.pinned ? String(localized: "Désépingler") : String(localized: "Épingler (bloquer les mises à jour)")) {
                             session.start(title: "brew pin", commandLine: store.command([package.pinned ? "unpin" : "pin", package.name]))
                         }
                     }
                     Divider()
                 }
                 if !targets.isEmpty {
-                    Button(targets.count == 1 ? "Désinstaller…" : "Désinstaller les \(targets.count)…", role: .destructive) {
+                    Button(targets.count == 1 ? String(localized: "Désinstaller…") : String(localized: "Désinstaller les \(targets.count)…"), role: .destructive) {
                         uninstalling = targets
                     }
                 }
             }
             .overlay {
                 if !store.packages.isEmpty && filtered.isEmpty {
-                    ContentUnavailableView("Aucun résultat", systemImage: "magnifyingglass")
+                    ContentUnavailableView(String(localized: "Aucun résultat"), systemImage: "magnifyingglass")
                 }
             }
         }
         .confirmationDialog(
-            uninstalling.count == 1 ? "Désinstaller « \(uninstalling.first?.name ?? "") » ?" : "Désinstaller \(uninstalling.count) paquets ?",
+            uninstalling.count == 1 ? String(localized: "Désinstaller « \(uninstalling.first?.name ?? "") » ?") : String(localized: "Désinstaller \(uninstalling.count) paquets ?"),
             isPresented: Binding(get: { !uninstalling.isEmpty }, set: { if !$0 { uninstalling = [] } })
         ) {
-            Button("Désinstaller", role: .destructive) {
+            Button(String(localized: "Désinstaller"), role: .destructive) {
                 let formulae = uninstalling.filter { $0.kind == .formula }.map(\.name)
                 let casks = uninstalling.filter { $0.kind == .cask }.map(\.name)
                 var parts: [String] = []
@@ -286,7 +288,7 @@ private struct BrewInstalledView: View {
                 selection.removeAll()
             }
         } message: {
-            Text("Homebrew refusera de désinstaller un paquet dont d'autres dépendent. Les apps (casks) sont supprimées de /Applications.")
+            Text(String(localized: "Homebrew refusera de désinstaller un paquet dont d'autres dépendent. Les apps (casks) sont supprimées de /Applications."))
         }
     }
 }
@@ -309,7 +311,7 @@ private struct BrewServicesView: View {
                 .frame(height: 24)
             }
             .width(min: 160, ideal: 220)
-            TableColumn("État") { service in Text(service.statusTitle) }
+            TableColumn(String(localized: "État")) { service in Text(service.statusTitle) }
                 .width(min: 90, ideal: 120)
             TableColumn("Utilisateur") { service in Text(service.user ?? "—").foregroundStyle(.secondary) }
                 .width(min: 80, ideal: 100)
@@ -318,10 +320,10 @@ private struct BrewServicesView: View {
                     if busy == service.name {
                         ProgressView().controlSize(.small)
                     } else if service.isRunning {
-                        Button("Arrêter") { run(service, "stop") }
-                        Button("Redémarrer") { run(service, "restart") }
+                        Button(String(localized: "Arrêter")) { run(service, "stop") }
+                        Button(String(localized: "Redémarrer")) { run(service, "restart") }
                     } else {
-                        Button("Démarrer") { run(service, "start") }
+                        Button(String(localized: "Démarrer")) { run(service, "start") }
                     }
                 }
                 .controlSize(.small)
@@ -330,8 +332,8 @@ private struct BrewServicesView: View {
         }
         .overlay {
             if store.services.isEmpty && !store.isLoading {
-                ContentUnavailableView("Aucun service", systemImage: "gearshape.2",
-                                       description: Text("Aucun paquet installé ne propose de service (PostgreSQL, Redis, nginx…)."))
+                ContentUnavailableView(String(localized: "Aucun service"), systemImage: "gearshape.2",
+                                       description: Text(String(localized: "Aucun paquet installé ne propose de service (PostgreSQL, Redis, nginx…).")))
             }
         }
     }
@@ -358,21 +360,21 @@ private struct BrewMaintenanceView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 14) {
                 DashboardCard(title: "Nettoyage", symbol: "trash") {
-                    Text("Supprime les anciennes versions et les téléchargements en cache.")
+                    Text(String(localized: "Supprime les anciennes versions et les téléchargements en cache."))
                         .font(.callout).foregroundStyle(.secondary)
                     if checking {
                         ProgressView().controlSize(.small)
                     } else if let estimate = store.cleanupEstimate {
-                        ValueRow(label: "Espace récupérable", value: estimate)
+                        ValueRow(label: String(localized: "Espace récupérable"), value: estimate)
                     }
-                    Button("Nettoyer (brew cleanup)") {
+                    Button(String(localized: "Nettoyer (brew cleanup)")) {
                         session.start(title: "brew cleanup", commandLine: store.command(["cleanup", "--prune=all"]))
                     }
                     .disabled(session.isRunning)
                 }
 
-                DashboardCard(title: "Dépendances inutiles", symbol: "shippingbox") {
-                    Text("Dépendances qui ne servent plus à aucun paquet installé.")
+                DashboardCard(title: String(localized: "Dépendances inutiles"), symbol: "shippingbox") {
+                    Text(String(localized: "Dépendances qui ne servent plus à aucun paquet installé."))
                         .font(.callout).foregroundStyle(.secondary)
                     if !checking {
                         if store.autoremoveCandidates.isEmpty {
@@ -381,7 +383,7 @@ private struct BrewMaintenanceView: View {
                             Text(store.autoremoveCandidates.joined(separator: ", "))
                                 .font(.callout.monospaced())
                                 .textSelection(.enabled)
-                            Button("Les supprimer (brew autoremove)") {
+                            Button(String(localized: "Les supprimer (brew autoremove)")) {
                                 session.start(title: "brew autoremove", commandLine: store.command(["autoremove"]))
                             }
                             .disabled(session.isRunning)
@@ -389,15 +391,15 @@ private struct BrewMaintenanceView: View {
                     }
                 }
 
-                DashboardCard(title: "Diagnostic", symbol: "stethoscope") {
-                    Text("Vérifie l'installation de Homebrew et signale les problèmes de configuration.")
+                DashboardCard(title: String(localized: "Diagnostic"), symbol: "stethoscope") {
+                    Text(String(localized: "Vérifie l'installation de Homebrew et signale les problèmes de configuration."))
                         .font(.callout).foregroundStyle(.secondary)
-                    Button("Lancer brew doctor") {
+                    Button(String(localized: "Lancer brew doctor")) {
                         session.start(title: "brew doctor", commandLine: store.command(["doctor"]))
                     }
                     .disabled(session.isRunning)
                     if let path = store.brewPath {
-                        ValueRow(label: "Emplacement", value: (path as NSString).deletingLastPathComponent)
+                        ValueRow(label: String(localized: "Emplacement"), value: (path as NSString).deletingLastPathComponent)
                     }
                 }
             }
@@ -427,8 +429,8 @@ private struct StuckCaskBanner: View {
                 .foregroundStyle(.orange)
                 .font(.title3)
             VStack(alignment: .leading, spacing: 2) {
-                Text("La mise à jour de \(stuck.cask) est bloquée").fontWeight(.semibold)
-                Text("Une ancienne copie de \(stuck.appName), laissée par une mise à jour interrompue, empêche Homebrew de mettre l'app de côté (« It seems there is already an App at… »).")
+                Text(String(localized: "La mise à jour de \(stuck.cask) est bloquée")).fontWeight(.semibold)
+                Text(String(localized: "Une ancienne copie de \(stuck.appName), laissée par une mise à jour interrompue, empêche Homebrew de mettre l'app de côté (« It seems there is already an App at… »)."))
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -438,7 +440,7 @@ private struct StuckCaskBanner: View {
                     .textSelection(.enabled)
             }
             Spacer()
-            Button("Réparer…", action: onRepair)
+            Button(String(localized: "Réparer…"), action: onRepair)
         }
         .padding(12)
         .background(.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))

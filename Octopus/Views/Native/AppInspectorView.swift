@@ -46,12 +46,12 @@ struct AppInspectorView: View {
             Image(systemName: isInspecting ? "hourglass" : "app.badge.checkmark")
                 .font(.system(size: 54))
                 .foregroundStyle(.tint)
-            Text(isInspecting ? "Analyse en cours…" : "Glisse une app ici").font(.title2.bold())
-            Text("Octopus vérifie sa signature, sa notarisation par Apple, sa quarantaine, les droits qu'elle demande et ce qu'elle installe en arrière-plan.")
+            Text(isInspecting ? String(localized: "Analyse en cours…") : String(localized: "Glisse une app ici")).font(.title2.bold())
+            Text(String(localized: "Octopus vérifie sa signature, sa notarisation par Apple, sa quarantaine, les droits qu'elle demande et ce qu'elle installe en arrière-plan."))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 460)
-            Button("Choisir une app…") { chooseApp() }
+            Button(String(localized: "Choisir une app…")) { chooseApp() }
                 .buttonStyle(.borderedProminent)
                 .disabled(isInspecting)
         }
@@ -91,8 +91,8 @@ struct AppInspectorView: View {
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 8) {
-                Button("Autre app…") { chooseApp() }
-                Button("Afficher dans le Finder") { Finder.reveal(report.url.path) }
+                Button(String(localized: "Autre app…")) { chooseApp() }
+                Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(report.url.path) }
             }
         }
     }
@@ -100,17 +100,17 @@ struct AppInspectorView: View {
     // MARK: - Cartes
 
     private func signatureCard(_ report: AppReport) -> some View {
-        DashboardCard(title: "Signature", symbol: "signature") {
-            ValueRow(label: "Signée par", value: report.signature.title)
-            if let team = report.teamID { ValueRow(label: "Équipe", value: team) }
+        DashboardCard(title: String(localized: "Signature"), symbol: "signature") {
+            ValueRow(label: String(localized: "Signée par"), value: report.signature.title)
+            if let team = report.teamID { ValueRow(label: String(localized: "Équipe"), value: team) }
             if let valid = report.signatureValid {
-                ValueRow(label: "Intégrité", value: valid ? "Intacte" : "Modifiée depuis la signature")
+                ValueRow(label: String(localized: "Intégrité"), value: valid ? String(localized: "Intacte") : String(localized: "Modifiée depuis la signature"))
                 if let error = report.signatureError, !valid {
                     Text(error).font(.caption).foregroundStyle(.red)
                 }
             }
-            ValueRow(label: "Runtime renforcé", value: report.hardenedRuntime ? "Oui" : "Non")
-            if let date = report.signedAt { ValueRow(label: "Horodatage", value: date) }
+            ValueRow(label: String(localized: "Runtime renforcé"), value: report.hardenedRuntime ? String(localized: "Oui") : String(localized: "Non"))
+            if let date = report.signedAt { ValueRow(label: String(localized: "Horodatage"), value: date) }
             if report.authorities.count > 1 {
                 Text(report.authorities.joined(separator: " → "))
                     .font(.caption)
@@ -122,7 +122,7 @@ struct AppInspectorView: View {
     }
 
     private func gatekeeperCard(_ report: AppReport) -> some View {
-        DashboardCard(title: "Gatekeeper et quarantaine", symbol: "hand.raised") {
+        DashboardCard(title: String(localized: "Gatekeeper et quarantaine"), symbol: "hand.raised") {
             HStack {
                 Image(systemName: report.gatekeeper.isAccepted ? "checkmark.circle.fill" : "xmark.circle.fill")
                     .foregroundStyle(report.gatekeeper.isAccepted ? Color.green : Color.orange)
@@ -130,24 +130,24 @@ struct AppInspectorView: View {
             }
             if let quarantine = report.quarantine {
                 VStack(alignment: .leading, spacing: 4) {
-                    Label("En quarantaine", systemImage: "exclamationmark.shield")
+                    Label(String(localized: "En quarantaine"), systemImage: "exclamationmark.shield")
                         .foregroundStyle(.orange)
-                    Text(["Téléchargée", quarantine.agent.map { "avec \($0)" },
+                    Text([String(localized: "Téléchargée"), quarantine.agent.map { "avec \($0)" },
                           quarantine.date.map { "le \($0.formatted(date: .abbreviated, time: .shortened))" }]
                         .compactMap { $0 }.joined(separator: " "))
                         .font(.callout)
                         .foregroundStyle(.secondary)
                     Text(report.gatekeeper.isAccepted
-                         ? "macOS a déjà vérifié l'app ou la vérifiera à la prochaine ouverture."
-                         : "macOS bloquera son ouverture. Ne retire la quarantaine que si tu fais confiance à sa provenance (une app que tu as compilée, par exemple).")
+                         ? String(localized: "macOS a déjà vérifié l'app ou la vérifiera à la prochaine ouverture.")
+                         : String(localized: "macOS bloquera son ouverture. Ne retire la quarantaine que si tu fais confiance à sa provenance (une app que tu as compilée, par exemple)."))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
-                    Button("Retirer la quarantaine") { removeQuarantine(report) }
+                    Button(String(localized: "Retirer la quarantaine")) { removeQuarantine(report) }
                         .padding(.top, 2)
                 }
             } else {
-                Label("Pas de quarantaine", systemImage: "checkmark.shield")
+                Label(String(localized: "Pas de quarantaine"), systemImage: "checkmark.shield")
                     .foregroundStyle(.secondary)
             }
             if let message = quarantineMessage {
@@ -157,12 +157,12 @@ struct AppInspectorView: View {
     }
 
     private func entitlementsCard(_ report: AppReport) -> some View {
-        DashboardCard(title: "Droits (entitlements)", symbol: "key.viewfinder") {
+        DashboardCard(title: String(localized: "Droits (entitlements)"), symbol: "key.viewfinder") {
             if report.entitlements.isEmpty {
-                Text("Aucun droit particulier déclaré.").foregroundStyle(.secondary)
+                Text(String(localized: "Aucun droit particulier déclaré.")).foregroundStyle(.secondary)
             } else {
                 let sandboxed = report.entitlements.contains { $0.key == "com.apple.security.app-sandbox" && $0.value == "oui" }
-                Label(sandboxed ? "Isolée dans un bac à sable" : "Pas de bac à sable : accès étendu au Mac",
+                Label(sandboxed ? String(localized: "Isolée dans un bac à sable") : String(localized: "Pas de bac à sable : accès étendu au Mac"),
                       systemImage: sandboxed ? "shippingbox.fill" : "shippingbox")
                     .foregroundStyle(sandboxed ? Color.green : Color.secondary)
                 ForEach(report.entitlements.filter { $0.key != "com.apple.security.app-sandbox" }) { entitlement in
@@ -191,12 +191,12 @@ struct AppInspectorView: View {
     }
 
     private func privacyCard(_ report: AppReport) -> some View {
-        DashboardCard(title: "Autorisations qu'elle peut demander", symbol: "hand.raised.square") {
+        DashboardCard(title: String(localized: "Autorisations qu'elle peut demander"), symbol: "hand.raised.square") {
             ForEach(report.privacyUsages) { usage in
                 VStack(alignment: .leading, spacing: 1) {
                     Text(usage.title).font(.callout.weight(.medium))
                     if !usage.text.isEmpty {
-                        Text("« \(usage.text) »")
+                        Text(String(localized: "« \(usage.text) »"))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -207,13 +207,13 @@ struct AppInspectorView: View {
     }
 
     private func componentsCard(_ report: AppReport) -> some View {
-        DashboardCard(title: "Composants", symbol: "square.stack.3d.down.right") {
-            ValueRow(label: "Provenance", value: report.isFromAppStore ? "Mac App Store" : "Hors App Store")
-            ValueRow(label: "Mises à jour", value: report.usesSparkle ? "Sparkle (automatiques)" : (report.isFromAppStore ? "App Store" : "—"))
-            ValueRow(label: "Frameworks embarqués", value: "\(report.frameworkCount)")
-            componentList("Lancées à l'ouverture de session", report.loginItems)
-            componentList("Services en arrière-plan", report.launchServices)
-            componentList("Extensions système", report.systemExtensions)
+        DashboardCard(title: String(localized: "Composants"), symbol: "square.stack.3d.down.right") {
+            ValueRow(label: String(localized: "Provenance"), value: report.isFromAppStore ? String(localized: "Mac App Store") : String(localized: "Hors App Store"))
+            ValueRow(label: String(localized: "Mises à jour"), value: report.usesSparkle ? String(localized: "Sparkle (automatiques)") : (report.isFromAppStore ? String(localized: "App Store") : "—"))
+            ValueRow(label: String(localized: "Frameworks embarqués"), value: "\(report.frameworkCount)")
+            componentList(String(localized: "Lancées à l'ouverture de session"), report.loginItems)
+            componentList(String(localized: "Services en arrière-plan"), report.launchServices)
+            componentList(String(localized: "Extensions système"), report.systemExtensions)
         }
     }
 
@@ -221,7 +221,7 @@ struct AppInspectorView: View {
     private func componentList(_ title: String, _ items: [String]) -> some View {
         if !items.isEmpty {
             VStack(alignment: .leading, spacing: 2) {
-                Text(title).font(.callout).foregroundStyle(.secondary)
+                Text(LocalizedStringKey(title)).font(.callout).foregroundStyle(.secondary)
                 ForEach(items, id: \.self) { item in
                     Text(item).font(.caption.monospaced()).textSelection(.enabled)
                 }
@@ -254,7 +254,7 @@ struct AppInspectorView: View {
         Task {
             do {
                 try await AppInspector.removeQuarantine(report.url)
-                quarantineMessage = "Quarantaine retirée."
+                quarantineMessage = String(localized: "Quarantaine retirée.")
                 self.report = await AppInspector.inspect(report.url)
             } catch {
                 quarantineMessage = error.localizedDescription

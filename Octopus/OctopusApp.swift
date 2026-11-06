@@ -44,12 +44,12 @@ struct OctopusApp: App {
         .commands {
             CommandGroup(replacing: .appInfo) {
                 AboutMenuItem()
-                Button("Rechercher les mises à jour…") { updater.checkForUpdates() }
+                Button(String(localized: "Rechercher les mises à jour…")) { updater.checkForUpdates() }
                     .disabled(!updater.canCheckForUpdates)
             }
         }
 
-        Window("À propos d'Octopus", id: AboutView.windowID) {
+        Window(String(localized: "À propos d'Octopus"), id: AboutView.windowID) {
             AboutView()
         }
         .windowStyle(.hiddenTitleBar)

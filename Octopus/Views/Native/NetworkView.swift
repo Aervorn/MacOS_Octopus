@@ -17,7 +17,7 @@ struct NetworkView: View {
         VStack(spacing: 0) {
             HStack {
                 Picker("Section", selection: $tab) {
-                    ForEach(Tab.allCases) { Text($0.rawValue).tag($0) }
+                    ForEach(Tab.allCases) { Text(LocalizedStringKey($0.rawValue)).tag($0) }
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()
@@ -72,13 +72,13 @@ private struct NetworkOverview: View {
     }
 
     private var connectionCard: some View {
-        DashboardCard(title: "Connexion", symbol: "network") {
+        DashboardCard(title: String(localized: "Connexion"), symbol: "network") {
             let main = store.interfaces.first { $0.device == store.defaultInterface }
-            ValueRow(label: "Interface principale", value: main.map { "\($0.title) (\($0.device))" } ?? store.defaultInterface ?? "—")
-            if let ip = main?.ipv4.first { copyRow("Adresse IP", ip) }
-            if let gateway = store.gateway { copyRow("Routeur", gateway) }
+            ValueRow(label: String(localized: "Interface principale"), value: main.map { "\($0.title) (\($0.device))" } ?? store.defaultInterface ?? "—")
+            if let ip = main?.ipv4.first { copyRow(String(localized: "Adresse IP"), ip) }
+            if let gateway = store.gateway { copyRow(String(localized: "Routeur"), gateway) }
             VStack(alignment: .leading, spacing: 2) {
-                Text("Serveurs DNS").font(.callout).foregroundStyle(.secondary)
+                Text(String(localized: "Serveurs DNS")).font(.callout).foregroundStyle(.secondary)
                 if store.dnsServers.isEmpty {
                     Text("—")
                 } else {
@@ -89,15 +89,15 @@ private struct NetworkOverview: View {
             }
             Divider()
             HStack {
-                Button("Vider le cache DNS") { Task { await store.flushDNS() } }
-                Text("Utile après un changement de DNS ou de /etc/hosts.")
+                Button(String(localized: "Vider le cache DNS")) { Task { await store.flushDNS() } }
+                Text(String(localized: "Utile après un changement de DNS ou de /etc/hosts."))
                     .font(.caption).foregroundStyle(.secondary)
             }
         }
     }
 
     private var interfacesCard: some View {
-        DashboardCard(title: "Interfaces actives", symbol: "cable.connector") {
+        DashboardCard(title: String(localized: "Interfaces actives"), symbol: "cable.connector") {
             ForEach(store.interfaces) { interface in
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 6) {
@@ -116,20 +116,20 @@ private struct NetworkOverview: View {
                 }
             }
             if store.interfaces.isEmpty {
-                Text("Aucune interface connectée").foregroundStyle(.secondary)
+                Text(String(localized: "Aucune interface connectée")).foregroundStyle(.secondary)
             }
         }
     }
 
     private var publicIPCard: some View {
-        DashboardCard(title: "IP publique", symbol: "globe") {
-            Text("L'adresse sous laquelle Internet voit ton Mac (celle du routeur ou du VPN). Obtenue auprès du service public ipify.org.")
+        DashboardCard(title: String(localized: "IP publique"), symbol: "globe") {
+            Text(String(localized: "L'adresse sous laquelle Internet voit ton Mac (celle du routeur ou du VPN). Obtenue auprès du service public ipify.org."))
                 .font(.callout).foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             if let v4 = store.publicIPv4 { copyRow("IPv4", v4) }
             if let v6 = store.publicIPv6 { copyRow("IPv6", v6) }
             HStack {
-                Button(store.publicIPv4 == nil && store.publicIPv6 == nil ? "Afficher l'IP publique" : "Actualiser") {
+                Button(store.publicIPv4 == nil && store.publicIPv6 == nil ? String(localized: "Afficher l'IP publique") : "Actualiser") {
                     Task { await store.fetchPublicIP() }
                 }
                 .disabled(store.isFetchingPublicIP)
@@ -139,23 +139,23 @@ private struct NetworkOverview: View {
     }
 
     private var diagnosticCard: some View {
-        DashboardCard(title: "Diagnostic", symbol: "stethoscope") {
-            TextField("Hôte", text: $target, prompt: Text("apple.com, 192.168.1.1…"))
+        DashboardCard(title: String(localized: "Diagnostic"), symbol: "stethoscope") {
+            TextField(String(localized: "Hôte"), text: $target, prompt: Text(String(localized: "apple.com, 192.168.1.1…")))
                 .textFieldStyle(.roundedBorder)
             HStack {
                 Button("Ping") { run("ping", NetworkStore.pingCommand) }
                 Button("Traceroute") { run("traceroute", NetworkStore.tracerouteCommand) }
-                Button("Résolution DNS") { run("dscacheutil", NetworkStore.lookupCommand) }
+                Button(String(localized: "Résolution DNS")) { run("dscacheutil", NetworkStore.lookupCommand) }
             }
             .disabled(target.trimmingCharacters(in: .whitespaces).isEmpty || session.isRunning)
-            Text("Les résultats s'affichent dans le terminal, en bas de la fenêtre.")
+            Text(String(localized: "Les résultats s'affichent dans le terminal, en bas de la fenêtre."))
                 .font(.caption).foregroundStyle(.secondary)
         }
     }
 
     private func copyRow(_ label: String, _ value: String) -> some View {
         HStack {
-            Text(label).foregroundStyle(.secondary)
+            Text(LocalizedStringKey(label)).foregroundStyle(.secondary)
             Spacer()
             Text(value).font(.callout.monospaced()).textSelection(.enabled)
             Button {
@@ -215,7 +215,7 @@ private struct HostsEditor: View {
                     .disabled(selectedEntry == nil || selectedEntry?.isSystem == true)
                 }
                 Spacer()
-                Button("Afficher dans le Finder", systemImage: "folder") { Finder.reveal(HostsFile.url.path) }
+                Button(String(localized: "Afficher dans le Finder"), systemImage: "folder") { Finder.reveal(HostsFile.url.path) }
                     .labelStyle(.iconOnly)
             }
             .padding(.horizontal, 14)
@@ -272,7 +272,7 @@ private struct HostsEditor: View {
         .textFieldStyle(.plain)
         .overlay {
             if store.file.entries.isEmpty {
-                ContentUnavailableView("Aucune entrée", systemImage: "list.bullet.rectangle")
+                ContentUnavailableView(String(localized: "Aucune entrée"), systemImage: "list.bullet.rectangle")
             }
         }
     }
@@ -283,13 +283,13 @@ private struct HostsEditor: View {
                 Text(message).font(.caption).foregroundStyle(.secondary).lineLimit(2)
             } else {
                 Text(store.hasChanges
-                     ? "Modifications non enregistrées"
-                     : "Une entrée désactivée est conservée en commentaire. Les entrées de macOS (localhost) sont verrouillées.")
+                     ? String(localized: "Modifications non enregistrées")
+                     : String(localized: "Une entrée désactivée est conservée en commentaire. Les entrées de macOS (localhost) sont verrouillées."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            Button("Annuler les modifications") {
+            Button(String(localized: "Annuler les modifications")) {
                 store.discard()
                 text = store.file.serialized()
             }

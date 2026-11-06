@@ -33,7 +33,7 @@ struct HistoryView: View {
         VStack(spacing: 0) {
             HStack {
                 Picker("Affichage", selection: $tab) {
-                    ForEach(Tab.allCases) { Text($0.rawValue).tag($0) }
+                    ForEach(Tab.allCases) { Text(LocalizedStringKey($0.rawValue)).tag($0) }
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()
@@ -42,7 +42,7 @@ struct HistoryView: View {
                 if isLoading { ProgressView().controlSize(.small) }
                 if let logs = history?.logs?.operations {
                     Button("Journal", systemImage: "doc.text.magnifyingglass") { Finder.reveal(logs) }
-                        .help("Afficher les journaux de Mole dans le Finder")
+                        .help(String(localized: "Afficher les journaux de Mole dans le Finder"))
                 }
                 Button("Actualiser", systemImage: "arrow.clockwise") { Task { await load() } }
                     .labelStyle(.iconOnly)
@@ -57,7 +57,7 @@ struct HistoryView: View {
                     .padding(14)
                 Spacer()
             } else if history == nil {
-                ProgressView("Lecture de l'historique…")
+                ProgressView(String(localized: "Lecture de l'historique…"))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 switch tab {
@@ -77,15 +77,15 @@ struct HistoryView: View {
                 Text("mo " + row.item.command).font(.callout.monospaced())
             }
             .width(min: 110, ideal: 130)
-            TableColumn("Début") { row in
+            TableColumn(String(localized: "Début")) { row in
                 Text(Fmt.date(row.item.startDate)).monospacedDigit()
             }
             .width(min: 130, ideal: 150)
-            TableColumn("Durée") { row in
+            TableColumn(String(localized: "Durée")) { row in
                 Text(Fmt.duration(row.item.duration)).monospacedDigit()
             }
             .width(min: 60, ideal: 70)
-            TableColumn("Éléments") { row in
+            TableColumn(String(localized: "Éléments")) { row in
                 Text(Fmt.integer(row.item.items)).monospacedDigit()
             }
             .width(min: 60, ideal: 70)
@@ -93,13 +93,13 @@ struct HistoryView: View {
                 Text(row.item.size ?? "—").monospacedDigit()
             }
             .width(min: 60, ideal: 80)
-            TableColumn("Résultat") { row in
+            TableColumn(String(localized: "Résultat")) { row in
                 SessionResult(session: row.item)
             }
         }
         .overlay {
             if sessions.isEmpty {
-                ContentUnavailableView("Aucune opération", systemImage: "clock")
+                ContentUnavailableView(String(localized: "Aucune opération"), systemImage: "clock")
             }
         }
     }
@@ -110,12 +110,12 @@ struct HistoryView: View {
                 Text(Fmt.date(row.item.date)).monospacedDigit()
             }
             .width(min: 130, ideal: 150)
-            TableColumn("Élément") { row in
+            TableColumn(String(localized: "Élément")) { row in
                 Text((row.item.path as NSString).lastPathComponent)
                     .help(row.item.path)
                     .contextMenu {
-                        Button("Afficher dans le Finder") { Finder.reveal(row.item.path) }
-                        Button("Copier le chemin") { Finder.copy(row.item.path) }
+                        Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(row.item.path) }
+                        Button(String(localized: "Copier le chemin")) { Finder.copy(row.item.path) }
                     }
             }
             .width(min: 160, ideal: 260)
@@ -127,18 +127,18 @@ struct HistoryView: View {
                 if row.item.wentToTrash {
                     Label("Corbeille", systemImage: "trash")
                 } else {
-                    Label("Supprimé", systemImage: "xmark.bin").foregroundStyle(.red)
+                    Label(String(localized: "Supprimé"), systemImage: "xmark.bin").foregroundStyle(.red)
                 }
             }
             .width(min: 90, ideal: 110)
-            TableColumn("État") { row in
+            TableColumn(String(localized: "État")) { row in
                 Text(row.item.status == "ok" ? "OK" : (row.item.status ?? "—"))
                     .foregroundStyle(row.item.status == "ok" ? Color.secondary : Color.orange)
             }
         }
         .overlay {
             if deletions.isEmpty {
-                ContentUnavailableView("Aucune suppression", systemImage: "trash")
+                ContentUnavailableView(String(localized: "Aucune suppression"), systemImage: "trash")
             }
         }
     }
@@ -156,7 +156,7 @@ struct HistoryView: View {
             )
             errorMessage = nil
         } catch {
-            errorMessage = "Impossible de lire l'historique : \(error.localizedDescription)"
+            errorMessage = String(localized: "Impossible de lire l'historique : \(error.localizedDescription)")
         }
     }
 }
@@ -168,10 +168,10 @@ private struct SessionResult: View {
     var body: some View {
         let actions = session.actions
         let parts: [(String, Int?)] = [
-            ("supprimés", actions?.removed),
-            ("à la corbeille", actions?.trashed),
+            (String(localized: "supprimés"), actions?.removed),
+            (String(localized: "à la corbeille"), actions?.trashed),
             ("reconstruits", actions?.rebuilt),
-            ("ignorés", actions?.skipped),
+            (String(localized: "ignorés"), actions?.skipped),
         ]
         let summary = parts
             .compactMap { label, count in (count ?? 0) > 0 ? "\(count!) \(label)" : nil }
@@ -180,10 +180,10 @@ private struct SessionResult: View {
 
         HStack(spacing: 6) {
             if failures > 0 {
-                Label("\(failures) échec\(failures > 1 ? "s" : "")", systemImage: "exclamationmark.triangle.fill")
+                Label(failures > 1 ? String(localized: "\(failures) échecs") : String(localized: "1 échec"), systemImage: "exclamationmark.triangle.fill")
                     .foregroundStyle(.orange)
             }
-            Text(summary.isEmpty ? "Rien à faire" : summary)
+            Text(summary.isEmpty ? String(localized: "Rien à faire") : summary)
                 .foregroundStyle(.secondary)
         }
         .font(.callout)

@@ -82,7 +82,7 @@ struct TerminalArea: View {
                     .labelStyle(.iconOnly)
                     .buttonStyle(.borderless)
                     .disabled(session.isRunning || session.current == nil)
-                    .help("Effacer le terminal")
+                    .help(String(localized: "Effacer le terminal"))
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
@@ -97,9 +97,9 @@ struct TerminalArea: View {
                 .id(run.id)
             } else {
                 ContentUnavailableView(
-                    "Aucune commande lancée",
+                    String(localized: "Aucune commande lancée"),
                     systemImage: "terminal",
-                    description: Text("Choisis une commande à gauche, règle ses options, puis lance-la.")
+                    description: Text(String(localized: "Choisis une commande à gauche, règle ses options, puis lance-la."))
                 )
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
@@ -109,9 +109,9 @@ struct TerminalArea: View {
     @ViewBuilder private var status: some View {
         if session.isRunning {
             ProgressView().controlSize(.small)
-            Text("En cours").font(.caption).foregroundStyle(.secondary)
+            Text(String(localized: "En cours")).font(.caption).foregroundStyle(.secondary)
         } else if let code = session.exitCode {
-            Label(code == 0 ? "Terminé" : "Code \(code)",
+            Label(code == 0 ? String(localized: "Terminé") : "Code \(code)",
                   systemImage: code == 0 ? "checkmark.circle.fill" : "exclamationmark.triangle.fill")
                 .font(.caption)
                 .foregroundStyle(code == 0 ? Color.green : Color.orange)

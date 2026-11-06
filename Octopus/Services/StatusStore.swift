@@ -41,7 +41,7 @@ final class StatusStore {
         do {
             try process.run()
         } catch {
-            errorMessage = "Impossible de lancer mo status : \(error.localizedDescription)"
+            errorMessage = String(localized: "Impossible de lancer mo status : \(error.localizedDescription)")
             return
         }
         self.process = process
@@ -85,6 +85,6 @@ final class StatusStore {
         guard process != nil else { return }
         process = nil
         task = nil
-        errorMessage = "mo status s'est arrêté. Relance l'affichage pour réessayer."
+        errorMessage = String(localized: "mo status s'est arrêté. Relance l'affichage pour réessayer.")
     }
 }

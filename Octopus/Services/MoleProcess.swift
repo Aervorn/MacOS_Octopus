@@ -10,7 +10,7 @@ final class MoleCapture: @unchecked Sendable {
 
         var errorDescription: String? {
             switch self {
-            case .exitCode(let code): "Mole s'est arrêté avec le code \(code)."
+            case .exitCode(let code): String(localized: "Mole s'est arrêté avec le code \(code).")
             }
         }
     }

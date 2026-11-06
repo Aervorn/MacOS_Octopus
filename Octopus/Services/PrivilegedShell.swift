@@ -16,7 +16,7 @@ enum PrivilegedShell {
 
         var errorDescription: String? {
             switch self {
-            case .cancelled: "Autorisation annulée."
+            case .cancelled: String(localized: "Autorisation annulée.")
             case .failed(let message): message
             }
         }
@@ -59,14 +59,14 @@ enum PrivilegedShell {
             .replacingOccurrences(of: "\"", with: "\\\"")
         let source = "do shell script \"\(escaped)\" with administrator privileges without altering line endings"
         guard let script = NSAppleScript(source: source) else {
-            throw Failure.failed("Script invalide.")
+            throw Failure.failed(String(localized: "Script invalide."))
         }
         var error: NSDictionary?
         let result = script.executeAndReturnError(&error)
         if let error {
             // -128 : l'utilisateur a cliqué sur Annuler
             if (error[NSAppleScript.errorNumber] as? Int) == -128 { throw Failure.cancelled }
-            throw Failure.failed(error[NSAppleScript.errorMessage] as? String ?? "Erreur inconnue.")
+            throw Failure.failed(error[NSAppleScript.errorMessage] as? String ?? String(localized: "Erreur inconnue."))
         }
         return result.stringValue ?? ""
     }

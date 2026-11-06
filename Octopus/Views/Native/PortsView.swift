@@ -52,15 +52,15 @@ struct PortsView: View {
                 }
                 .width(min: 200, ideal: 380)
 
-                TableColumn("Écoute sur", value: \.addressSummary) { port in
+                TableColumn(String(localized: "Écoute sur"), value: \.addressSummary) { port in
                     HStack(spacing: 6) {
                         Image(systemName: port.isLocalOnly ? "lock" : "network")
                             .foregroundStyle(port.isLocalOnly ? Color.secondary : Color.orange)
                         Text(port.addressSummary)
                     }
                     .help(port.isLocalOnly
-                          ? "Accessible uniquement depuis ce Mac"
-                          : "Accessible depuis le réseau : \(port.addresses.joined(separator: ", "))")
+                          ? String(localized: "Accessible uniquement depuis ce Mac")
+                          : String(localized: "Accessible depuis le réseau : \(port.addresses.joined(separator: ", "))"))
                 }
                 .width(min: 140, ideal: 170)
 
@@ -80,8 +80,8 @@ struct PortsView: View {
             }
             .overlay {
                 if scanner.ports.isEmpty && scanner.lastScan != nil {
-                    ContentUnavailableView("Aucun port en écoute", systemImage: "network.slash",
-                                           description: Text("Aucun de tes processus n'attend de connexion TCP."))
+                    ContentUnavailableView(String(localized: "Aucun port en écoute"), systemImage: "network.slash",
+                                           description: Text(String(localized: "Aucun de tes processus n'attend de connexion TCP.")))
                 } else if !scanner.ports.isEmpty && filtered.isEmpty {
                     ContentUnavailableView.search(text: search)
                 }
@@ -99,17 +99,17 @@ struct PortsView: View {
             }
         }
         .confirmationDialog(
-            stopping.map { "\($0.force ? "Forcer l'arrêt de" : "Arrêter") « \($0.port.processName) » ?" } ?? "",
+            stopping.map { $0.force ? String(localized: "Forcer l'arrêt de « \($0.port.processName) » ?") : String(localized: "Arrêter « \($0.port.processName) » ?") } ?? "",
             isPresented: Binding(get: { stopping != nil }, set: { if !$0 { stopping = nil } }),
             presenting: stopping
         ) { item in
-            Button(item.force ? "Forcer l'arrêt" : "Arrêter", role: .destructive) {
+            Button(item.force ? String(localized: "Forcer l'arrêt") : String(localized: "Arrêter"), role: .destructive) {
                 Task { await scanner.stop(item.port, force: item.force) }
             }
         } message: { item in
             Text(item.force
-                 ? "Le processus est tué immédiatement, sans pouvoir enregistrer quoi que ce soit."
-                 : "Le processus reçoit une demande de fermeture (comme Ctrl-C) et peut s'arrêter proprement.")
+                 ? String(localized: "Le processus est tué immédiatement, sans pouvoir enregistrer quoi que ce soit.")
+                 : String(localized: "Le processus reçoit une demande de fermeture (comme Ctrl-C) et peut s'arrêter proprement."))
         }
     }
 
@@ -117,15 +117,15 @@ struct PortsView: View {
 
     private var toolbar: some View {
         HStack(spacing: 10) {
-            TextField("Rechercher", text: $search, prompt: Text("Port, processus ou commande (ex. 3000, node)"))
+            TextField("Rechercher", text: $search, prompt: Text(String(localized: "Port, processus ou commande (ex. 3000, node)")))
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 280)
             Spacer()
             if let port = selectedPort {
-                Button("Ouvrir dans le navigateur", systemImage: "safari") { openInBrowser(port) }
-                Button("Arrêter", systemImage: "stop.circle") { stopping = (port, false) }
+                Button(String(localized: "Ouvrir dans le navigateur"), systemImage: "safari") { openInBrowser(port) }
+                Button(String(localized: "Arrêter"), systemImage: "stop.circle") { stopping = (port, false) }
             }
-            Toggle("Processus système", isOn: Binding(
+            Toggle(String(localized: "Processus système"), isOn: Binding(
                 get: { scanner.includeSystem },
                 set: { newValue in
                     scanner.includeSystem = newValue
@@ -136,8 +136,8 @@ struct PortsView: View {
                 }
             ))
             .toggleStyle(.checkbox)
-            .help("Affiche aussi les processus de root et des autres utilisateurs (Touch ID ou mot de passe)")
-            Toggle("Actualiser en continu", isOn: $autoRefresh)
+            .help(String(localized: "Affiche aussi les processus de root et des autres utilisateurs (Touch ID ou mot de passe)"))
+            Toggle(String(localized: "Actualiser en continu"), isOn: $autoRefresh)
                 .toggleStyle(.checkbox)
                 .disabled(scanner.includeSystem)
             Button("Actualiser", systemImage: "arrow.clockwise") { Task { await scanner.scan() } }
@@ -151,15 +151,15 @@ struct PortsView: View {
     private var footer: some View {
         HStack {
             Text(scanner.includeSystem
-                 ? "Processus de tous les utilisateurs, système compris."
-                 : "Seuls tes processus sont visibles. Coche « Processus système » pour voir aussi ceux de root.")
+                 ? String(localized: "Processus de tous les utilisateurs, système compris.")
+                 : String(localized: "Seuls tes processus sont visibles. Coche « Processus système » pour voir aussi ceux de root."))
                 .font(.caption)
                 .foregroundStyle(.secondary)
             Spacer()
             if let message = scanner.message {
                 Text(message).font(.caption).foregroundStyle(.secondary).lineLimit(1)
             } else {
-                Text("\(scanner.ports.count) port\(scanner.ports.count > 1 ? "s" : "") en écoute")
+                Text(scanner.ports.count > 1 ? String(localized: "\(scanner.ports.count) ports en écoute") : String(localized: "\(scanner.ports.count) port en écoute"))
                     .font(.caption).foregroundStyle(.secondary)
             }
         }
@@ -168,17 +168,17 @@ struct PortsView: View {
 
     @ViewBuilder
     private func menuItems(_ port: ListeningPort) -> some View {
-        Button("Ouvrir http://localhost:\(port.port)") { openInBrowser(port) }
-        Button("Copier « localhost:\(port.port) »") { Finder.copy("localhost:\(port.port)") }
+        Button(String(localized: "Ouvrir http://localhost:\(port.port)")) { openInBrowser(port) }
+        Button(String(localized: "Copier « localhost:\(port.port) »")) { Finder.copy("localhost:\(port.port)") }
         if let command = port.commandLine {
-            Button("Copier la ligne de commande") { Finder.copy(command) }
+            Button(String(localized: "Copier la ligne de commande")) { Finder.copy(command) }
         }
         if let path = PortScanner.appInfo(for: port.pid).path {
-            Button("Afficher l'app dans le Finder") { Finder.reveal(path) }
+            Button(String(localized: "Afficher l'app dans le Finder")) { Finder.reveal(path) }
         }
         Divider()
-        Button("Arrêter le processus…") { stopping = (port, false) }
-        Button("Forcer l'arrêt…", role: .destructive) { stopping = (port, true) }
+        Button(String(localized: "Arrêter le processus…")) { stopping = (port, false) }
+        Button(String(localized: "Forcer l'arrêt…"), role: .destructive) { stopping = (port, true) }
     }
 
     private func openInBrowser(_ port: ListeningPort) {

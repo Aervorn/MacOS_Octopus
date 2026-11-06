@@ -21,7 +21,7 @@ struct SSHView: View {
         VStack(spacing: 0) {
             HStack {
                 Picker("Section", selection: $tab) {
-                    ForEach(Tab.allCases) { Text($0.rawValue).tag($0) }
+                    ForEach(Tab.allCases) { Text(LocalizedStringKey($0.rawValue)).tag($0) }
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()
@@ -72,25 +72,25 @@ private struct OnePasswordBadge: View {
         case .notUsed:
             EmptyView()
         case .active(let count):
-            Label(count == 0 ? "1Password actif" : "1Password actif · \(count) clé\(count > 1 ? "s" : "")",
+            Label(count == 0 ? String(localized: "1Password actif") : (count > 1 ? String(localized: "1Password actif · \(count) clés") : String(localized: "1Password actif · 1 clé")),
                   systemImage: "checkmark.circle.fill")
                 .foregroundStyle(.green)
                 .font(.callout)
         case .appNotRunning:
             HStack(spacing: 6) {
-                Label("1Password fermé", systemImage: "xmark.circle.fill")
+                Label(String(localized: "1Password fermé"), systemImage: "xmark.circle.fill")
                     .foregroundStyle(.orange)
                     .font(.callout)
-                    .help("L'agent SSH de 1Password ne fonctionne que lorsque l'app est lancée.")
+                    .help(String(localized: "L'agent SSH de 1Password ne fonctionne que lorsque l'app est lancée."))
                 Button("Ouvrir") { monitor.openApp() }
                     .controlSize(.small)
             }
         case .agentUnavailable:
             HStack(spacing: 6) {
-                Label("Agent 1Password inactif", systemImage: "exclamationmark.triangle.fill")
+                Label(String(localized: "Agent 1Password inactif"), systemImage: "exclamationmark.triangle.fill")
                     .foregroundStyle(.orange)
                     .font(.callout)
-                    .help("1Password est lancé mais son agent ne répond pas : vérifie Réglages › Développeur › « Utiliser l'agent SSH ».")
+                    .help(String(localized: "1Password est lancé mais son agent ne répond pas : vérifie Réglages › Développeur › « Utiliser l'agent SSH »."))
                 Button("Ouvrir") { monitor.openApp() }
                     .controlSize(.small)
             }

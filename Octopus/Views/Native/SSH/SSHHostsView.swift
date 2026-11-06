@@ -35,7 +35,7 @@ struct SSHHostsView: View {
                 if selection == block.id { selection = nil }
             }
         } message: { _ in
-            Text("La suppression ne sera écrite dans ~/.ssh/config qu'au moment d'enregistrer.")
+            Text(String(localized: "La suppression ne sera écrite dans ~/.ssh/config qu'au moment d'enregistrer."))
         }
     }
 
@@ -52,17 +52,17 @@ struct SSHHostsView: View {
             }
             .overlay {
                 if store.file.blocks.isEmpty {
-                    ContentUnavailableView("Aucun hôte", systemImage: "server.rack",
+                    ContentUnavailableView(String(localized: "Aucun hôte"), systemImage: "server.rack",
                                            description: Text("~/.ssh/config est vide ou absent."))
                 }
             }
             Divider()
             HStack(spacing: 4) {
-                Button("Ajouter un hôte", systemImage: "plus") { addHost() }
-                Button("Supprimer l'hôte", systemImage: "minus") { deleting = selectedBlock }
+                Button(String(localized: "Ajouter un hôte"), systemImage: "plus") { addHost() }
+                Button(String(localized: "Supprimer l'hôte"), systemImage: "minus") { deleting = selectedBlock }
                     .disabled(selectedBlock == nil)
                 Spacer()
-                Text("Glisse pour réordonner").font(.caption).foregroundStyle(.tertiary)
+                Text(String(localized: "Glisse pour réordonner")).font(.caption).foregroundStyle(.tertiary)
             }
             .labelStyle(.iconOnly)
             .buttonStyle(.borderless)
@@ -76,8 +76,8 @@ struct SSHHostsView: View {
         if let block = selectedBlock {
             if block.isMatch {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Bloc « Match »").font(.title3.bold())
-                    Text("Les blocs conditionnels ne se modifient pas ici. Ils sont conservés tels quels.")
+                    Text(String(localized: "Bloc « Match »")).font(.title3.bold())
+                    Text(String(localized: "Les blocs conditionnels ne se modifient pas ici. Ils sont conservés tels quels."))
                         .foregroundStyle(.secondary)
                     Text(block.rawLines.joined(separator: "\n"))
                         .font(.callout.monospaced())
@@ -93,8 +93,8 @@ struct SSHHostsView: View {
                     .id("\(block.id)-\(store.revision)")
             }
         } else {
-            ContentUnavailableView("Choisis un hôte", systemImage: "server.rack",
-                                   description: Text("Ou ajoute-en un avec le bouton +."))
+            ContentUnavailableView(String(localized: "Choisis un hôte"), systemImage: "server.rack",
+                                   description: Text(String(localized: "Ou ajoute-en un avec le bouton +.")))
         }
     }
 
@@ -103,11 +103,11 @@ struct SSHHostsView: View {
             if let error = store.errorMessage {
                 Label(error, systemImage: "exclamationmark.triangle.fill").foregroundStyle(.orange)
             } else {
-                Label("Modifications non enregistrées", systemImage: "pencil.circle")
+                Label(String(localized: "Modifications non enregistrées"), systemImage: "pencil.circle")
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            Button("Annuler les modifications") { store.discardChanges() }
+            Button(String(localized: "Annuler les modifications")) { store.discardChanges() }
                 .disabled(!store.hasChanges)
             Button("Enregistrer") { save() }
                 .buttonStyle(.borderedProminent)
@@ -164,11 +164,11 @@ private struct HostRow: View {
                 let destination = [block.value(of: "User"), block.value(of: "HostName")]
                     .compactMap { $0 }.joined(separator: "@")
                 if block.isSharedOptions {
-                    Text("Options communes à \(block.patterns.count) hôtes")
+                    Text(String(localized: "Options communes à \(block.patterns.count) hôtes"))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else if !block.isConcreteHost && !block.isMatch {
-                    Text("Options par défaut")
+                    Text(String(localized: "Options par défaut"))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } else if !destination.isEmpty {
@@ -247,33 +247,33 @@ private struct HostEditor: View {
             VStack(alignment: .leading, spacing: 18) {
                 if block.isSharedOptions || (!block.isConcreteHost && !block.isMatch) {
                     Text(block.isSharedOptions
-                         ? "Ces options s'appliquent à : \(block.patterns.joined(separator: ", ")). Pour chaque hôte, une option déjà fixée dans un bloc placé plus haut l'emporte."
-                         : "Ces options s'appliquent à tous les hôtes qui correspondent au motif, sauf si elles sont fixées dans un bloc placé plus haut.")
+                         ? String(localized: "Ces options s'appliquent à : \(block.patterns.joined(separator: ", ")). Pour chaque hôte, une option déjà fixée dans un bloc placé plus haut l'emporte.")
+                         : String(localized: "Ces options s'appliquent à tous les hôtes qui correspondent au motif, sauf si elles sont fixées dans un bloc placé plus haut."))
                         .font(.callout)
                         .foregroundStyle(.secondary)
                         .fixedSize(horizontal: false, vertical: true)
                 }
 
-                EditorSection(title: block.isConcreteHost ? "Hôte" : "Motif") {
-                    FieldRow(block.isConcreteHost ? "Alias (Host)" : "Hôtes concernés (Host)") {
-                        TextField("", text: $form.host, prompt: Text("homelab, github.com, *.lan…"))
+                EditorSection(title: block.isConcreteHost ? String(localized: "Hôte") : String(localized: "Motif")) {
+                    FieldRow(block.isConcreteHost ? String(localized: "Alias (Host)") : String(localized: "Hôtes concernés (Host)")) {
+                        TextField("", text: $form.host, prompt: Text(String(localized: "homelab, github.com, *.lan…")))
                     }
-                    FieldRow("Adresse (HostName)") {
-                        TextField("", text: $form.hostName, prompt: Text("192.168.1.10 ou serveur.exemple.fr"))
+                    FieldRow(String(localized: "Adresse (HostName)")) {
+                        TextField("", text: $form.hostName, prompt: Text(String(localized: "192.168.1.10 ou serveur.exemple.fr")))
                     }
-                    FieldRow("Utilisateur (User)") {
+                    FieldRow(String(localized: "Utilisateur (User)")) {
                         TextField("", text: $form.user, prompt: Text(NSUserName()))
                     }
                     FieldRow("Port") {
                         TextField("", text: $form.port, prompt: Text("22"))
                             .frame(maxWidth: 120)
                     }
-                    FieldRow("Rebond (ProxyJump)") {
+                    FieldRow(String(localized: "Rebond (ProxyJump)")) {
                         TextField("", text: $form.proxyJump, prompt: Text("bastion"))
                     }
                 }
 
-                EditorSection(title: "Clé") {
+                EditorSection(title: String(localized: "Clé")) {
                     FieldRow("IdentityFile") {
                         HStack {
                             TextField("", text: $form.identityFile, prompt: Text("~/.ssh/id_ed25519"))
@@ -287,13 +287,13 @@ private struct HostEditor: View {
                             .fixedSize()
                         }
                     }
-                    Toggle("N'essayer que cette clé (IdentitiesOnly)", isOn: $form.identitiesOnly)
-                    Toggle("Ajouter la clé à l'agent à la connexion (AddKeysToAgent)", isOn: $form.addKeysToAgent)
-                    Toggle("Phrase de passe dans le trousseau macOS (UseKeychain)", isOn: $form.useKeychain)
+                    Toggle(String(localized: "N'essayer que cette clé (IdentitiesOnly)"), isOn: $form.identitiesOnly)
+                    Toggle(String(localized: "Ajouter la clé à l'agent à la connexion (AddKeysToAgent)"), isOn: $form.addKeysToAgent)
+                    Toggle(String(localized: "Phrase de passe dans le trousseau macOS (UseKeychain)"), isOn: $form.useKeychain)
                 }
 
-                EditorSection(title: "Autres options",
-                              footer: "Une option par ligne, par exemple « ServerAliveInterval 60 ». Conservées telles quelles.") {
+                EditorSection(title: String(localized: "Autres options"),
+                              footer: String(localized: "Une option par ligne, par exemple « ServerAliveInterval 60 ». Conservées telles quelles.")) {
                     TextEditor(text: $form.otherLines)
                         .font(.callout.monospaced())
                         .scrollContentBackground(.hidden)
@@ -303,8 +303,8 @@ private struct HostEditor: View {
                 }
 
                 if !inherited.isEmpty {
-                    EditorSection(title: "Options héritées",
-                                  footer: "Définies dans d'autres blocs qui s'appliquent aussi à cet hôte.") {
+                    EditorSection(title: String(localized: "Options héritées"),
+                                  footer: String(localized: "Définies dans d'autres blocs qui s'appliquent aussi à cet hôte.")) {
                         ForEach(Array(inherited.enumerated()), id: \.offset) { _, option in
                             HStack(alignment: .firstTextBaseline) {
                                 Text("\(option.keyword) \(option.value)")
@@ -313,7 +313,7 @@ private struct HostEditor: View {
                                     .foregroundStyle(option.ignored ? .tertiary : .primary)
                                     .textSelection(.enabled)
                                 Spacer()
-                                Text(option.ignored ? "remplacée · \(option.source)" : option.source)
+                                Text(option.ignored ? String(localized: "remplacée · \(option.source)") : option.source)
                                     .font(.caption)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(1)
@@ -324,7 +324,7 @@ private struct HostEditor: View {
                 }
 
                 if block.isConcreteHost && form.host.rangeOfCharacter(from: CharacterSet(charactersIn: "*?! ")) == nil {
-                    EditorSection(title: "Connexion") {
+                    EditorSection(title: String(localized: "Connexion")) {
                         testRow
                     }
                 }
@@ -342,16 +342,16 @@ private struct HostEditor: View {
 
     @ViewBuilder private var testRow: some View {
         HStack {
-            Button("Tester la connexion") {
+            Button(String(localized: "Tester la connexion")) {
                 Task { await store.test(alias: alias) }
             }
             .disabled(store.hasChanges || alias.isEmpty || store.testing.contains(alias))
-            Button("Dans le terminal") {
+            Button(String(localized: "Dans le terminal")) {
                 session.start(title: "ssh \(alias)", commandLine: SSHConfigStore.interactiveTestCommand(alias: alias))
             }
-            .help("Connexion interactive : affiche les questions (mot de passe, clé d'hôte) et les erreurs de ssh")
+            .help(String(localized: "Connexion interactive : affiche les questions (mot de passe, clé d'hôte) et les erreurs de ssh"))
             .disabled(store.hasChanges || alias.isEmpty || session.isRunning)
-            Menu("Envoyer une clé") {
+            Menu(String(localized: "Envoyer une clé")) {
                 ForEach(keysWithPublicPart) { key in
                     Button(key.name) {
                         session.start(title: "ssh-copy-id \(alias)",
@@ -360,7 +360,7 @@ private struct HostEditor: View {
                 }
             }
             .fixedSize()
-            .help("Ajoute la clé publique au ~/.ssh/authorized_keys de l'hôte (mot de passe demandé une fois)")
+            .help(String(localized: "Ajoute la clé publique au ~/.ssh/authorized_keys de l'hôte (mot de passe demandé une fois)"))
             .disabled(store.hasChanges || alias.isEmpty || session.isRunning || keysWithPublicPart.isEmpty)
             if store.testing.contains(alias) {
                 ProgressView().controlSize(.small)
@@ -372,19 +372,19 @@ private struct HostEditor: View {
                 .foregroundStyle(result.isSuccess ? Color.green
                                  : (result == .needsAgentApproval ? Color.blue : Color.orange))
             if result == .needsAgentApproval {
-                Text("Le serveur répond. 1Password demande de valider chaque connexion (Touch ID), ce qu'un test sans interaction ne peut pas faire : « Dans le terminal » le permet.")
+                Text(String(localized: "Le serveur répond. 1Password demande de valider chaque connexion (Touch ID), ce qu'un test sans interaction ne peut pas faire : « Dans le terminal » le permet."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             } else if result == .authenticationFailed {
-                Text("Le test se fait sans mot de passe ni question : la clé doit être dans l'agent SSH, ou sans phrase de passe. « Dans le terminal » montre ce qui bloque.")
+                Text(String(localized: "Le test se fait sans mot de passe ni question : la clé doit être dans l'agent SSH, ou sans phrase de passe. « Dans le terminal » montre ce qui bloque."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
         if store.hasChanges {
-            Text("Enregistre d'abord : le test utilise le fichier sur le disque.")
+            Text(String(localized: "Enregistre d'abord : le test utilise le fichier sur le disque."))
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
@@ -399,7 +399,7 @@ private struct EditorSection<Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text(title).font(.headline)
+            Text(LocalizedStringKey(title)).font(.headline)
             VStack(alignment: .leading, spacing: 10) {
                 content
             }
@@ -425,7 +425,7 @@ private struct FieldRow<Field: View>: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 12) {
-            Text(label)
+            Text(LocalizedStringKey(label))
                 .frame(width: 190, alignment: .leading)
             field
                 .frame(maxWidth: .infinity, alignment: .leading)

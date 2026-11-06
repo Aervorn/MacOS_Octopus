@@ -9,7 +9,7 @@ struct DashboardCard<Content: View>: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
-            Label(title, systemImage: symbol)
+            Label(LocalizedStringKey(title), systemImage: symbol)
                 .font(.headline)
                 .foregroundStyle(.secondary)
             content
@@ -27,7 +27,7 @@ struct ValueRow: View {
 
     var body: some View {
         HStack {
-            Text(label).foregroundStyle(.secondary)
+            Text(LocalizedStringKey(label)).foregroundStyle(.secondary)
             Spacer()
             Text(value).monospacedDigit()
         }
@@ -48,7 +48,7 @@ struct BigValue: View {
                 .monospacedDigit()
                 .foregroundStyle(color)
             if let caption {
-                Text(caption).font(.caption).foregroundStyle(.secondary)
+                Text(LocalizedStringKey(caption)).font(.caption).foregroundStyle(.secondary)
             }
         }
     }
@@ -95,7 +95,7 @@ struct ErrorBanner: View {
             Text(message)
             Spacer()
             if let retry {
-                Button("Réessayer", action: retry)
+                Button(String(localized: "Réessayer"), action: retry)
             }
         }
         .padding(10)

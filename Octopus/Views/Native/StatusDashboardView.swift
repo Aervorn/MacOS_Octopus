@@ -31,7 +31,7 @@ struct StatusDashboardView: View {
                         processesCard(status)
                     }
                 } else if store.errorMessage == nil {
-                    ProgressView("Lecture de l'état du Mac…")
+                    ProgressView(String(localized: "Lecture de l'état du Mac…"))
                         .frame(maxWidth: .infinity, minHeight: 300)
                 }
             }
@@ -58,12 +58,12 @@ struct StatusDashboardView: View {
             .frame(width: 72, height: 72)
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(status.healthScoreMsg ?? "Santé")
+                Text(status.healthScoreMsg ?? String(localized: "Santé"))
                     .font(.title2.bold())
                 Text([status.hardware?.model, status.hardware?.cpuModel, status.hardware?.totalRam]
                     .compactMap { $0 }.joined(separator: " · "))
                     .foregroundStyle(.secondary)
-                Text([status.hardware?.osVersion, status.uptime.map { "allumé depuis \($0)" }]
+                Text([status.hardware?.osVersion, status.uptime.map { String(localized: "allumé depuis \($0)") }]
                     .compactMap { $0 }.joined(separator: " · "))
                     .font(.callout)
                     .foregroundStyle(.secondary)
@@ -89,7 +89,7 @@ struct StatusDashboardView: View {
     // MARK: - Cartes
 
     private func cpuCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: "Processeur", symbol: "cpu") {
+        DashboardCard(title: String(localized: "Processeur"), symbol: "cpu") {
             HStack(alignment: .firstTextBaseline) {
                 BigValue(value: Fmt.percent(status.cpu?.usage),
                          caption: coreCaption(status.cpu))
@@ -104,7 +104,7 @@ struct StatusDashboardView: View {
             historyChart(\.cpu, color: .blue)
             if let cores = status.cpu?.perCore, !cores.isEmpty {
                 Chart(Array(cores.enumerated()), id: \.offset) { index, usage in
-                    BarMark(x: .value("Cœur", "\(index + 1)"), y: .value("Utilisation", usage))
+                    BarMark(x: .value(String(localized: "Cœur"), "\(index + 1)"), y: .value("Utilisation", usage))
                         .foregroundStyle(LevelBar.color(for: usage / 100))
                 }
                 .chartYScale(domain: 0...100)
@@ -118,27 +118,27 @@ struct StatusDashboardView: View {
     private func coreCaption(_ cpu: MoleStatus.CPU?) -> String? {
         guard let cpu, let count = cpu.coreCount else { return nil }
         if let p = cpu.pCoreCount, let e = cpu.eCoreCount {
-            return "\(count) cœurs (\(p) performance, \(e) efficacité)"
+            return String(localized: "\(count) cœurs (\(p) performance, \(e) efficacité)")
         }
-        return "\(count) cœurs"
+        return String(localized: "\(count) cœurs")
     }
 
     private func memoryCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: "Mémoire", symbol: "memorychip") {
+        DashboardCard(title: String(localized: "Mémoire"), symbol: "memorychip") {
             let memory = status.memory
             BigValue(value: Fmt.percent(memory?.usedPercent),
                      caption: "\(Fmt.bytes(memory?.used)) sur \(Fmt.bytes(memory?.total))")
             historyChart(\.memory, color: .purple)
             ValueRow(label: "Disponible", value: Fmt.bytes(memory?.available))
-            ValueRow(label: "En cache", value: Fmt.bytes(memory?.cached))
+            ValueRow(label: String(localized: "En cache"), value: Fmt.bytes(memory?.cached))
             if let swap = memory?.swapUsed, swap > 0 {
-                ValueRow(label: "Swap", value: "\(Fmt.bytes(swap)) sur \(Fmt.bytes(memory?.swapTotal))")
+                ValueRow(label: String(localized: "Swap"), value: "\(Fmt.bytes(swap)) sur \(Fmt.bytes(memory?.swapTotal))")
             }
         }
     }
 
     private func disksCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: "Disques", symbol: "internaldrive") {
+        DashboardCard(title: String(localized: "Disques"), symbol: "internaldrive") {
             ForEach(status.disks ?? []) { disk in
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -153,11 +153,11 @@ struct StatusDashboardView: View {
                     }
                     LevelBar(fraction: (disk.usedPercent ?? 0) / 100)
                     if let purgeable = disk.purgeable, purgeable > 0 {
-                        Text("\(Fmt.bytes(purgeable)) purgeables par macOS")
+                        Text(String(localized: "\(Fmt.bytes(purgeable)) purgeables par macOS"))
                             .font(.caption).foregroundStyle(.secondary)
                     }
                     if let smart = disk.smartStatus, smart.lowercased() != "verified" {
-                        Label("État SMART : \(smart)", systemImage: "exclamationmark.triangle.fill")
+                        Label(String(localized: "État SMART : \(smart)"), systemImage: "exclamationmark.triangle.fill")
                             .font(.caption).foregroundStyle(.orange)
                     }
                 }
@@ -166,26 +166,26 @@ struct StatusDashboardView: View {
     }
 
     private func batteryCard(_ battery: MoleStatus.Battery, thermal: MoleStatus.Thermal?) -> some View {
-        DashboardCard(title: "Batterie", symbol: "battery.75percent") {
+        DashboardCard(title: String(localized: "Batterie"), symbol: "battery.75percent") {
             BigValue(value: battery.percent.map { "\($0) %" } ?? "—",
                      caption: battery.status == "AC" ? "Sur secteur" : battery.status)
-            ValueRow(label: "Santé", value: battery.health ?? "—")
-            ValueRow(label: "Capacité maximale", value: battery.capacity.map { "\($0) %" } ?? "—")
-            ValueRow(label: "Cycles", value: Fmt.integer(battery.cycleCount))
+            ValueRow(label: String(localized: "Santé"), value: battery.health ?? "—")
+            ValueRow(label: String(localized: "Capacité maximale"), value: battery.capacity.map { "\($0) %" } ?? "—")
+            ValueRow(label: String(localized: "Cycles"), value: Fmt.integer(battery.cycleCount))
             if let temp = thermal?.batteryTemp, temp > 0 {
-                ValueRow(label: "Température", value: "\(Fmt.number(temp)) °C")
+                ValueRow(label: String(localized: "Température"), value: "\(Fmt.number(temp)) °C")
             }
             if let power = thermal?.systemPower, power > 0 {
-                ValueRow(label: "Consommation", value: "\(Fmt.number(power)) W")
+                ValueRow(label: String(localized: "Consommation"), value: "\(Fmt.number(power)) W")
             }
         }
     }
 
     private func networkCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: "Réseau", symbol: "network") {
+        DashboardCard(title: String(localized: "Réseau"), symbol: "network") {
             let active = (status.network ?? []).filter(\.isActive)
             if active.isEmpty {
-                Text("Aucune interface connectée").foregroundStyle(.secondary)
+                Text(String(localized: "Aucune interface connectée")).foregroundStyle(.secondary)
             }
             ForEach(active) { interface in
                 VStack(alignment: .leading, spacing: 2) {
@@ -203,14 +203,14 @@ struct StatusDashboardView: View {
                 }
             }
             if let proxy = status.proxy, proxy.enabled == true {
-                Label("Proxy / VPN actif (\(proxy.type ?? "?"))", systemImage: "lock.shield")
+                Label(String(localized: "Proxy / VPN actif (\(proxy.type ?? "?"))"), systemImage: "lock.shield")
                     .font(.caption).foregroundStyle(.secondary)
             }
         }
     }
 
     private func processesCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: "Processus les plus gourmands", symbol: "list.number") {
+        DashboardCard(title: String(localized: "Processus les plus gourmands"), symbol: "list.number") {
             ForEach(status.topProcesses ?? []) { process in
                 HStack {
                     Text(process.name ?? process.command ?? "?")
@@ -226,7 +226,7 @@ struct StatusDashboardView: View {
                 .font(.callout.monospacedDigit())
             }
             if let count = status.procs {
-                Text("\(count) processus au total").font(.caption).foregroundStyle(.secondary)
+                Text(String(localized: "\(count) processus au total")).font(.caption).foregroundStyle(.secondary)
             }
         }
     }

@@ -74,7 +74,7 @@ struct ContentView: View {
                         ContentUnavailableView(
                             "Octopus",
                             systemImage: "sparkles",
-                            description: Text("Une interface pour Mole : nettoyage, apps et état du Mac.")
+                            description: Text(String(localized: "Une interface pour Mole : nettoyage, apps et état du Mac."))
                         )
                         .frame(height: 180)
                     }
@@ -115,7 +115,7 @@ struct ContentView: View {
                         Label("Terminal", systemImage: "terminal").tag(true)
                     }
                     .pickerStyle(.segmented)
-                    .help("Vue graphique ou commande dans le terminal")
+                    .help(String(localized: "Vue graphique ou commande dans le terminal"))
                 }
             }
         }
@@ -140,23 +140,23 @@ struct MoleStatusFooter: View {
             Divider()
             switch mole.state {
             case .checking:
-                Label("Recherche de Mole…", systemImage: "magnifyingglass")
+                Label(String(localized: "Recherche de Mole…"), systemImage: "magnifyingglass")
                     .foregroundStyle(.secondary)
             case .missing:
-                Label("Mole n'est pas installé", systemImage: "exclamationmark.triangle.fill")
+                Label(String(localized: "Mole n'est pas installé"), systemImage: "exclamationmark.triangle.fill")
                     .foregroundStyle(.orange)
-                Button("Installer Mole") {
-                    session.start(title: "Installation de Mole", commandLine: MoleService.installCommand())
+                Button(String(localized: "Installer Mole")) {
+                    session.start(title: String(localized: "Installation de Mole"), commandLine: MoleService.installCommand())
                 }
                 .disabled(session.isRunning)
             case .installed(_, let version, let method):
                 Label("Mole \(version ?? "?")", systemImage: "checkmark.seal")
                     .foregroundStyle(.secondary)
-                    .help(method == .script ? "Installé avec le script officiel" : "Installé avec Homebrew")
+                    .help(method == .script ? String(localized: "Installé avec le script officiel") : String(localized: "Installé avec Homebrew"))
                 if mole.updateAvailable, let latest = mole.latestVersion,
                    let command = mole.updateCommand(arguments: ["update"]) {
-                    Button("Mettre à jour vers \(latest)") {
-                        session.start(title: "Mise à jour de Mole", commandLine: command)
+                    Button(String(localized: "Mettre à jour vers \(latest)")) {
+                        session.start(title: String(localized: "Mise à jour de Mole"), commandLine: command)
                     }
                     .disabled(session.isRunning)
                 }
@@ -206,9 +206,9 @@ struct NativeCommandView: View {
             }
         } else {
             ContentUnavailableView(
-                "Mole introuvable",
+                String(localized: "Mole introuvable"),
                 systemImage: "exclamationmark.triangle",
-                description: Text("Installe Mole depuis le bas de la barre latérale.")
+                description: Text(String(localized: "Installe Mole depuis le bas de la barre latérale."))
             )
         }
     }

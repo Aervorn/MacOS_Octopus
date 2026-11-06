@@ -1,0 +1,7831 @@
+{
+  "sourceLanguage" : "fr",
+  "strings" : {
+    "" : {
+
+    },
+    " Environ %@ libérés." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " About %@ freed."
+          }
+        }
+      }
+    },
+    " Touch ID ou ton mot de passe te seront demandés une fois." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " You'll be asked for Touch ID or your password once."
+          }
+        }
+      }
+    },
+    "—" : {
+
+    },
+    ", %lld interrompus ou en erreur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ", %lld interrupted or failed"
+          }
+        }
+      }
+    },
+    ", aucune menace." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ", no threats."
+          }
+        }
+      }
+    },
+    ".\nMenaces signalées : " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".\nThreats reported: "
+          }
+        }
+      }
+    },
+    ". Aucune mise à jour depuis plus de %lld jours : lance « Vérifier sur iCloud »." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ". No update for more than %lld days: run “Check on iCloud”."
+          }
+        }
+      }
+    },
+    ".%@ est déjà dans la liste (%@)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ".%@ is already in the list (%@)."
+          }
+        }
+      }
+    },
+    ".toml" : {
+
+    },
+    "« %@ »" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”"
+          }
+        }
+      }
+    },
+    "« %@ » : terminé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@”: done."
+          }
+        }
+      }
+    },
+    "« %@ » appliqué (%@ relancé)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” applied (%@ relaunched)."
+          }
+        }
+      }
+    },
+    "« %@ » appliqué. Certaines apps doivent être relancées pour en tenir compte." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” applied. Some apps need to be relaunched to take it into account."
+          }
+        }
+      }
+    },
+    "« %@ » est dans la Corbeille." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” is in the Trash."
+          }
+        }
+      }
+    },
+    "« %@ » est désactivé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” is disabled."
+          }
+        }
+      }
+    },
+    "« %@ » est réactivé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” is re-enabled."
+          }
+        }
+      }
+    },
+    "« %@ » s'ouvre maintenant avec %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” now opens with %@."
+          }
+        }
+      }
+    },
+    "%" : {
+
+    },
+    "%@ — équipe %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ — team %@"
+          }
+        }
+      }
+    },
+    "%@ (certificat personnel)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (personal certificate)"
+          }
+        }
+      }
+    },
+    "%@ (développement)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (development)"
+          }
+        }
+      }
+    },
+    "%@ (PID %d) : arrêt demandé avec les droits administrateur." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (PID %d): stop requested with administrator rights."
+          }
+        }
+      }
+    },
+    "%@ (PID %d) a été arrêté de force." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (PID %d) was force quit."
+          }
+        }
+      }
+    },
+    "%@ / %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ / %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ Mo/s" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ MB/s"
+          }
+        }
+      }
+    },
+    "%@ purgeables par macOS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ purgeable by macOS"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld cœurs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld cores"
+          }
+        }
+      }
+    },
+    "%lld cœurs (%lld performance, %lld efficacité)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld cores (%lld performance, %lld efficiency)"
+          }
+        }
+      }
+    },
+    "%lld échecs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld failures"
+          }
+        }
+      }
+    },
+    "%lld éléments dont le programme n'existe plus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items whose program no longer exists"
+          }
+        }
+      }
+    },
+    "%lld éléments ont été désactivés." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items were disabled."
+          }
+        }
+      }
+    },
+    "%lld éléments ont été réactivés." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items were re-enabled."
+          }
+        }
+      }
+    },
+    "%lld éléments sont dans la Corbeille." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items are in the Trash."
+          }
+        }
+      }
+    },
+    "%lld entrées hachées : leur nom n'est pas lisible, mais ce champ les retrouve aussi." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld hashed entries: their names can't be read, but this field finds them too."
+          }
+        }
+      }
+    },
+    "%lld entrées supprimées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld entries deleted."
+          }
+        }
+      }
+    },
+    "%lld instantanés supprimés." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld snapshots deleted."
+          }
+        }
+      }
+    },
+    "%lld points à vérifier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld items to check"
+          }
+        }
+      }
+    },
+    "%lld port en écoute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld port listening"
+          }
+        }
+      }
+    },
+    "%lld ports en écoute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld ports listening"
+          }
+        }
+      }
+    },
+    "%lld processus au total" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld processes in total"
+          }
+        }
+      }
+    },
+    "%lld sélectionnés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld selected"
+          }
+        }
+      }
+    },
+    "%lld types s'ouvrent maintenant avec %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld types now open with %@."
+          }
+        }
+      }
+    },
+    "%lld types sélectionnés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld types selected"
+          }
+        }
+      }
+    },
+    "~/.ssh/config est vide ou absent." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~/.ssh/config is empty or missing."
+          }
+        }
+      }
+    },
+    "~/.ssh/id_ed25519" : {
+
+    },
+    "~/.ssh/known_hosts est vide ou absent." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~/.ssh/known_hosts is empty or missing."
+          }
+        }
+      }
+    },
+    "⌘-clic ou ⇧-clic pour changer plusieurs types d'un coup (par exemple tout le code vers ton éditeur)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⌘-click or ⇧-click to change several types at once (for example all code to your editor)."
+          }
+        }
+      }
+    },
+    "0 : le Dock apparaît dès que la souris touche le bord." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "0: the Dock appears as soon as the pointer touches the edge."
+          }
+        }
+      }
+    },
+    "1 échec" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 failure"
+          }
+        }
+      }
+    },
+    "1 élément dont le programme n'existe plus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 item whose program no longer exists"
+          }
+        }
+      }
+    },
+    "1 entrée hachée : son nom n'est pas lisible, mais ce champ la retrouve aussi." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 hashed entry: its name can't be read, but this field finds it too."
+          }
+        }
+      }
+    },
+    "1 entrée supprimée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 entry deleted."
+          }
+        }
+      }
+    },
+    "1 point à vérifier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 item to check"
+          }
+        }
+      }
+    },
+    "1Password actif" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password running"
+          }
+        }
+      }
+    },
+    "1Password actif · %lld clés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password running · %lld keys"
+          }
+        }
+      }
+    },
+    "1Password actif · 1 clé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password running · 1 key"
+          }
+        }
+      }
+    },
+    "1Password est lancé mais son agent ne répond pas : vérifie Réglages › Développeur › « Utiliser l'agent SSH »." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password is running but its agent doesn't respond: check Settings › Developer › “Use the SSH agent”."
+          }
+        }
+      }
+    },
+    "1Password fermé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password closed"
+          }
+        }
+      }
+    },
+    "22" : {
+
+    },
+    "36 dernières heures : %lld séries d'analyses, %lld contrôles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 36 hours: %lld scan runs, %lld checks"
+          }
+        }
+      }
+    },
+    "192.168.1.10 ou serveur.exemple.fr" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "192.168.1.10 or server.example.com"
+          }
+        }
+      }
+    },
+    "À activer dans Réglages Système › Réseau › Coupe-feu, surtout sur un réseau public." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn it on in System Settings › Network › Firewall, especially on a public network."
+          }
+        }
+      }
+    },
+    "À jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Up to date"
+          }
+        }
+      }
+    },
+    "À l'ouverture de session" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At login"
+          }
+        }
+      }
+    },
+    "à la corbeille" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to the Trash"
+          }
+        }
+      }
+    },
+    "À la demande" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On demand"
+          }
+        }
+      }
+    },
+    "À la prochaine connexion, ssh te demandera de confirmer la clé du serveur. Une copie du fichier est gardée dans known_hosts.old." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On the next connection, ssh will ask you to confirm the server's key. A copy of the file is kept in known_hosts.old."
+          }
+        }
+      }
+    },
+    "À propos d'Octopus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About Octopus"
+          }
+        }
+      }
+    },
+    "Accepte des connexions réseau entrantes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accepts incoming network connections"
+          }
+        }
+      }
+    },
+    "Accepte l'injection de bibliothèques (DYLD)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accepts library injection (DYLD)"
+          }
+        }
+      }
+    },
+    "Accès à tous les fichiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access to all files"
+          }
+        }
+      }
+    },
+    "Accès au dossier Téléchargements" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access to the Downloads folder"
+          }
+        }
+      }
+    },
+    "Accès complet au disque" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access"
+          }
+        }
+      }
+    },
+    "Accès complet au disque : état inconnu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access: unknown status"
+          }
+        }
+      }
+    },
+    "Accès complet au disque accordé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access granted"
+          }
+        }
+      }
+    },
+    "Accès complet au disque manquant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Disk Access missing"
+          }
+        }
+      }
+    },
+    "Accessible depuis le réseau : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reachable from the network: %@"
+          }
+        }
+      }
+    },
+    "Accessible uniquement depuis ce Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only reachable from this Mac"
+          }
+        }
+      }
+    },
+    "Accordé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Granted"
+          }
+        }
+      }
+    },
+    "Accueil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home"
+          }
+        }
+      }
+    },
+    "Actif" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
+          }
+        }
+      }
+    },
+    "Actions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actions"
+          }
+        }
+      }
+    },
+    "Activé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "Activée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "Activées" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "Activer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
+          }
+        }
+      }
+    },
+    "Activer les %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable the %lld"
+          }
+        }
+      }
+    },
+    "Actualiser" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh"
+          }
+        }
+      }
+    },
+    "Actualiser en continu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refresh continuously"
+          }
+        }
+      }
+    },
+    "Administration du système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System administration"
+          }
+        }
+      }
+    },
+    "Adresse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address"
+          }
+        }
+      }
+    },
+    "Adresse (HostName)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address (HostName)"
+          }
+        }
+      }
+    },
+    "Adresse IP" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IP address"
+          }
+        }
+      }
+    },
+    "Affichage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Display"
+          }
+        }
+      }
+    },
+    "Affiche aussi les processus de root et des autres utilisateurs (Touch ID ou mot de passe)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Also shows processes of root and other users (Touch ID or password)"
+          }
+        }
+      }
+    },
+    "Afficher ~/.ssh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show ~/.ssh"
+          }
+        }
+      }
+    },
+    "Afficher dans le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show in Finder"
+          }
+        }
+      }
+    },
+    "Afficher l'app dans le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the app in Finder"
+          }
+        }
+      }
+    },
+    "Afficher l'IP publique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show public IP"
+          }
+        }
+      }
+    },
+    "Afficher la barre d'état" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the status bar"
+          }
+        }
+      }
+    },
+    "Afficher la barre du chemin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the path bar"
+          }
+        }
+      }
+    },
+    "Afficher le plist dans le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the plist in Finder"
+          }
+        }
+      }
+    },
+    "Afficher le programme dans le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the program in Finder"
+          }
+        }
+      }
+    },
+    "Afficher les apps récentes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show recent apps"
+          }
+        }
+      }
+    },
+    "Afficher les fichiers cachés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show hidden files"
+          }
+        }
+      }
+    },
+    "Afficher les journaux de Mole dans le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Mole's logs in Finder"
+          }
+        }
+      }
+    },
+    "Afficher Octopus dans le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Octopus in Finder"
+          }
+        }
+      }
+    },
+    "Afficher toutes les extensions de fichiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show all file extensions"
+          }
+        }
+      }
+    },
+    "Agent 1Password inactif" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password agent inactive"
+          }
+        }
+      }
+    },
+    "Agent 1Password injoignable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password agent unreachable"
+          }
+        }
+      }
+    },
+    "Agent SSH injoignable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSH agent unreachable"
+          }
+        }
+      }
+    },
+    "Ajoute la clé publique au ~/.ssh/authorized_keys de l'hôte (mot de passe demandé une fois)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adds the public key to the host's ~/.ssh/authorized_keys (password asked once)"
+          }
+        }
+      }
+    },
+    "Ajouter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        }
+      }
+    },
+    "Ajouter à l'agent et au trousseau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to the agent and keychain"
+          }
+        }
+      }
+    },
+    "Ajouter à l'agent et au trousseau macOS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to the agent and the macOS keychain"
+          }
+        }
+      }
+    },
+    "Ajouter la clé à l'agent à la connexion (AddKeysToAgent)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add the key to the agent on connection (AddKeysToAgent)"
+          }
+        }
+      }
+    },
+    "Ajouter un hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a host"
+          }
+        }
+      }
+    },
+    "Ajoutés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Added"
+          }
+        }
+      }
+    },
+    "Alias (Host)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alias (Host)"
+          }
+        }
+      }
+    },
+    "allumé depuis %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "up since %@"
+          }
+        }
+      }
+    },
+    "Analyse en cours…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyzing…"
+          }
+        }
+      }
+    },
+    "Analyse en cours… Cela peut prendre un moment pour un gros dossier." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyzing… This can take a while for a large folder."
+          }
+        }
+      }
+    },
+    "Analyse partielle : certains dossiers protégés n'ont pas pu être lus." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partial analysis: some protected folders couldn't be read."
+          }
+        }
+      }
+    },
+    "Analyse partielle : une partie du contenu est protégée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partial analysis: some of the content is protected"
+          }
+        }
+      }
+    },
+    "Analyser ce dossier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyze this folder"
+          }
+        }
+      }
+    },
+    "Ancienneté" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Age"
+          }
+        }
+      }
+    },
+    "Annuler" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Annuler les modifications" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discard changes"
+          }
+        }
+      }
+    },
+    "Aperçu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overview"
+          }
+        }
+      }
+    },
+    "App (cask)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App (cask)"
+          }
+        }
+      }
+    },
+    "App du système, signée par Apple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System app, signed by Apple"
+          }
+        }
+      }
+    },
+    "App non signée : son origine ne peut pas être vérifiée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsigned app: its origin can't be verified"
+          }
+        }
+      }
+    },
+    "App Store" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Store"
+          }
+        }
+      }
+    },
+    "Apparence" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "apple.com, 192.168.1.1…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "apple.com, 192.168.1.1…"
+          }
+        }
+      }
+    },
+    "Apps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps"
+          }
+        }
+      }
+    },
+    "Archives et images disque" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archives and disk images"
+          }
+        }
+      }
+    },
+    "Arrêté" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopped"
+          }
+        }
+      }
+    },
+    "Arrêté (code %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stopped (code %lld)"
+          }
+        }
+      }
+    },
+    "Arrêter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "Arrêter « %@ » ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop “%@”?"
+          }
+        }
+      }
+    },
+    "Arrêter le processus…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop the process…"
+          }
+        }
+      }
+    },
+    "Au démarrage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "At startup"
+          }
+        }
+      }
+    },
+    "au total" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in total"
+          }
+        }
+      }
+    },
+    "Aucun agent SSH ne répond : les clés ne peuvent pas y être ajoutées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No SSH agent responds: keys can't be added to it."
+          }
+        }
+      }
+    },
+    "Aucun de tes processus n'attend de connexion TCP." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None of your processes is waiting for a TCP connection."
+          }
+        }
+      }
+    },
+    "Aucun droit particulier déclaré." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No particular entitlements declared."
+          }
+        }
+      }
+    },
+    "Aucun élément de démarrage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No startup items"
+          }
+        }
+      }
+    },
+    "Aucun hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hosts"
+          }
+        }
+      }
+    },
+    "Aucun hôte connu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No known hosts"
+          }
+        }
+      }
+    },
+    "Aucun instantané local" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No local snapshots"
+          }
+        }
+      }
+    },
+    "Aucun paquet installé ne propose de service (PostgreSQL, Redis, nginx…)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No installed package provides a service (PostgreSQL, Redis, nginx…)."
+          }
+        }
+      }
+    },
+    "Aucun port en écoute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No listening ports"
+          }
+        }
+      }
+    },
+    "Aucun résultat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
+          }
+        }
+      }
+    },
+    "Aucun service" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No services"
+          }
+        }
+      }
+    },
+    "Aucune" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        }
+      }
+    },
+    "Aucune analyse dans le journal des 36 dernières heures." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No scans in the log over the last 36 hours."
+          }
+        }
+      }
+    },
+    "Aucune app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No apps"
+          }
+        }
+      }
+    },
+    "Aucune app n'a installé de LaunchAgent ou de LaunchDaemon." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No app has installed a LaunchAgent or LaunchDaemon."
+          }
+        }
+      }
+    },
+    "Aucune clé SSH" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No SSH keys"
+          }
+        }
+      }
+    },
+    "Aucune commande lancée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No command run yet"
+          }
+        }
+      }
+    },
+    "Aucune entrée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries"
+          }
+        }
+      }
+    },
+    "Aucune entrée pour « %@ »." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No entries for “%@”."
+          }
+        }
+      }
+    },
+    "Aucune interface connectée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No connected interface"
+          }
+        }
+      }
+    },
+    "Aucune mise à jour en attente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No pending updates"
+          }
+        }
+      }
+    },
+    "Aucune opération" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No operations"
+          }
+        }
+      }
+    },
+    "Aucune suppression" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No deletions"
+          }
+        }
+      }
+    },
+    "Audio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio"
+          }
+        }
+      }
+    },
+    "Automatique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic"
+          }
+        }
+      }
+    },
+    "Autorisation annulée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authorization cancelled."
+          }
+        }
+      }
+    },
+    "Autorisations" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permissions"
+          }
+        }
+      }
+    },
+    "Autorisations qu'elle peut demander" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permissions it can request"
+          }
+        }
+      }
+    },
+    "Autorisations recommandées" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommended permissions"
+          }
+        }
+      }
+    },
+    "Autoriser…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow…"
+          }
+        }
+      }
+    },
+    "Autre app…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other app…"
+          }
+        }
+      }
+    },
+    "Autre extension :" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other extension:"
+          }
+        }
+      }
+    },
+    "Autres options" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other options"
+          }
+        }
+      }
+    },
+    "Avertir quand on change une extension" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warn when changing an extension"
+          }
+        }
+      }
+    },
+    "Bac à sable (sandbox) activé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sandbox enabled"
+          }
+        }
+      }
+    },
+    "bastion" : {
+
+    },
+    "Batterie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battery"
+          }
+        }
+      }
+    },
+    "Bloc « Match »" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“Match” block"
+          }
+        }
+      }
+    },
+    "brew update a échoué : " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "brew update failed: "
+          }
+        }
+      }
+    },
+    "brew update…" : {
+
+    },
+    "Cache DNS vidé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS cache flushed."
+          }
+        }
+      }
+    },
+    "Calendriers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendars"
+          }
+        }
+      }
+    },
+    "Calendriers (accès complet)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendars (full access)"
+          }
+        }
+      }
+    },
+    "Caméra" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        }
+      }
+    },
+    "Capacité maximale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum capacity"
+          }
+        }
+      }
+    },
+    "Captures d'écran" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshots"
+          }
+        }
+      }
+    },
+    "Certaines fonctions sont basées sur l'utilitaire en ligne de commande **Mole**." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some features are based on the **Mole** command-line tool."
+          }
+        }
+      }
+    },
+    "Ces options s'appliquent à : %@. Pour chaque hôte, une option déjà fixée dans un bloc placé plus haut l'emporte." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These options apply to: %@. For each host, an option already set in a block higher up wins."
+          }
+        }
+      }
+    },
+    "Ces options s'appliquent à tous les hôtes qui correspondent au motif, sauf si elles sont fixées dans un bloc placé plus haut." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These options apply to every host matching the pattern, unless they're set in a block higher up."
+          }
+        }
+      }
+    },
+    "Cette mise à jour demande de redémarrer le Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This update requires restarting the Mac."
+          }
+        }
+      }
+    },
+    "Changer la phrase de passe…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change passphrase…"
+          }
+        }
+      }
+    },
+    "Chaque réglage s'applique immédiatement ; le Finder, le Dock ou le serveur des captures sont relancés si besoin. Clic droit sur un réglage pour revenir à la valeur de macOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each setting applies immediately; Finder, the Dock or the screenshot server are relaunched if needed. Right-click a setting to go back to macOS's value."
+          }
+        }
+      }
+    },
+    "Charge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Load"
+          }
+        }
+      }
+    },
+    "Charge des bibliothèques non signées par son éditeur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loads libraries not signed by its developer"
+          }
+        }
+      }
+    },
+    "Chemin complet dans le titre des fenêtres" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full path in window titles"
+          }
+        }
+      }
+    },
+    "Choisir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose"
+          }
+        }
+      }
+    },
+    "Choisir un dossier…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a folder…"
+          }
+        }
+      }
+    },
+    "Choisir une app…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose an app…"
+          }
+        }
+      }
+    },
+    "Choisir…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose…"
+          }
+        }
+      }
+    },
+    "Choisis ce que Mole doit analyser. L'analyse de tout le Mac peut prendre plusieurs minutes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose what Mole should analyze. Analyzing the whole Mac can take several minutes."
+          }
+        }
+      }
+    },
+    "Choisis un hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a host"
+          }
+        }
+      }
+    },
+    "Choisis une commande à gauche, règle ses options, puis lance-la." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a command on the left, set its options, then run it."
+          }
+        }
+      }
+    },
+    "Clair" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "Clé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key"
+          }
+        }
+      }
+    },
+    "Clé d'hôte inconnue ou modifiée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown or changed host key"
+          }
+        }
+      }
+    },
+    "Clé publique absente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public key missing"
+          }
+        }
+      }
+    },
+    "Clé publique seule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public key only"
+          }
+        }
+      }
+    },
+    "Clés" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keys"
+          }
+        }
+      }
+    },
+    "Clés de « %@ » supprimées (copie dans known_hosts.old)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keys of “%@” deleted (copy in known_hosts.old)."
+          }
+        }
+      }
+    },
+    "Clés détenues par l'agent, sans fichier dans ~/.ssh. La clé privée ne quitte jamais l'agent." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keys held by the agent, with no file in ~/.ssh. The private key never leaves the agent."
+          }
+        }
+      }
+    },
+    "Code et configuration" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Code and configuration"
+          }
+        }
+      }
+    },
+    "Code source d'Octopus sur GitHub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Octopus source code on GitHub"
+          }
+        }
+      }
+    },
+    "Cœur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Core"
+          }
+        }
+      }
+    },
+    "Commande" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command"
+          }
+        }
+      }
+    },
+    "Commentaire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comment"
+          }
+        }
+      }
+    },
+    "Compilation à la volée (JIT)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Just-in-time compilation (JIT)"
+          }
+        }
+      }
+    },
+    "Composants" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Components"
+          }
+        }
+      }
+    },
+    "Confidentialité et sécurité" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy & Security"
+          }
+        }
+      }
+    },
+    "Connexion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connection"
+          }
+        }
+      }
+    },
+    "Connexion interactive : affiche les questions (mot de passe, clé d'hôte) et les erreurs de ssh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interactive connection: shows ssh's questions (password, host key) and errors"
+          }
+        }
+      }
+    },
+    "Connexion réussie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connection succeeded"
+          }
+        }
+      }
+    },
+    "Connexions réseau sortantes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outgoing network connections"
+          }
+        }
+      }
+    },
+    "Consommation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Power"
+          }
+        }
+      }
+    },
+    "Contacts" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacts"
+          }
+        }
+      }
+    },
+    "Copiée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copied"
+          }
+        }
+      }
+    },
+    "Copier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
+    "Copier « localhost:%lld »" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy “localhost:%lld”"
+          }
+        }
+      }
+    },
+    "Copier la clé publique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy public key"
+          }
+        }
+      }
+    },
+    "Copier la ligne de commande" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy command line"
+          }
+        }
+      }
+    },
+    "Copier le chemin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy path"
+          }
+        }
+      }
+    },
+    "Copier le chemin de la clé publique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy public key path"
+          }
+        }
+      }
+    },
+    "Corbeille" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trash"
+          }
+        }
+      }
+    },
+    "Créé par Aervorn, avec l'aide de Claude." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made by Aervorn, with help from Claude."
+          }
+        }
+      }
+    },
+    "Crée ta première clé, Ed25519 de préférence." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your first key, preferably Ed25519."
+          }
+        }
+      }
+    },
+    "Créer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        }
+      }
+    },
+    "Cycles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cycles"
+          }
+        }
+      }
+    },
+    "D'après la dernière liste téléchargée. « Rechercher les mises à jour » la rafraîchit (brew update)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Based on the last downloaded list. “Check for updates” refreshes it (brew update)."
+          }
+        }
+      }
+    },
+    "Dans ~/.ssh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In ~/.ssh"
+          }
+        }
+      }
+    },
+    "Dans l'agent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the agent"
+          }
+        }
+      }
+    },
+    "Dans l'agent 1Password" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the 1Password agent"
+          }
+        }
+      }
+    },
+    "Dans l'agent SSH" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the SSH agent"
+          }
+        }
+      }
+    },
+    "Dans le terminal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In Terminal"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
+    },
+    "Date et heure dans le nom du fichier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date and time in the file name"
+          }
+        }
+      }
+    },
+    "Débogable par d'autres processus (build de développement)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debuggable by other processes (development build)"
+          }
+        }
+      }
+    },
+    "Début" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "Définies dans d'autres blocs qui s'appliquent aussi à cet hôte." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set in other blocks that also apply to this host."
+          }
+        }
+      }
+    },
+    "Délai avant l'apparition (masquage auto)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delay before appearing (auto-hide)"
+          }
+        }
+      }
+    },
+    "Demande d'arrêt envoyée à %@ (PID %d)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop request sent to %@ (PID %d)."
+          }
+        }
+      }
+    },
+    "Demande les droits administrateur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requires administrator rights"
+          }
+        }
+      }
+    },
+    "Démarrage sécurisé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Secure boot"
+          }
+        }
+      }
+    },
+    "Démarrer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "dépendance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dependency"
+          }
+        }
+      }
+    },
+    "Dépendances inutiles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unneeded dependencies"
+          }
+        }
+      }
+    },
+    "Dépendances qui ne servent plus à aucun paquet installé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dependencies no installed package uses anymore."
+          }
+        }
+      }
+    },
+    "Depuis macOS 15, XProtect se met aussi à jour par iCloud. Ces commandes demandent les droits administrateur et s'exécutent dans le terminal." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Since macOS 15, XProtect also updates through iCloud. These commands require administrator rights and run in the terminal."
+          }
+        }
+      }
+    },
+    "Dernière recherche : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last check: %@"
+          }
+        }
+      }
+    },
+    "Dernière vérification : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last check: %@"
+          }
+        }
+      }
+    },
+    "Dernière version inconnue (hors ligne ?)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latest version unknown (offline?)"
+          }
+        }
+      }
+    },
+    "Désactivé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "Désactivé : %@. Réactive-les dans Réglages Système › Général › Mise à jour de logiciels." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off: %@. Turn them back on in System Settings › General › Software Update."
+          }
+        }
+      }
+    },
+    "Désactive la protection de la mémoire exécutable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disables executable memory protection"
+          }
+        }
+      }
+    },
+    "Désactivée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "Désactivées dans les versions de développement." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled in development builds."
+          }
+        }
+      }
+    },
+    "Désactiver" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable"
+          }
+        }
+      }
+    },
+    "Désactiver les %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable the %lld"
+          }
+        }
+      }
+    },
+    "Description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
+    },
+    "Désépingler" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unpin"
+          }
+        }
+      }
+    },
+    "Désinstaller" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall"
+          }
+        }
+      }
+    },
+    "Désinstaller « %@ » ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall “%@”?"
+          }
+        }
+      }
+    },
+    "Désinstaller %lld paquets ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall %lld packages?"
+          }
+        }
+      }
+    },
+    "Désinstaller les %lld…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall the %lld…"
+          }
+        }
+      }
+    },
+    "Désinstaller…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uninstall…"
+          }
+        }
+      }
+    },
+    "Destination" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destination"
+          }
+        }
+      }
+    },
+    "Developer ID, non notarisée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer ID, not notarized"
+          }
+        }
+      }
+    },
+    "Diagnostic" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diagnostics"
+          }
+        }
+      }
+    },
+    "Disponible" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        }
+      }
+    },
+    "Disponible une fois Mole installé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available once Mole is installed."
+          }
+        }
+      }
+    },
+    "Disque" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disk"
+          }
+        }
+      }
+    },
+    "Disque système" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System disk"
+          }
+        }
+      }
+    },
+    "Disques" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disks"
+          }
+        }
+      }
+    },
+    "Distribuée par le Mac App Store" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distributed by the Mac App Store"
+          }
+        }
+      }
+    },
+    "Divers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miscellaneous"
+          }
+        }
+      }
+    },
+    "Dock" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dock"
+          }
+        }
+      }
+    },
+    "Documents" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documents"
+          }
+        }
+      }
+    },
+    "Dossier Bureau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desktop folder"
+          }
+        }
+      }
+    },
+    "Dossier d'enregistrement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save location"
+          }
+        }
+      }
+    },
+    "Dossier Documents" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Documents folder"
+          }
+        }
+      }
+    },
+    "Dossier Téléchargements" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloads folder"
+          }
+        }
+      }
+    },
+    "Dossiers en premier dans les listes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folders first in lists"
+          }
+        }
+      }
+    },
+    "Droits (entitlements)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entitlements"
+          }
+        }
+      }
+    },
+    "Durée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duration"
+          }
+        }
+      }
+    },
+    "Durée de l'animation (masquage auto)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Animation duration (auto-hide)"
+          }
+        }
+      }
+    },
+    "Échec : " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed: "
+          }
+        }
+      }
+    },
+    "Échec pour : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed for: %@"
+          }
+        }
+      }
+    },
+    "Écoute sur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listening on"
+          }
+        }
+      }
+    },
+    "Éditeur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Developer"
+          }
+        }
+      }
+    },
+    "Efface puis reconstruit l'index du disque système. La recherche est incomplète pendant quelques dizaines de minutes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erases then rebuilds the system disk index. Search is incomplete for a few dozen minutes."
+          }
+        }
+      }
+    },
+    "Effacer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
+    "Effacer le terminal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear terminal"
+          }
+        }
+      }
+    },
+    "Élément" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item"
+          }
+        }
+      }
+    },
+    "Éléments" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Items"
+          }
+        }
+      }
+    },
+    "Emplacement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        }
+      }
+    },
+    "En cache" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cached"
+          }
+        }
+      }
+    },
+    "En cours" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running"
+          }
+        }
+      }
+    },
+    "En cours (PID %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running (PID %lld)"
+          }
+        }
+      }
+    },
+    "En quarantaine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quarantined"
+          }
+        }
+      }
+    },
+    "Enregistré (copie de l'ancien fichier : /etc/hosts.octopus-backup) et cache DNS vidé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saved (copy of the old file: /etc/hosts.octopus-backup) and DNS cache flushed."
+          }
+        }
+      }
+    },
+    "Enregistre d'abord : le test utilise le fichier sur le disque." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save first: the test uses the file on disk."
+          }
+        }
+      }
+    },
+    "Enregistrement impossible : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't save: %@"
+          }
+        }
+      }
+    },
+    "Enregistrer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
+    },
+    "Enregistrer la clé publique dans ~/.ssh" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save the public key in ~/.ssh"
+          }
+        }
+      }
+    },
+    "Enregistrer la clé publique dans ~/.ssh…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save the public key in ~/.ssh…"
+          }
+        }
+      }
+    },
+    "Entretien" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenance"
+          }
+        }
+      }
+    },
+    "Envoyer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
+          }
+        }
+      }
+    },
+    "Envoyer « %@ » vers un hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send “%@” to a host"
+          }
+        }
+      }
+    },
+    "Envoyer une clé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send a key"
+          }
+        }
+      }
+    },
+    "Envoyer vers un hôte…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send to a host…"
+          }
+        }
+      }
+    },
+    "épinglé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pinned"
+          }
+        }
+      }
+    },
+    "Épingler (bloquer les mises à jour)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin (block updates)"
+          }
+        }
+      }
+    },
+    "Équipe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team"
+          }
+        }
+      }
+    },
+    "Erreur" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
+    "Erreur (code %lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error (code %lld)"
+          }
+        }
+      }
+    },
+    "Erreur inconnue." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown error."
+          }
+        }
+      }
+    },
+    "Espace récupérable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reclaimable space"
+          }
+        }
+      }
+    },
+    "État" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
+    },
+    "État du système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System status"
+          }
+        }
+      }
+    },
+    "État SMART : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SMART status: %@"
+          }
+        }
+      }
+    },
+    "Évite d'encombrer les partages du NAS avec des fichiers .DS_Store." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avoids cluttering NAS shares with .DS_Store files."
+          }
+        }
+      }
+    },
+    "Exécute du code non signé en mémoire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Runs unsigned code in memory"
+          }
+        }
+      }
+    },
+    "Extension inconnue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown extension"
+          }
+        }
+      }
+    },
+    "Extension réseau (VPN, filtre)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network extension (VPN, filter)"
+          }
+        }
+      }
+    },
+    "Extensions système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System extensions"
+          }
+        }
+      }
+    },
+    "externe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "external"
+          }
+        }
+      }
+    },
+    "Fenêtres d'enregistrement développées par défaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save dialogs expanded by default"
+          }
+        }
+      }
+    },
+    "Fenêtres d'impression développées par défaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Print dialogs expanded by default"
+          }
+        }
+      }
+    },
+    "Fermer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "Fichier (~/.ssh/)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File (~/.ssh/)"
+          }
+        }
+      }
+    },
+    "Fichier hosts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hosts file"
+          }
+        }
+      }
+    },
+    "Filtrage des arguments : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Argument filtering: %@"
+          }
+        }
+      }
+    },
+    "Finder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finder"
+          }
+        }
+      }
+    },
+    "Forcer l'arrêt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force quit"
+          }
+        }
+      }
+    },
+    "Forcer l'arrêt de « %@ » ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force quit “%@”?"
+          }
+        }
+      }
+    },
+    "Forcer l'arrêt…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force quit…"
+          }
+        }
+      }
+    },
+    "Format" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Format"
+          }
+        }
+      }
+    },
+    "Formule" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formula"
+          }
+        }
+      }
+    },
+    "Formules" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formulae"
+          }
+        }
+      }
+    },
+    "Frameworks embarqués" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Embedded frameworks"
+          }
+        }
+      }
+    },
+    "Gatekeeper et quarantaine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatekeeper and quarantine"
+          }
+        }
+      }
+    },
+    "Gatekeeper refuserait de l'ouvrir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatekeeper would refuse to open it"
+          }
+        }
+      }
+    },
+    "Général" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        }
+      }
+    },
+    "Gestion des apps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App management"
+          }
+        }
+      }
+    },
+    "Glisse pour réordonner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag to reorder"
+          }
+        }
+      }
+    },
+    "Glisse une app ici" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drop an app here"
+          }
+        }
+      }
+    },
+    "Gros fichiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Large files"
+          }
+        }
+      }
+    },
+    "Groupes d'apps (données partagées)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App groups (shared data)"
+          }
+        }
+      }
+    },
+    "Groupes du trousseau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keychain groups"
+          }
+        }
+      }
+    },
+    "Heure" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time"
+          }
+        }
+      }
+    },
+    "Homebrew installe les outils en ligne de commande et de nombreuses apps. L'installation officielle se fait dans le terminal et demande ton mot de passe." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew installs command-line tools and many apps. The official installation runs in the terminal and asks for your password."
+          }
+        }
+      }
+    },
+    "Homebrew n'est pas installé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew isn't installed"
+          }
+        }
+      }
+    },
+    "Homebrew refusera de désinstaller un paquet dont d'autres dépendent. Les apps (casks) sont supprimées de /Applications." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew will refuse to uninstall a package others depend on. Apps (casks) are removed from /Applications."
+          }
+        }
+      }
+    },
+    "homelab, github.com, *.lan…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "homelab, github.com, *.lan…"
+          }
+        }
+      }
+    },
+    "Horodatage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timestamp"
+          }
+        }
+      }
+    },
+    "Hors App Store" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outside the App Store"
+          }
+        }
+      }
+    },
+    "Hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Host"
+          }
+        }
+      }
+    },
+    "Hôte haché" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hashed host"
+          }
+        }
+      }
+    },
+    "Hôtes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hosts"
+          }
+        }
+      }
+    },
+    "Hôtes concernés (Host)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matching hosts (Host)"
+          }
+        }
+      }
+    },
+    "Hôtes connus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Known hosts"
+          }
+        }
+      }
+    },
+    "Hyperviseur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hypervisor"
+          }
+        }
+      }
+    },
+    "Icônes translucides pour les apps masquées" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translucent icons for hidden apps"
+          }
+        }
+      }
+    },
+    "Identifiant d'application" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application identifier"
+          }
+        }
+      }
+    },
+    "Identifiant d'équipe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Team identifier"
+          }
+        }
+      }
+    },
+    "ignorés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "skipped"
+          }
+        }
+      }
+    },
+    "il appartient à un autre utilisateur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "it belongs to another user"
+          }
+        }
+      }
+    },
+    "Images" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Images"
+          }
+        }
+      }
+    },
+    "Impossible d'arrêter %@ : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't stop %@: %@"
+          }
+        }
+      }
+    },
+    "Impossible d'arrêter %@ : %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't stop %@: %@."
+          }
+        }
+      }
+    },
+    "Impossible de lancer mo status : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't launch mo status: %@"
+          }
+        }
+      }
+    },
+    "Impossible de lire l'historique : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't read the history: %@"
+          }
+        }
+      }
+    },
+    "Impossible de préparer la clé : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't prepare the key: %@"
+          }
+        }
+      }
+    },
+    "Impression" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Printing"
+          }
+        }
+      }
+    },
+    "Inconnu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "Inconnue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
+          }
+        }
+      }
+    },
+    "Infos détaillées (brew info)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detailed info (brew info)"
+          }
+        }
+      }
+    },
+    "Installation de Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew installation"
+          }
+        }
+      }
+    },
+    "Installation de Mole" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole installation"
+          }
+        }
+      }
+    },
+    "installé avec Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "installed with Homebrew"
+          }
+        }
+      }
+    },
+    "Installé avec Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed with Homebrew"
+          }
+        }
+      }
+    },
+    "installé avec le script officiel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "installed with the official script"
+          }
+        }
+      }
+    },
+    "Installé avec le script officiel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed with the official script"
+          }
+        }
+      }
+    },
+    "Installe des extensions système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installs system extensions"
+          }
+        }
+      }
+    },
+    "Installé le" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed on"
+          }
+        }
+      }
+    },
+    "Installe Mole depuis le bas de la barre latérale." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install Mole from the bottom of the sidebar."
+          }
+        }
+      }
+    },
+    "Installée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed"
+          }
+        }
+      }
+    },
+    "Installer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install"
+          }
+        }
+      }
+    },
+    "Installer « %@ » ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install “%@”?"
+          }
+        }
+      }
+    },
+    "Installer Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install Homebrew"
+          }
+        }
+      }
+    },
+    "Installer Mole" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install Mole"
+          }
+        }
+      }
+    },
+    "Installés" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed"
+          }
+        }
+      }
+    },
+    "Installés par moi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed by me"
+          }
+        }
+      }
+    },
+    "instantané local" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "local snapshot"
+          }
+        }
+      }
+    },
+    "Instantané supprimé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snapshot deleted."
+          }
+        }
+      }
+    },
+    "instantanés locaux" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "local snapshots"
+          }
+        }
+      }
+    },
+    "Intacte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intact"
+          }
+        }
+      }
+    },
+    "Intégrité" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Integrity"
+          }
+        }
+      }
+    },
+    "Interface principale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Main interface"
+          }
+        }
+      }
+    },
+    "Interfaces actives" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active interfaces"
+          }
+        }
+      }
+    },
+    "Interroge Apple : mises à jour de sécurité, données XProtect et versions de macOS." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks Apple: security updates, XProtect data and macOS versions."
+          }
+        }
+      }
+    },
+    "IP publique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public IP"
+          }
+        }
+      }
+    },
+    "IP publique introuvable (pas de connexion Internet ?)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public IP not found (no Internet connection?)"
+          }
+        }
+      }
+    },
+    "Isolée dans un bac à sable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sandboxed"
+          }
+        }
+      }
+    },
+    "Joignable, authentification refusée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reachable, authentication refused"
+          }
+        }
+      }
+    },
+    "Joignable, validation 1Password requise" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reachable, 1Password approval required"
+          }
+        }
+      }
+    },
+    "Journal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log"
+          }
+        }
+      }
+    },
+    "Kernel CTRR : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kernel CTRR: %@"
+          }
+        }
+      }
+    },
+    "L'adresse sous laquelle Internet voit ton Mac (celle du routeur ou du VPN). Obtenue auprès du service public ipify.org." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The address the Internet sees your Mac at (your router's or VPN's). Obtained from the public ipify.org service."
+          }
+        }
+      }
+    },
+    "L'agent SSH de 1Password ne fonctionne que lorsque l'app est lancée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1Password's SSH agent only works while the app is running."
+          }
+        }
+      }
+    },
+    "L'analyse a échoué : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The analysis failed: %@"
+          }
+        }
+      }
+    },
+    "L'ancienne copie de %@ restée dans le Caskroom part à la Corbeille. L'app utilisée, dans /Applications, n'est pas touchée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The old copy of %@ left in the Caskroom goes to the Trash. The app you use, in /Applications, isn't touched."
+          }
+        }
+      }
+    },
+    "L'aperçu (--dry-run) est désactivé : Mole va modifier ton Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview (--dry-run) is off: Mole will change your Mac."
+          }
+        }
+      }
+    },
+    "L'installation demande ton mot de passe administrateur ou Touch ID." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The installation asks for your administrator password or Touch ID."
+          }
+        }
+      }
+    },
+    "La clé privée et la clé publique partent à la Corbeille. Les serveurs qui n'acceptent que cette clé ne te laisseront plus entrer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The private and public keys go to the Trash. Servers that only accept this key won't let you in anymore."
+          }
+        }
+      }
+    },
+    "La clé publique est ajoutée au fichier ~/.ssh/authorized_keys de l'hôte. Le mot de passe du compte distant te sera demandé une fois, dans le terminal. Pour un port autre que 22, crée plutôt l'hôte dans l'onglet Hôtes." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The public key is added to the host's ~/.ssh/authorized_keys file. You'll be asked for the remote account's password once, in the terminal. For a port other than 22, create the host in the Hosts tab instead."
+          }
+        }
+      }
+    },
+    "La mise à jour de %@ est bloquée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The %@ update is stuck"
+          }
+        }
+      }
+    },
+    "La nouvelle langue s'appliquera au prochain lancement." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The new language will apply at next launch."
+          }
+        }
+      }
+    },
+    "La phrase de passe te sera demandée dans le terminal. Elle protège la clé si ton Mac est volé : recommandé." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You'll be asked for the passphrase in the terminal. It protects the key if your Mac is stolen: recommended."
+          }
+        }
+      }
+    },
+    "La plupart des fonctions de nettoyage en ont besoin." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Most cleanup features need it."
+          }
+        }
+      }
+    },
+    "la recherche automatique" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "automatic checking"
+          }
+        }
+      }
+    },
+    "La suppression ne sera écrite dans ~/.ssh/config qu'au moment d'enregistrer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The deletion will only be written to ~/.ssh/config when you save."
+          }
+        }
+      }
+    },
+    "Lancées à l'ouverture de session" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launched at login"
+          }
+        }
+      }
+    },
+    "Lancement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch"
+          }
+        }
+      }
+    },
+    "Lancer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run"
+          }
+        }
+      }
+    },
+    "Lancer « %@ » pour de vrai ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Really run “%@”?"
+          }
+        }
+      }
+    },
+    "Lancer brew doctor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run brew doctor"
+          }
+        }
+      }
+    },
+    "Lancer l'aperçu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run preview"
+          }
+        }
+      }
+    },
+    "Langue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        }
+      }
+    },
+    "Langue du système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System language"
+          }
+        }
+      }
+    },
+    "Le disque n'est pas chiffré : quelqu'un qui a ton Mac en main peut lire tes fichiers." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The disk isn't encrypted: anyone who gets hold of your Mac can read your files."
+          }
+        }
+      }
+    },
+    "Le fichier .pub pourra servir d'IdentityFile pour choisir cette clé de l'agent pour un hôte." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The .pub file can be used as IdentityFile to pick this agent key for a host."
+          }
+        }
+      }
+    },
+    "Le Mac démarre avec une sécurité réduite (souvent pour une extension noyau). À remettre en sécurité maximale depuis la récupération si ce n'est plus nécessaire." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Mac starts with reduced security (often for a kernel extension). Set it back to full security from recovery if it's no longer needed."
+          }
+        }
+      }
+    },
+    "Le processus est tué immédiatement, sans pouvoir enregistrer quoi que ce soit." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The process is killed immediately, without being able to save anything."
+          }
+        }
+      }
+    },
+    "Le processus reçoit une demande de fermeture (comme Ctrl-C) et peut s'arrêter proprement." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The process receives a quit request (like Ctrl-C) and can stop cleanly."
+          }
+        }
+      }
+    },
+    "Le programme n'est pas signé : son origine ne peut pas être vérifiée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The program isn't signed: its origin can't be verified."
+          }
+        }
+      }
+    },
+    "Le serveur répond. 1Password demande de valider chaque connexion (Touch ID), ce qu'un test sans interaction ne peut pas faire : « Dans le terminal » le permet." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The server responds. 1Password asks to approve each connection (Touch ID), which a non-interactive test can't do: “In Terminal” allows it."
+          }
+        }
+      }
+    },
+    "Le test se fait sans mot de passe ni question : la clé doit être dans l'agent SSH, ou sans phrase de passe. « Dans le terminal » montre ce qui bloque." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The test runs with no password or prompt: the key must be in the SSH agent, or have no passphrase. “In Terminal” shows what's blocking."
+          }
+        }
+      }
+    },
+    "Le volume système n'est plus vérifié cryptographiquement au démarrage." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The system volume is no longer cryptographically verified at startup."
+          }
+        }
+      }
+    },
+    "Lecture de l'état du Mac…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading the Mac's status…"
+          }
+        }
+      }
+    },
+    "Lecture de l'historique…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reading history…"
+          }
+        }
+      }
+    },
+    "Les apps téléchargées ne sont plus vérifiées avant leur ouverture." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloaded apps are no longer checked before they open."
+          }
+        }
+      }
+    },
+    "Les blocs conditionnels ne se modifient pas ici. Ils sont conservés tels quels." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditional blocks can't be edited here. They're kept as they are."
+          }
+        }
+      }
+    },
+    "Les éléments sont arrêtés et leurs fichiers partent à la Corbeille. Une app qui en dépend pourrait ne plus fonctionner correctement, ou les réinstaller." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The items are stopped and their files go to the Trash. An app that depends on them might stop working properly, or reinstall them."
+          }
+        }
+      }
+    },
+    "les fichiers de sécurité (XProtect…)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "security files (XProtect…)"
+          }
+        }
+      }
+    },
+    "les réponses de sécurité" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "security responses"
+          }
+        }
+      }
+    },
+    "Les résultats s'affichent dans le terminal, en bas de la fenêtre." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Results appear in the terminal, at the bottom of the window."
+          }
+        }
+      }
+    },
+    "Les supprimer (brew autoremove)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove them (brew autoremove)"
+          }
+        }
+      }
+    },
+    "Leur programme n'existe plus : ce sont très probablement des restes d'apps désinstallées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Their program no longer exists: these are most likely leftovers of uninstalled apps."
+          }
+        }
+      }
+    },
+    "Libérer la mémoire inactive" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free inactive memory"
+          }
+        }
+      }
+    },
+    "Liens" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Links"
+          }
+        }
+      }
+    },
+    "Ligne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Line"
+          }
+        }
+      }
+    },
+    "Lit et modifie les fichiers que tu choisis" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reads and modifies files you choose"
+          }
+        }
+      }
+    },
+    "Lit les fichiers que tu choisis" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reads files you choose"
+          }
+        }
+      }
+    },
+    "Local uniquement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local only"
+          }
+        }
+      }
+    },
+    "Localisation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        }
+      }
+    },
+    "Mac App Store" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac App Store"
+          }
+        }
+      }
+    },
+    "macOS a déjà vérifié l'app ou la vérifiera à la prochaine ouverture." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS has already checked the app or will check it the next time it opens."
+          }
+        }
+      }
+    },
+    "macOS bloquera son ouverture. Ne retire la quarantaine que si tu fais confiance à sa provenance (une app que tu as compilée, par exemple)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS will block it from opening. Only remove the quarantine if you trust where it came from (an app you built yourself, for example)."
+          }
+        }
+      }
+    },
+    "Maintenance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenance"
+          }
+        }
+      }
+    },
+    "Maintenir une touche pour la répéter (au lieu des accents)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold a key to repeat it (instead of accents)"
+          }
+        }
+      }
+    },
+    "Maison (HomeKit)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home (HomeKit)"
+          }
+        }
+      }
+    },
+    "Masque les dépendances installées automatiquement par d'autres paquets" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hides dependencies installed automatically by other packages"
+          }
+        }
+      }
+    },
+    "Mémoire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Memory"
+          }
+        }
+      }
+    },
+    "Messagerie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mail"
+          }
+        }
+      }
+    },
+    "Mettre « %@ » à la corbeille ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move “%@” to the Trash?"
+          }
+        }
+      }
+    },
+    "Mettre « %@ » à la Corbeille ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move “%@” to the Trash?"
+          }
+        }
+      }
+    },
+    "Mettre %lld éléments à la Corbeille ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move %lld items to the Trash?"
+          }
+        }
+      }
+    },
+    "Mettre à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update"
+          }
+        }
+      }
+    },
+    "Mettre à jour la sélection (%lld)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update selection (%lld)"
+          }
+        }
+      }
+    },
+    "Mettre à jour vers %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update to %@"
+          }
+        }
+      }
+    },
+    "Mettre à jour XProtect" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update XProtect"
+          }
+        }
+      }
+    },
+    "Mettre à la corbeille" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash"
+          }
+        }
+      }
+    },
+    "Mettre à la Corbeille" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash"
+          }
+        }
+      }
+    },
+    "Mettre à la corbeille…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash…"
+          }
+        }
+      }
+    },
+    "Mettre à la Corbeille…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move to Trash…"
+          }
+        }
+      }
+    },
+    "Mettre les %lld à la Corbeille…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move the %lld to the Trash…"
+          }
+        }
+      }
+    },
+    "Micro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Microphone"
+          }
+        }
+      }
+    },
+    "Mis à jour %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated %@"
+          }
+        }
+      }
+    },
+    "Mis à jour %@ (par iCloud)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated %@ (by iCloud)"
+          }
+        }
+      }
+    },
+    "Mis à jour %@ (par Mise à jour de logiciels)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated %@ (by Software Update)"
+          }
+        }
+      }
+    },
+    "mise à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "update"
+          }
+        }
+      }
+    },
+    "Mise à jour de Mole" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole update"
+          }
+        }
+      }
+    },
+    "Mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updates"
+          }
+        }
+      }
+    },
+    "Mises à jour d'Octopus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Octopus updates"
+          }
+        }
+      }
+    },
+    "Mises à jour de sécurité automatiques" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic security updates"
+          }
+        }
+      }
+    },
+    "Mises à jour en attente" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending updates"
+          }
+        }
+      }
+    },
+    "mo status s'est arrêté. Relance l'affichage pour réessayer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mo status stopped. Reopen the view to try again."
+          }
+        }
+      }
+    },
+    "Mode" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
+        }
+      }
+    },
+    "Modifications non enregistrées" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsaved changes"
+          }
+        }
+      }
+    },
+    "Modifiée depuis la signature" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modified since signing"
+          }
+        }
+      }
+    },
+    "Modifiée le %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modified on %@"
+          }
+        }
+      }
+    },
+    "Modifier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "Modifier le commentaire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit comment"
+          }
+        }
+      }
+    },
+    "Modifier le commentaire…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit comment…"
+          }
+        }
+      }
+    },
+    "Modifier…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit…"
+          }
+        }
+      }
+    },
+    "Mole %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole %@"
+          }
+        }
+      }
+    },
+    "Mole introuvable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole not found"
+          }
+        }
+      }
+    },
+    "Mole n'est pas installé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole isn't installed"
+          }
+        }
+      }
+    },
+    "Mole ne peut pas nettoyer les dossiers protégés." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole can't clean protected folders."
+          }
+        }
+      }
+    },
+    "Mole s'est arrêté avec le code %d." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole stopped with code %d."
+          }
+        }
+      }
+    },
+    "Mole sur GitHub" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mole on GitHub"
+          }
+        }
+      }
+    },
+    "Mon compte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My account"
+          }
+        }
+      }
+    },
+    "Mon dossier personnel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My home folder"
+          }
+        }
+      }
+    },
+    "Motif" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pattern"
+          }
+        }
+      }
+    },
+    "Mouvements" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Motion"
+          }
+        }
+      }
+    },
+    "N'afficher que les apps ouvertes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only show open apps"
+          }
+        }
+      }
+    },
+    "N'essayer que cette clé (IdentitiesOnly)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only try this key (IdentitiesOnly)"
+          }
+        }
+      }
+    },
+    "Navigateur web" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Web browser"
+          }
+        }
+      }
+    },
+    "Ne pas en créer sur les disques USB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't create them on USB drives"
+          }
+        }
+      }
+    },
+    "Ne pas en créer sur les volumes réseau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't create them on network volumes"
+          }
+        }
+      }
+    },
+    "Ne plus afficher au lancement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't show at launch"
+          }
+        }
+      }
+    },
+    "Nécessaire pour désinstaller, alléger ou mettre à jour d'autres apps (Mole, Homebrew). macOS le demande à la première utilisation ; son état ne peut pas être vérifié à l'avance." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Needed to uninstall, slim or update other apps (Mole, Homebrew). macOS asks the first time; its status can't be checked in advance."
+          }
+        }
+      }
+    },
+    "Nettoyage, apps, sécurité et outils système pour ton Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cleanup, apps, security and system tools for your Mac."
+          }
+        }
+      }
+    },
+    "Nettoyer (brew cleanup)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clean up (brew cleanup)"
+          }
+        }
+      }
+    },
+    "Nom" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
+    },
+    "Nom de fichier invalide." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid file name."
+          }
+        }
+      }
+    },
+    "Nom du fichier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File name"
+          }
+        }
+      }
+    },
+    "Nom ou description" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name or description"
+          }
+        }
+      }
+    },
+    "Nom, éditeur, programme" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name, developer, program"
+          }
+        }
+      }
+    },
+    "Noms" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Names"
+          }
+        }
+      }
+    },
+    "Non" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
+    },
+    "Non accordé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not granted"
+          }
+        }
+      }
+    },
+    "Non chargé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not loaded"
+          }
+        }
+      }
+    },
+    "Non disponible sur ce Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not available on this Mac."
+          }
+        }
+      }
+    },
+    "Non installé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not installed"
+          }
+        }
+      }
+    },
+    "Non lancé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not started"
+          }
+        }
+      }
+    },
+    "Non signé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsigned"
+          }
+        }
+      }
+    },
+    "Non signée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsigned"
+          }
+        }
+      }
+    },
+    "Non vérifiable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can't be checked"
+          }
+        }
+      }
+    },
+    "Notarisée par Apple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarized by Apple"
+          }
+        }
+      }
+    },
+    "Nouvelle clé SSH" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New SSH key"
+          }
+        }
+      }
+    },
+    "Nouvelle clé…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New key…"
+          }
+        }
+      }
+    },
+    "Octopus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Octopus"
+          }
+        }
+      }
+    },
+    "Octopus n'est affilié ni à Mole ni à ses auteurs : il utilise le Mole installé sur ton Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Octopus isn't affiliated with Mole or its authors: it uses the Mole installed on your Mac."
+          }
+        }
+      }
+    },
+    "Octopus vérifie sa signature, sa notarisation par Apple, sa quarantaine, les droits qu'elle demande et ce qu'elle installe en arrière-plan." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Octopus checks its signature, its notarization by Apple, its quarantine, the entitlements it requests and what it installs in the background."
+          }
+        }
+      }
+    },
+    "Ombre autour des fenêtres capturées" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shadow around captured windows"
+          }
+        }
+      }
+    },
+    "Opérations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Operations"
+          }
+        }
+      }
+    },
+    "Options communes à %lld hôtes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Options shared by %lld hosts"
+          }
+        }
+      }
+    },
+    "Options héritées" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inherited options"
+          }
+        }
+      }
+    },
+    "Options par défaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Default options"
+          }
+        }
+      }
+    },
+    "Ou ajoute-en un avec le bouton +." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Or add one with the + button."
+          }
+        }
+      }
+    },
+    "Où part l'espace disque ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Where is the disk space going?"
+          }
+        }
+      }
+    },
+    "Oui" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
+    },
+    "Outil de nettoyage et d'entretien en ligne de commande, par [tw93](https://github.com/tw93) (GPL-3.0)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Command-line cleanup and maintenance tool, by [tw93](https://github.com/tw93) (GPL-3.0)."
+          }
+        }
+      }
+    },
+    "Ouvre et déverrouille 1Password, puis vérifie Réglages › Développeur › « Utiliser l'agent SSH »." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open and unlock 1Password, then check Settings › Developer › “Use the SSH agent”."
+          }
+        }
+      }
+    },
+    "Ouvrir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
+    "Ouvrir 1Password" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open 1Password"
+          }
+        }
+      }
+    },
+    "Ouvrir dans le navigateur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in browser"
+          }
+        }
+      }
+    },
+    "Ouvrir http://localhost:%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open http://localhost:%lld"
+          }
+        }
+      }
+    },
+    "Ouvrir le site du projet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the project website"
+          }
+        }
+      }
+    },
+    "Paquet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Package"
+          }
+        }
+      }
+    },
+    "Partage d'écran" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen sharing"
+          }
+        }
+      }
+    },
+    "Partage de fichiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File sharing"
+          }
+        }
+      }
+    },
+    "Partielle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partial"
+          }
+        }
+      }
+    },
+    "Partielles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partial"
+          }
+        }
+      }
+    },
+    "Pas de bac à sable : accès étendu au Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sandbox: broad access to the Mac"
+          }
+        }
+      }
+    },
+    "Pas de quarantaine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No quarantine"
+          }
+        }
+      }
+    },
+    "Périphériques USB" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "USB devices"
+          }
+        }
+      }
+    },
+    "Permanent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permanent"
+          }
+        }
+      }
+    },
+    "Peut déboguer d'autres processus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can debug other processes"
+          }
+        }
+      }
+    },
+    "Photothèque" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photos library"
+          }
+        }
+      }
+    },
+    "Phrase de passe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passphrase"
+          }
+        }
+      }
+    },
+    "Phrase de passe dans le trousseau macOS (UseKeychain)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passphrase in the macOS keychain (UseKeychain)"
+          }
+        }
+      }
+    },
+    "PID" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PID"
+          }
+        }
+      }
+    },
+    "Pilotage d'autres apps" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controlling other apps"
+          }
+        }
+      }
+    },
+    "Pilote d'autres apps (AppleScript)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controls other apps (AppleScript)"
+          }
+        }
+      }
+    },
+    "Ping" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ping"
+          }
+        }
+      }
+    },
+    "Planifié" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scheduled"
+          }
+        }
+      }
+    },
+    "Plus tard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Later"
+          }
+        }
+      }
+    },
+    "Port" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port"
+          }
+        }
+      }
+    },
+    "Port, processus ou commande (ex. 3000, node)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Port, process or command (e.g. 3000, node)"
+          }
+        }
+      }
+    },
+    "Portée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scope"
+          }
+        }
+      }
+    },
+    "Pour qu'Octopus et Mole puissent faire tout leur travail." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So that Octopus and Mole can do all their work."
+          }
+        }
+      }
+    },
+    "Prêt" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ready"
+          }
+        }
+      }
+    },
+    "Pris en compte par les apps relancées après le changement." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taken into account by apps relaunched after the change."
+          }
+        }
+      }
+    },
+    "Problèmes seulement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problems only"
+          }
+        }
+      }
+    },
+    "Processeur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processor"
+          }
+        }
+      }
+    },
+    "Processus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Process"
+          }
+        }
+      }
+    },
+    "Processus de tous les utilisateurs, système compris." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processes of all users, system included."
+          }
+        }
+      }
+    },
+    "Processus les plus gourmands" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busiest processes"
+          }
+        }
+      }
+    },
+    "Processus système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System processes"
+          }
+        }
+      }
+    },
+    "Programme" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Program"
+          }
+        }
+      }
+    },
+    "Programme introuvable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Program not found"
+          }
+        }
+      }
+    },
+    "Programmes introuvables (restes d'apps) et programmes non signés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing programs (app leftovers) and unsigned programs"
+          }
+        }
+      }
+    },
+    "Propulsé par Mole" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powered by Mole"
+          }
+        }
+      }
+    },
+    "Protection de l'intégrité du système (SIP)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Integrity Protection (SIP)"
+          }
+        }
+      }
+    },
+    "Provenance" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origin"
+          }
+        }
+      }
+    },
+    "Proxy / VPN actif (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proxy / VPN active (%@)"
+          }
+        }
+      }
+    },
+    "purgeables (instantanés, caches…)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "purgeable (snapshots, caches…)"
+          }
+        }
+      }
+    },
+    "Quand le Dock ou Mission Control se comportent bizarrement." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When the Dock or Mission Control behaves oddly."
+          }
+        }
+      }
+    },
+    "Quand le Finder ne se rafraîchit plus ou se fige." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When Finder stops refreshing or freezes."
+          }
+        }
+      }
+    },
+    "Quarantaine retirée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quarantine removed."
+          }
+        }
+      }
+    },
+    "Raccourci dans le Finder : ⌘⇧." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finder shortcut: ⌘⇧."
+          }
+        }
+      }
+    },
+    "Rappels" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
+          }
+        }
+      }
+    },
+    "Rappels (accès complet)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders (full access)"
+          }
+        }
+      }
+    },
+    "Réactive-la depuis la récupération macOS avec « csrutil enable »." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn it back on from macOS recovery with “csrutil enable”."
+          }
+        }
+      }
+    },
+    "Rebond (ProxyJump)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jump host (ProxyJump)"
+          }
+        }
+      }
+    },
+    "Recherche de Mole…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looking for Mole…"
+          }
+        }
+      }
+    },
+    "Recherche en cours…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Searching…"
+          }
+        }
+      }
+    },
+    "Rechercher" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "Rechercher à nouveau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search again"
+          }
+        }
+      }
+    },
+    "Rechercher automatiquement les mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for updates automatically"
+          }
+        }
+      }
+    },
+    "Rechercher les mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for updates"
+          }
+        }
+      }
+    },
+    "Rechercher les mises à jour…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check for Updates…"
+          }
+        }
+      }
+    },
+    "Rechercher maintenant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check now"
+          }
+        }
+      }
+    },
+    "Rechercher un hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search a host"
+          }
+        }
+      }
+    },
+    "Recommandé : sans lui, Mole ne peut ni nettoyer ni analyser les dossiers protégés (Mail, Messages, Safari, conteneurs d'apps), et certaines analyses restent partielles." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recommended: without it, Mole can neither clean nor analyze protected folders (Mail, Messages, Safari, app containers), and some analyses stay partial."
+          }
+        }
+      }
+    },
+    "Reconnaissance vocale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speech recognition"
+          }
+        }
+      }
+    },
+    "Reconstruire « Ouvrir avec »" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rebuild “Open With”"
+          }
+        }
+      }
+    },
+    "redémarrage" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "restart"
+          }
+        }
+      }
+    },
+    "Redémarrer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restart"
+          }
+        }
+      }
+    },
+    "Réessayer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try again"
+          }
+        }
+      }
+    },
+    "Refusé pour : %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Refused for: %@."
+          }
+        }
+      }
+    },
+    "Refusée (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rejected (%@)"
+          }
+        }
+      }
+    },
+    "Réglages des autorisations…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permission settings…"
+          }
+        }
+      }
+    },
+    "Réglages Système" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System Settings"
+          }
+        }
+      }
+    },
+    "Réglages…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings…"
+          }
+        }
+      }
+    },
+    "Réindexer Spotlight" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reindex Spotlight"
+          }
+        }
+      }
+    },
+    "Relancer le Dock" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch the Dock"
+          }
+        }
+      }
+    },
+    "Relancer le Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch Finder"
+          }
+        }
+      }
+    },
+    "Relancer Octopus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relaunch Octopus"
+          }
+        }
+      }
+    },
+    "remplacée · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "replaced · %@"
+          }
+        }
+      }
+    },
+    "Réparation impossible : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't repair: %@"
+          }
+        }
+      }
+    },
+    "Réparer et mettre à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repair and update"
+          }
+        }
+      }
+    },
+    "Réparer la mise à jour de « %@ » ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repair the update of “%@”?"
+          }
+        }
+      }
+    },
+    "Réparer seulement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repair only"
+          }
+        }
+      }
+    },
+    "Réparer…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repair…"
+          }
+        }
+      }
+    },
+    "Réseau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network"
+          }
+        }
+      }
+    },
+    "Réseau local" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local network"
+          }
+        }
+      }
+    },
+    "Résolution DNS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS lookup"
+          }
+        }
+      }
+    },
+    "Résultat" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Result"
+          }
+        }
+      }
+    },
+    "Retirer de l'agent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from agent"
+          }
+        }
+      }
+    },
+    "Retirer de la liste" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from list"
+          }
+        }
+      }
+    },
+    "Retirer la quarantaine" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove quarantine"
+          }
+        }
+      }
+    },
+    "Retour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "Revenir au réglage par défaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset to default"
+          }
+        }
+      }
+    },
+    "Rien à faire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to do"
+          }
+        }
+      }
+    },
+    "Routeur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Router"
+          }
+        }
+      }
+    },
+    "Runtime renforcé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hardened runtime"
+          }
+        }
+      }
+    },
+    "Sans phrase de passe" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No passphrase"
+          }
+        }
+      }
+    },
+    "Santé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Health"
+          }
+        }
+      }
+    },
+    "Santé du Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mac health"
+          }
+        }
+      }
+    },
+    "Script invalide." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid script."
+          }
+        }
+      }
+    },
+    "Section" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Section"
+          }
+        }
+      }
+    },
+    "Sécurité" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Security"
+          }
+        }
+      }
+    },
+    "Sélectionne un ou plusieurs éléments (⌘ ou ⇧ clic) pour les désactiver ou les supprimer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select one or more items (⌘ or ⇧ click) to disable or delete them."
+          }
+        }
+      }
+    },
+    "Sélectionner" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
+          }
+        }
+      }
+    },
+    "Serveur de dev" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dev server"
+          }
+        }
+      }
+    },
+    "serveur.lan ou 192.168.1.10" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "server.lan or 192.168.1.10"
+          }
+        }
+      }
+    },
+    "Serveurs DNS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DNS servers"
+          }
+        }
+      }
+    },
+    "Service" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Service"
+          }
+        }
+      }
+    },
+    "Services" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Services"
+          }
+        }
+      }
+    },
+    "Services en arrière-plan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background services"
+          }
+        }
+      }
+    },
+    "Seuls tes processus sont visibles. Coche « Processus système » pour voir aussi ceux de root." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only your processes are visible. Check “System processes” to also see root's."
+          }
+        }
+      }
+    },
+    "Si la clé a une phrase de passe, elle te sera demandée dans le terminal." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If the key has a passphrase, you'll be asked for it in the terminal."
+          }
+        }
+      }
+    },
+    "Si Octopus n'apparaît pas dans la liste, ajoute-le avec le bouton +." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If Octopus isn't in the list, add it with the + button."
+          }
+        }
+      }
+    },
+    "Signature" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signature"
+          }
+        }
+      }
+    },
+    "Signature invalide : l'app a été modifiée depuis sa signature" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid signature: the app was modified after signing"
+          }
+        }
+      }
+    },
+    "Signature locale" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local signature"
+          }
+        }
+      }
+    },
+    "Signature locale (ad hoc)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local signature (ad hoc)"
+          }
+        }
+      }
+    },
+    "Signature locale, sans identité de développeur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local signature, without developer identity"
+          }
+        }
+      }
+    },
+    "Signature locale, sans identité de développeur vérifiée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Local signature, without verified developer identity."
+          }
+        }
+      }
+    },
+    "signature non reconnue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unrecognized signature"
+          }
+        }
+      }
+    },
+    "Signée avec un certificat personnel, non reconnu par Apple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed with a personal certificate, not recognized by Apple"
+          }
+        }
+      }
+    },
+    "Signée et notarisée par Apple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed and notarized by Apple"
+          }
+        }
+      }
+    },
+    "Signée par" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed by"
+          }
+        }
+      }
+    },
+    "Signée par un développeur identifié, mais pas notarisée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed by an identified developer, but not notarized"
+          }
+        }
+      }
+    },
+    "SIP est activée avec une configuration personnalisée : certaines protections sont coupées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIP is on with a custom configuration: some protections are turned off."
+          }
+        }
+      }
+    },
+    "SIP, Gatekeeper, FileVault, XProtect, démarrage sécurisé…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SIP, Gatekeeper, FileVault, XProtect, secure boot…"
+          }
+        }
+      }
+    },
+    "softwareupdate n'a rien renvoyé (code %d)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "softwareupdate returned nothing (code %d)."
+          }
+        }
+      }
+    },
+    "Sombre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "Sparkle (automatiques)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sparkle (automatic)"
+          }
+        }
+      }
+    },
+    "Suppression impossible : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't delete: %@"
+          }
+        }
+      }
+    },
+    "Suppressions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deletions"
+          }
+        }
+      }
+    },
+    "Supprimé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deleted"
+          }
+        }
+      }
+    },
+    "Supprime les anciennes versions et les téléchargements en cache." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removes old versions and cached downloads."
+          }
+        }
+      }
+    },
+    "Supprime les doublons et les apps disparues du menu « Ouvrir avec » et de « Choisir une app »." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removes duplicates and vanished apps from the “Open With” and “Choose Application” menus."
+          }
+        }
+      }
+    },
+    "Supprimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Supprimer %lld entrées ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete %lld entries?"
+          }
+        }
+      }
+    },
+    "Supprimer %lld instantanés ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete %lld snapshots?"
+          }
+        }
+      }
+    },
+    "Supprimer cet instantané ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this snapshot?"
+          }
+        }
+      }
+    },
+    "Supprimer cette entrée ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete this entry?"
+          }
+        }
+      }
+    },
+    "Supprimer l'hôte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete host"
+          }
+        }
+      }
+    },
+    "Supprimer l'hôte « %@ » ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete host “%@”?"
+          }
+        }
+      }
+    },
+    "Supprimer la sélection" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete selection"
+          }
+        }
+      }
+    },
+    "Supprimer les %lld…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete the %lld…"
+          }
+        }
+      }
+    },
+    "Supprimer tous les instantanés locaux ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all local snapshots?"
+          }
+        }
+      }
+    },
+    "Supprimer toutes les clés d'un hôte :" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all keys of a host:"
+          }
+        }
+      }
+    },
+    "Supprimer…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete…"
+          }
+        }
+      }
+    },
+    "supprimés" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "deleted"
+          }
+        }
+      }
+    },
+    "Sur modification" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On change"
+          }
+        }
+      }
+    },
+    "Sur secteur" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On power"
+          }
+        }
+      }
+    },
+    "Surveillance de la sécurité du système (Endpoint Security)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System security monitoring (Endpoint Security)"
+          }
+        }
+      }
+    },
+    "Swap" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swap"
+          }
+        }
+      }
+    },
+    "Système (root)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System (root)"
+          }
+        }
+      }
+    },
+    "Système Apple" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple system"
+          }
+        }
+      }
+    },
+    "Tableau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Table"
+          }
+        }
+      }
+    },
+    "Taille" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Size"
+          }
+        }
+      }
+    },
+    "Téléchargée" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloaded"
+          }
+        }
+      }
+    },
+    "Température" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperature"
+          }
+        }
+      }
+    },
+    "Terminal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminal"
+          }
+        }
+      }
+    },
+    "Terminal : [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) (MIT) · Mises à jour : [Sparkle](https://sparkle-project.org) (MIT)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminal: [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) (MIT) · Updates: [Sparkle](https://sparkle-project.org) (MIT)"
+          }
+        }
+      }
+    },
+    "Terminé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "Tes sauvegardes sur le disque Time Machine ne sont pas touchées. Seules les copies gardées sur ce Mac sont supprimées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your backups on the Time Machine disk aren't touched. Only the copies kept on this Mac are deleted."
+          }
+        }
+      }
+    },
+    "Tes sauvegardes sur le disque Time Machine ne sont pas touchées. Tu perds seulement la possibilité de restaurer ces états-là sans le disque de sauvegarde." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your backups on the Time Machine disk aren't touched. You only lose the ability to restore these states without the backup disk."
+          }
+        }
+      }
+    },
+    "Tester la connexion" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test connection"
+          }
+        }
+      }
+    },
+    "Texte" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
+          }
+        }
+      }
+    },
+    "TextEdit : texte brut par défaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "TextEdit: plain text by default"
+          }
+        }
+      }
+    },
+    "Time Machine garde ces instantanés sur le Mac entre deux sauvegardes. macOS les supprime de lui-même quand la place manque, mais ils occupent de l'espace d'ici là." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Machine keeps these snapshots on the Mac between backups. macOS deletes them on its own when space runs low, but they take up space until then."
+          }
+        }
+      }
+    },
+    "Time Machine n'en garde aucun sur ce Mac en ce moment." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Machine isn't keeping any on this Mac right now."
+          }
+        }
+      }
+    },
+    "Touch ID / Face ID" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch ID / Face ID"
+          }
+        }
+      }
+    },
+    "Tous les instantanés locaux ont été supprimés." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All local snapshots were deleted."
+          }
+        }
+      }
+    },
+    "Tous les utilisateurs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All users"
+          }
+        }
+      }
+    },
+    "Tout" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        }
+      }
+    },
+    "Tout est à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything is up to date"
+          }
+        }
+      }
+    },
+    "Tout est en ordre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everything is fine"
+          }
+        }
+      }
+    },
+    "Tout le Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Whole Mac"
+          }
+        }
+      }
+    },
+    "Tout mettre à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update all"
+          }
+        }
+      }
+    },
+    "Tout ouvrir avec…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open all with…"
+          }
+        }
+      }
+    },
+    "Tout supprimer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all"
+          }
+        }
+      }
+    },
+    "Tout supprimer…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all…"
+          }
+        }
+      }
+    },
+    "Tout vérifier" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check all"
+          }
+        }
+      }
+    },
+    "Toutes extensions noyau autorisées : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All kernel extensions allowed: %@"
+          }
+        }
+      }
+    },
+    "Toutes les %lld h" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every %lld h"
+          }
+        }
+      }
+    },
+    "Toutes les %lld min" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every %lld min"
+          }
+        }
+      }
+    },
+    "Toutes les %lld s" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every %lld s"
+          }
+        }
+      }
+    },
+    "Toutes les interfaces" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All interfaces"
+          }
+        }
+      }
+    },
+    "Traceroute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traceroute"
+          }
+        }
+      }
+    },
+    "Tu retrouveras ces réglages dans Octopus › Réglages › Autorisations." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You'll find these settings in Octopus › Settings › Permissions."
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
+    },
+    "Type de clé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key type"
+          }
+        }
+      }
+    },
+    "Type, extension ou app" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type, extension or app"
+          }
+        }
+      }
+    },
+    "Un hôte de ~/.ssh/config" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A host from ~/.ssh/config"
+          }
+        }
+      }
+    },
+    "Une ancienne copie de %@, laissée par une mise à jour interrompue, empêche Homebrew de mettre l'app de côté (« It seems there is already an App at… »)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An old copy of %@, left by an interrupted update, prevents Homebrew from moving the app aside (“It seems there is already an App at…”)."
+          }
+        }
+      }
+    },
+    "Une autre adresse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another address"
+          }
+        }
+      }
+    },
+    "Une clé porte déjà ce nom : choisis-en un autre." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A key already has this name: choose another one."
+          }
+        }
+      }
+    },
+    "Une entrée désactivée est conservée en commentaire. Les entrées de macOS (localhost) sont verrouillées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A disabled entry is kept as a comment. macOS entries (localhost) are locked."
+          }
+        }
+      }
+    },
+    "Une interface pour Mole : nettoyage, apps et état du Mac." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An interface for Mole: cleanup, apps and Mac status."
+          }
+        }
+      }
+    },
+    "Une interface pour Mole, et une boîte à outils pour ton Mac : nettoyage, apps, sécurité, SSH, réseau." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An interface for Mole, and a toolbox for your Mac: cleanup, apps, security, SSH, network."
+          }
+        }
+      }
+    },
+    "Une option dangereuse est cochée : les fichiers ne passeront pas forcément par la Corbeille." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A dangerous option is checked: files won't necessarily go through the Trash."
+          }
+        }
+      }
+    },
+    "Une option par ligne, par exemple « ServerAliveInterval 60 ». Conservées telles quelles." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One option per line, for example “ServerAliveInterval 60”. Kept as they are."
+          }
+        }
+      }
+    },
+    "Universelle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Universal"
+          }
+        }
+      }
+    },
+    "Utile après un changement de DNS ou de /etc/hosts." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Useful after a DNS or /etc/hosts change."
+          }
+        }
+      }
+    },
+    "Utilisateur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
+          }
+        }
+      }
+    },
+    "Utilisateur (User)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User (User)"
+          }
+        }
+      }
+    },
+    "utilisateur@192.168.1.10" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "user@192.168.1.10"
+          }
+        }
+      }
+    },
+    "Utilisation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usage"
+          }
+        }
+      }
+    },
+    "Valeur fixée par une autre app (DockDoor, par exemple, masque ainsi le Dock). La modifier peut perturber cette app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Value set by another app (DockDoor, for example, hides the Dock this way). Changing it may disrupt that app."
+          }
+        }
+      }
+    },
+    "Vérification en cours…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checking…"
+          }
+        }
+      }
+    },
+    "Vérification incomplète" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incomplete check"
+          }
+        }
+      }
+    },
+    "Vérifications" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checks"
+          }
+        }
+      }
+    },
+    "Vérifications de sécurité inspirées de [SilentKnight](https://eclecticlight.co/lockrattler-systhist/) (Howard Oakley)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Security checks inspired by [SilentKnight](https://eclecticlight.co/lockrattler-systhist/) (Howard Oakley)."
+          }
+        }
+      }
+    },
+    "Vérifié à %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checked at %@"
+          }
+        }
+      }
+    },
+    "Vérifie l'installation de Homebrew et signale les problèmes de configuration." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checks the Homebrew installation and reports configuration problems."
+          }
+        }
+      }
+    },
+    "Vérifier sur iCloud" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check on iCloud"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "Version %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@"
+          }
+        }
+      }
+    },
+    "Version %@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@ (%@)"
+          }
+        }
+      }
+    },
+    "Version %@ disponible" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@ available"
+          }
+        }
+      }
+    },
+    "Vide les caches disque en mémoire (purge). Rarement utile : macOS les réutilise de lui-même." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empties the disk caches in memory (purge). Rarely useful: macOS reuses them on its own."
+          }
+        }
+      }
+    },
+    "Vidéo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video"
+          }
+        }
+      }
+    },
+    "Vider le cache DNS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flush DNS cache"
+          }
+        }
+      }
+    },
+    "Virtualisation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Virtualization"
+          }
+        }
+      }
+    },
+    "Voir le plist" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View plist"
+          }
+        }
+      }
+    },
+    "Volume système signé (SSV)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed system volume (SSV)"
+          }
+        }
+      }
+    },
+    "Volumes amovibles" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Removable volumes"
+          }
+        }
+      }
+    },
+    "Volumes réseau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network volumes"
+          }
+        }
+      }
+    },
+    "Vue" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View"
+          }
+        }
+      }
+    },
+    "Vue graphique ou commande dans le terminal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Graphical view or command in the terminal"
+          }
+        }
+      }
+    },
+    "XProtect à jour ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XProtect up to date?"
+          }
+        }
+      }
+    },
+    "XProtect Remediator" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "XProtect Remediator"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

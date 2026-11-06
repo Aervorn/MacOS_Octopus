@@ -107,7 +107,7 @@ final class TweaksStore {
     private func write(_ tweak: Tweak, _ value: [String]) async {
         let result = await SystemCommand.run("/usr/bin/defaults", ["write", tweak.domain, tweak.key] + value)
         guard result.succeeded else {
-            message = "Échec : " + result.output.trimmingCharacters(in: .whitespacesAndNewlines)
+            message = String(localized: "Échec : ") + result.output.trimmingCharacters(in: .whitespacesAndNewlines)
             return
         }
         await finish(tweak)
@@ -116,9 +116,9 @@ final class TweaksStore {
     private func finish(_ tweak: Tweak) async {
         if tweak.relaunch != .none {
             _ = await SystemCommand.run("/usr/bin/killall", [tweak.relaunch.rawValue])
-            message = "« \(tweak.title) » appliqué (\(tweak.relaunch.rawValue) relancé)."
+            message = String(localized: "« \(tweak.title) » appliqué (\(tweak.relaunch.rawValue) relancé).")
         } else {
-            message = "« \(tweak.title) » appliqué. Certaines apps doivent être relancées pour en tenir compte."
+            message = String(localized: "« \(tweak.title) » appliqué. Certaines apps doivent être relancées pour en tenir compte.")
         }
         reload()
     }
@@ -132,21 +132,21 @@ final class TweaksStore {
 
         var title: String {
             switch self {
-            case .relaunchFinder: "Relancer le Finder"
-            case .relaunchDock: "Relancer le Dock"
-            case .launchServices: "Reconstruire « Ouvrir avec »"
-            case .spotlight: "Réindexer Spotlight"
-            case .purgeMemory: "Libérer la mémoire inactive"
+            case .relaunchFinder: String(localized: "Relancer le Finder")
+            case .relaunchDock: String(localized: "Relancer le Dock")
+            case .launchServices: String(localized: "Reconstruire « Ouvrir avec »")
+            case .spotlight: String(localized: "Réindexer Spotlight")
+            case .purgeMemory: String(localized: "Libérer la mémoire inactive")
             }
         }
 
         var detail: String {
             switch self {
-            case .relaunchFinder: "Quand le Finder ne se rafraîchit plus ou se fige."
-            case .relaunchDock: "Quand le Dock ou Mission Control se comportent bizarrement."
-            case .launchServices: "Supprime les doublons et les apps disparues du menu « Ouvrir avec » et de « Choisir une app »."
-            case .spotlight: "Efface puis reconstruit l'index du disque système. La recherche est incomplète pendant quelques dizaines de minutes."
-            case .purgeMemory: "Vide les caches disque en mémoire (purge). Rarement utile : macOS les réutilise de lui-même."
+            case .relaunchFinder: String(localized: "Quand le Finder ne se rafraîchit plus ou se fige.")
+            case .relaunchDock: String(localized: "Quand le Dock ou Mission Control se comportent bizarrement.")
+            case .launchServices: String(localized: "Supprime les doublons et les apps disparues du menu « Ouvrir avec » et de « Choisir une app ».")
+            case .spotlight: String(localized: "Efface puis reconstruit l'index du disque système. La recherche est incomplète pendant quelques dizaines de minutes.")
+            case .purgeMemory: String(localized: "Vide les caches disque en mémoire (purge). Rarement utile : macOS les réutilise de lui-même.")
             }
         }
 
@@ -182,7 +182,7 @@ final class TweaksStore {
                 let result = await SystemCommand.run("/bin/sh", ["-c", action.command])
                 guard result.succeeded else { throw PrivilegedShell.Failure.failed(result.output) }
             }
-            message = "« \(action.title) » : terminé."
+            message = String(localized: "« \(action.title) » : terminé.")
         } catch {
             message = error.localizedDescription
         }
@@ -192,66 +192,66 @@ final class TweaksStore {
 
     static let catalog: [TweakGroup] = [
         TweakGroup(id: "finder", title: "Finder", symbol: "folder", tweaks: [
-            Tweak(id: "hidden", title: "Afficher les fichiers cachés", detail: "Raccourci dans le Finder : ⌘⇧.",
+            Tweak(id: "hidden", title: String(localized: "Afficher les fichiers cachés"), detail: String(localized: "Raccourci dans le Finder : ⌘⇧."),
                   domain: "com.apple.finder", key: "AppleShowAllFiles", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "extensions", title: "Afficher toutes les extensions de fichiers",
+            Tweak(id: "extensions", title: String(localized: "Afficher toutes les extensions de fichiers"),
                   domain: "NSGlobalDomain", key: "AppleShowAllExtensions", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "pathbar", title: "Afficher la barre du chemin",
+            Tweak(id: "pathbar", title: String(localized: "Afficher la barre du chemin"),
                   domain: "com.apple.finder", key: "ShowPathbar", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "statusbar", title: "Afficher la barre d'état",
+            Tweak(id: "statusbar", title: String(localized: "Afficher la barre d'état"),
                   domain: "com.apple.finder", key: "ShowStatusBar", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "posixtitle", title: "Chemin complet dans le titre des fenêtres",
+            Tweak(id: "posixtitle", title: String(localized: "Chemin complet dans le titre des fenêtres"),
                   domain: "com.apple.finder", key: "_FXShowPosixPathInTitle", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "foldersfirst", title: "Dossiers en premier dans les listes",
+            Tweak(id: "foldersfirst", title: String(localized: "Dossiers en premier dans les listes"),
                   domain: "com.apple.finder", key: "_FXSortFoldersFirst", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "extwarning", title: "Avertir quand on change une extension",
+            Tweak(id: "extwarning", title: String(localized: "Avertir quand on change une extension"),
                   domain: "com.apple.finder", key: "FXEnableExtensionChangeWarning", kind: .toggle(defaultValue: true), relaunch: .finder),
         ]),
         TweakGroup(id: "dsstore", title: "Fichiers .DS_Store", symbol: "doc.badge.gearshape", tweaks: [
-            Tweak(id: "dsnetwork", title: "Ne pas en créer sur les volumes réseau",
-                  detail: "Évite d'encombrer les partages du NAS avec des fichiers .DS_Store.",
+            Tweak(id: "dsnetwork", title: String(localized: "Ne pas en créer sur les volumes réseau"),
+                  detail: String(localized: "Évite d'encombrer les partages du NAS avec des fichiers .DS_Store."),
                   domain: "com.apple.desktopservices", key: "DSDontWriteNetworkStores", kind: .toggle(defaultValue: false), relaunch: .finder),
-            Tweak(id: "dsusb", title: "Ne pas en créer sur les disques USB",
+            Tweak(id: "dsusb", title: String(localized: "Ne pas en créer sur les disques USB"),
                   domain: "com.apple.desktopservices", key: "DSDontWriteUSBStores", kind: .toggle(defaultValue: false), relaunch: .finder),
         ]),
-        TweakGroup(id: "screenshots", title: "Captures d'écran", symbol: "camera.viewfinder", tweaks: [
-            Tweak(id: "shotformat", title: "Format",
+        TweakGroup(id: "screenshots", title: String(localized: "Captures d'écran"), symbol: "camera.viewfinder", tweaks: [
+            Tweak(id: "shotformat", title: String(localized: "Format"),
                   domain: "com.apple.screencapture", key: "type",
                   kind: .choice([("PNG", "png"), ("JPEG", "jpg"), ("HEIC", "heic"), ("PDF", "pdf"), ("TIFF", "tiff")], defaultValue: "png"),
                   relaunch: .systemUIServer),
-            Tweak(id: "shotlocation", title: "Dossier d'enregistrement",
+            Tweak(id: "shotlocation", title: String(localized: "Dossier d'enregistrement"),
                   domain: "com.apple.screencapture", key: "location",
                   kind: .folder(defaultValue: NSHomeDirectory() + "/Desktop"), relaunch: .systemUIServer),
-            Tweak(id: "shotshadow", title: "Ombre autour des fenêtres capturées",
+            Tweak(id: "shotshadow", title: String(localized: "Ombre autour des fenêtres capturées"),
                   domain: "com.apple.screencapture", key: "disable-shadow",
                   kind: .toggle(defaultValue: false, inverted: true), relaunch: .systemUIServer),
-            Tweak(id: "shotdate", title: "Date et heure dans le nom du fichier",
+            Tweak(id: "shotdate", title: String(localized: "Date et heure dans le nom du fichier"),
                   domain: "com.apple.screencapture", key: "include-date", kind: .toggle(defaultValue: true), relaunch: .systemUIServer),
         ]),
         TweakGroup(id: "dock", title: "Dock", symbol: "dock.rectangle", tweaks: [
-            Tweak(id: "dockdelay", title: "Délai avant l'apparition (masquage auto)",
-                  detail: "0 : le Dock apparaît dès que la souris touche le bord.",
+            Tweak(id: "dockdelay", title: String(localized: "Délai avant l'apparition (masquage auto)"),
+                  detail: String(localized: "0 : le Dock apparaît dès que la souris touche le bord."),
                   domain: "com.apple.dock", key: "autohide-delay",
                   kind: .number(defaultValue: 0.5, range: 0...2, step: 0.1, unit: "s"), relaunch: .dock),
-            Tweak(id: "dockanim", title: "Durée de l'animation (masquage auto)",
+            Tweak(id: "dockanim", title: String(localized: "Durée de l'animation (masquage auto)"),
                   domain: "com.apple.dock", key: "autohide-time-modifier",
                   kind: .number(defaultValue: 0.5, range: 0...2, step: 0.1, unit: "s"), relaunch: .dock),
-            Tweak(id: "dockrecents", title: "Afficher les apps récentes",
+            Tweak(id: "dockrecents", title: String(localized: "Afficher les apps récentes"),
                   domain: "com.apple.dock", key: "show-recents", kind: .toggle(defaultValue: true), relaunch: .dock),
-            Tweak(id: "dockstatic", title: "N'afficher que les apps ouvertes",
+            Tweak(id: "dockstatic", title: String(localized: "N'afficher que les apps ouvertes"),
                   domain: "com.apple.dock", key: "static-only", kind: .toggle(defaultValue: false), relaunch: .dock),
-            Tweak(id: "dockhidden", title: "Icônes translucides pour les apps masquées",
+            Tweak(id: "dockhidden", title: String(localized: "Icônes translucides pour les apps masquées"),
                   domain: "com.apple.dock", key: "showhidden", kind: .toggle(defaultValue: false), relaunch: .dock),
         ]),
-        TweakGroup(id: "misc", title: "Divers", symbol: "slider.horizontal.3", tweaks: [
-            Tweak(id: "savepanel", title: "Fenêtres d'enregistrement développées par défaut",
+        TweakGroup(id: "misc", title: String(localized: "Divers"), symbol: "slider.horizontal.3", tweaks: [
+            Tweak(id: "savepanel", title: String(localized: "Fenêtres d'enregistrement développées par défaut"),
                   domain: "NSGlobalDomain", key: "NSNavPanelExpandedStateForSaveMode", kind: .toggle(defaultValue: false)),
-            Tweak(id: "printpanel", title: "Fenêtres d'impression développées par défaut",
+            Tweak(id: "printpanel", title: String(localized: "Fenêtres d'impression développées par défaut"),
                   domain: "NSGlobalDomain", key: "PMPrintingExpandedStateForPrint", kind: .toggle(defaultValue: false)),
-            Tweak(id: "textedit", title: "TextEdit : texte brut par défaut",
+            Tweak(id: "textedit", title: String(localized: "TextEdit : texte brut par défaut"),
                   domain: "com.apple.TextEdit", key: "RichText", kind: .toggle(defaultValue: true, inverted: true)),
-            Tweak(id: "presshold", title: "Maintenir une touche pour la répéter (au lieu des accents)",
-                  detail: "Pris en compte par les apps relancées après le changement.",
+            Tweak(id: "presshold", title: String(localized: "Maintenir une touche pour la répéter (au lieu des accents)"),
+                  detail: String(localized: "Pris en compte par les apps relancées après le changement."),
                   domain: "NSGlobalDomain", key: "ApplePressAndHoldEnabled", kind: .toggle(defaultValue: true, inverted: true)),
         ]),
     ]

@@ -41,6 +41,7 @@ targets:
       properties:
         CFBundleDisplayName: Octopus
         CFBundleDevelopmentRegion: fr
+        CFBundleLocalizations: [fr, en]
         CFBundleShortVersionString: "$(MARKETING_VERSION)"
         CFBundleVersion: "$(CURRENT_PROJECT_VERSION)"
         LSApplicationCategoryType: public.app-category.utilities
@@ -59,6 +60,9 @@ targets:
         SPARKLE_PUBLIC_ED_KEY: "eZCHe74IeZ8DBTAY+tVftTLA2+kKJT3xD5e/QmhV2sE="
         # Icône : Octopus/AppIcon.icon (Icon Composer), calques générés par Design/IconComposer/make_layers.py
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # Traduction : Xcode remplit Resources/Localizable.xcstrings à chaque build (textes en français = clés)
+        SWIFT_EMIT_LOC_STRINGS: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
         # Signature locale ("Sign to Run Locally") : pas besoin de compte développeur
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Manual

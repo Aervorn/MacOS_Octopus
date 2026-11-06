@@ -63,11 +63,11 @@ final class SnapshotsStore {
         guard !items.isEmpty else { return }
         let commands = items.map { "/usr/bin/tmutil deletelocalsnapshots \(Shell.quote($0.dateStamp))" }
         await run(commands.joined(separator: "; "),
-                  success: items.count == 1 ? "Instantané supprimé." : "\(items.count) instantanés supprimés.")
+                  success: items.count == 1 ? String(localized: "Instantané supprimé.") : String(localized: "\(items.count) instantanés supprimés."))
     }
 
     func deleteAll() async {
-        await run("/usr/bin/tmutil deletelocalsnapshots /", success: "Tous les instantanés locaux ont été supprimés.")
+        await run("/usr/bin/tmutil deletelocalsnapshots /", success: String(localized: "Tous les instantanés locaux ont été supprimés."))
     }
 
     private func run(_ command: String, success: String) async {
@@ -76,7 +76,7 @@ final class SnapshotsStore {
             _ = try await PrivilegedShell.run(command)
             await reload()
             if let before, let after = purgeable, before > after {
-                message = success + " Environ \(Fmt.bytes(before - after)) libérés."
+                message = success + String(localized: " Environ \(Fmt.bytes(before - after)) libérés.")
             } else {
                 message = success
             }

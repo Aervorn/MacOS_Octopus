@@ -30,7 +30,7 @@ struct AboutView: View {
                 .textSelection(.enabled)
                 .padding(.top, 2)
 
-            Text("Une interface pour Mole, et une boîte à outils pour ton Mac : nettoyage, apps, sécurité, SSH, réseau.")
+            Text(String(localized: "Une interface pour Mole, et une boîte à outils pour ton Mac : nettoyage, apps, sécurité, SSH, réseau."))
                 .font(.callout)
                 .multilineTextAlignment(.center)
                 .fixedSize(horizontal: false, vertical: true)
@@ -40,7 +40,7 @@ struct AboutView: View {
             VStack(spacing: 6) {
                 HStack(spacing: 6) {
                     Image(systemName: "hammer.fill").foregroundStyle(.tint)
-                    Text("Propulsé par Mole").fontWeight(.semibold)
+                    Text(String(localized: "Propulsé par Mole")).fontWeight(.semibold)
                 }
                 Text("Outil de nettoyage et d'entretien en ligne de commande, par [tw93](https://github.com/tw93) (GPL-3.0).")
                     .font(.caption)
@@ -48,7 +48,7 @@ struct AboutView: View {
                     .multilineTextAlignment(.center)
                     .fixedSize(horizontal: false, vertical: true)
                 Link(destination: Self.moleURL) {
-                    Label("Mole sur GitHub", systemImage: "arrow.up.right.square")
+                    Label(String(localized: "Mole sur GitHub"), systemImage: "arrow.up.right.square")
                 }
                 .font(.callout)
             }
@@ -60,10 +60,10 @@ struct AboutView: View {
             Divider().padding(.vertical, 16)
 
             VStack(spacing: 6) {
-                Text("Créé par Aervorn, avec l'aide de Claude.")
+                Text(String(localized: "Créé par Aervorn, avec l'aide de Claude."))
                 Text("Terminal : [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) (MIT) · Mises à jour : [Sparkle](https://sparkle-project.org) (MIT)")
                 Text("Vérifications de sécurité inspirées de [SilentKnight](https://eclecticlight.co/lockrattler-systhist/) (Howard Oakley).")
-                Text("Octopus n'est affilié ni à Mole ni à ses auteurs : il utilise le Mole installé sur ton Mac.")
+                Text(String(localized: "Octopus n'est affilié ni à Mole ni à ses auteurs : il utilise le Mole installé sur ton Mac."))
                     .padding(.top, 4)
             }
             .font(.caption)
@@ -72,7 +72,7 @@ struct AboutView: View {
             .fixedSize(horizontal: false, vertical: true)
 
             Link(destination: Self.repositoryURL) {
-                Label("Code source d'Octopus sur GitHub", systemImage: "chevron.left.forwardslash.chevron.right")
+                Label(String(localized: "Code source d'Octopus sur GitHub"), systemImage: "chevron.left.forwardslash.chevron.right")
             }
             .font(.callout)
             .padding(.top, 14)
@@ -89,6 +89,6 @@ struct AboutMenuItem: View {
     @Environment(\.openWindow) private var openWindow
 
     var body: some View {
-        Button("À propos d'Octopus") { openWindow(id: AboutView.windowID) }
+        Button(String(localized: "À propos d'Octopus")) { openWindow(id: AboutView.windowID) }
     }
 }

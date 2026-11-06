@@ -112,7 +112,7 @@ final class SecurityChecker {
         } else {
             updates = nil
             updatesError = result.output.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                ? "softwareupdate n'a rien renvoyé (code \(result.status))."
+                ? String(localized: "softwareupdate n'a rien renvoyé (code \(result.status)).")
                 : result.output.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
@@ -121,35 +121,35 @@ final class SecurityChecker {
 
     private static func sip() async -> SecurityCheck {
         let out = await SystemCommand.run("/usr/bin/csrutil", ["status"]).output.lowercased()
-        var check = SecurityCheck(id: "sip", title: "Protection de l'intégrité du système (SIP)",
-                                  symbol: "lock.shield", level: .unknown, value: "Inconnue")
+        var check = SecurityCheck(id: "sip", title: String(localized: "Protection de l'intégrité du système (SIP)"),
+                                  symbol: "lock.shield", level: .unknown, value: String(localized: "Inconnue"))
         if out.contains("status: enabled") {
             check.level = .good
-            check.value = "Activée"
+            check.value = String(localized: "Activée")
             if out.contains("custom configuration") || out.contains("disabled") {
                 check.level = .warning
-                check.value = "Partielle"
-                check.detail = "SIP est activée avec une configuration personnalisée : certaines protections sont coupées."
+                check.value = String(localized: "Partielle")
+                check.detail = String(localized: "SIP est activée avec une configuration personnalisée : certaines protections sont coupées.")
             }
         } else if out.contains("status: disabled") {
             check.level = .bad
-            check.value = "Désactivée"
-            check.detail = "Réactive-la depuis la récupération macOS avec « csrutil enable »."
+            check.value = String(localized: "Désactivée")
+            check.detail = String(localized: "Réactive-la depuis la récupération macOS avec « csrutil enable ».")
         }
         return check
     }
 
     private static func signedSystemVolume() async -> SecurityCheck {
         let out = await SystemCommand.run("/usr/bin/csrutil", ["authenticated-root", "status"]).output.lowercased()
-        var check = SecurityCheck(id: "ssv", title: "Volume système signé (SSV)",
-                                  symbol: "checkmark.seal", level: .unknown, value: "Inconnu")
+        var check = SecurityCheck(id: "ssv", title: String(localized: "Volume système signé (SSV)"),
+                                  symbol: "checkmark.seal", level: .unknown, value: String(localized: "Inconnu"))
         if out.contains("enabled") {
             check.level = .good
-            check.value = "Activé"
+            check.value = String(localized: "Activé")
         } else if out.contains("disabled") {
             check.level = .bad
-            check.value = "Désactivé"
-            check.detail = "Le volume système n'est plus vérifié cryptographiquement au démarrage."
+            check.value = String(localized: "Désactivé")
+            check.detail = String(localized: "Le volume système n'est plus vérifié cryptographiquement au démarrage.")
         }
         return check
     }
@@ -157,14 +157,14 @@ final class SecurityChecker {
     private static func gatekeeper() async -> SecurityCheck {
         let out = await SystemCommand.run("/usr/sbin/spctl", ["--status"]).output.lowercased()
         var check = SecurityCheck(id: "gatekeeper", title: "Gatekeeper",
-                                  symbol: "hand.raised", level: .unknown, value: "Inconnu")
+                                  symbol: "hand.raised", level: .unknown, value: String(localized: "Inconnu"))
         if out.contains("assessments enabled") {
             check.level = .good
-            check.value = "Activé"
+            check.value = String(localized: "Activé")
         } else if out.contains("assessments disabled") {
             check.level = .bad
-            check.value = "Désactivé"
-            check.detail = "Les apps téléchargées ne sont plus vérifiées avant leur ouverture."
+            check.value = String(localized: "Désactivé")
+            check.detail = String(localized: "Les apps téléchargées ne sont plus vérifiées avant leur ouverture.")
         }
         return check
     }
@@ -172,18 +172,18 @@ final class SecurityChecker {
     private static func fileVault() async -> SecurityCheck {
         let out = await SystemCommand.run("/usr/bin/fdesetup", ["status"]).output
         var check = SecurityCheck(id: "filevault", title: "FileVault",
-                                  symbol: "lock.doc", level: .unknown, value: "Inconnu")
+                                  symbol: "lock.doc", level: .unknown, value: String(localized: "Inconnu"))
         if out.contains("FileVault is On") {
             check.level = .good
-            check.value = "Activé"
+            check.value = String(localized: "Activé")
         } else if out.contains("FileVault is Off") {
             check.level = .warning
-            check.value = "Désactivé"
-            check.detail = "Le disque n'est pas chiffré : quelqu'un qui a ton Mac en main peut lire tes fichiers."
+            check.value = String(localized: "Désactivé")
+            check.detail = String(localized: "Le disque n'est pas chiffré : quelqu'un qui a ton Mac en main peut lire tes fichiers.")
         }
         if out.contains("Encryption in progress") || out.contains("Decryption in progress") {
             check.level = .info
-            check.value = "En cours"
+            check.value = String(localized: "En cours")
             check.detail = out.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         return check
@@ -193,14 +193,14 @@ final class SecurityChecker {
         let out = await SystemCommand.run("/usr/libexec/ApplicationFirewall/socketfilterfw", ["--getglobalstate"])
             .output.lowercased()
         var check = SecurityCheck(id: "firewall", title: "Coupe-feu",
-                                  symbol: "flame", level: .unknown, value: "Inconnu")
+                                  symbol: "flame", level: .unknown, value: String(localized: "Inconnu"))
         if out.contains("enabled") {
             check.level = .good
-            check.value = "Activé"
+            check.value = String(localized: "Activé")
         } else if out.contains("disabled") {
             check.level = .warning
-            check.value = "Désactivé"
-            check.detail = "À activer dans Réglages Système › Réseau › Coupe-feu, surtout sur un réseau public."
+            check.value = String(localized: "Désactivé")
+            check.detail = String(localized: "À activer dans Réglages Système › Réseau › Coupe-feu, surtout sur un réseau public.")
         }
         return check
     }
@@ -214,16 +214,16 @@ final class SecurityChecker {
         func enabled(_ key: String) -> Bool { (prefs[key] as? Bool) ?? true }
 
         var off: [String] = []
-        if !enabled("AutomaticCheckEnabled") { off.append("la recherche automatique") }
-        if !enabled("ConfigDataInstall") { off.append("les fichiers de sécurité (XProtect…)") }
-        if !enabled("CriticalUpdateInstall") { off.append("les réponses de sécurité") }
+        if !enabled("AutomaticCheckEnabled") { off.append(String(localized: "la recherche automatique")) }
+        if !enabled("ConfigDataInstall") { off.append(String(localized: "les fichiers de sécurité (XProtect…)")) }
+        if !enabled("CriticalUpdateInstall") { off.append(String(localized: "les réponses de sécurité")) }
 
-        var check = SecurityCheck(id: "autoupdate", title: "Mises à jour de sécurité automatiques",
-                                  symbol: "arrow.triangle.2.circlepath", level: .good, value: "Activées")
+        var check = SecurityCheck(id: "autoupdate", title: String(localized: "Mises à jour de sécurité automatiques"),
+                                  symbol: "arrow.triangle.2.circlepath", level: .good, value: String(localized: "Activées"))
         if !off.isEmpty {
             check.level = .warning
-            check.value = "Partielles"
-            check.detail = "Désactivé : \(off.joined(separator: ", ")). Réactive-les dans Réglages Système › Général › Mise à jour de logiciels."
+            check.value = String(localized: "Partielles")
+            check.detail = String(localized: "Désactivé : \(off.joined(separator: ", ")). Réactive-les dans Réglages Système › Général › Mise à jour de logiciels.")
         }
         return check
     }
@@ -234,7 +234,7 @@ final class SecurityChecker {
 
     private static func xprotect(history: [InstallRecord]) async -> SecurityCheck {
         var check = SecurityCheck(id: "xprotect", title: "XProtect",
-                                  symbol: "shield.lefthalf.filled", level: .good, value: "Inconnue")
+                                  symbol: "shield.lefthalf.filled", level: .good, value: String(localized: "Inconnue"))
         // macOS 15 et plus : `xprotect version` lit la copie réellement utilisée (/var/protected/xprotect)
         // « Version: 5371 Installed: 2026-11-03 20:20:43 +0000 »
         if FileManager.default.isExecutableFile(atPath: "/usr/bin/xprotect") {
@@ -250,10 +250,10 @@ final class SecurityChecker {
 
         let last = history.last(where: { $0.name.hasPrefix("XProtectPlistConfigData") || $0.name == "XProtectCloudKitUpdate" })
         if let last {
-            check.detail = "Mis à jour \(relative(last.date)) (\(last.name == "XProtectCloudKitUpdate" ? "par iCloud" : "par Mise à jour de logiciels"))"
+            check.detail = last.name == "XProtectCloudKitUpdate" ? String(localized: "Mis à jour \(relative(last.date)) (par iCloud)") : String(localized: "Mis à jour \(relative(last.date)) (par Mise à jour de logiciels)")
             if daysSince(last.date) > staleAfterDays {
                 check.level = .warning
-                check.detail! += ". Aucune mise à jour depuis plus de \(staleAfterDays) jours : lance « Vérifier sur iCloud »."
+                check.detail! += String(localized: ". Aucune mise à jour depuis plus de \(staleAfterDays) jours : lance « Vérifier sur iCloud ».")
             }
         } else if check.value == "Inconnue" {
             check.level = .unknown
@@ -262,14 +262,14 @@ final class SecurityChecker {
     }
 
     private static func xprotectRemediator(history: [InstallRecord]) -> SecurityCheck {
-        var check = SecurityCheck(id: "xpr", title: "XProtect Remediator",
-                                  symbol: "cross.case", level: .good, value: "Inconnue")
+        var check = SecurityCheck(id: "xpr", title: String(localized: "XProtect Remediator"),
+                                  symbol: "cross.case", level: .good, value: String(localized: "Inconnue"))
         if let version = bundleVersion("/Library/Apple/System/Library/CoreServices/XProtect.app") {
             check.value = version
         }
         if let last = history.last(where: { $0.name.hasPrefix("XProtectPayloads") }) {
             if check.value == "Inconnue", let version = last.version { check.value = version }
-            check.detail = "Mis à jour \(relative(last.date))"
+            check.detail = String(localized: "Mis à jour \(relative(last.date))")
         }
         if check.value == "Inconnue" { check.level = .unknown }
         return check
@@ -278,10 +278,10 @@ final class SecurityChecker {
     /// Règle de démarrage des Mac Apple Silicon (Informations système › Contrôleur), sans sudo.
     /// Renvoie la carte « Démarrage sécurisé » et la carte « Firmware ».
     private static func bootPolicy() async -> (SecurityCheck, SecurityCheck) {
-        var boot = SecurityCheck(id: "secureboot", title: "Démarrage sécurisé",
-                                 symbol: "power", level: .unknown, value: "Inconnu")
+        var boot = SecurityCheck(id: "secureboot", title: String(localized: "Démarrage sécurisé"),
+                                 symbol: "power", level: .unknown, value: String(localized: "Inconnu"))
         var firmware = SecurityCheck(id: "firmware", title: "Firmware",
-                                     symbol: "memorychip", level: .info, value: "Inconnu")
+                                     symbol: "memorychip", level: .info, value: String(localized: "Inconnu"))
 
         let bridge = await systemProfiler("SPiBridgeDataType")
         // Les valeurs sont dans la langue du Mac (« Activé », « Sécurité maximale »…)
@@ -290,13 +290,13 @@ final class SecurityChecker {
             let full = ["maximale", "full", "complète", "complete"].contains { secureBoot.lowercased().contains($0) }
             boot.level = full ? .good : .warning
             if !full {
-                boot.detail = "Le Mac démarre avec une sécurité réduite (souvent pour une extension noyau). À remettre en sécurité maximale depuis la récupération si ce n'est plus nécessaire."
+                boot.detail = String(localized: "Le Mac démarre avec une sécurité réduite (souvent pour une extension noyau). À remettre en sécurité maximale depuis la récupération si ce n'est plus nécessaire.")
             }
             var extras: [String] = []
-            if let ctrr = bridge["ibridge_sb_ctrr"] as? String { extras.append("Kernel CTRR : \(ctrr)") }
-            if let args = bridge["ibridge_sb_boot_args"] as? String { extras.append("Filtrage des arguments : \(args)") }
+            if let ctrr = bridge["ibridge_sb_ctrr"] as? String { extras.append(String(localized: "Kernel CTRR : \(ctrr)")) }
+            if let args = bridge["ibridge_sb_boot_args"] as? String { extras.append(String(localized: "Filtrage des arguments : \(args)")) }
             if let kext = bridge["ibridge_sb_other_kext"] as? String {
-                extras.append("Toutes extensions noyau autorisées : \(kext)")
+                extras.append(String(localized: "Toutes extensions noyau autorisées : \(kext)"))
                 if isAffirmative(kext) {
                     boot.level = max(boot.level, .warning)
                 }
@@ -314,7 +314,7 @@ final class SecurityChecker {
             if let bootROM = hardware["boot_rom_version"] as? String { firmware.value = bootROM }
             if boot.value == "Inconnu" {
                 boot.level = .info
-                boot.detail = "Non disponible sur ce Mac."
+                boot.detail = String(localized: "Non disponible sur ce Mac.")
             }
         }
         return (boot, firmware)
@@ -353,14 +353,14 @@ final class SecurityChecker {
         }
 
         guard sessions + checks > 0 else {
-            return (.info, "Aucune analyse dans le journal des 36 dernières heures.")
+            return (.info, String(localized: "Aucune analyse dans le journal des 36 dernières heures."))
         }
-        var summary = "36 dernières heures : \(sessions) séries d'analyses, \(checks) contrôles"
-        if failures > 0 { summary += ", \(failures) interrompus ou en erreur" }
+        var summary = String(localized: "36 dernières heures : \(sessions) séries d'analyses, \(checks) contrôles")
+        if failures > 0 { summary += String(localized: ", \(failures) interrompus ou en erreur") }
         if !threats.isEmpty {
-            return (.bad, summary + ".\nMenaces signalées : " + threats.joined(separator: ", "))
+            return (.bad, summary + String(localized: ".\nMenaces signalées : ") + threats.joined(separator: ", "))
         }
-        return (.good, summary + ", aucune menace.")
+        return (.good, summary + String(localized: ", aucune menace."))
     }
 
     // MARK: - Outils

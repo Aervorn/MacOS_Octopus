@@ -31,8 +31,8 @@ struct SecurityView: View {
             Button("Installer") { install(update) }
         } message: { update in
             Text(update.needsRestart
-                 ? "Cette mise à jour demande de redémarrer le Mac."
-                 : "L'installation demande ton mot de passe administrateur ou Touch ID.")
+                 ? String(localized: "Cette mise à jour demande de redémarrer le Mac.")
+                 : String(localized: "L'installation demande ton mot de passe administrateur ou Touch ID."))
         }
     }
 
@@ -46,13 +46,13 @@ struct SecurityView: View {
             VStack(alignment: .leading, spacing: 2) {
                 Text(headerTitle).font(.title2.bold())
                 if let date = checker.lastCheck {
-                    Text("Dernière vérification : \(date.formatted(date: .omitted, time: .shortened))")
+                    Text(String(localized: "Dernière vérification : \(date.formatted(date: .omitted, time: .shortened))"))
                         .foregroundStyle(.secondary)
                 }
             }
             Spacer()
             if checker.isChecking { ProgressView().controlSize(.small) }
-            Button("Tout vérifier", systemImage: "arrow.clockwise") {
+            Button(String(localized: "Tout vérifier"), systemImage: "arrow.clockwise") {
                 Task { await checkEverything(force: true) }
             }
             .disabled(checker.isChecking || checker.isListingUpdates)
@@ -60,11 +60,11 @@ struct SecurityView: View {
     }
 
     private var headerTitle: String {
-        if checker.checks.isEmpty { return "Vérification en cours…" }
+        if checker.checks.isEmpty { return String(localized: "Vérification en cours…") }
         switch checker.problemCount {
-        case 0: return "Tout est en ordre"
-        case 1: return "1 point à vérifier"
-        default: return "\(checker.problemCount) points à vérifier"
+        case 0: return String(localized: "Tout est en ordre")
+        case 1: return String(localized: "1 point à vérifier")
+        default: return String(localized: "\(checker.problemCount) points à vérifier")
         }
     }
 
@@ -80,16 +80,16 @@ struct SecurityView: View {
     // MARK: - XProtect
 
     private var xprotectActions: some View {
-        DashboardCard(title: "XProtect à jour ?", symbol: "icloud.and.arrow.down") {
-            Text("Depuis macOS 15, XProtect se met aussi à jour par iCloud. Ces commandes demandent les droits administrateur et s'exécutent dans le terminal.")
+        DashboardCard(title: String(localized: "XProtect à jour ?"), symbol: "icloud.and.arrow.down") {
+            Text(String(localized: "Depuis macOS 15, XProtect se met aussi à jour par iCloud. Ces commandes demandent les droits administrateur et s'exécutent dans le terminal."))
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
             HStack {
-                Button("Vérifier sur iCloud") {
+                Button(String(localized: "Vérifier sur iCloud")) {
                     run(title: "sudo xprotect check", "sudo /usr/bin/xprotect check")
                 }
-                Button("Mettre à jour XProtect") {
+                Button(String(localized: "Mettre à jour XProtect")) {
                     run(title: "sudo xprotect update", "sudo /usr/bin/xprotect update")
                 }
             }
@@ -100,17 +100,17 @@ struct SecurityView: View {
     // MARK: - Mises à jour
 
     private var updatesSection: some View {
-        DashboardCard(title: "Mises à jour en attente", symbol: "arrow.down.circle") {
+        DashboardCard(title: String(localized: "Mises à jour en attente"), symbol: "arrow.down.circle") {
             HStack {
-                Text("Interroge Apple : mises à jour de sécurité, données XProtect et versions de macOS.")
+                Text(String(localized: "Interroge Apple : mises à jour de sécurité, données XProtect et versions de macOS."))
                     .font(.callout)
                     .foregroundStyle(.secondary)
                 Spacer()
                 if checker.isListingUpdates {
                     ProgressView().controlSize(.small)
-                    Text("Recherche en cours…").font(.callout).foregroundStyle(.secondary)
+                    Text(String(localized: "Recherche en cours…")).font(.callout).foregroundStyle(.secondary)
                 }
-                Button(checker.updates == nil ? "Rechercher" : "Rechercher à nouveau") {
+                Button(checker.updates == nil ? "Rechercher" : String(localized: "Rechercher à nouveau")) {
                     Task { await checker.listUpdates(force: true) }
                 }
                 .disabled(checker.isListingUpdates)
@@ -120,7 +120,7 @@ struct SecurityView: View {
                 ErrorBanner(message: error) { Task { await checker.listUpdates(force: true) } }
             } else if let updates = checker.updates {
                 if updates.isEmpty {
-                    Label("Aucune mise à jour en attente", systemImage: "checkmark.circle.fill")
+                    Label(String(localized: "Aucune mise à jour en attente"), systemImage: "checkmark.circle.fill")
                         .foregroundStyle(.green)
                 }
                 ForEach(updates) { update in
@@ -130,14 +130,14 @@ struct SecurityView: View {
                             .frame(width: 18)
                         VStack(alignment: .leading, spacing: 1) {
                             Text(update.title)
-                            Text([update.version.map { "Version \($0)" }, update.needsRestart ? "redémarrage" : nil]
+                            Text([update.version.map { "Version \($0)" }, update.needsRestart ? String(localized: "redémarrage") : nil]
                                 .compactMap { $0 }.joined(separator: " · "))
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
                         if update.isMacOS {
-                            Button("Réglages Système") { openSoftwareUpdate() }
+                            Button(String(localized: "Réglages Système")) { openSoftwareUpdate() }
                         } else {
                             Button("Installer") { confirmingInstall = update }
                                 .disabled(session.isRunning)

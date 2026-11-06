@@ -25,7 +25,7 @@ struct Sidebar: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                SidebarRow(title: "Accueil", symbol: "house.fill", tint: .accentColor,
+                SidebarRow(title: String(localized: "Accueil"), symbol: "house.fill", tint: .accentColor,
                            isSelected: selection == ContentView.homeID) {
                     selection = ContentView.homeID
                 }

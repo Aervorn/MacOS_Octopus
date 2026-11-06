@@ -31,9 +31,9 @@ struct ListeningPort: Identifiable, Equatable {
 
     var addressSummary: String {
         if addresses.contains("*") || addresses.contains("[::]") || addresses.contains("0.0.0.0") {
-            return "Toutes les interfaces"
+            return String(localized: "Toutes les interfaces")
         }
-        return isLocalOnly ? "Local uniquement" : addresses.joined(separator: ", ")
+        return isLocalOnly ? String(localized: "Local uniquement") : addresses.joined(separator: ", ")
     }
 
     /// Port connu, pour donner une idée de ce que c'est.
@@ -42,15 +42,15 @@ struct ListeningPort: Identifiable, Equatable {
         case 22: "SSH"
         case 80, 8080, 8000, 8888: "HTTP"
         case 443, 8443: "HTTPS"
-        case 3000, 3001, 4200, 5173, 5174, 8081: "Serveur de dev"
+        case 3000, 3001, 4200, 5173, 5174, 8081: String(localized: "Serveur de dev")
         case 3306: "MySQL"
         case 5432: "PostgreSQL"
         case 6379: "Redis"
         case 27017: "MongoDB"
         case 5000, 7000: "AirPlay"
-        case 5900: "Partage d'écran"
-        case 445: "Partage de fichiers"
-        case 631: "Impression"
+        case 5900: String(localized: "Partage d'écran")
+        case 445: String(localized: "Partage de fichiers")
+        case 631: String(localized: "Impression")
         case 11434: "Ollama"
         default: nil
         }
@@ -181,9 +181,9 @@ final class PortScanner {
         if port.user != nil && port.user != NSUserName() {
             do {
                 _ = try await PrivilegedShell.run("/bin/kill -\(force ? "KILL" : "TERM") \(port.pid)")
-                message = "\(port.processName) (PID \(port.pid)) : arrêt demandé avec les droits administrateur."
+                message = String(localized: "\(port.processName) (PID \(port.pid)) : arrêt demandé avec les droits administrateur.")
             } catch {
-                message = "Impossible d'arrêter \(port.processName) : \(error.localizedDescription)"
+                message = String(localized: "Impossible d'arrêter \(port.processName) : \(error.localizedDescription)")
             }
             try? await Task.sleep(for: .milliseconds(600))
             await scan()
@@ -191,13 +191,13 @@ final class PortScanner {
         }
         if Darwin.kill(port.pid, force ? SIGKILL : SIGTERM) == 0 {
             message = force
-                ? "\(port.processName) (PID \(port.pid)) a été arrêté de force."
-                : "Demande d'arrêt envoyée à \(port.processName) (PID \(port.pid))."
+                ? String(localized: "\(port.processName) (PID \(port.pid)) a été arrêté de force.")
+                : String(localized: "Demande d'arrêt envoyée à \(port.processName) (PID \(port.pid)).")
         } else {
             let reason = errno == EPERM
-                ? "il appartient à un autre utilisateur"
+                ? String(localized: "il appartient à un autre utilisateur")
                 : String(cString: strerror(errno))
-            message = "Impossible d'arrêter \(port.processName) : \(reason)."
+            message = String(localized: "Impossible d'arrêter \(port.processName) : \(reason).")
         }
         try? await Task.sleep(for: .milliseconds(600))
         await scan()

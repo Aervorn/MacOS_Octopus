@@ -41,8 +41,8 @@ struct AnalyzeView: View {
                 ProgressView().controlSize(.small)
                 Button("Annuler") { capture?.cancel() }
             } else {
-                Button("Choisir un dossier…", systemImage: "folder") { chooseFolder() }
-                Button("Tout le Mac", systemImage: "desktopcomputer") { open(nil) }
+                Button(String(localized: "Choisir un dossier…"), systemImage: "folder") { chooseFolder() }
+                Button(String(localized: "Tout le Mac"), systemImage: "desktopcomputer") { open(nil) }
                 if !trail.isEmpty {
                     Button("Actualiser", systemImage: "arrow.clockwise") { load() }
                         .labelStyle(.iconOnly)
@@ -55,7 +55,7 @@ struct AnalyzeView: View {
 
     @ViewBuilder private var breadcrumb: some View {
         if let path = currentPath {
-            Text(path.map(displayPath) ?? "Tout le Mac")
+            Text(path.map(displayPath) ?? String(localized: "Tout le Mac"))
                 .font(.callout.monospaced())
                 .lineLimit(1)
                 .truncationMode(.head)
@@ -76,7 +76,7 @@ struct AnalyzeView: View {
                 .padding(14)
             Spacer()
         } else if isLoading && result == nil {
-            ProgressView("Analyse en cours… Cela peut prendre un moment pour un gros dossier.")
+            ProgressView(String(localized: "Analyse en cours… Cela peut prendre un moment pour un gros dossier."))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else if let result {
             results(result)
@@ -91,17 +91,17 @@ struct AnalyzeView: View {
             Image(systemName: "chart.pie")
                 .font(.system(size: 40))
                 .foregroundStyle(.tint)
-            Text("Où part l'espace disque ?").font(.title2.bold())
-            Text("Choisis ce que Mole doit analyser. L'analyse de tout le Mac peut prendre plusieurs minutes.")
+            Text(String(localized: "Où part l'espace disque ?")).font(.title2.bold())
+            Text(String(localized: "Choisis ce que Mole doit analyser. L'analyse de tout le Mac peut prendre plusieurs minutes."))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
             HStack {
-                Button("Mon dossier personnel") {
+                Button(String(localized: "Mon dossier personnel")) {
                     open(FileManager.default.homeDirectoryForCurrentUser.path)
                 }
                 .buttonStyle(.borderedProminent)
-                Button("Choisir un dossier…") { chooseFolder() }
-                Button("Tout le Mac") { open(nil) }
+                Button(String(localized: "Choisir un dossier…")) { chooseFolder() }
+                Button(String(localized: "Tout le Mac")) { open(nil) }
             }
         }
         .padding(40)
@@ -143,11 +143,11 @@ struct AnalyzeView: View {
 
     private func summary(_ result: MoleAnalysis) -> some View {
         HStack(spacing: 20) {
-            BigValue(value: Fmt.bytes(result.totalSize), caption: "au total")
+            BigValue(value: Fmt.bytes(result.totalSize), caption: String(localized: "au total"))
             BigValue(value: Fmt.integer(result.totalFiles), caption: "fichiers")
             Spacer()
             if result.scanStatus == .partial {
-                Label("Analyse partielle : certains dossiers protégés n'ont pas pu être lus.",
+                Label(String(localized: "Analyse partielle : certains dossiers protégés n'ont pas pu être lus."),
                       systemImage: "info.circle")
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -160,7 +160,7 @@ struct AnalyzeView: View {
 
     private func largeFiles(_ files: [MoleAnalysis.LargeFile]) -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Gros fichiers")
+            Text(String(localized: "Gros fichiers"))
                 .font(.headline)
                 .padding(14)
             Divider()
@@ -179,8 +179,8 @@ struct AnalyzeView: View {
                 }
                 .frame(height: 36)
                 .contextMenu {
-                    Button("Afficher dans le Finder") { Finder.reveal(file.path) }
-                    Button("Copier le chemin") { Finder.copy(file.path) }
+                    Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(file.path) }
+                    Button(String(localized: "Copier le chemin")) { Finder.copy(file.path) }
                 }
             }
         }
@@ -189,10 +189,10 @@ struct AnalyzeView: View {
     @ViewBuilder
     private func menu(for entry: MoleAnalysis.Entry) -> some View {
         if entry.isDir && !entry.isSymlink {
-            Button("Analyser ce dossier") { open(entry.path) }
+            Button(String(localized: "Analyser ce dossier")) { open(entry.path) }
         }
-        Button("Afficher dans le Finder") { Finder.reveal(entry.path) }
-        Button("Copier le chemin") { Finder.copy(entry.path) }
+        Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(entry.path) }
+        Button(String(localized: "Copier le chemin")) { Finder.copy(entry.path) }
     }
 
     // MARK: - Navigation
@@ -240,7 +240,7 @@ struct AnalyzeView: View {
                 // Annulé (nouvelle analyse ou bouton Annuler) : on garde l'affichage précédent
             } catch {
                 guard self.capture === capture else { return }
-                errorMessage = "L'analyse a échoué : \(error.localizedDescription)"
+                errorMessage = String(localized: "L'analyse a échoué : \(error.localizedDescription)")
             }
             if self.capture === capture {
                 isLoading = false
@@ -273,7 +273,7 @@ private struct EntryRow: View {
                 Image(systemName: "lock")
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                    .help("Analyse partielle : une partie du contenu est protégée")
+                    .help(String(localized: "Analyse partielle : une partie du contenu est protégée"))
             }
             GeometryReader { proxy in
                 Capsule()

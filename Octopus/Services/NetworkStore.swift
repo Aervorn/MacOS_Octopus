@@ -60,14 +60,14 @@ final class NetworkStore {
         let six = await v6
         // api6 renvoie l'IPv4 quand il n'y a pas de connectivité IPv6
         publicIPv6 = six?.contains(":") == true ? six : nil
-        if publicIPv4 == nil && publicIPv6 == nil { message = "IP publique introuvable (pas de connexion Internet ?)" }
+        if publicIPv4 == nil && publicIPv6 == nil { message = String(localized: "IP publique introuvable (pas de connexion Internet ?)") }
     }
 
     /// Vide le cache DNS de macOS (droits administrateur, Touch ID si activé pour sudo).
     func flushDNS() async {
         do {
             _ = try await PrivilegedShell.run("/usr/bin/dscacheutil -flushcache; /usr/bin/killall -HUP mDNSResponder")
-            message = "Cache DNS vidé."
+            message = String(localized: "Cache DNS vidé.")
         } catch {
             message = error.localizedDescription
         }
@@ -304,7 +304,7 @@ final class HostsStore {
                 "/usr/bin/dscacheutil -flushcache",
                 "/usr/bin/killall -HUP mDNSResponder",
             ].joined(separator: " && "))
-            message = "Enregistré (copie de l'ancien fichier : /etc/hosts.octopus-backup) et cache DNS vidé."
+            message = String(localized: "Enregistré (copie de l'ancien fichier : /etc/hosts.octopus-backup) et cache DNS vidé.")
             reload()
         } catch {
             message = error.localizedDescription

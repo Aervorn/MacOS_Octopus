@@ -283,7 +283,7 @@ final class SSHConfigStore {
             try fm.setAttributes([.posixPermissions: 0o600], ofItemAtPath: Self.url.path)
             reload()
         } catch {
-            errorMessage = "Enregistrement impossible : \(error.localizedDescription)"
+            errorMessage = String(localized: "Enregistrement impossible : \(error.localizedDescription)")
         }
     }
 
@@ -300,10 +300,10 @@ final class SSHConfigStore {
 
         var label: String {
             switch self {
-            case .success: "Connexion réussie"
-            case .authenticationFailed: "Joignable, authentification refusée"
-            case .needsAgentApproval: "Joignable, validation 1Password requise"
-            case .hostKeyProblem: "Clé d'hôte inconnue ou modifiée"
+            case .success: String(localized: "Connexion réussie")
+            case .authenticationFailed: String(localized: "Joignable, authentification refusée")
+            case .needsAgentApproval: String(localized: "Joignable, validation 1Password requise")
+            case .hostKeyProblem: String(localized: "Clé d'hôte inconnue ou modifiée")
             case .unreachable(let reason): "Injoignable : \(reason)"
             }
         }

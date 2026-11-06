@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>Octopus</title>
+    <link>https://github.com/Aervorn/MacOS_Octopus</link>
+    <item>
+      <title>Octopus 0.1.0</title>
+      <pubDate>Fri, 06 Nov 2026 19:56:31 +0000</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>First public version, in English and French.</li>
+<li>Every Mole command with its options, run in an embedded terminal; Mole install and update.</li>
+<li>Native views for system status, disk explorer and history.</li>
+<li>Security checks, app inspector, SSH keys, network ports, network, startup items, Homebrew, Time Machine snapshots, default apps and hidden settings.</li>
+<li>Home view, light and dark mode, <b>About</b> window, app icon made for macOS 26, Sparkle updates.</li></ul>]]></description>
+      <description xml:lang="fr"><![CDATA[<ul><li>Première version publique, en français et en anglais.</li>
+<li>Toutes les commandes de Mole avec leurs options, exécutées dans un terminal intégré ; installation et mise à jour de Mole.</li>
+<li>Vues natives pour l'état du système, l'explorateur de disque et l'historique.</li>
+<li>Vérifications de sécurité, inspecteur d'app, clés SSH, ports réseau, réseau, éléments de démarrage, Homebrew, instantanés Time Machine, apps par défaut et réglages cachés.</li>
+<li>Vue d'accueil, mode clair et sombre, fenêtre <b>À propos</b>, icône conçue pour macOS 26, mises à jour Sparkle.</li></ul>]]></description>
+      <enclosure url="https://github.com/Aervorn/MacOS_Octopus/releases/download/v0.1.0/Octopus-0.1.0.dmg" type="application/octet-stream" sparkle:edSignature="wtBbssHZu2dzFCRpgaSIfkiGk96ivHv03apjtHR2Gd277awVDgKRqADLOGECSkm7H29hrRMGUePYkl3mS0J3DQ==" length="7936444" />
+    </item>
+  </channel>
+</rss>

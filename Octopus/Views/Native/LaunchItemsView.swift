@@ -44,20 +44,20 @@ struct LaunchItemsView: View {
         .task { await store.reload() }
         .confirmationDialog(
             trashing.count == 1
-                ? "Mettre « \(trashing[0].fileName) » à la Corbeille ?"
-                : "Mettre \(trashing.count) éléments à la Corbeille ?",
+                ? String(localized: "Mettre « \(trashing[0].fileName) » à la Corbeille ?")
+                : String(localized: "Mettre \(trashing.count) éléments à la Corbeille ?"),
             isPresented: Binding(get: { !trashing.isEmpty }, set: { if !$0 { trashing = [] } })
         ) {
-            Button("Mettre à la Corbeille", role: .destructive) {
+            Button(String(localized: "Mettre à la Corbeille"), role: .destructive) {
                 let targets = trashing
                 selection.removeAll()
                 Task { await store.moveToTrash(targets) }
             }
         } message: {
             Text(trashing.allSatisfy(\.isOrphan)
-                 ? "Leur programme n'existe plus : ce sont très probablement des restes d'apps désinstallées."
-                 : "Les éléments sont arrêtés et leurs fichiers partent à la Corbeille. Une app qui en dépend pourrait ne plus fonctionner correctement, ou les réinstaller."
-                   + (trashing.contains { $0.scope != .user } ? " Touch ID ou ton mot de passe te seront demandés une fois." : ""))
+                 ? String(localized: "Leur programme n'existe plus : ce sont très probablement des restes d'apps désinstallées.")
+                 : String(localized: "Les éléments sont arrêtés et leurs fichiers partent à la Corbeille. Une app qui en dépend pourrait ne plus fonctionner correctement, ou les réinstaller.")
+                   + (trashing.contains { $0.scope != .user } ? String(localized: " Touch ID ou ton mot de passe te seront demandés une fois.") : ""))
         }
         .sheet(isPresented: Binding(get: { plist != nil }, set: { if !$0 { plist = nil } })) {
             if let plist {
@@ -70,18 +70,18 @@ struct LaunchItemsView: View {
 
     private var toolbar: some View {
         HStack(spacing: 10) {
-            Picker("Portée", selection: $scopeFilter) {
+            Picker(String(localized: "Portée"), selection: $scopeFilter) {
                 Text("Tout").tag(LaunchItem.Scope?.none)
                 ForEach(LaunchItem.Scope.allCases) { Text($0.title).tag(LaunchItem.Scope?.some($0)) }
             }
             .pickerStyle(.segmented)
             .labelsHidden()
             .fixedSize()
-            Toggle("Problèmes seulement", isOn: $problemsOnly)
+            Toggle(String(localized: "Problèmes seulement"), isOn: $problemsOnly)
                 .toggleStyle(.checkbox)
-                .help("Programmes introuvables (restes d'apps) et programmes non signés")
+                .help(String(localized: "Programmes introuvables (restes d'apps) et programmes non signés"))
             Spacer()
-            TextField("Rechercher", text: $search, prompt: Text("Nom, éditeur, programme"))
+            TextField("Rechercher", text: $search, prompt: Text(String(localized: "Nom, éditeur, programme")))
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 240)
             if store.isLoading { ProgressView().controlSize(.small) }
@@ -98,7 +98,7 @@ struct LaunchItemsView: View {
         return HStack(spacing: 12) {
             if !selected.isEmpty {
                 if selected.contains(where: { !$0.isDisabled }) {
-                    Button("Désactiver", systemImage: "pause.circle") {
+                    Button(String(localized: "Désactiver"), systemImage: "pause.circle") {
                         Task { await store.disable(selected.filter { !$0.isDisabled }) }
                     }
                 }
@@ -108,23 +108,23 @@ struct LaunchItemsView: View {
                     }
                 }
                 if selected.count == 1 {
-                    Button("Voir le plist", systemImage: "doc.text") { showPlist(selected[0]) }
+                    Button(String(localized: "Voir le plist"), systemImage: "doc.text") { showPlist(selected[0]) }
                 }
-                Button(selected.count == 1 ? "Mettre à la Corbeille…" : "Mettre les \(selected.count) à la Corbeille…",
+                Button(selected.count == 1 ? String(localized: "Mettre à la Corbeille…") : String(localized: "Mettre les \(selected.count) à la Corbeille…"),
                        systemImage: "trash") { trashing = selected }
                 if selected.count > 1 {
-                    Text("\(selected.count) sélectionnés").font(.caption).foregroundStyle(.secondary)
+                    Text(String(localized: "\(selected.count) sélectionnés")).font(.caption).foregroundStyle(.secondary)
                 }
             } else if orphanCount > 0 {
-                Label("\(orphanCount) élément\(orphanCount > 1 ? "s" : "") dont le programme n'existe plus", systemImage: "exclamationmark.triangle.fill")
+                Label(orphanCount > 1 ? String(localized: "\(orphanCount) éléments dont le programme n'existe plus") : String(localized: "1 élément dont le programme n'existe plus"), systemImage: "exclamationmark.triangle.fill")
                     .foregroundStyle(.orange)
                     .font(.callout)
-                Button("Sélectionner") {
+                Button(String(localized: "Sélectionner")) {
                     selection = Set(store.items.filter(\.isOrphan).map(\.id))
                 }
                 .controlSize(.small)
             } else {
-                Text("Sélectionne un ou plusieurs éléments (⌘ ou ⇧ clic) pour les désactiver ou les supprimer.")
+                Text(String(localized: "Sélectionne un ou plusieurs éléments (⌘ ou ⇧ clic) pour les désactiver ou les supprimer."))
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
@@ -142,12 +142,12 @@ struct LaunchItemsView: View {
 
     private var table: some View {
         Table(filtered, selection: $selection, sortOrder: $sortOrder) {
-            TableColumn("Élément", value: \.label) { item in
+            TableColumn(String(localized: "Élément"), value: \.label) { item in
                 ItemCell(item: item)
             }
             .width(min: 220, ideal: 320)
 
-            TableColumn("Portée", value: \.scopeRank) { item in
+            TableColumn(String(localized: "Portée"), value: \.scopeRank) { item in
                 Text(item.scope.title).foregroundStyle(.secondary)
             }
             .width(min: 90, ideal: 130)
@@ -157,7 +157,7 @@ struct LaunchItemsView: View {
             }
             .width(min: 90, ideal: 150)
 
-            TableColumn("État", value: \.stateRank) { item in
+            TableColumn(String(localized: "État"), value: \.stateRank) { item in
                 HStack(spacing: 6) {
                     Circle().fill(stateColor(item.state)).frame(width: 8, height: 8)
                     Text(item.state.title)
@@ -165,7 +165,7 @@ struct LaunchItemsView: View {
             }
             .width(min: 90, ideal: 140)
 
-            TableColumn("Éditeur", value: \.signerName) { item in
+            TableColumn(String(localized: "Éditeur"), value: \.signerName) { item in
                 HStack(spacing: 4) {
                     if item.signer.isSuspicious {
                         Image(systemName: "exclamationmark.triangle.fill").foregroundStyle(.orange)
@@ -195,39 +195,39 @@ struct LaunchItemsView: View {
                 if item.isDisabled {
                     Button("Activer") { Task { await store.enable([item]) } }
                 } else {
-                    Button("Désactiver") { Task { await store.disable([item]) } }
+                    Button(String(localized: "Désactiver")) { Task { await store.disable([item]) } }
                 }
-                Button("Voir le plist") { showPlist(item) }
-                Button("Afficher le plist dans le Finder") { Finder.reveal(item.path) }
+                Button(String(localized: "Voir le plist")) { showPlist(item) }
+                Button(String(localized: "Afficher le plist dans le Finder")) { Finder.reveal(item.path) }
                 if let program = item.program, item.programExists == true {
-                    Button("Afficher le programme dans le Finder") { Finder.reveal(program) }
+                    Button(String(localized: "Afficher le programme dans le Finder")) { Finder.reveal(program) }
                 }
                 if let app = item.owningAppURL {
-                    Button("Afficher l'app dans le Finder") { Finder.reveal(app.path) }
+                    Button(String(localized: "Afficher l'app dans le Finder")) { Finder.reveal(app.path) }
                 }
                 Divider()
-                Button("Mettre à la Corbeille…", role: .destructive) { trashing = [item] }
+                Button(String(localized: "Mettre à la Corbeille…"), role: .destructive) { trashing = [item] }
             } else if targets.count > 1 {
-                Button("Désactiver les \(targets.count)") {
+                Button(String(localized: "Désactiver les \(targets.count)")) {
                     Task { await store.disable(targets.filter { !$0.isDisabled }) }
                 }
                 .disabled(targets.allSatisfy(\.isDisabled))
-                Button("Activer les \(targets.count)") {
+                Button(String(localized: "Activer les \(targets.count)")) {
                     Task { await store.enable(targets.filter(\.isDisabled)) }
                 }
                 .disabled(!targets.contains(where: \.isDisabled))
                 Divider()
-                Button("Mettre les \(targets.count) à la Corbeille…", role: .destructive) { trashing = targets }
+                Button(String(localized: "Mettre les \(targets.count) à la Corbeille…"), role: .destructive) { trashing = targets }
             }
         } primaryAction: { ids in
             if ids.count == 1, let item = items(ids).first { showPlist(item) }
         }
         .overlay {
             if !store.isLoading && store.items.isEmpty {
-                ContentUnavailableView("Aucun élément de démarrage", systemImage: "power",
-                                       description: Text("Aucune app n'a installé de LaunchAgent ou de LaunchDaemon."))
+                ContentUnavailableView(String(localized: "Aucun élément de démarrage"), systemImage: "power",
+                                       description: Text(String(localized: "Aucune app n'a installé de LaunchAgent ou de LaunchDaemon.")))
             } else if !store.items.isEmpty && filtered.isEmpty {
-                ContentUnavailableView("Aucun résultat", systemImage: "magnifyingglass")
+                ContentUnavailableView(String(localized: "Aucun résultat"), systemImage: "magnifyingglass")
             }
         }
     }
@@ -246,9 +246,9 @@ struct LaunchItemsView: View {
 
     private func teamHelp(_ signer: LaunchItem.Signer) -> String {
         switch signer {
-        case .developer(let name, let team?): "\(name) — équipe \(team)"
-        case .unsigned: "Le programme n'est pas signé : son origine ne peut pas être vérifiée."
-        case .adHoc: "Signature locale, sans identité de développeur vérifiée."
+        case .developer(let name, let team?): String(localized: "\(name) — équipe \(team)")
+        case .unsigned: String(localized: "Le programme n'est pas signé : son origine ne peut pas être vérifiée.")
+        case .adHoc: String(localized: "Signature locale, sans identité de développeur vérifiée.")
         default: signer.title
         }
     }
@@ -284,7 +284,7 @@ private struct ItemCell: View {
                 HStack(spacing: 6) {
                     Text(item.label).lineLimit(1).truncationMode(.middle)
                     if item.isOrphan {
-                        Badge(text: "Programme introuvable", color: .orange)
+                        Badge(text: String(localized: "Programme introuvable"), color: .orange)
                     }
                 }
                 // Toujours une deuxième ligne : toutes les lignes ont la même hauteur
@@ -316,10 +316,10 @@ private struct PlistSheet: View {
                     Text(item.path).font(.caption.monospaced()).foregroundStyle(.secondary).textSelection(.enabled)
                 }
                 Spacer()
-                Button("Afficher dans le Finder") { Finder.reveal(item.path) }
+                Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(item.path) }
             }
             ScrollView {
-                Text(text)
+                Text(LocalizedStringKey(text))
                     .font(.callout.monospaced())
                     .textSelection(.enabled)
                     .frame(maxWidth: .infinity, alignment: .leading)

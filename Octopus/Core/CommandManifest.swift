@@ -112,11 +112,36 @@ struct CommandManifest: Decodable {
             fatalError("mole-commands.json absent du bundle")
         }
         do {
-            return try JSONDecoder().decode(CommandManifest.self, from: Data(contentsOf: url))
+            return try JSONDecoder().decode(CommandManifest.self, from: Data(contentsOf: url)).localized()
         } catch {
             fatalError("mole-commands.json illisible : \(error)")
         }
     }()
+}
+
+// MARK: - Traduction
+
+extension CommandManifest {
+    /// Textes du catalogue traduits avec la table « Commands » (Commands.xcstrings).
+    /// Le JSON reste en français : ses textes servent de clés.
+    func localized() -> CommandManifest {
+        func t(_ text: String) -> String { Bundle.main.localizedString(forKey: text, value: text, table: "Commands") }
+        return CommandManifest(
+            schemaVersion: schemaVersion,
+            testedMoleVersions: testedMoleVersions,
+            categories: categories.map { Category(id: $0.id, title: t($0.title), symbol: $0.symbol, color: $0.color) },
+            commands: commands.map { c in
+                Command(
+                    id: c.id, category: c.category, title: t(c.title), subtitle: c.subtitle.map(t), symbol: c.symbol,
+                    argv: c.argv, mode: c.mode, nativeView: c.nativeView, destructive: c.destructive,
+                    requiresAppleSilicon: c.requiresAppleSilicon,
+                    positional: c.positional.map { Positional(type: $0.type, label: t($0.label), multiple: $0.multiple) },
+                    options: c.options?.map { Option(flag: $0.flag, type: $0.type, label: t($0.label), default: $0.default, danger: $0.danger, excludes: $0.excludes) },
+                    actions: c.actions?.map { Action(id: $0.id, title: t($0.title), argv: $0.argv) }
+                )
+            }
+        )
+    }
 }
 
 // MARK: - Construction de la ligne de commande

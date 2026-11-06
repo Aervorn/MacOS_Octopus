@@ -23,18 +23,18 @@ struct KnownHostsView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                TextField("Rechercher", text: $search, prompt: Text("Rechercher un hôte"))
+                TextField("Rechercher", text: $search, prompt: Text(String(localized: "Rechercher un hôte")))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: 260)
                 Spacer()
-                Button("Supprimer la sélection", systemImage: "trash") { confirmingRemoval = true }
+                Button(String(localized: "Supprimer la sélection"), systemImage: "trash") { confirmingRemoval = true }
                     .disabled(selection.isEmpty)
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
 
             Table(filtered, selection: $selection) {
-                TableColumn("Hôte") { entry in
+                TableColumn(String(localized: "Hôte")) { entry in
                     HStack(spacing: 6) {
                         Text(entry.displayName)
                             .foregroundStyle(entry.hosts == nil ? Color.secondary : Color.primary)
@@ -45,7 +45,7 @@ struct KnownHostsView: View {
                         }
                     }
                 }
-                TableColumn("Type de clé") { entry in
+                TableColumn(String(localized: "Type de clé")) { entry in
                     Text(entry.shortKeyType).font(.callout.monospaced())
                 }
                 .width(min: 90, ideal: 120)
@@ -56,7 +56,7 @@ struct KnownHostsView: View {
             }
             .overlay {
                 if store.entries.isEmpty {
-                    ContentUnavailableView("Aucun hôte connu", systemImage: "network",
+                    ContentUnavailableView(String(localized: "Aucun hôte connu"), systemImage: "network",
                                            description: Text("~/.ssh/known_hosts est vide ou absent."))
                 }
             }
@@ -65,7 +65,7 @@ struct KnownHostsView: View {
             footer
         }
         .confirmationDialog(
-            selection.count == 1 ? "Supprimer cette entrée ?" : "Supprimer \(selection.count) entrées ?",
+            selection.count == 1 ? String(localized: "Supprimer cette entrée ?") : String(localized: "Supprimer \(selection.count) entrées ?"),
             isPresented: $confirmingRemoval
         ) {
             Button("Supprimer", role: .destructive) {
@@ -73,15 +73,15 @@ struct KnownHostsView: View {
                 selection.removeAll()
             }
         } message: {
-            Text("À la prochaine connexion, ssh te demandera de confirmer la clé du serveur. Une copie du fichier est gardée dans known_hosts.old.")
+            Text(String(localized: "À la prochaine connexion, ssh te demandera de confirmer la clé du serveur. Une copie du fichier est gardée dans known_hosts.old."))
         }
     }
 
     private var footer: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                Text("Supprimer toutes les clés d'un hôte :")
-                TextField("Hôte", text: $hostToRemove, prompt: Text("serveur.lan ou 192.168.1.10"))
+                Text(String(localized: "Supprimer toutes les clés d'un hôte :"))
+                TextField(String(localized: "Hôte"), text: $hostToRemove, prompt: Text(String(localized: "serveur.lan ou 192.168.1.10")))
                     .textFieldStyle(.roundedBorder)
                     .frame(maxWidth: 240)
                     .onSubmit(removeHost)
@@ -90,7 +90,7 @@ struct KnownHostsView: View {
             }
             HStack {
                 if hashedCount > 0 {
-                    Text("\(hashedCount) entrée\(hashedCount > 1 ? "s" : "") hachée\(hashedCount > 1 ? "s" : "") : leur nom n'est pas lisible, mais ce champ les retrouve aussi.")
+                    Text(hashedCount > 1 ? String(localized: "\(hashedCount) entrées hachées : leur nom n'est pas lisible, mais ce champ les retrouve aussi.") : String(localized: "1 entrée hachée : son nom n'est pas lisible, mais ce champ la retrouve aussi."))
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }

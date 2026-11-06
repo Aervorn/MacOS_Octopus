@@ -48,21 +48,21 @@ final class DefaultAppsStore {
     }
 
     static let families: [(title: String, extensions: [String])] = [
-        ("Documents", ["pdf", "txt", "md", "rtf", "docx", "xlsx", "pptx", "odt", "csv", "epub"]),
-        ("Images", ["jpg", "png", "heic", "gif", "webp", "svg", "tiff", "bmp", "psd"]),
-        ("Audio", ["mp3", "m4a", "flac", "wav", "aac", "ogg"]),
-        ("Vidéo", ["mp4", "mov", "mkv", "avi", "webm", "m4v"]),
-        ("Code et configuration", ["swift", "py", "js", "ts", "json", "html", "css", "sh", "zsh", "yaml",
+        (String(localized: "Documents"), ["pdf", "txt", "md", "rtf", "docx", "xlsx", "pptx", "odt", "csv", "epub"]),
+        (String(localized: "Images"), ["jpg", "png", "heic", "gif", "webp", "svg", "tiff", "bmp", "psd"]),
+        (String(localized: "Audio"), ["mp3", "m4a", "flac", "wav", "aac", "ogg"]),
+        (String(localized: "Vidéo"), ["mp4", "mov", "mkv", "avi", "webm", "m4v"]),
+        (String(localized: "Code et configuration"), ["swift", "py", "js", "ts", "json", "html", "css", "sh", "zsh", "yaml",
                                    "toml", "xml", "plist", "log", "sql", "c", "go", "rs", "php", "rb", "conf", "env"]),
-        ("Archives et images disque", ["zip", "7z", "rar", "gz", "tgz", "tar", "dmg", "iso"]),
+        (String(localized: "Archives et images disque"), ["zip", "7z", "rar", "gz", "tgz", "tar", "dmg", "iso"]),
     ]
 
-    static let familyOrder = ["Liens"] + families.map(\.title) + ["Ajoutés"]
+    static let familyOrder = [String(localized: "Liens")] + families.map(\.title) + [String(localized: "Ajoutés")]
 
     func reload() {
         var result: [OpenWithEntry] = [
-            makeScheme("http", title: "Navigateur web"),
-            makeScheme("mailto", title: "Messagerie"),
+            makeScheme("http", title: String(localized: "Navigateur web")),
+            makeScheme("mailto", title: String(localized: "Messagerie")),
         ]
         var seen = Set<String>()
         for family in Self.families {
@@ -73,7 +73,7 @@ final class DefaultAppsStore {
             }
         }
         for ext in customExtensions {
-            if let entry = makeType(ext, family: "Ajoutés"), seen.insert(entry.id).inserted {
+            if let entry = makeType(ext, family: String(localized: "Ajoutés")), seen.insert(entry.id).inserted {
                 result.append(entry)
             }
         }
@@ -86,7 +86,7 @@ final class DefaultAppsStore {
         let ext = text.trimmingCharacters(in: .whitespaces).trimmingCharacters(in: CharacterSet(charactersIn: ".")).lowercased()
         guard !ext.isEmpty, UTType(filenameExtension: ext) != nil else { return false }
         if let existing = entries.first(where: { $0.extensions.contains(ext) }) {
-            message = ".\(ext) est déjà dans la liste (\(existing.title))."
+            message = String(localized: ".\(ext) est déjà dans la liste (\(existing.title)).")
             return true
         }
         customExtensions.append(ext)
@@ -117,10 +117,10 @@ final class DefaultAppsStore {
         let name = app.deletingPathExtension().lastPathComponent
         if failures.isEmpty {
             message = targets.count == 1
-                ? "« \(targets[0].title) » s'ouvre maintenant avec \(name)."
-                : "\(targets.count) types s'ouvrent maintenant avec \(name)."
+                ? String(localized: "« \(targets[0].title) » s'ouvre maintenant avec \(name).")
+                : String(localized: "\(targets.count) types s'ouvrent maintenant avec \(name).")
         } else {
-            message = "Refusé pour : \(failures.joined(separator: ", "))."
+            message = String(localized: "Refusé pour : \(failures.joined(separator: ", ")).")
         }
         reload()
     }
@@ -150,7 +150,7 @@ final class DefaultAppsStore {
             title: title,
             extensions: [],
             target: .scheme(scheme),
-            family: "Liens",
+            family: String(localized: "Liens"),
             defaultApp: NSWorkspace.shared.urlForApplication(toOpen: sample),
             candidates: Self.sorted(NSWorkspace.shared.urlsForApplications(toOpen: sample))
         )

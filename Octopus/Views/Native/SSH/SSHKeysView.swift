@@ -22,19 +22,19 @@ struct SSHKeysView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack {
-                Button("Nouvelle clé…", systemImage: "plus") { showingGenerator = true }
+                Button(String(localized: "Nouvelle clé…"), systemImage: "plus") { showingGenerator = true }
                     .disabled(session.isRunning)
                 if store.isLoading { ProgressView().controlSize(.small) }
                 Spacer()
                 // Pour 1Password, l'état est affiché en haut de la vue (OnePasswordBadge)
                 if !store.agentAvailable && !store.isOnePasswordAgent {
-                    Label(store.isOnePasswordAgent ? "Agent 1Password injoignable" : "Agent SSH injoignable",
+                    Label(store.isOnePasswordAgent ? String(localized: "Agent 1Password injoignable") : String(localized: "Agent SSH injoignable"),
                           systemImage: "exclamationmark.triangle")
                         .font(.caption)
                         .foregroundStyle(.orange)
                         .help(store.isOnePasswordAgent
-                              ? "Ouvre et déverrouille 1Password, puis vérifie Réglages › Développeur › « Utiliser l'agent SSH »."
-                              : "Aucun agent SSH ne répond : les clés ne peuvent pas y être ajoutées.")
+                              ? String(localized: "Ouvre et déverrouille 1Password, puis vérifie Réglages › Développeur › « Utiliser l'agent SSH ».")
+                              : String(localized: "Aucun agent SSH ne répond : les clés ne peuvent pas y être ajoutées."))
                     if store.isOnePasswordAgent {
                         Button("Ouvrir 1Password") {
                             if let url = NSWorkspace.shared.urlForApplication(withBundleIdentifier: "com.1password.1password") {
@@ -70,9 +70,9 @@ struct SSHKeysView: View {
                                 .contextMenu { agentMenuItems(key) }
                         }
                     } header: {
-                        Text(store.isOnePasswordAgent ? "Dans l'agent 1Password" : "Dans l'agent SSH")
+                        Text(store.isOnePasswordAgent ? String(localized: "Dans l'agent 1Password") : String(localized: "Dans l'agent SSH"))
                     } footer: {
-                        Text("Clés détenues par l'agent, sans fichier dans ~/.ssh. La clé privée ne quitte jamais l'agent.")
+                        Text(String(localized: "Clés détenues par l'agent, sans fichier dans ~/.ssh. La clé privée ne quitte jamais l'agent."))
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
@@ -81,11 +81,11 @@ struct SSHKeysView: View {
             .overlay {
                 if store.keys.isEmpty && store.agentOnlyKeys.isEmpty && !store.isLoading {
                     ContentUnavailableView {
-                        Label("Aucune clé SSH", systemImage: "key")
+                        Label(String(localized: "Aucune clé SSH"), systemImage: "key")
                     } description: {
-                        Text("Crée ta première clé, Ed25519 de préférence.")
+                        Text(String(localized: "Crée ta première clé, Ed25519 de préférence."))
                     } actions: {
-                        Button("Nouvelle clé…") { showingGenerator = true }
+                        Button(String(localized: "Nouvelle clé…")) { showingGenerator = true }
                     }
                 }
             }
@@ -100,16 +100,16 @@ struct SSHKeysView: View {
                 send(target, to: destination)
             }
         }
-        .alert("Enregistrer la clé publique dans ~/.ssh", isPresented: Binding(
+        .alert(String(localized: "Enregistrer la clé publique dans ~/.ssh"), isPresented: Binding(
             get: { savingAgentKey != nil }, set: { if !$0 { savingAgentKey = nil } }
         )) {
-            TextField("Nom du fichier", text: $savedFileName)
+            TextField(String(localized: "Nom du fichier"), text: $savedFileName)
             Button("Enregistrer") { saveAgentKey() }
             Button("Annuler", role: .cancel) {}
         } message: {
-            Text("Le fichier .pub pourra servir d'IdentityFile pour choisir cette clé de l'agent pour un hôte.")
+            Text(String(localized: "Le fichier .pub pourra servir d'IdentityFile pour choisir cette clé de l'agent pour un hôte."))
         }
-        .alert("Modifier le commentaire", isPresented: Binding(
+        .alert(String(localized: "Modifier le commentaire"), isPresented: Binding(
             get: { editingComment != nil }, set: { if !$0 { editingComment = nil } }
         )) {
             TextField("Commentaire", text: $newComment)
@@ -120,14 +120,14 @@ struct SSHKeysView: View {
             }
             Button("Annuler", role: .cancel) {}
         } message: {
-            Text("Si la clé a une phrase de passe, elle te sera demandée dans le terminal.")
+            Text(String(localized: "Si la clé a une phrase de passe, elle te sera demandée dans le terminal."))
         }
         .confirmationDialog(
-            "Mettre « \(trashing?.name ?? "") » à la corbeille ?",
+            String(localized: "Mettre « \(trashing?.name ?? "") » à la corbeille ?"),
             isPresented: Binding(get: { trashing != nil }, set: { if !$0 { trashing = nil } }),
             presenting: trashing
         ) { key in
-            Button("Mettre à la corbeille", role: .destructive) {
+            Button(String(localized: "Mettre à la corbeille"), role: .destructive) {
                 do {
                     try store.moveToTrash(key)
                     Task { await store.reload() }
@@ -136,7 +136,7 @@ struct SSHKeysView: View {
                 }
             }
         } message: { _ in
-            Text("La clé privée et la clé publique partent à la Corbeille. Les serveurs qui n'acceptent que cette clé ne te laisseront plus entrer.")
+            Text(String(localized: "La clé privée et la clé publique partent à la Corbeille. Les serveurs qui n'acceptent que cette clé ne te laisseront plus entrer."))
         }
     }
 
@@ -157,7 +157,7 @@ struct SSHKeysView: View {
                               color: type == "RSA" && (key.bits ?? 0) < 3072 ? .orange : .secondary)
                     }
                     if key.isInAgent {
-                        Badge(text: "Dans l'agent", color: .green)
+                        Badge(text: String(localized: "Dans l'agent"), color: .green)
                     }
                 }
                 if let comment = key.comment {
@@ -172,19 +172,19 @@ struct SSHKeysView: View {
                 HStack(spacing: 10) {
                     switch key.hasPassphrase {
                     case true?:
-                        Label("Phrase de passe", systemImage: "lock.fill").foregroundStyle(.green)
+                        Label(String(localized: "Phrase de passe"), systemImage: "lock.fill").foregroundStyle(.green)
                     case false?:
-                        Label("Sans phrase de passe", systemImage: "lock.open").foregroundStyle(.orange)
+                        Label(String(localized: "Sans phrase de passe"), systemImage: "lock.open").foregroundStyle(.orange)
                     case nil where key.privatePath == nil:
-                        Label("Clé publique seule", systemImage: "questionmark.circle").foregroundStyle(.secondary)
+                        Label(String(localized: "Clé publique seule"), systemImage: "questionmark.circle").foregroundStyle(.secondary)
                     case nil:
                         EmptyView()
                     }
                     if key.publicPath == nil {
-                        Label("Clé publique absente", systemImage: "exclamationmark.triangle").foregroundStyle(.orange)
+                        Label(String(localized: "Clé publique absente"), systemImage: "exclamationmark.triangle").foregroundStyle(.orange)
                     }
                     if let date = key.modified {
-                        Text("Modifiée le \(date.formatted(date: .abbreviated, time: .omitted))")
+                        Text(String(localized: "Modifiée le \(date.formatted(date: .abbreviated, time: .omitted))"))
                             .foregroundStyle(.tertiary)
                     }
                 }
@@ -202,7 +202,7 @@ struct SSHKeysView: View {
                     }
                 }
             } label: {
-                Label(copiedKey == key.id ? "Copiée" : "Copier la clé publique",
+                Label(copiedKey == key.id ? String(localized: "Copiée") : String(localized: "Copier la clé publique"),
                       systemImage: copiedKey == key.id ? "checkmark" : "doc.on.doc")
             }
             .disabled(key.publicPath == nil)
@@ -235,7 +235,7 @@ struct SSHKeysView: View {
                         Badge(text: [type, key.bits.map(String.init)].compactMap { $0 }.joined(separator: " "),
                               color: type == "RSA" && (key.bits ?? 0) < 3072 ? .orange : .secondary)
                     }
-                    Badge(text: "Dans l'agent", color: .green)
+                    Badge(text: String(localized: "Dans l'agent"), color: .green)
                 }
                 Text(key.fingerprint)
                     .font(.caption.monospaced())
@@ -251,7 +251,7 @@ struct SSHKeysView: View {
                     if copiedAgentKey == key.id { copiedAgentKey = nil }
                 }
             } label: {
-                Label(copiedAgentKey == key.id ? "Copiée" : "Copier la clé publique",
+                Label(copiedAgentKey == key.id ? String(localized: "Copiée") : String(localized: "Copier la clé publique"),
                       systemImage: copiedAgentKey == key.id ? "checkmark" : "doc.on.doc")
             }
             .disabled(key.publicKey.isEmpty)
@@ -270,9 +270,9 @@ struct SSHKeysView: View {
 
     @ViewBuilder
     private func agentMenuItems(_ key: AgentKey) -> some View {
-        Button("Envoyer vers un hôte…") { sending = .agent(key) }
+        Button(String(localized: "Envoyer vers un hôte…")) { sending = .agent(key) }
             .disabled(session.isRunning || key.publicKey.isEmpty)
-        Button("Enregistrer la clé publique dans ~/.ssh…") {
+        Button(String(localized: "Enregistrer la clé publique dans ~/.ssh…")) {
             savedFileName = key.suggestedFileName
             savingAgentKey = key
         }
@@ -284,7 +284,7 @@ struct SSHKeysView: View {
         var name = savedFileName.trimmingCharacters(in: .whitespaces)
         if !name.hasSuffix(".pub") { name += ".pub" }
         guard !name.contains("/"), !name.hasPrefix(".") else {
-            errorMessage = "Nom de fichier invalide."
+            errorMessage = String(localized: "Nom de fichier invalide.")
             return
         }
         guard !FileManager.default.fileExists(atPath: SSHKeyStore.directory.appendingPathComponent(name).path) else {
@@ -296,7 +296,7 @@ struct SSHKeysView: View {
             errorMessage = nil
             Task { await store.reload() }
         } catch {
-            errorMessage = "Enregistrement impossible : \(error.localizedDescription)"
+            errorMessage = String(localized: "Enregistrement impossible : \(error.localizedDescription)")
         }
     }
 
@@ -311,7 +311,7 @@ struct SSHKeysView: View {
             do {
                 path = try SSHKeyStore.temporaryPublicKeyFile(key)
             } catch {
-                errorMessage = "Impossible de préparer la clé : \(error.localizedDescription)"
+                errorMessage = String(localized: "Impossible de préparer la clé : \(error.localizedDescription)")
                 return
             }
         }
@@ -323,34 +323,34 @@ struct SSHKeysView: View {
     private func menuItems(_ key: SSHKey) -> some View {
         if key.privatePath != nil {
             if key.isInAgent {
-                Button("Retirer de l'agent") {
+                Button(String(localized: "Retirer de l'agent")) {
                     session.start(title: "ssh-add -d", commandLine: SSHKeyStore.removeFromAgentCommand(key))
                 }
             } else {
-                Button("Ajouter à l'agent et au trousseau") {
+                Button(String(localized: "Ajouter à l'agent et au trousseau")) {
                     session.start(title: "ssh-add --apple-use-keychain", commandLine: SSHKeyStore.addToAgentCommand(key))
                 }
             }
-            Button("Changer la phrase de passe…") {
+            Button(String(localized: "Changer la phrase de passe…")) {
                 session.start(title: "ssh-keygen -p", commandLine: SSHKeyStore.changePassphraseCommand(key))
             }
-            Button("Modifier le commentaire…") {
+            Button(String(localized: "Modifier le commentaire…")) {
                 newComment = key.comment ?? ""
                 editingComment = key
             }
             Divider()
         }
         if key.publicPath != nil {
-            Button("Envoyer vers un hôte…") { sending = .file(key) }
+            Button(String(localized: "Envoyer vers un hôte…")) { sending = .file(key) }
                 .disabled(session.isRunning)
             Divider()
         }
-        Button("Afficher dans le Finder") { Finder.reveal(key.mainPath) }
+        Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(key.mainPath) }
         if let pub = key.publicPath {
-            Button("Copier le chemin de la clé publique") { Finder.copy(pub) }
+            Button(String(localized: "Copier le chemin de la clé publique")) { Finder.copy(pub) }
         }
         Divider()
-        Button("Mettre à la corbeille…", role: .destructive) { trashing = key }
+        Button(String(localized: "Mettre à la corbeille…"), role: .destructive) { trashing = key }
     }
 }
 
@@ -360,7 +360,7 @@ struct Badge: View {
     var color: Color = .secondary
 
     var body: some View {
-        Text(text)
+        Text(LocalizedStringKey(text))
             .font(.caption2.weight(.medium))
             .padding(.horizontal, 6)
             .padding(.vertical, 2)
@@ -388,7 +388,7 @@ private struct KeyGeneratorSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Nouvelle clé SSH").font(.title2.bold())
+            Text(String(localized: "Nouvelle clé SSH")).font(.title2.bold())
 
             Form {
                 Picker("Type", selection: $type) {
@@ -399,15 +399,15 @@ private struct KeyGeneratorSheet: View {
                     set: { fileName = $0; fileNameEdited = true }
                 ))
                 TextField("Commentaire", text: $comment)
-                Toggle("Ajouter à l'agent et au trousseau macOS", isOn: $addToKeychain)
+                Toggle(String(localized: "Ajouter à l'agent et au trousseau macOS"), isOn: $addToKeychain)
             }
             .formStyle(.grouped)
 
             if exists {
-                Label("Une clé porte déjà ce nom : choisis-en un autre.", systemImage: "exclamationmark.triangle.fill")
+                Label(String(localized: "Une clé porte déjà ce nom : choisis-en un autre."), systemImage: "exclamationmark.triangle.fill")
                     .foregroundStyle(.orange)
             }
-            Text("La phrase de passe te sera demandée dans le terminal. Elle protège la clé si ton Mac est volé : recommandé.")
+            Text(String(localized: "La phrase de passe te sera demandée dans le terminal. Elle protège la clé si ton Mac est volé : recommandé."))
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)
@@ -416,7 +416,7 @@ private struct KeyGeneratorSheet: View {
                 Spacer()
                 Button("Annuler", role: .cancel) { dismiss() }
                     .keyboardShortcut(.cancelAction)
-                Button("Créer") {
+                Button(String(localized: "Créer")) {
                     onGenerate(SSHKeyStore.generateCommand(
                         type: type, fileName: trimmedName, comment: comment, addToKeychain: addToKeychain))
                     dismiss()
@@ -470,17 +470,17 @@ private struct SendKeySheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Envoyer « \(name) » vers un hôte").font(.title2.bold())
+            Text(String(localized: "Envoyer « \(name) » vers un hôte")).font(.title2.bold())
 
             Form {
                 if !hostAliases.isEmpty {
                     Picker("Destination", selection: $useCustom) {
-                        Text("Un hôte de ~/.ssh/config").tag(false)
-                        Text("Une autre adresse").tag(true)
+                        Text(String(localized: "Un hôte de ~/.ssh/config")).tag(false)
+                        Text(String(localized: "Une autre adresse")).tag(true)
                     }
                     .pickerStyle(.radioGroup)
                     if !useCustom {
-                        Picker("Hôte", selection: $alias) {
+                        Picker(String(localized: "Hôte"), selection: $alias) {
                             ForEach(hostAliases, id: \.self) { Text($0).tag($0) }
                         }
                     }
@@ -491,7 +491,7 @@ private struct SendKeySheet: View {
             }
             .formStyle(.grouped)
 
-            Text("La clé publique est ajoutée au fichier ~/.ssh/authorized_keys de l'hôte. Le mot de passe du compte distant te sera demandé une fois, dans le terminal. Pour un port autre que 22, crée plutôt l'hôte dans l'onglet Hôtes.")
+            Text(String(localized: "La clé publique est ajoutée au fichier ~/.ssh/authorized_keys de l'hôte. Le mot de passe du compte distant te sera demandé une fois, dans le terminal. Pour un port autre que 22, crée plutôt l'hôte dans l'onglet Hôtes."))
                 .font(.callout)
                 .foregroundStyle(.secondary)
                 .fixedSize(horizontal: false, vertical: true)

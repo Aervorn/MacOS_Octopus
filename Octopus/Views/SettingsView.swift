@@ -6,7 +6,7 @@ struct SettingsView: View {
     var body: some View {
         TabView {
             GeneralSettings()
-                .tabItem { Label("Général", systemImage: "gearshape") }
+                .tabItem { Label(String(localized: "Général"), systemImage: "gearshape") }
             Form {
                 PermissionsSection()
             }
@@ -26,41 +26,41 @@ private struct GeneralSettings: View {
     var body: some View {
         @Bindable var updater = updater
         Form {
-            Section("Général") {
+            Section(String(localized: "Général")) {
                 Picker("Apparence", selection: $appearance) {
                     Text("Automatique").tag(AppAppearance.system)
                     Text("Clair").tag(AppAppearance.light)
                     Text("Sombre").tag(AppAppearance.dark)
                 }
                 Picker("Langue", selection: $language) {
-                    Text("Langue du système").tag(AppLanguage.system)
+                    Text(String(localized: "Langue du système")).tag(AppLanguage.system)
                     Text(verbatim: "Français").tag("fr")
                     Text(verbatim: "English").tag("en")
                 }
                 if languageChanged {
                     HStack {
-                        Text("La nouvelle langue s'appliquera au prochain lancement.")
+                        Text(String(localized: "La nouvelle langue s'appliquera au prochain lancement."))
                             .foregroundStyle(.secondary)
                         Spacer()
-                        Button("Relancer Octopus") { AppLanguage.relaunch() }
+                        Button(String(localized: "Relancer Octopus")) { AppLanguage.relaunch() }
                     }
                 }
             }
 
-            Section("Mises à jour d'Octopus") {
+            Section(String(localized: "Mises à jour d'Octopus")) {
                 if updater.isEnabled {
-                    Toggle("Rechercher automatiquement les mises à jour", isOn: $updater.automaticallyChecksForUpdates)
+                    Toggle(String(localized: "Rechercher automatiquement les mises à jour"), isOn: $updater.automaticallyChecksForUpdates)
                     HStack {
                         if let date = updater.lastCheck {
-                            Text("Dernière recherche : \(date.formatted(date: .abbreviated, time: .shortened))")
+                            Text(String(localized: "Dernière recherche : \(date.formatted(date: .abbreviated, time: .shortened))"))
                                 .foregroundStyle(.secondary)
                         }
                         Spacer()
-                        Button("Rechercher maintenant") { updater.checkForUpdates() }
+                        Button(String(localized: "Rechercher maintenant")) { updater.checkForUpdates() }
                             .disabled(!updater.canCheckForUpdates)
                     }
                 } else {
-                    Text("Désactivées dans les versions de développement.")
+                    Text(String(localized: "Désactivées dans les versions de développement."))
                         .foregroundStyle(.secondary)
                 }
                 Text("Version \(updater.currentVersion)")
@@ -96,12 +96,12 @@ struct PermissionsSection: View {
                 url: Permissions.appManagementURL
             )
         } header: {
-            Text("Confidentialité et sécurité")
+            Text(String(localized: "Confidentialité et sécurité"))
         } footer: {
             HStack {
-                Text("Si Octopus n'apparaît pas dans la liste, ajoute-le avec le bouton +.")
+                Text(String(localized: "Si Octopus n'apparaît pas dans la liste, ajoute-le avec le bouton +."))
                 Spacer()
-                Button("Afficher Octopus dans le Finder") { Permissions.revealApp() }
+                Button(String(localized: "Afficher Octopus dans le Finder")) { Permissions.revealApp() }
                     .controlSize(.small)
             }
             .font(.caption)
@@ -133,7 +133,7 @@ struct PermissionRow: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
             Spacer()
-            Button(status == .granted ? "Réglages…" : "Autoriser…") { Permissions.open(url) }
+            Button(status == .granted ? String(localized: "Réglages…") : String(localized: "Autoriser…")) { Permissions.open(url) }
         }
         .padding(.vertical, 4)
     }
@@ -176,8 +176,8 @@ struct PermissionsPrompt: View {
                     .font(.system(size: 34))
                     .foregroundStyle(.tint)
                 VStack(alignment: .leading) {
-                    Text("Autorisations recommandées").font(.title2.bold())
-                    Text("Pour qu'Octopus et Mole puissent faire tout leur travail.")
+                    Text(String(localized: "Autorisations recommandées")).font(.title2.bold())
+                    Text(String(localized: "Pour qu'Octopus et Mole puissent faire tout leur travail."))
                         .foregroundStyle(.secondary)
                 }
             }
@@ -185,13 +185,13 @@ struct PermissionsPrompt: View {
                 .formStyle(.grouped)
                 .frame(height: 260)
             HStack {
-                Toggle("Ne plus afficher au lancement", isOn: $skip)
+                Toggle(String(localized: "Ne plus afficher au lancement"), isOn: $skip)
                     .toggleStyle(.checkbox)
                 Spacer()
-                Button(permissions.hasMissing ? "Plus tard" : "Terminé") { dismiss() }
+                Button(permissions.hasMissing ? String(localized: "Plus tard") : String(localized: "Terminé")) { dismiss() }
                     .keyboardShortcut(.defaultAction)
             }
-            Text("Tu retrouveras ces réglages dans Octopus › Réglages › Autorisations.")
+            Text(String(localized: "Tu retrouveras ces réglages dans Octopus › Réglages › Autorisations."))
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }

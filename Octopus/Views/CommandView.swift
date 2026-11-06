@@ -38,14 +38,14 @@ struct CommandView: View {
         .padding(16)
         .frame(maxWidth: .infinity, alignment: .leading)
         .confirmationDialog(
-            "Lancer « \(command.title) » pour de vrai ?",
+            String(localized: "Lancer « \(command.title) » pour de vrai ?"),
             isPresented: $confirmingLiveRun
         ) {
             Button("Lancer", role: .destructive) { launch(arguments) }
         } message: {
             Text(input.hasDangerousOption(for: command)
-                 ? "Une option dangereuse est cochée : les fichiers ne passeront pas forcément par la Corbeille."
-                 : "L'aperçu (--dry-run) est désactivé : Mole va modifier ton Mac.")
+                 ? String(localized: "Une option dangereuse est cochée : les fichiers ne passeront pas forcément par la Corbeille.")
+                 : String(localized: "L'aperçu (--dry-run) est désactivé : Mole va modifier ton Mac."))
         }
     }
 
@@ -57,7 +57,7 @@ struct CommandView: View {
             TextField(positional.label, text: $input.positional)
                 .textFieldStyle(.roundedBorder)
             if positional.type == .path {
-                Button("Choisir…") { choosePath { input.positional = $0 } }
+                Button(String(localized: "Choisir…")) { choosePath { input.positional = $0 } }
             }
         }
     }
@@ -89,7 +89,7 @@ struct CommandView: View {
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: 260)
                 if option.type == .path {
-                    Button("Choisir…") { choosePath { input.values[option.flag] = $0 } }
+                    Button(String(localized: "Choisir…")) { choosePath { input.values[option.flag] = $0 } }
                 }
             }
         }
@@ -116,7 +116,7 @@ struct CommandView: View {
                     launch(arguments)
                 }
             } label: {
-                Label(input.isLiveRun(for: command) ? "Lancer" : "Lancer l'aperçu", systemImage: "play.fill")
+                Label(input.isLiveRun(for: command) ? "Lancer" : String(localized: "Lancer l'aperçu"), systemImage: "play.fill")
             }
             .buttonStyle(.borderedProminent)
             .tint(input.isLiveRun(for: command) ? Color.red : Color.accentColor)
