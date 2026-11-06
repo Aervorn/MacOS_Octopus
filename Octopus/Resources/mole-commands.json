@@ -171,6 +171,16 @@
       "nativeView": "security"
     },
     {
+      "id": "inspector",
+      "category": "security",
+      "title": "Inspecteur d'app",
+      "subtitle": "Signature, notarisation, quarantaine et droits d'une app",
+      "symbol": "magnifyingglass.circle",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "inspector"
+    },
+    {
       "id": "ssh",
       "category": "tools",
       "title": "Clés SSH",
