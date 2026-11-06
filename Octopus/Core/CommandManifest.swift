@@ -38,7 +38,7 @@ struct CommandManifest: Decodable {
     }
 
     enum NativeView: String, Decodable, Hashable {
-        case status, analyze, history, security
+        case status, analyze, history, security, ssh, ports
     }
 
     enum Mode: String, Decodable, Hashable {

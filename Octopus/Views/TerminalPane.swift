@@ -32,11 +32,13 @@ struct TerminalPane: NSViewRepresentable {
     func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {}
 
     /// Environnement de l'app, avec un type de terminal qui gère les couleurs.
-    private static func environment() -> [String] {
+    @MainActor private static func environment() -> [String] {
         var env = ProcessInfo.processInfo.environment
         env["TERM"] = "xterm-256color"
         env["COLORTERM"] = "truecolor"
         env["LANG"] = env["LANG"] ?? "fr_FR.UTF-8"
+        // Même agent SSH que dans le Terminal de l'utilisateur (défini dans ~/.zshrc, par ex.)
+        env.merge(SSHEnvironment.current) { $1 }
         return env.map { "\($0.key)=\($0.value)" }
     }
 

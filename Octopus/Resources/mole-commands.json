@@ -3,9 +3,10 @@
   "testedMoleVersions": [],
   "categories": [
     { "id": "cleanup",  "title": "Nettoyage", "symbol": "sparkles" },
-    { "id": "apps",     "title": "Apps",      "symbol": "square.grid.2x2" },
+    { "id": "apps",     "title": "Gestion des apps", "symbol": "square.grid.2x2" },
     { "id": "system",   "title": "Système",   "symbol": "gauge.with.dots.needle.67percent" },
     { "id": "security", "title": "Sécurité",  "symbol": "checkmark.shield" },
+    { "id": "tools",    "title": "Outils",    "symbol": "wrench.and.screwdriver" },
     { "id": "settings", "title": "Réglages",  "symbol": "gearshape" }
   ],
   "commands": [
@@ -158,6 +159,26 @@
       "argv": [],
       "mode": "terminal",
       "nativeView": "security"
+    },
+    {
+      "id": "ssh",
+      "category": "tools",
+      "title": "Clés SSH",
+      "subtitle": "Clés, hôtes de ~/.ssh/config et hôtes connus",
+      "symbol": "key",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "ssh"
+    },
+    {
+      "id": "ports",
+      "category": "tools",
+      "title": "Ports réseau",
+      "subtitle": "Quel processus écoute sur quel port",
+      "symbol": "point.3.connected.trianglepath.dotted",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "ports"
     },
     {
       "id": "touchid",

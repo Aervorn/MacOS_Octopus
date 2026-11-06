@@ -13,7 +13,8 @@ enum SystemCommand {
         var succeeded: Bool { status == 0 }
     }
 
-    static func run(_ executable: String, _ arguments: [String] = []) async -> Result {
+    static func run(_ executable: String, _ arguments: [String] = [],
+                    environment extra: [String: String] = [:]) async -> Result {
         await withCheckedContinuation { continuation in
             DispatchQueue.global(qos: .userInitiated).async {
                 let process = Process()
@@ -22,6 +23,7 @@ enum SystemCommand {
                 var environment = ProcessInfo.processInfo.environment
                 environment["LANG"] = "en_US.UTF-8"
                 environment["LC_ALL"] = "en_US.UTF-8"
+                environment.merge(extra) { $1 }
                 process.environment = environment
                 process.standardInput = FileHandle.nullDevice
                 let pipe = Pipe()

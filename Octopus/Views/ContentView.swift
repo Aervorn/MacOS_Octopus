@@ -167,12 +167,19 @@ struct NativeCommandView: View {
     @Environment(MoleService.self) private var mole
 
     var body: some View {
-        if view == .security {
-            // Ne dépend pas de Mole
-            SecurityView()
-        } else if let executable = mole.executablePath {
+        switch view {
+        // Ces vues ne dépendent pas de Mole
+        case .security: SecurityView()
+        case .ssh: SSHView()
+        case .ports: PortsView()
+        default: moleView
+        }
+    }
+
+    @ViewBuilder private var moleView: some View {
+        if let executable = mole.executablePath {
             switch view {
-            case .security: EmptyView()
+            case .security, .ssh, .ports: EmptyView()
             case .status: StatusDashboardView(executable: executable)
             case .analyze: AnalyzeView(executable: executable)
             case .history: HistoryView(executable: executable)
