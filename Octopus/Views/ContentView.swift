@@ -19,14 +19,25 @@ struct ContentView: View {
         return command.nativeView
     }
 
-    /// Vue native sans mode terminal (Sécurité) qui a lancé une commande : le terminal
+    private var selectedCategory: CommandManifest.Category? {
+        guard let command = selectedCommand else { return nil }
+        return manifest.categories.first { $0.id == command.category }
+    }
+
+    static let homeID = "home"
+    private var isHome: Bool { selection == Self.homeID }
+
+    /// Accueil ou vue native : elle occupe la fenêtre à la place de la fiche de commande.
+    private var showsFullView: Bool { isHome || nativeView != nil }
+
+    /// Vue sans mode terminal (Accueil, Sécurité…) qui a lancé une commande : le terminal
     /// s'affiche en bas, sous la vue, au lieu de la remplacer.
     private var showsTerminalBelowNativeView: Bool {
-        nativeView != nil && selectedCommand?.hasTerminalMode == false && session.current != nil
+        (isHome || (nativeView != nil && selectedCommand?.hasTerminalMode == false)) && session.current != nil
     }
 
     private var terminalHeight: CGFloat {
-        if nativeView == nil { return .infinity }
+        if !showsFullView { return .infinity }
         return showsTerminalBelowNativeView ? 260 : 0
     }
 
@@ -35,7 +46,15 @@ struct ContentView: View {
     /// une vue native : une commande en cours continue donc de s'exécuter et de s'afficher.
     private var detail: some View {
         VStack(spacing: 0) {
-            if let nativeView, let command = selectedCommand {
+            if isHome {
+                HomeView(manifest: manifest) { selection = $0 }
+                    .frame(maxHeight: .infinity)
+                if showsTerminalBelowNativeView {
+                    Divider()
+                }
+            } else if let nativeView, let command = selectedCommand {
+                ToolHeader(command: command, tint: selectedCategory?.tint ?? .accentColor)
+                Divider()
                 NativeCommandView(view: nativeView)
                     .id(command.id)
                     .frame(maxHeight: .infinity)
@@ -45,8 +64,12 @@ struct ContentView: View {
             } else {
                 Group {
                     if let command = selectedCommand {
-                        CommandView(command: command)
-                            .id(command.id)
+                        VStack(alignment: .leading, spacing: 0) {
+                            ToolHeader(command: command, tint: selectedCategory?.tint ?? .accentColor)
+                            CommandView(command: command)
+                                .padding(.top, -8)
+                        }
+                        .id(command.id)
                     } else {
                         ContentUnavailableView(
                             "Octopus",
@@ -73,26 +96,16 @@ struct ContentView: View {
 
     var body: some View {
         NavigationSplitView {
-            List(selection: $selection) {
-                ForEach(manifest.categories) { category in
-                    Section(category.title) {
-                        let commands = manifest.commands(in: category)
-                        if commands.isEmpty {
-                            Label("Bientôt", systemImage: category.symbol)
-                                .foregroundStyle(.tertiary)
-                                .selectionDisabled()
-                        }
-                        ForEach(commands) { command in
-                            Label(command.title, systemImage: command.symbol)
-                                .tag(command.id)
-                        }
-                    }
-                }
-            }
+            Sidebar(manifest: manifest, selection: $selection)
             .safeAreaInset(edge: .bottom) { MoleStatusFooter() }
             .navigationSplitViewColumnWidth(min: 220, ideal: 240)
         } detail: {
             detail
+                // Titre de la fenêtre : « Octopus » sur l'accueil, sinon l'outil, avec sa section en sous-titre
+                .navigationTitle(isHome || selectedCommand == nil
+                                 ? Text(verbatim: "Octopus")
+                                 : Text(LocalizedStringKey(selectedCommand!.title)))
+                .navigationSubtitle(selectedCategory.map { Text(LocalizedStringKey($0.title)) } ?? Text(verbatim: ""))
         }
         .toolbar {
             if selectedCommand?.nativeView != nil, selectedCommand?.hasTerminalMode == true {
@@ -113,7 +126,7 @@ struct ContentView: View {
                 showsTerminal = true
             }
         }
-        .onAppear { if selection == nil { selection = manifest.commands.first?.id } }
+        .onAppear { if selection == nil { selection = Self.homeID } }
     }
 }
 
@@ -175,6 +188,10 @@ struct NativeCommandView: View {
         case .startup: LaunchItemsView()
         case .inspector: AppInspectorView()
         case .homebrew: HomebrewView()
+        case .network: NetworkView()
+        case .snapshots: SnapshotsView()
+        case .tweaks: TweaksView()
+        case .defaultApps: DefaultAppsView()
         default: moleView
         }
     }
@@ -182,7 +199,7 @@ struct NativeCommandView: View {
     @ViewBuilder private var moleView: some View {
         if let executable = mole.executablePath {
             switch view {
-            case .security, .ssh, .ports, .startup, .inspector, .homebrew: EmptyView()
+            case .security, .ssh, .ports, .startup, .inspector, .homebrew, .network, .snapshots, .tweaks, .defaultApps: EmptyView()
             case .status: StatusDashboardView(executable: executable)
             case .analyze: AnalyzeView(executable: executable)
             case .history: HistoryView(executable: executable)

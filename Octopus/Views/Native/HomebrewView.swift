@@ -126,9 +126,8 @@ private struct BrewUpdatesView: View {
             Table(store.outdated, selection: $selection) {
                 TableColumn("Paquet") { item in
                     HStack(spacing: 6) {
-                        Image(systemName: item.kind == .cask ? "app" : "terminal")
-                            .foregroundStyle(.secondary)
-                            .frame(width: 16)
+                        BrewIcon(kind: item.kind,
+                                 appNames: store.packages.first { $0.id == item.id }?.appNames ?? [])
                         Text(item.name)
                         if item.pinned { Badge(text: "épinglé", color: .orange) }
                     }
@@ -221,9 +220,7 @@ private struct BrewInstalledView: View {
             Table(filtered, selection: $selection, sortOrder: $sortOrder) {
                 TableColumn("Nom", value: \.name) { package in
                     HStack(spacing: 6) {
-                        Image(systemName: package.kind == .cask ? "app" : "terminal")
-                            .foregroundStyle(.secondary)
-                            .frame(width: 16)
+                        BrewIcon(kind: package.kind, appNames: package.appNames)
                         Text(package.name).fontWeight(.medium)
                         if package.outdated { Badge(text: "mise à jour", color: .blue) }
                         if package.pinned { Badge(text: "épinglé", color: .orange) }
@@ -445,5 +442,42 @@ private struct StuckCaskBanner: View {
         }
         .padding(12)
         .background(.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 10))
+    }
+}
+
+/// Icône d'un paquet : celle de l'app pour un cask qui en installe une, sinon un symbole
+/// (terminal pour une formule, paquet pour un cask sans app : police, pilote, outil…).
+private struct BrewIcon: View {
+    let kind: BrewPackage.Kind
+    let appNames: [String]
+
+    var body: some View {
+        Group {
+            if kind == .cask, let icon = AppIconCache.icon(for: appNames) {
+                Image(nsImage: icon).resizable().interpolation(.high)
+            } else {
+                Image(systemName: kind == .cask ? "shippingbox" : "terminal")
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .frame(width: 16, height: 16)
+    }
+}
+
+/// Icônes des apps installées par les casks, cherchées une fois dans /Applications et ~/Applications.
+@MainActor
+private enum AppIconCache {
+    private static var cache: [String: NSImage?] = [:]
+
+    static func icon(for appNames: [String]) -> NSImage? {
+        guard let name = appNames.first(where: { $0.hasSuffix(".app") }) ?? appNames.first else { return nil }
+        if let cached = cache[name] { return cached }
+        let fileName = (name as NSString).lastPathComponent
+        let candidates = ["/Applications", NSHomeDirectory() + "/Applications"]
+            .map { ($0 as NSString).appendingPathComponent(fileName) }
+        let icon = candidates.first { FileManager.default.fileExists(atPath: $0) }
+            .map { NSWorkspace.shared.icon(forFile: $0) }
+        cache[name] = icon
+        return icon
     }
 }

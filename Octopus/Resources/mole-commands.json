@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "testedMoleVersions": [],
   "categories": [
-    { "id": "cleanup",  "title": "Nettoyage", "symbol": "sparkles" },
-    { "id": "apps",     "title": "Gestion des apps", "symbol": "square.grid.2x2" },
-    { "id": "system",   "title": "Système",   "symbol": "gauge.with.dots.needle.67percent" },
-    { "id": "security", "title": "Sécurité",  "symbol": "checkmark.shield" },
-    { "id": "tools",    "title": "Outils",    "symbol": "wrench.and.screwdriver" },
-    { "id": "settings", "title": "Réglages",  "symbol": "gearshape" }
+    { "id": "cleanup",  "title": "Nettoyage", "symbol": "sparkles", "color": "green" },
+    { "id": "apps",     "title": "Gestion des apps", "symbol": "square.grid.2x2", "color": "blue" },
+    { "id": "system",   "title": "Système",   "symbol": "gauge.with.dots.needle.67percent", "color": "orange" },
+    { "id": "security", "title": "Sécurité",  "symbol": "checkmark.shield", "color": "red" },
+    { "id": "tools",    "title": "Outils",    "symbol": "wrench.and.screwdriver", "color": "purple" },
+    { "id": "settings", "title": "Réglages",  "symbol": "gearshape", "color": "gray" }
   ],
   "commands": [
     {
@@ -62,6 +62,16 @@
       ]
     },
     {
+      "id": "snapshots",
+      "category": "cleanup",
+      "title": "Instantanés Time Machine",
+      "subtitle": "Copies locales de Time Machine qui occupent de la place",
+      "symbol": "clock.arrow.circlepath",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "snapshots"
+    },
+    {
       "id": "uninstall",
       "category": "apps",
       "title": "Désinstaller des apps",
@@ -97,6 +107,16 @@
       ]
     },
     {
+      "id": "defaultapps",
+      "category": "apps",
+      "title": "Apps par défaut",
+      "subtitle": "Quelle app ouvre quel type de fichier",
+      "symbol": "arrow.up.forward.app",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "defaultApps"
+    },
+    {
       "id": "startup",
       "category": "apps",
       "title": "Éléments de démarrage",
@@ -105,6 +125,16 @@
       "argv": [],
       "mode": "terminal",
       "nativeView": "startup"
+    },
+    {
+      "id": "homebrew",
+      "category": "apps",
+      "title": "Homebrew",
+      "subtitle": "Mises à jour, paquets, services et entretien",
+      "symbol": "mug",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "homebrew"
     },
     {
       "id": "status",
@@ -201,14 +231,24 @@
       "nativeView": "ports"
     },
     {
-      "id": "homebrew",
+      "id": "network",
       "category": "tools",
-      "title": "Homebrew",
-      "subtitle": "Mises à jour, paquets, services et entretien",
-      "symbol": "mug",
+      "title": "Réseau",
+      "subtitle": "Adresses, DNS, diagnostic et fichier hosts",
+      "symbol": "network",
       "argv": [],
       "mode": "terminal",
-      "nativeView": "homebrew"
+      "nativeView": "network"
+    },
+    {
+      "id": "tweaks",
+      "category": "tools",
+      "title": "Réglages cachés",
+      "subtitle": "Finder, captures d'écran, Dock, maintenance",
+      "symbol": "slider.horizontal.3",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "tweaks"
     },
     {
       "id": "touchid",

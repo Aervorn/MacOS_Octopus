@@ -17,3 +17,4 @@ Support/Info.plist
 # Builds
 build/
 dist/
+_to_delete/

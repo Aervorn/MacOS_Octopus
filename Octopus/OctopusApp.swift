@@ -15,17 +15,30 @@ struct OctopusApp: App {
     @State private var mole = MoleService()
     @State private var session = TerminalSession()
     @State private var updater = AppUpdater()
+    @State private var permissions = Permissions()
+    @State private var showingPermissions = false
+    @AppStorage(Prefs.skipPermissionsPrompt) private var skipPermissionsPrompt = false
 
     var body: some Scene {
         Window("Octopus", id: Self.mainWindowID) {
             ContentView()
-                .frame(minWidth: 900, minHeight: 620)
+                .frame(minWidth: 960, minHeight: 640)
                 .environment(mole)
                 .environment(session)
                 .environment(updater)
+                .environment(permissions)
                 .task {
+                    AppAppearance.apply()
                     guard !Self.isRunningTests else { return }
+                    // Autorisation recommandée manquante : on le dit dès le lancement
+                    if permissions.hasMissing && !skipPermissionsPrompt {
+                        showingPermissions = true
+                    }
                     await mole.refresh()
+                }
+                .sheet(isPresented: $showingPermissions) {
+                    PermissionsPrompt()
+                        .environment(permissions)
                 }
         }
         .commands {
@@ -42,5 +55,11 @@ struct OctopusApp: App {
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
         .defaultPosition(.center)
+
+        Settings {
+            SettingsView()
+                .environment(updater)
+                .environment(permissions)
+        }
     }
 }

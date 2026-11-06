@@ -14,6 +14,8 @@ struct CommandManifest: Decodable {
         let id: String
         let title: String
         let symbol: String
+        /// Couleur de la section dans la barre latérale : green, blue, orange, red, purple, gray…
+        let color: String?
     }
 
     struct Command: Decodable, Identifiable, Hashable {
@@ -38,7 +40,7 @@ struct CommandManifest: Decodable {
     }
 
     enum NativeView: String, Decodable, Hashable {
-        case status, analyze, history, security, ssh, ports, startup, inspector, homebrew
+        case status, analyze, history, security, ssh, ports, startup, inspector, homebrew, network, snapshots, tweaks, defaultApps
     }
 
     enum Mode: String, Decodable, Hashable {

@@ -19,7 +19,6 @@ struct CommandView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            header
             if let positional = command.positional {
                 positionalField(positional)
             }
@@ -51,21 +50,6 @@ struct CommandView: View {
     }
 
     // MARK: - Morceaux
-
-    private var header: some View {
-        HStack(alignment: .top, spacing: 12) {
-            Image(systemName: command.symbol)
-                .font(.system(size: 28))
-                .foregroundStyle(.tint)
-                .frame(width: 36)
-            VStack(alignment: .leading, spacing: 2) {
-                Text(command.title).font(.title2.bold())
-                if let subtitle = command.subtitle {
-                    Text(subtitle).foregroundStyle(.secondary)
-                }
-            }
-        }
-    }
 
     @ViewBuilder
     private func positionalField(_ positional: CommandManifest.Positional) -> some View {

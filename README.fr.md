@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Design/Octopus-icon.svg" width="128" alt="Icône d'Octopus" />
+</p>
+
 <h1 align="center">Octopus</h1>
 
 <p align="center">

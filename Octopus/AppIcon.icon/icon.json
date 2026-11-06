@@ -1,0 +1,33 @@
+{
+  "fill": {
+    "linear-gradient": [
+      "display-p3:0.05882,0.10588,0.17647,1.00000",
+      "display-p3:0.11373,0.23137,0.36078,1.00000"
+    ]
+  },
+  "groups": [
+    {
+      "layers": [
+        {
+          "image-name": "2-pieuvre.svg",
+          "name": "2-pieuvre"
+        }
+      ],
+      "name": "Pieuvre",
+      "shadow": {
+        "kind": "neutral",
+        "opacity": 0.5
+      },
+      "translucency": {
+        "enabled": true,
+        "value": 0.2
+      }
+    }
+  ],
+  "supported-platforms": {
+    "circles": [
+      "watchOS"
+    ],
+    "squares": "shared"
+  }
+}

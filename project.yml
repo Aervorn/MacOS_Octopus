@@ -57,8 +57,8 @@ targets:
         PRODUCT_NAME: Octopus
         # Clé publique EdDSA de Sparkle, partagée avec Flux et Vestora
         SPARKLE_PUBLIC_ED_KEY: "eZCHe74IeZ8DBTAY+tVftTLA2+kKJT3xD5e/QmhV2sE="
-        # Icône à venir : décommenter quand Octopus/AppIcon.icon existera
-        # ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        # Icône : Octopus/AppIcon.icon (Icon Composer), calques générés par Design/IconComposer/make_layers.py
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         # Signature locale ("Sign to Run Locally") : pas besoin de compte développeur
         CODE_SIGN_IDENTITY: "-"
         CODE_SIGN_STYLE: Manual

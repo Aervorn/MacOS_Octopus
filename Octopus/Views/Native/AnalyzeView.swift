@@ -177,6 +177,7 @@ struct AnalyzeView: View {
                         .lineLimit(1)
                         .truncationMode(.head)
                 }
+                .frame(height: 36)
                 .contextMenu {
                     Button("Afficher dans le Finder") { Finder.reveal(file.path) }
                     Button("Copier le chemin") { Finder.copy(file.path) }
@@ -284,6 +285,7 @@ private struct EntryRow: View {
                 .monospacedDigit()
                 .frame(width: 80, alignment: .trailing)
         }
-        .padding(.vertical, 2)
+        // Hauteur fixe : des lignes de hauteurs différentes font trembler la liste en bas
+        .frame(height: 24)
     }
 }
