@@ -12,9 +12,22 @@ struct ContentView: View {
         manifest.commands.first { $0.id == selection }
     }
 
-    /// Vue native à afficher à la place de la fiche et du terminal, le cas échéant.
+    /// Vue native à afficher à la place de la fiche de commande, le cas échéant.
     private var nativeView: CommandManifest.NativeView? {
-        showsTerminal ? nil : selectedCommand?.nativeView
+        guard let command = selectedCommand else { return nil }
+        if command.hasTerminalMode && showsTerminal { return nil }
+        return command.nativeView
+    }
+
+    /// Vue native sans mode terminal (Sécurité) qui a lancé une commande : le terminal
+    /// s'affiche en bas, sous la vue, au lieu de la remplacer.
+    private var showsTerminalBelowNativeView: Bool {
+        nativeView != nil && selectedCommand?.hasTerminalMode == false && session.current != nil
+    }
+
+    private var terminalHeight: CGFloat {
+        if nativeView == nil { return .infinity }
+        return showsTerminalBelowNativeView ? 260 : 0
     }
 
     /// En haut, la fiche de la commande (à sa hauteur naturelle, sans défilement) ou sa vue
@@ -26,6 +39,9 @@ struct ContentView: View {
                 NativeCommandView(view: nativeView)
                     .id(command.id)
                     .frame(maxHeight: .infinity)
+                if showsTerminalBelowNativeView {
+                    Divider()
+                }
             } else {
                 Group {
                     if let command = selectedCommand {
@@ -48,9 +64,10 @@ struct ContentView: View {
             }
 
             TerminalArea()
-                .frame(maxHeight: nativeView == nil ? .infinity : 0)
+                .frame(height: terminalHeight == .infinity ? nil : terminalHeight)
+                .frame(maxHeight: terminalHeight)
                 .clipped()
-                .opacity(nativeView == nil ? 1 : 0)
+                .opacity(terminalHeight == 0 ? 0 : 1)
         }
     }
 
@@ -78,7 +95,7 @@ struct ContentView: View {
             detail
         }
         .toolbar {
-            if selectedCommand?.nativeView != nil {
+            if selectedCommand?.nativeView != nil, selectedCommand?.hasTerminalMode == true {
                 ToolbarItem(placement: .primaryAction) {
                     Picker("Affichage", selection: $showsTerminal) {
                         Label("Vue", systemImage: "square.grid.2x2").tag(false)
@@ -92,7 +109,9 @@ struct ContentView: View {
         .onChange(of: selection) { _, _ in showsTerminal = false }
         // Une commande lancée (par ex. la mise à jour depuis la barre latérale) doit être visible
         .onChange(of: session.isRunning) { _, running in
-            if running && selectedCommand?.nativeView != nil { showsTerminal = true }
+            if running && selectedCommand?.nativeView != nil && selectedCommand?.hasTerminalMode == true {
+                showsTerminal = true
+            }
         }
         .onAppear { if selection == nil { selection = manifest.commands.first?.id } }
     }
@@ -148,8 +167,12 @@ struct NativeCommandView: View {
     @Environment(MoleService.self) private var mole
 
     var body: some View {
-        if let executable = mole.executablePath {
+        if view == .security {
+            // Ne dépend pas de Mole
+            SecurityView()
+        } else if let executable = mole.executablePath {
             switch view {
+            case .security: EmptyView()
             case .status: StatusDashboardView(executable: executable)
             case .analyze: AnalyzeView(executable: executable)
             case .history: HistoryView(executable: executable)

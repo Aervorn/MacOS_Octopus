@@ -33,10 +33,12 @@ struct CommandManifest: Decodable {
         let actions: [Action]?
 
         var isDestructive: Bool { destructive ?? false }
+        /// Faux pour les vues qui ne pilotent pas mo (Sécurité) : pas de bascule vers le terminal.
+        var hasTerminalMode: Bool { !argv.isEmpty }
     }
 
     enum NativeView: String, Decodable, Hashable {
-        case status, analyze, history
+        case status, analyze, history, security
     }
 
     enum Mode: String, Decodable, Hashable {

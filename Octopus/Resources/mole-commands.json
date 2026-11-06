@@ -150,6 +150,16 @@
       ]
     },
     {
+      "id": "security",
+      "category": "security",
+      "title": "Vérifications",
+      "subtitle": "SIP, Gatekeeper, FileVault, XProtect, mises à jour de sécurité",
+      "symbol": "checkmark.shield",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "security"
+    },
+    {
       "id": "touchid",
       "category": "settings",
       "title": "Touch ID pour sudo",
