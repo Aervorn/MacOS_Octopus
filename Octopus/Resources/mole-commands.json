@@ -97,6 +97,16 @@
       ]
     },
     {
+      "id": "startup",
+      "category": "apps",
+      "title": "Éléments de démarrage",
+      "subtitle": "LaunchAgents et LaunchDaemons installés par des apps",
+      "symbol": "power",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "startup"
+    },
+    {
       "id": "status",
       "nativeView": "status",
       "category": "system",

@@ -9,11 +9,13 @@ struct PortsView: View {
     @State private var selection: ListeningPort.ID?
     @State private var autoRefresh = true
     @State private var stopping: (port: ListeningPort, force: Bool)?
+    @State private var sortOrder = [KeyPathComparator(\ListeningPort.port)]
 
     private var filtered: [ListeningPort] {
         let query = search.trimmingCharacters(in: .whitespaces)
-        guard !query.isEmpty else { return scanner.ports }
-        return scanner.ports.filter {
+        let sorted = scanner.ports.sorted(using: sortOrder)
+        guard !query.isEmpty else { return sorted }
+        return sorted.filter {
             String($0.port).hasPrefix(query)
                 || $0.processName.localizedCaseInsensitiveContains(query)
                 || ($0.wellKnownService?.localizedCaseInsensitiveContains(query) ?? false)
@@ -27,19 +29,19 @@ struct PortsView: View {
         VStack(spacing: 0) {
             toolbar
             Divider()
-            Table(filtered, selection: $selection) {
-                TableColumn("Port") { port in
+            Table(filtered, selection: $selection, sortOrder: $sortOrder) {
+                TableColumn("Port", value: \.port) { port in
                     Text(String(port.port))
                         .font(.body.monospacedDigit().weight(.semibold))
                 }
                 .width(min: 60, ideal: 70, max: 90)
 
-                TableColumn("Processus") { port in
+                TableColumn("Processus", value: \.processName) { port in
                     ProcessCell(port: port)
                 }
                 .width(min: 160, ideal: 220)
 
-                TableColumn("Commande") { port in
+                TableColumn("Commande", value: \.displayCommand) { port in
                     Text(port.displayCommand)
                         .font(.callout.monospaced())
                         .foregroundStyle(.secondary)
@@ -50,7 +52,7 @@ struct PortsView: View {
                 }
                 .width(min: 200, ideal: 380)
 
-                TableColumn("Écoute sur") { port in
+                TableColumn("Écoute sur", value: \.addressSummary) { port in
                     HStack(spacing: 6) {
                         Image(systemName: port.isLocalOnly ? "lock" : "network")
                             .foregroundStyle(port.isLocalOnly ? Color.secondary : Color.orange)
@@ -62,7 +64,7 @@ struct PortsView: View {
                 }
                 .width(min: 140, ideal: 170)
 
-                TableColumn("PID") { port in
+                TableColumn("PID", value: \.pid) { port in
                     Text(String(port.pid)).monospacedDigit().foregroundStyle(.secondary)
                 }
                 .width(min: 50, ideal: 60, max: 80)
@@ -208,6 +210,7 @@ private struct ProcessCell: View {
                 Badge(text: user, color: .orange)
             }
         }
+        .frame(height: 24)
         .task(id: port.pid) { info = PortScanner.appInfo(for: port.pid) }
     }
 }
