@@ -201,6 +201,16 @@
       "nativeView": "ports"
     },
     {
+      "id": "homebrew",
+      "category": "tools",
+      "title": "Homebrew",
+      "subtitle": "Mises à jour, paquets, services et entretien",
+      "symbol": "mug",
+      "argv": [],
+      "mode": "terminal",
+      "nativeView": "homebrew"
+    },
+    {
       "id": "touchid",
       "category": "settings",
       "title": "Touch ID pour sudo",

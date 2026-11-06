@@ -174,6 +174,7 @@ struct NativeCommandView: View {
         case .ports: PortsView()
         case .startup: LaunchItemsView()
         case .inspector: AppInspectorView()
+        case .homebrew: HomebrewView()
         default: moleView
         }
     }
@@ -181,7 +182,7 @@ struct NativeCommandView: View {
     @ViewBuilder private var moleView: some View {
         if let executable = mole.executablePath {
             switch view {
-            case .security, .ssh, .ports, .startup, .inspector: EmptyView()
+            case .security, .ssh, .ports, .startup, .inspector, .homebrew: EmptyView()
             case .status: StatusDashboardView(executable: executable)
             case .analyze: AnalyzeView(executable: executable)
             case .history: HistoryView(executable: executable)
