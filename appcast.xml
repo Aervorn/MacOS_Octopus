@@ -4,22 +4,22 @@
     <title>Octopus</title>
     <link>https://github.com/Aervorn/MacOS_Octopus</link>
     <item>
-      <title>Octopus 0.1.0</title>
-      <pubDate>Fri, 06 Nov 2026 19:56:31 +0000</pubDate>
-      <sparkle:version>1</sparkle:version>
-      <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+      <title>Octopus 0.2.0</title>
+      <pubDate>Fri, 13 Nov 2026 09:06:58 +0000</pubDate>
+      <sparkle:version>2</sparkle:version>
+      <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>First public version, in English and French.</li>
-<li>Every Mole command with its options, run in an embedded terminal; Mole install and update.</li>
-<li>Native views for system status, disk explorer and history.</li>
-<li>Security checks, app inspector, SSH keys, network ports, network, startup items, Homebrew, Time Machine snapshots, default apps and hidden settings.</li>
-<li>Home view, light and dark mode, <b>About</b> window, app icon made for macOS 26, Sparkle updates.</li></ul>]]></description>
-      <description xml:lang="fr"><![CDATA[<ul><li>Première version publique, en français et en anglais.</li>
-<li>Toutes les commandes de Mole avec leurs options, exécutées dans un terminal intégré ; installation et mise à jour de Mole.</li>
-<li>Vues natives pour l'état du système, l'explorateur de disque et l'historique.</li>
-<li>Vérifications de sécurité, inspecteur d'app, clés SSH, ports réseau, réseau, éléments de démarrage, Homebrew, instantanés Time Machine, apps par défaut et réglages cachés.</li>
-<li>Vue d'accueil, mode clair et sombre, fenêtre <b>À propos</b>, icône conçue pour macOS 26, mises à jour Sparkle.</li></ul>]]></description>
-      <enclosure url="https://github.com/Aervorn/MacOS_Octopus/releases/download/v0.1.0/Octopus-0.1.0.dmg" type="application/octet-stream" sparkle:edSignature="wtBbssHZu2dzFCRpgaSIfkiGk96ivHv03apjtHR2Gd277awVDgKRqADLOGECSkm7H29hrRMGUePYkl3mS0J3DQ==" length="7936444" />
+      <description><![CDATA[<ul><li>Each tool now has its own terminal: switching tools no longer shows the previous tool's command.</li>
+<li>Homebrew: exclude a package from updates (right-click), and include it again later.</li>
+<li>App inspector: sandbox status always shown, what notarization does and doesn't mean, full signing chain, and a button that runs <code>spctl</code> and <code>codesign</code> in the terminal.</li>
+<li>Clearer description of <b>Optimize</b>.</li>
+<li>Closing the main window now quits Octopus, instead of leaving the Settings window open.</li></ul>]]></description>
+      <description xml:lang="fr"><![CDATA[<ul><li>Chaque outil a désormais son propre terminal : changer d'outil n'affiche plus la commande de l'outil précédent.</li>
+<li>Homebrew : exclure un paquet des mises à jour (clic droit), puis le réintégrer plus tard.</li>
+<li>Inspecteur d'app : bac à sable toujours indiqué, ce que la notarisation garantit ou non, chaîne de signature complète, et un bouton qui lance <code>spctl</code> et <code>codesign</code> dans le terminal.</li>
+<li>Description plus claire d'<b>Optimiser</b>.</li>
+<li>Fermer la fenêtre principale quitte maintenant Octopus, au lieu de laisser la fenêtre des Réglages ouverte.</li></ul>]]></description>
+      <enclosure url="https://github.com/Aervorn/MacOS_Octopus/releases/download/v0.2.0/Octopus-0.2.0.dmg" type="application/octet-stream" sparkle:edSignature="Khf9jrDoZ7sY4sIXdsPlbPMNTGmB/YuOQvr9xFacP45HejBFdUQyM+Fdlk1raVSxNDXTaMQ8IOIFf9NRIVZUDw==" length="7961273" />
     </item>
   </channel>
 </rss>
