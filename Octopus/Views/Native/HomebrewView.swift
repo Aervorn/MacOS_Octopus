@@ -60,7 +60,7 @@ struct HomebrewView: View {
 
     private func label(for tab: Tab) -> String {
         switch tab {
-        case .updates where !store.outdated.isEmpty: "\(tab.title) (\(store.outdated.count))"
+        case .updates where !store.visibleOutdated.isEmpty: "\(tab.title) (\(store.visibleOutdated.count))"
         case .installed where !store.packages.isEmpty: "\(tab.title) (\(store.packages.count))"
         default: tab.title
         }
@@ -111,21 +111,21 @@ private struct BrewUpdatesView: View {
                 Spacer()
                 if !selection.isEmpty {
                     Button(String(localized: "Mettre à jour la sélection (\(selection.count))")) {
-                        let items = store.outdated.filter { selection.contains($0.id) }
+                        let items = store.visibleOutdated.filter { selection.contains($0.id) }
                         session.start(title: "brew upgrade", commandLine: store.upgradeCommand(items))
                     }
                     .disabled(session.isRunning)
                 }
                 Button(String(localized: "Tout mettre à jour")) {
-                    session.start(title: "brew upgrade", commandLine: store.command(["upgrade"]))
+                    session.start(title: "brew upgrade", commandLine: store.upgradeAllCommand)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(store.outdated.isEmpty || session.isRunning)
+                .disabled(store.visibleOutdated.isEmpty || session.isRunning)
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
 
-            Table(store.outdated, selection: $selection) {
+            Table(store.visibleOutdated, selection: $selection) {
                 TableColumn("Paquet") { item in
                     HStack(spacing: 6) {
                         BrewIcon(kind: item.kind,
@@ -140,6 +140,16 @@ private struct BrewUpdatesView: View {
                     .width(min: 70, ideal: 90)
                 TableColumn(String(localized: "Installée")) { item in Text(item.installed).monospacedDigit().foregroundStyle(.secondary) }
                 TableColumn("Disponible") { item in Text(item.available).monospacedDigit().fontWeight(.medium) }
+            }
+            .contextMenu(forSelectionType: BrewOutdated.ID.self) { ids in
+                if !ids.isEmpty {
+                    Button(ids.count == 1
+                           ? String(localized: "Exclure des mises à jour")
+                           : String(localized: "Exclure les \(ids.count) des mises à jour")) {
+                        ids.forEach { store.setExcluded($0, true) }
+                        selection.subtract(ids)
+                    }
+                }
             }
             .confirmationDialog(
                 String(localized: "Réparer la mise à jour de « \(repairing?.cask ?? "") » ?"),
@@ -161,7 +171,7 @@ private struct BrewUpdatesView: View {
                 Text(String(localized: "L'ancienne copie de \(stuck.appName) restée dans le Caskroom part à la Corbeille. L'app utilisée, dans /Applications, n'est pas touchée."))
             }
             .overlay {
-                if store.outdated.isEmpty && !store.isLoading {
+                if store.visibleOutdated.isEmpty && !store.isLoading {
                     ContentUnavailableView {
                         Label(String(localized: "Tout est à jour"), systemImage: "checkmark.circle")
                     } description: {
@@ -169,7 +179,35 @@ private struct BrewUpdatesView: View {
                     }
                 }
             }
+            if !store.excluded.isEmpty {
+                Divider()
+                HStack {
+                    Image(systemName: "eye.slash").foregroundStyle(.secondary)
+                    Text(store.excludedOutdated.isEmpty
+                         ? String(localized: "\(store.excluded.count) paquet(s) exclu(s) des mises à jour")
+                         : String(localized: "\(store.excludedOutdated.count) mise(s) à jour masquée(s) : paquet exclu"))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                    Menu(String(localized: "Réintégrer")) {
+                        ForEach(store.excluded.sorted(), id: \.self) { id in
+                            Button(Self.displayName(id)) { store.setExcluded(id, false) }
+                        }
+                    }
+                    .menuStyle(.borderlessButton)
+                    .fixedSize()
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 6)
+            }
         }
+    }
+}
+
+extension BrewUpdatesView {
+    /// « App (cask):mp3tag » → « mp3tag »
+    static func displayName(_ id: String) -> String {
+        id.split(separator: ":", maxSplits: 1).last.map(String.init) ?? id
     }
 }
 
@@ -227,6 +265,7 @@ private struct BrewInstalledView: View {
                         if package.outdated { Badge(text: String(localized: "mise à jour"), color: .blue) }
                         if package.pinned { Badge(text: String(localized: "épinglé"), color: .orange) }
                         if !package.onRequest { Badge(text: String(localized: "dépendance")) }
+                        if store.isExcluded(package.id) { Badge(text: String(localized: "exclu"), color: .purple) }
                     }
                     .frame(height: 22)
                 }
@@ -254,6 +293,11 @@ private struct BrewInstalledView: View {
                     Button(String(localized: "Infos détaillées (brew info)")) {
                         session.start(title: "brew info \(package.name)",
                                       commandLine: store.command(["info", package.kind == .cask ? "--cask" : "--formula", package.name]))
+                    }
+                    Button(store.isExcluded(package.id)
+                           ? String(localized: "Réintégrer aux mises à jour")
+                           : String(localized: "Exclure des mises à jour")) {
+                        store.setExcluded(package.id, !store.isExcluded(package.id))
                     }
                     if package.kind == .formula {
                         Button(package.pinned ? String(localized: "Désépingler") : String(localized: "Épingler (bloquer les mises à jour)")) {

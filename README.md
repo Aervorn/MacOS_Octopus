@@ -61,19 +61,19 @@ Mac health, disk and memory at a glance, the result of the security checks, the 
 - **Slim universal apps** (Mole, Apple Silicon): removes the Intel code.
 - **Default apps**: which app opens which file type or URL scheme, and change it.
 - **Startup items**: LaunchAgents and LaunchDaemons installed by apps, with their signature; enable, disable or reveal them, several at a time.
-- **Homebrew**: outdated packages and one-click upgrades, installed formulae and casks (with the icon of each cask's app), services, cleanup and `autoremove`. Octopus also detects and repairs a cask stuck on “already an App at…”.
+- **Homebrew**: outdated packages and one-click upgrades, installed formulae and casks (with the icon of each cask's app), services, cleanup and `autoremove`. Octopus also detects and repairs a cask stuck on “already an App at…”. A package can be excluded from updates (an app that updates itself, for example) and included again at any time.
 
 ### 📊 System (Mole)
 
 - **System status**: CPU, GPU, memory, disks, network, battery and the busiest processes, live.
 - **Disk explorer**: the biggest folders and files of your Mac or of a folder, sortable, with reveal in Finder.
-- **Optimize**: refreshes caches and services, fixes safe maintenance issues.
+- **Optimize**: refreshes system caches and services, and runs risk-free maintenance tasks.
 - **History**: Mole's recent operations and deletions.
 
 ### 🛡️ Security
 
 - **Checks**: SIP, signed system volume, boot security policy, Gatekeeper, FileVault, firewall, automatic updates, XProtect and its last scans, firmware, and pending macOS and security updates (checked when the view opens).
-- **App inspector**: signature, notarization, quarantine and entitlements of an app; removing the quarantine attribute.
+- **App inspector**: who signed an app, whether it comes from the App Store or is notarized (an automated scan by Apple, not a review), whether it's sandboxed, its quarantine and entitlements; removing the quarantine attribute. The raw `spctl` and `codesign` checks can also be run in the terminal.
 
 ### 🧰 Tools
 
@@ -135,6 +135,13 @@ Octopus collects nothing and sends nothing about you: no account, no analytics, 
 Octopus updates itself: it checks for a new version once a day and offers to install it, with its release notes (or use **Octopus › Check for Updates…**). Updates are signed, and Octopus refuses any file that wasn't signed by the author. Automatic checking can be turned off in **Settings › General**.
 
 ## 📝 Changelog
+
+### 0.2.0
+- Each tool now has its own terminal: switching tools no longer shows the previous tool's command.
+- Homebrew: exclude a package from updates (right-click), and include it again later.
+- App inspector: sandbox status always shown, what notarization does and doesn't mean, full signing chain, and a button that runs `spctl` and `codesign` in the terminal.
+- Clearer description of **Optimize**.
+- Closing the main window now quits Octopus, instead of leaving the Settings window open.
 
 ### 0.1.0
 - First public version, in English and French.

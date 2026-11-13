@@ -72,7 +72,7 @@ struct TerminalArea: View {
             HStack(spacing: 8) {
                 Image(systemName: "terminal")
                     .foregroundStyle(.secondary)
-                Text(session.current?.title ?? "Terminal")
+                Text(session.visible?.title ?? "Terminal")
                     .font(.system(.callout, design: .monospaced))
                     .lineLimit(1)
                     .truncationMode(.middle)
@@ -81,7 +81,7 @@ struct TerminalArea: View {
                 Button("Effacer", systemImage: "xmark.circle") { session.clear() }
                     .labelStyle(.iconOnly)
                     .buttonStyle(.borderless)
-                    .disabled(session.isRunning || session.current == nil)
+                    .disabled(session.isRunning || session.visible == nil)
                     .help(String(localized: "Effacer le terminal"))
             }
             .padding(.horizontal, 12)
@@ -90,24 +90,47 @@ struct TerminalArea: View {
 
             Divider()
 
-            if let run = session.current {
-                TerminalPane(run: run) { id, code in
-                    session.didTerminate(id, exitCode: code)
+            ZStack {
+                if let run = session.current {
+                    // Toujours monté pour qu'une commande d'un autre outil continue de tourner,
+                    // mais affiché seulement dans l'outil qui l'a lancée.
+                    TerminalPane(run: run) { id, code in
+                        session.didTerminate(id, exitCode: code)
+                    }
+                    .id(run.id)
+                    .opacity(session.visible == nil ? 0 : 1)
+                    .allowsHitTesting(session.visible != nil)
                 }
-                .id(run.id)
+                if session.visible == nil {
+                    placeholder
+                }
+            }
+        }
+    }
+
+    private var placeholder: some View {
+        Group {
+            if session.isRunning {
+                ContentUnavailableView(
+                    String(localized: "Une commande tourne dans un autre outil"),
+                    systemImage: "terminal",
+                    description: Text(String(localized: "Elle se termine en arrière-plan ; reviens dans son outil pour la suivre."))
+                )
             } else {
                 ContentUnavailableView(
                     String(localized: "Aucune commande lancée"),
                     systemImage: "terminal",
                     description: Text(String(localized: "Choisis une commande à gauche, règle ses options, puis lance-la."))
                 )
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
     @ViewBuilder private var status: some View {
-        if session.isRunning {
+        if session.visible == nil {
+            EmptyView()
+        } else if session.isRunning {
             ProgressView().controlSize(.small)
             Text(String(localized: "En cours")).font(.caption).foregroundStyle(.secondary)
         } else if let code = session.exitCode {

@@ -38,6 +38,11 @@ struct AppReport: Equatable {
     var usesSparkle = false
     var isFromAppStore = false
 
+    /// `com.apple.security.app-sandbox` à vrai dans les droits de la signature.
+    var isSandboxed: Bool {
+        entitlements.contains { $0.key == "com.apple.security.app-sandbox" && $0.value == "oui" }
+    }
+
     enum Signature: Equatable {
         case apple
         case appStore
@@ -202,6 +207,21 @@ enum AppInspector {
         report.isFromAppStore = FileManager.default.fileExists(atPath: contents.appendingPathComponent("_MASReceipt").path)
         if report.isFromAppStore && report.signature == .unknown { report.signature = .appStore }
         return report
+    }
+
+    /// Les trois vérifications de référence, à lancer telles quelles dans le terminal :
+    /// provenance et notarisation, bac à sable, identité du signataire.
+    static func terminalChecks(for url: URL) -> String {
+        let path = Shell.quote(url.path)
+        let checks = [
+            (String(localized: "Gatekeeper : App Store ou notarisation"), "/usr/sbin/spctl --assess -vv \(path) 2>&1"),
+            (String(localized: "Droits : bac à sable (app-sandbox => true)"),
+             "/usr/bin/codesign -d --entitlements - --xml \(path) 2>/dev/null | /usr/bin/plutil -p - 2>&1 || echo '(aucun droit déclaré : pas de bac à sable)'"),
+            (String(localized: "Signataire"), "/usr/bin/codesign -dv --verbose=2 \(path) 2>&1 | /usr/bin/grep Authority || echo '(non signée)'"),
+        ]
+        return checks.map { title, command in
+            "printf '\\n\\033[1m== %s ==\\033[0m\\n' \(Shell.quote(title)); \(command)"
+        }.joined(separator: "; ")
     }
 
     /// Retire l'attribut de quarantaine de l'app et de son contenu.

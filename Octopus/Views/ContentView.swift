@@ -1,3 +1,4 @@
+import AppKit
 import SwiftUI
 
 /// Fenêtre principale : commandes par catégorie à gauche, options et terminal à droite.
@@ -33,7 +34,7 @@ struct ContentView: View {
     /// Vue sans mode terminal (Accueil, Sécurité…) qui a lancé une commande : le terminal
     /// s'affiche en bas, sous la vue, au lieu de la remplacer.
     private var showsTerminalBelowNativeView: Bool {
-        (isHome || (nativeView != nil && selectedCommand?.hasTerminalMode == false)) && session.current != nil
+        (isHome || (nativeView != nil && selectedCommand?.hasTerminalMode == false)) && session.visible != nil
     }
 
     private var terminalHeight: CGFloat {
@@ -119,14 +120,23 @@ struct ContentView: View {
                 }
             }
         }
-        .onChange(of: selection) { _, _ in showsTerminal = false }
+        .onChange(of: selection) { _, newValue in
+            showsTerminal = false
+            // Chaque outil a son propre terminal : on n'hérite pas de celui du précédent
+            session.switchContext(to: newValue)
+        }
         // Une commande lancée (par ex. la mise à jour depuis la barre latérale) doit être visible
         .onChange(of: session.isRunning) { _, running in
             if running && selectedCommand?.nativeView != nil && selectedCommand?.hasTerminalMode == true {
                 showsTerminal = true
             }
         }
-        .onAppear { if selection == nil { selection = Self.homeID } }
+        .onAppear {
+            if selection == nil { selection = Self.homeID }
+            session.context = selection
+        }
+        // Fermer la fenêtre principale quitte l'app : les Réglages ne restent pas ouverts seuls
+        .onDisappear { NSApp.terminate(nil) }
     }
 }
 

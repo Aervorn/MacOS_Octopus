@@ -97,6 +97,31 @@ final class HomebrewStore {
 
     var isInstalled: Bool { brewPath != nil }
 
+    // MARK: - Exclusions
+
+    /// Paquets exclus des mises à jour (ex. une app qui se met à jour autrement, comme Mp3tag).
+    private(set) var excluded: Set<String> =
+        Set(UserDefaults.standard.stringArray(forKey: Prefs.brewExcluded) ?? [])
+
+    func isExcluded(_ id: String) -> Bool { excluded.contains(id) }
+
+    func setExcluded(_ id: String, _ value: Bool) {
+        if value { excluded.insert(id) } else { excluded.remove(id) }
+        UserDefaults.standard.set(excluded.sorted(), forKey: Prefs.brewExcluded)
+    }
+
+    /// Mises à jour proposées : sans les paquets exclus.
+    var visibleOutdated: [BrewOutdated] { outdated.filter { !excluded.contains($0.id) } }
+
+    /// Mises à jour masquées parce que le paquet est exclu.
+    var excludedOutdated: [BrewOutdated] { outdated.filter { excluded.contains($0.id) } }
+
+    /// « Tout mettre à jour » : `brew upgrade`, ou la liste explicite s'il y a des exclusions.
+    var upgradeAllCommand: String {
+        guard !excludedOutdated.isEmpty else { return command(["upgrade"]) }
+        return upgradeCommand(visibleOutdated.filter { !$0.pinned })
+    }
+
     static func locate() -> String? {
         ["/opt/homebrew/bin/brew", "/usr/local/bin/brew"].first { FileManager.default.isExecutableFile(atPath: $0) }
     }

@@ -6,6 +6,8 @@ enum Prefs {
     static let appearance = "appearance"
     /// L'utilisateur a choisi de ne plus voir la fenêtre des autorisations au lancement.
     static let skipPermissionsPrompt = "skipPermissionsPrompt"
+    /// Paquets Homebrew exclus des mises à jour (identifiants « type:nom »).
+    static let brewExcluded = "brewExcludedPackages"
 }
 
 /// Apparence de l'app : celle de macOS, ou forcée en clair / sombre (comme dans Flux).

@@ -61,19 +61,19 @@ La santé du Mac, le disque et la mémoire en un coup d'œil, le résultat des v
 - **Alléger les apps universelles** (Mole, Apple Silicon) : retire le code Intel.
 - **Apps par défaut** : quelle app ouvre quel type de fichier ou de lien, et la changer.
 - **Éléments de démarrage** : LaunchAgents et LaunchDaemons installés par des apps, avec leur signature ; les activer, désactiver ou afficher, plusieurs à la fois.
-- **Homebrew** : paquets à mettre à jour et mise à jour en un clic, formules et casks installés (avec l'icône de l'app de chaque cask), services, nettoyage et `autoremove`. Octopus détecte et répare aussi un cask bloqué sur « already an App at… ».
+- **Homebrew** : paquets à mettre à jour et mise à jour en un clic, formules et casks installés (avec l'icône de l'app de chaque cask), services, nettoyage et `autoremove`. Octopus détecte et répare aussi un cask bloqué sur « already an App at… ». Un paquet peut être exclu des mises à jour (une app qui se met à jour toute seule, par exemple) et réintégré à tout moment.
 
 ### 📊 Système (Mole)
 
 - **État du système** : CPU, GPU, mémoire, disques, réseau, batterie et processus les plus gourmands, en direct.
 - **Explorer le disque** : les plus gros dossiers et fichiers du Mac ou d'un dossier, triables, avec affichage dans le Finder.
-- **Optimiser** : rafraîchit caches et services, répare les problèmes de maintenance sûrs.
+- **Optimiser** : rafraîchit les caches et services système, et lance les tâches d'entretien sans risque.
 - **Historique** : les opérations et suppressions récentes de Mole.
 
 ### 🛡️ Sécurité
 
 - **Vérifications** : SIP, volume système signé, politique de démarrage sécurisé, Gatekeeper, FileVault, coupe-feu, mises à jour automatiques, XProtect et ses derniers scans, firmware, et mises à jour macOS et de sécurité en attente (vérifiées à l'ouverture de la vue).
-- **Inspecteur d'app** : signature, notarisation, quarantaine et droits (entitlements) d'une app ; retrait de l'attribut de quarantaine.
+- **Inspecteur d'app** : qui a signé une app, si elle vient de l'App Store ou est notarisée (une analyse automatique d'Apple, pas un examen), si elle est dans un bac à sable, sa quarantaine et ses droits (entitlements) ; retrait de l'attribut de quarantaine. Les vérifications brutes `spctl` et `codesign` peuvent aussi être lancées dans le terminal.
 
 ### 🧰 Outils
 
@@ -135,6 +135,13 @@ Octopus ne collecte et n'envoie rien sur toi : pas de compte, pas de statistique
 Octopus se met à jour tout seul : il vérifie une fois par jour si une nouvelle version existe et propose de l'installer, avec ses notes de version (ou **Octopus › Rechercher les mises à jour…**). Les mises à jour sont signées, et Octopus refuse tout fichier qui n'a pas été signé par l'auteur. La vérification automatique se désactive dans **Réglages › Général**.
 
 ## 📝 Historique des versions
+
+### 0.2.0
+- Chaque outil a désormais son propre terminal : changer d'outil n'affiche plus la commande de l'outil précédent.
+- Homebrew : exclure un paquet des mises à jour (clic droit), puis le réintégrer plus tard.
+- Inspecteur d'app : bac à sable toujours indiqué, ce que la notarisation garantit ou non, chaîne de signature complète, et un bouton qui lance `spctl` et `codesign` dans le terminal.
+- Description plus claire d'**Optimiser**.
+- Fermer la fenêtre principale quitte maintenant Octopus, au lieu de laisser la fenêtre des Réglages ouverte.
 
 ### 0.1.0
 - Première version publique, en français et en anglais.

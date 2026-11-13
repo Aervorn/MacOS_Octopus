@@ -7825,6 +7825,186 @@
           }
         }
       }
+    },
+    "%lld mise(s) à jour masquée(s) : paquet exclu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld update(s) hidden: package excluded"
+          }
+        }
+      }
+    },
+    "%lld paquet(s) exclu(s) des mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld package(s) excluded from updates"
+          }
+        }
+      }
+    },
+    "Chaîne : " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chain: "
+          }
+        }
+      }
+    },
+    "Courant hors App Store. Ce sont alors surtout les demandes d'autorisation de macOS (fichiers, caméra, micro…) qui limitent ce qu'elle peut faire." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Common outside the App Store. macOS privacy prompts (files, camera, microphone…) are then the main limit on what it can do."
+          }
+        }
+      }
+    },
+    "Droits : bac à sable (app-sandbox => true)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entitlements: sandbox (app-sandbox => true)"
+          }
+        }
+      }
+    },
+    "Elle se termine en arrière-plan ; reviens dans son outil pour la suivre." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It keeps running in the background; go back to its tool to follow it."
+          }
+        }
+      }
+    },
+    "Exclure des mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclude from updates"
+          }
+        }
+      }
+    },
+    "Exclure les %lld des mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclude these %lld from updates"
+          }
+        }
+      }
+    },
+    "Gatekeeper : App Store ou notarisation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatekeeper: App Store or notarization"
+          }
+        }
+      }
+    },
+    "Inhabituel pour une app du Mac App Store." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unusual for a Mac App Store app."
+          }
+        }
+      }
+    },
+    "Notarisée signifie seulement que l'analyse automatique d'Apple n'a rien trouvé : personne n'a examiné l'app, contrairement au Mac App Store." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarized only means Apple's automated scan found nothing: nobody reviewed the app, unlike on the Mac App Store."
+          }
+        }
+      }
+    },
+    "Réintégrer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include again"
+          }
+        }
+      }
+    },
+    "Réintégrer aux mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include in updates again"
+          }
+        }
+      }
+    },
+    "Signataire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signer"
+          }
+        }
+      }
+    },
+    "Une commande tourne dans un autre outil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A command is running in another tool"
+          }
+        }
+      }
+    },
+    "Vérifier dans le terminal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check in Terminal"
+          }
+        }
+      }
+    },
+    "exclu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "excluded"
+          }
+        }
+      }
+    },
+    "spctl --assess, codesign --entitlements et codesign -dv : les sorties brutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "spctl --assess, codesign --entitlements and codesign -dv: the raw output"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

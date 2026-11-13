@@ -4,6 +4,7 @@ import UniformTypeIdentifiers
 
 /// Inspecteur d'app : on glisse une app, on voit d'où elle vient et ce qu'elle peut faire.
 struct AppInspectorView: View {
+    @Environment(TerminalSession.self) private var session
     @State private var report: AppReport?
     @State private var isInspecting = false
     @State private var isTargeted = false
@@ -93,6 +94,12 @@ struct AppInspectorView: View {
             VStack(alignment: .trailing, spacing: 8) {
                 Button(String(localized: "Autre app…")) { chooseApp() }
                 Button(String(localized: "Afficher dans le Finder")) { Finder.reveal(report.url.path) }
+                Button(String(localized: "Vérifier dans le terminal"), systemImage: "terminal") {
+                    session.start(title: "spctl · codesign — \(report.url.lastPathComponent)",
+                                  commandLine: AppInspector.terminalChecks(for: report.url))
+                }
+                .disabled(session.isRunning)
+                .help(String(localized: "spctl --assess, codesign --entitlements et codesign -dv : les sorties brutes"))
             }
         }
     }
@@ -111,8 +118,8 @@ struct AppInspectorView: View {
             }
             ValueRow(label: String(localized: "Runtime renforcé"), value: report.hardenedRuntime ? String(localized: "Oui") : String(localized: "Non"))
             if let date = report.signedAt { ValueRow(label: String(localized: "Horodatage"), value: date) }
-            if report.authorities.count > 1 {
-                Text(report.authorities.joined(separator: " → "))
+            if !report.authorities.isEmpty {
+                Text(String(localized: "Chaîne : ") + report.authorities.joined(separator: " → "))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .textSelection(.enabled)
@@ -127,6 +134,12 @@ struct AppInspectorView: View {
                 Image(systemName: report.gatekeeper.isAccepted ? "checkmark.circle.fill" : "xmark.circle.fill")
                     .foregroundStyle(report.gatekeeper.isAccepted ? Color.green : Color.orange)
                 Text(report.gatekeeper.title)
+            }
+            if report.gatekeeper == .notarized {
+                Text(String(localized: "Notarisée signifie seulement que l'analyse automatique d'Apple n'a rien trouvé : personne n'a examiné l'app, contrairement au Mac App Store."))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             if let quarantine = report.quarantine {
                 VStack(alignment: .leading, spacing: 4) {
@@ -158,13 +171,21 @@ struct AppInspectorView: View {
 
     private func entitlementsCard(_ report: AppReport) -> some View {
         DashboardCard(title: String(localized: "Droits (entitlements)"), symbol: "key.viewfinder") {
+            let sandboxed = report.isSandboxed
+            Label(sandboxed ? String(localized: "Isolée dans un bac à sable") : String(localized: "Pas de bac à sable : accès étendu au Mac"),
+                  systemImage: sandboxed ? "shippingbox.fill" : "shippingbox")
+                .foregroundStyle(sandboxed ? Color.green : Color.secondary)
+            if !sandboxed {
+                Text(report.isFromAppStore
+                     ? String(localized: "Inhabituel pour une app du Mac App Store.")
+                     : String(localized: "Courant hors App Store. Ce sont alors surtout les demandes d'autorisation de macOS (fichiers, caméra, micro…) qui limitent ce qu'elle peut faire."))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
             if report.entitlements.isEmpty {
                 Text(String(localized: "Aucun droit particulier déclaré.")).foregroundStyle(.secondary)
             } else {
-                let sandboxed = report.entitlements.contains { $0.key == "com.apple.security.app-sandbox" && $0.value == "oui" }
-                Label(sandboxed ? String(localized: "Isolée dans un bac à sable") : String(localized: "Pas de bac à sable : accès étendu au Mac"),
-                      systemImage: sandboxed ? "shippingbox.fill" : "shippingbox")
-                    .foregroundStyle(sandboxed ? Color.green : Color.secondary)
                 ForEach(report.entitlements.filter { $0.key != "com.apple.security.app-sandbox" }) { entitlement in
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
                         Image(systemName: entitlement.isSensitive ? "exclamationmark.triangle.fill" : "circle.fill")

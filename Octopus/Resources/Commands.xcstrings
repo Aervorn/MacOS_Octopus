@@ -573,13 +573,13 @@
         }
       }
     },
-    "Rafraîchit caches et services, répare les problèmes de maintenance sûrs": {
+    "Rafraîchit les caches et services système, et lance les tâches d'entretien sans risque": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Refreshes caches and services, fixes safe maintenance issues"
+            "value": "Refreshes system caches and services, and runs risk-free maintenance tasks"
           }
         }
       }

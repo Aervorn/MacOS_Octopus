@@ -165,7 +165,7 @@
       "id": "optimize",
       "category": "system",
       "title": "Optimiser",
-      "subtitle": "Rafraîchit caches et services, répare les problèmes de maintenance sûrs",
+      "subtitle": "Rafraîchit les caches et services système, et lance les tâches d'entretien sans risque",
       "symbol": "bolt",
       "argv": ["optimize"],
       "mode": "terminal",
