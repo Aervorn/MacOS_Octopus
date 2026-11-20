@@ -161,9 +161,11 @@ struct SecurityView: View {
         session.start(title: title, commandLine: commandLine)
     }
 
+    /// `--include-config-data` est indispensable pour les données de sécurité (XProtect…) :
+    /// elles sont listées avec cette option, et sans elle `--install` répond « No such update ».
     private func install(_ update: PendingUpdate) {
         run(title: "softwareupdate --install \(update.label)",
-            "sudo /usr/sbin/softwareupdate --install \(Shell.quote(update.label))")
+            "sudo /usr/sbin/softwareupdate --install --include-config-data \(Shell.quote(update.label))")
     }
 
     private func openSoftwareUpdate() {

@@ -136,6 +136,9 @@ Octopus se met à jour tout seul : il vérifie une fois par jour si une nouvelle
 
 ## 📝 Historique des versions
 
+### 0.3.1
+- Sécurité : l'installation des mises à jour des données XProtect depuis **Mises à jour en attente** n'échoue plus avec « No such update ».
+
 ### 0.3.0
 - Homebrew : nouvel onglet **Cohérence**. Il repère les apps mises à jour sans Homebrew (DMG installé à la main…) pour les resynchroniser, ou pour faire oublier une app à Homebrew sans y toucher (une bêta, par exemple). Il liste aussi les apps installées à la main qu'un cask pourrait gérer, et les apps installées en double.
 - Homebrew : les mises à jour affichent la version réellement présente sur le Mac ; les apps qui se mettent à jour seules sont signalées et laissées de côté par **Tout mettre à jour**.

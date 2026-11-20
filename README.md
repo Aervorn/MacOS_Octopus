@@ -136,6 +136,9 @@ Octopus updates itself: it checks for a new version once a day and offers to ins
 
 ## 📝 Changelog
 
+### 0.3.1
+- Security: installing XProtect data updates from **Pending updates** no longer fails with “No such update”.
+
 ### 0.3.0
 - Homebrew: new **Consistency** tab. It finds apps updated outside Homebrew (a DMG installed by hand…) and resyncs them, or makes Homebrew forget an app without touching it (a beta, for example). It also lists apps installed by hand that a cask could manage, and apps installed twice.
 - Homebrew: updates show the version actually on your Mac; apps that update themselves are flagged and left out of **Update all**.
