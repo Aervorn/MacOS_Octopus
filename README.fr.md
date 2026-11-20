@@ -52,7 +52,7 @@ La santé du Mac, le disque et la mémoire en un coup d'œil, le résultat des v
 - **Nettoyer le disque** : caches, logs, fichiers temporaires et restes d'apps déjà désinstallées. Les chemins protégés sont modifiables.
 - **Artefacts de projets** : vieux artefacts de build (`node_modules`, `DerivedData`…), avec les dossiers à scanner.
 - **Fichiers d'installation** : `.dmg`, `.pkg`, `.iso`, `.xip`, `.zip` qui traînent.
-- **Instantanés Time Machine** : les copies locales, leur taille, et leur suppression.
+- **Instantanés Time Machine** : les copies locales et leur suppression, l'espace libre, et l'espace purgeable que macOS libère tout seul.
 - **Aperçu d'abord** : `--dry-run` est coché par défaut sur toutes les commandes qui suppriment ; une vraie exécution demande confirmation. La ligne de commande générée est toujours affichée avant le lancement.
 
 ### 📦 Gestion des apps
@@ -61,7 +61,7 @@ La santé du Mac, le disque et la mémoire en un coup d'œil, le résultat des v
 - **Alléger les apps universelles** (Mole, Apple Silicon) : retire le code Intel.
 - **Apps par défaut** : quelle app ouvre quel type de fichier ou de lien, et la changer.
 - **Éléments de démarrage** : LaunchAgents et LaunchDaemons installés par des apps, avec leur signature ; les activer, désactiver ou afficher, plusieurs à la fois.
-- **Homebrew** : paquets à mettre à jour et mise à jour en un clic, formules et casks installés (avec l'icône de l'app de chaque cask), services, nettoyage et `autoremove`. Octopus détecte et répare aussi un cask bloqué sur « already an App at… ». Un paquet peut être exclu des mises à jour (une app qui se met à jour toute seule, par exemple) et réintégré à tout moment.
+- **Homebrew** : paquets à mettre à jour et mise à jour en un clic, formules et casks installés (avec l'icône de l'app de chaque cask), services, nettoyage et `autoremove`. Octopus détecte et répare aussi un cask bloqué sur « already an App at… ». Un paquet peut être exclu des mises à jour et réintégré à tout moment ; les apps qui se mettent à jour seules sont signalées et laissées de côté par « Tout mettre à jour ». La désinstallation peut aussi effacer les données de l'app (`--zap`), prévient avant de retirer une formule dont d'autres paquets ont besoin, et lance `autoremove` ensuite. Un onglet **Cohérence** repère les apps mises à jour sans Homebrew (pour les resynchroniser, ou les faire oublier à Homebrew sans toucher à l'app), les apps installées à la main qu'un cask pourrait gérer, et les apps en double.
 
 ### 📊 Système (Mole)
 
@@ -135,6 +135,14 @@ Octopus ne collecte et n'envoie rien sur toi : pas de compte, pas de statistique
 Octopus se met à jour tout seul : il vérifie une fois par jour si une nouvelle version existe et propose de l'installer, avec ses notes de version (ou **Octopus › Rechercher les mises à jour…**). Les mises à jour sont signées, et Octopus refuse tout fichier qui n'a pas été signé par l'auteur. La vérification automatique se désactive dans **Réglages › Général**.
 
 ## 📝 Historique des versions
+
+### 0.3.0
+- Homebrew : nouvel onglet **Cohérence**. Il repère les apps mises à jour sans Homebrew (DMG installé à la main…) pour les resynchroniser, ou pour faire oublier une app à Homebrew sans y toucher (une bêta, par exemple). Il liste aussi les apps installées à la main qu'un cask pourrait gérer, et les apps installées en double.
+- Homebrew : les mises à jour affichent la version réellement présente sur le Mac ; les apps qui se mettent à jour seules sont signalées et laissées de côté par **Tout mettre à jour**.
+- Homebrew : la désinstallation peut aussi effacer les données de l'app (`--zap`), prévient quand d'autres paquets ont besoin d'une formule, et retire ensuite les dépendances inutiles (`autoremove`).
+- Compatible avec le nouvel emplacement du catalogue des paquets de Homebrew (Homebrew 7).
+- Time Machine : l'espace purgeable est expliqué (macOS le libère tout seul) et affiché en gris plutôt qu'en orange.
+- Nouvelles cartes pour les chiffres de Time Machine et de l'explorateur de disque, et cartes encadrées sur l'accueil et dans l'état du système.
 
 ### 0.2.0
 - Chaque outil a désormais son propre terminal : changer d'outil n'affiche plus la commande de l'outil précédent.

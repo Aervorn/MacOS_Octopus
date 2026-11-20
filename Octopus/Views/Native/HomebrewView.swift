@@ -6,6 +6,7 @@ struct HomebrewView: View {
     private enum Tab: String, CaseIterable, Identifiable {
         case updates = "Mises à jour"
         case installed = "Installés"
+        case coherence = "Cohérence"
         case services = "Services"
         case maintenance = "Entretien"
 
@@ -45,16 +46,25 @@ struct HomebrewView: View {
                     switch tab {
                     case .updates: BrewUpdatesView(store: store)
                     case .installed: BrewInstalledView(store: store)
+                    case .coherence: BrewCoherenceView(store: store)
                     case .services: BrewServicesView(store: store)
                     case .maintenance: BrewMaintenanceView(store: store)
                     }
                 }
             }
         }
-        .task { await store.reload() }
+        .task {
+            await store.reload()
+            await store.scanCoherence()
+        }
         // Après une commande dans le terminal (mise à jour, désinstallation, nettoyage…)
         .onChange(of: session.isRunning) { _, running in
-            if !running { Task { await store.reload() } }
+            if !running {
+                Task {
+                    await store.reload()
+                    await store.scanCoherence()
+                }
+            }
         }
     }
 
@@ -62,6 +72,7 @@ struct HomebrewView: View {
         switch tab {
         case .updates where !store.visibleOutdated.isEmpty: "\(tab.title) (\(store.visibleOutdated.count))"
         case .installed where !store.packages.isEmpty: "\(tab.title) (\(store.packages.count))"
+        case .coherence where store.coherenceIssueCount > 0: "\(tab.title) (\(store.coherenceIssueCount))"
         default: tab.title
         }
     }
@@ -120,7 +131,10 @@ private struct BrewUpdatesView: View {
                     session.start(title: "brew upgrade", commandLine: store.upgradeAllCommand)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(store.visibleOutdated.isEmpty || session.isRunning)
+                .disabled(store.upgradeAllItems.isEmpty || session.isRunning)
+                .help(selfUpdatingCount > 0
+                      ? String(localized: "Les apps qui se mettent à jour seules ne sont pas incluses : sélectionne-les pour les mettre à jour quand même.")
+                      : "")
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
@@ -132,14 +146,28 @@ private struct BrewUpdatesView: View {
                                  appNames: store.packages.first { $0.id == item.id }?.appNames ?? [])
                         Text(item.name)
                         if item.pinned { Badge(text: String(localized: "épinglé"), color: .orange) }
+                        if store.updatesItself(item) {
+                            Badge(text: String(localized: "se met à jour seule"), color: .purple)
+                                .help(String(localized: "L'app se met à jour elle-même. « Tout mettre à jour » la laisse de côté."))
+                        }
+                        if store.drift(for: item.id)?.isCurrent == true {
+                            Badge(text: String(localized: "déjà à jour sur le Mac"), color: .green)
+                                .help(String(localized: "L'app a été mise à jour sans Homebrew, qui ne le sait pas. La mettre à jour ici retélécharge la même version et remet Homebrew d'accord."))
+                        }
                     }
                     .frame(height: 22)
                 }
-                .width(min: 160, ideal: 240)
+                .width(min: 160, ideal: 280)
                 TableColumn("Type") { item in Text(LocalizedStringKey(item.kind.rawValue)).foregroundStyle(.secondary) }
                     .width(min: 70, ideal: 90)
                 TableColumn(String(localized: "Installée")) { item in Text(item.installed).monospacedDigit().foregroundStyle(.secondary) }
                 TableColumn("Disponible") { item in Text(item.available).monospacedDigit().fontWeight(.medium) }
+                TableColumn(String(localized: "Sur le Mac")) { item in
+                    Text(store.drift(for: item.id)?.actual ?? "—")
+                        .monospacedDigit()
+                        .foregroundStyle(.secondary)
+                        .help(String(localized: "Version réelle de l'app, si elle diffère de celle notée par Homebrew"))
+                }
             }
             .contextMenu(forSelectionType: BrewOutdated.ID.self) { ids in
                 if !ids.isEmpty {
@@ -179,6 +207,18 @@ private struct BrewUpdatesView: View {
                     }
                 }
             }
+            if selfUpdatingCount > 0 {
+                Divider()
+                HStack {
+                    Image(systemName: "arrow.triangle.2.circlepath").foregroundStyle(.secondary)
+                    Text(String(localized: "\(selfUpdatingCount) app(s) qui se mettent à jour seules : non incluses dans « Tout mettre à jour »"))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                    Spacer()
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 6)
+            }
             if !store.excluded.isEmpty {
                 Divider()
                 HStack {
@@ -205,6 +245,8 @@ private struct BrewUpdatesView: View {
 }
 
 extension BrewUpdatesView {
+    var selfUpdatingCount: Int { store.visibleOutdated.filter { store.updatesItself($0) }.count }
+
     /// « App (cask):mp3tag » → « mp3tag »
     static func displayName(_ id: String) -> String {
         id.split(separator: ":", maxSplits: 1).last.map(String.init) ?? id
@@ -318,22 +360,323 @@ private struct BrewInstalledView: View {
                 }
             }
         }
-        .confirmationDialog(
-            uninstalling.count == 1 ? String(localized: "Désinstaller « \(uninstalling.first?.name ?? "") » ?") : String(localized: "Désinstaller \(uninstalling.count) paquets ?"),
-            isPresented: Binding(get: { !uninstalling.isEmpty }, set: { if !$0 { uninstalling = [] } })
-        ) {
-            Button(String(localized: "Désinstaller"), role: .destructive) {
-                let formulae = uninstalling.filter { $0.kind == .formula }.map(\.name)
-                let casks = uninstalling.filter { $0.kind == .cask }.map(\.name)
-                var parts: [String] = []
-                if !formulae.isEmpty { parts.append(store.command(["uninstall", "--formula"] + formulae)) }
-                if !casks.isEmpty { parts.append(store.command(["uninstall", "--cask"] + casks)) }
-                session.start(title: "brew uninstall", commandLine: parts.joined(separator: " && "))
+        .sheet(isPresented: Binding(get: { !uninstalling.isEmpty }, set: { if !$0 { uninstalling = [] } })) {
+            UninstallSheet(store: store, targets: uninstalling) { command in
+                session.start(title: "brew uninstall", commandLine: command)
                 selection.removeAll()
             }
-        } message: {
-            Text(String(localized: "Homebrew refusera de désinstaller un paquet dont d'autres dépendent. Les apps (casks) sont supprimées de /Applications."))
         }
+    }
+}
+
+/// Confirmation de désinstallation : suppression complète des apps (--zap), dépendances
+/// signalées avant de forcer, puis `brew autoremove`.
+private struct UninstallSheet: View {
+    let store: HomebrewStore
+    let targets: [BrewPackage]
+    let onConfirm: (String) -> Void
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var zap = false
+    /// Formule → paquets installés qui en dépendent (nil tant que la vérification tourne).
+    @State private var dependents: [String: [String]]?
+
+    private var casks: [BrewPackage] { targets.filter { $0.kind == .cask } }
+    private var formulae: [BrewPackage] { targets.filter { $0.kind == .formula } }
+
+    /// Dépendances hors des paquets qu'on désinstalle en même temps.
+    private var blocking: [String: [String]] {
+        let removed = Set(targets.map(\.name))
+        return (dependents ?? [:])
+            .mapValues { $0.filter { !removed.contains($0) } }
+            .filter { !$0.value.isEmpty }
+    }
+
+    private var title: String {
+        targets.count == 1
+            ? String(localized: "Désinstaller « \(targets.first?.name ?? "") » ?")
+            : String(localized: "Désinstaller \(targets.count) paquets ?")
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            Text(title).font(.title2.bold())
+
+            Text(targets.map(\.name).joined(separator: ", "))
+                .font(.callout.monospaced())
+                .foregroundStyle(.secondary)
+                .textSelection(.enabled)
+
+            if !casks.isEmpty {
+                VStack(alignment: .leading, spacing: 4) {
+                    Toggle(String(localized: "Suppression complète (--zap)"), isOn: $zap)
+                    Text(String(localized: "Efface aussi les préférences, caches et données de l'app. Irréversible : à éviter si tu comptes la réinstaller."))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+            }
+
+            if !formulae.isEmpty {
+                if dependents == nil {
+                    HStack(spacing: 6) {
+                        ProgressView().controlSize(.small)
+                        Text(String(localized: "Recherche des paquets qui en dépendent…"))
+                            .font(.callout).foregroundStyle(.secondary)
+                    }
+                } else if !blocking.isEmpty {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Label(String(localized: "D'autres paquets en ont besoin"), systemImage: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                            .fontWeight(.semibold)
+                        ForEach(blocking.keys.sorted(), id: \.self) { name in
+                            Text(String(localized: "\(name) sert à : \(blocking[name, default: []].joined(separator: ", "))"))
+                                .font(.callout)
+                        }
+                        Text(String(localized: "Si tu forces, ces paquets risquent de ne plus fonctionner."))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(10)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.orange.opacity(0.1), in: RoundedRectangle(cornerRadius: 8))
+                }
+            }
+
+            Text(String(localized: "Les dépendances devenues inutiles sont retirées ensuite (brew autoremove)."))
+                .font(.caption)
+                .foregroundStyle(.secondary)
+
+            HStack {
+                Spacer()
+                Button("Annuler", role: .cancel) { dismiss() }
+                    .keyboardShortcut(.cancelAction)
+                if blocking.isEmpty {
+                    Button(String(localized: "Désinstaller"), role: .destructive) { confirm(force: false) }
+                        .keyboardShortcut(.defaultAction)
+                        .disabled(!formulae.isEmpty && dependents == nil)
+                } else {
+                    Button(String(localized: "Forcer la désinstallation"), role: .destructive) { confirm(force: true) }
+                }
+            }
+        }
+        .padding(20)
+        .frame(width: 460)
+        .task {
+            if formulae.isEmpty {
+                dependents = [:]
+            } else {
+                dependents = await store.installedDependents(of: formulae.map(\.name))
+            }
+        }
+    }
+
+    private func confirm(force: Bool) {
+        onConfirm(store.uninstallCommand(targets, zap: zap, ignoreDependencies: force))
+        dismiss()
+    }
+}
+
+// MARK: - Cohérence
+
+/// Écarts entre Homebrew et les apps réellement présentes sur le Mac.
+private struct BrewCoherenceView: View {
+    let store: HomebrewStore
+    @Environment(TerminalSession.self) private var session
+    @State private var trashing: DuplicateApp.Copy?
+    @State private var forgetting: BrewDrift?
+
+    private var selfUpdatingDrifts: Int { store.drifts.count - store.reportedDrifts.count }
+
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text(String(localized: "Compare ce que Homebrew a noté avec les apps vraiment présentes dans /Applications et ~/Applications."))
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                Spacer()
+                if store.isScanning { ProgressView().controlSize(.small) }
+                Button(String(localized: "Analyser à nouveau"), systemImage: "arrow.clockwise") {
+                    Task {
+                        await store.reload()
+                        await store.scanCoherence()
+                    }
+                }
+                .disabled(store.isScanning)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
+            Divider()
+            list
+        }
+        .confirmationDialog(
+            String(localized: "Mettre cette copie à la Corbeille ?"),
+            isPresented: Binding(get: { trashing != nil }, set: { if !$0 { trashing = nil } }),
+            presenting: trashing
+        ) { copy in
+            Button(String(localized: "Mettre à la Corbeille"), role: .destructive) {
+                Task { await store.trashCopy(copy.path) }
+            }
+        } message: { copy in
+            Text(copy.cask != nil
+                 ? String(localized: "\(copy.path)\n\nC'est la copie gérée par Homebrew : il ne pourra plus la mettre à jour. Garde plutôt celle-ci et supprime l'autre.")
+                 : String(localized: "\(copy.path)\n\nTu pourras la récupérer dans la Corbeille."))
+        }
+        .confirmationDialog(
+            String(localized: "Faire oublier « \(forgetting?.cask ?? "") » à Homebrew ?"),
+            isPresented: Binding(get: { forgetting != nil }, set: { if !$0 { forgetting = nil } }),
+            presenting: forgetting
+        ) { drift in
+            Button(String(localized: "Oublier dans Homebrew")) {
+                Task { await store.forget(cask: drift.cask) }
+            }
+        } message: { drift in
+            Text(String(localized: "Homebrew considérera l'app comme non installée : il ne la mettra plus à jour et ne pourra plus la désinstaller. \(drift.appPath) n'est pas touchée, tu la mets à jour par elle-même.\n\nSeul le registre de Homebrew (Caskroom/\(drift.cask)) part à la Corbeille."))
+        }
+    }
+
+    private var list: some View {
+        List {
+            Section {
+                if store.reportedDrifts.isEmpty {
+                    emptyRow(String(localized: "Homebrew connaît la bonne version de chaque app."))
+                }
+                ForEach(store.reportedDrifts) { drift in
+                    driftRow(drift)
+                }
+                if selfUpdatingDrifts > 0 {
+                    DisclosureGroup {
+                        ForEach(store.drifts.filter(\.autoUpdates)) { drift in
+                            driftRow(drift)
+                        }
+                    } label: {
+                        Text(String(localized: "\(selfUpdatingDrifts) app(s) qui se mettent à jour seules ont aussi une autre version que celle notée par Homebrew : c'est normal, rien à faire."))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+            } header: {
+                sectionHeader(String(localized: "Homebrew pas à jour"),
+                       String(localized: "Apps mises à jour sans Homebrew (DMG installé à la main…) : Homebrew croit qu'elles ont encore l'ancienne version."))
+            }
+
+            Section {
+                if store.catalogMissing {
+                    emptyRow(String(localized: "Catalogue des casks introuvable : « Rechercher les mises à jour » dans l'onglet Mises à jour le télécharge."))
+                } else if store.hasScanned && store.adoptable.isEmpty {
+                    emptyRow(String(localized: "Aucune app installée à la main n'a de cask."))
+                }
+                ForEach(store.adoptable) { app in
+                    CoherenceRow(path: app.path, title: app.name,
+                                 detail: app.versionMatches
+                                    ? String(localized: "Cask « \(app.cask) » · version \(app.version)")
+                                    : String(localized: "Cask « \(app.cask) » · sur le Mac : \(app.version) · cask : \(app.caskVersion)")) {
+                        Button(app.versionMatches ? String(localized: "Confier à Homebrew") : String(localized: "Remplacer par la version Homebrew")) {
+                            session.start(title: "brew install --cask \(app.cask)", commandLine: store.adoptCommand(app))
+                        }
+                        .help(app.versionMatches
+                              ? String(localized: "Homebrew reprend l'app telle quelle, sans rien retélécharger")
+                              : String(localized: "Les versions diffèrent : Homebrew installe la sienne à la place de l'app actuelle"))
+                    }
+                    .disabled(session.isRunning)
+                }
+            } header: {
+                sectionHeader(String(localized: "Installées hors Homebrew"),
+                       String(localized: "Apps installées à la main alors qu'un cask existe. Confiées à Homebrew, elles apparaîtront dans les mises à jour. Les apps du Mac App Store et d'Apple sont ignorées."))
+            }
+
+            Section {
+                if store.hasScanned && store.duplicates.isEmpty {
+                    emptyRow(String(localized: "Aucune app en double."))
+                }
+                ForEach(store.duplicates) { duplicate in
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(duplicate.name).fontWeight(.medium)
+                        ForEach(duplicate.copies) { copy in
+                            HStack(spacing: 8) {
+                                Image(nsImage: NSWorkspace.shared.icon(forFile: copy.path))
+                                    .resizable().frame(width: 16, height: 16)
+                                Text(copy.path).font(.callout.monospaced()).textSelection(.enabled)
+                                Text(copy.version).monospacedDigit().foregroundStyle(.secondary)
+                                if let cask = copy.cask { Badge(text: "Homebrew (\(cask))", color: .blue) }
+                                Spacer()
+                                Button(String(localized: "Afficher")) {
+                                    NSWorkspace.shared.activateFileViewerSelecting([URL(fileURLWithPath: copy.path)])
+                                }
+                                Button(String(localized: "Corbeille…")) { trashing = copy }
+                            }
+                            .controlSize(.small)
+                        }
+                    }
+                    .padding(.vertical, 4)
+                }
+            } header: {
+                sectionHeader(String(localized: "Apps en double"),
+                       String(localized: "La même app présente à plusieurs endroits (même identifiant)."))
+            }
+        }
+    }
+
+    /// Ligne d'un écart de version, avec la remise à niveau et « Oublier dans Homebrew ».
+    private func driftRow(_ drift: BrewDrift) -> some View {
+        CoherenceRow(path: drift.appPath, title: drift.cask,
+                     detail: String(localized: "Homebrew : \(drift.recorded) · sur le Mac : \(drift.actual)")) {
+            HStack {
+                if drift.autoUpdates {
+                    EmptyView()
+                } else if drift.latest != nil {
+                    Button(String(localized: "Resynchroniser")) {
+                        session.start(title: "brew upgrade --cask \(drift.cask)",
+                                      commandLine: store.command(["upgrade", "--cask", drift.cask]))
+                    }
+                    .help(String(localized: "Retélécharge la dernière version avec Homebrew pour qu'il note la bonne version"))
+                } else {
+                    Button(String(localized: "Rechercher les mises à jour")) {
+                        Task { await store.updateIndex() }
+                    }
+                    .help(String(localized: "L'app est plus récente que ce que Homebrew connaît : sa liste est peut-être ancienne"))
+                }
+                Button(String(localized: "Oublier dans Homebrew…")) { forgetting = drift }
+                    .help(String(localized: "Homebrew ne gère plus cette app. L'app elle-même n'est pas touchée."))
+            }
+        }
+        .disabled(session.isRunning || store.isUpdatingIndex)
+    }
+
+    private func sectionHeader(_ title: String, _ detail: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text(title).font(.headline)
+            Text(detail).font(.caption).foregroundStyle(.secondary)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.top, 6)
+    }
+
+    private func emptyRow(_ text: String) -> some View {
+        Label(text, systemImage: "checkmark.circle")
+            .foregroundStyle(.secondary)
+    }
+}
+
+/// Ligne de l'onglet Cohérence : icône de l'app, nom, détail et action.
+private struct CoherenceRow<Action: View>: View {
+    let path: String
+    let title: String
+    let detail: String
+    @ViewBuilder var action: Action
+
+    var body: some View {
+        HStack(spacing: 10) {
+            Image(nsImage: NSWorkspace.shared.icon(forFile: path))
+                .resizable().frame(width: 22, height: 22)
+            VStack(alignment: .leading, spacing: 1) {
+                Text(title).fontWeight(.medium)
+                Text(detail).font(.caption).foregroundStyle(.secondary).monospacedDigit()
+            }
+            Spacer()
+            action.controlSize(.small)
+        }
+        .padding(.vertical, 2)
     }
 }
 

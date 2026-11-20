@@ -71,7 +71,7 @@ struct HomeView: View {
     // MARK: - Cartes de synthèse
 
     private var moleCard: some View {
-        DashboardCard(title: "Mole", symbol: "hammer") {
+        DashboardCard(title: "Mole", symbol: "hammer", centered: true) {
             switch mole.state {
             case .checking:
                 ProgressView().controlSize(.small)
@@ -84,7 +84,7 @@ struct HomeView: View {
                 }
                 .disabled(session.isRunning)
             case .installed(_, let version, let method):
-                BigValue(value: version ?? "?", caption: method == .script ? String(localized: "installé avec le script officiel") : String(localized: "installé avec Homebrew"))
+                BigValue(value: version ?? "?", caption: method == .script ? String(localized: "installé avec le script officiel") : String(localized: "installé avec Homebrew"), alignment: .center)
                 if mole.updateAvailable, let latest = mole.latestVersion {
                     Label("Version \(latest) disponible", systemImage: "arrow.down.circle.fill")
                         .foregroundStyle(.blue)
@@ -105,7 +105,7 @@ struct HomeView: View {
     }
 
     private var healthCard: some View {
-        DashboardCard(title: String(localized: "Santé du Mac"), symbol: "heart.text.square") {
+        DashboardCard(title: String(localized: "Santé du Mac"), symbol: "heart.text.square", centered: true) {
             if let status {
                 HStack(alignment: .top, spacing: 0) {
                     let score = Double(status.healthScore ?? 0)
@@ -133,7 +133,7 @@ struct HomeView: View {
     }
 
     private var securityCard: some View {
-        DashboardCard(title: String(localized: "Sécurité"), symbol: "checkmark.shield") {
+        DashboardCard(title: String(localized: "Sécurité"), symbol: "checkmark.shield", centered: true) {
             if security.checks.isEmpty {
                 ProgressView().controlSize(.small)
             } else {
@@ -150,7 +150,7 @@ struct HomeView: View {
     }
 
     private var permissionsCard: some View {
-        DashboardCard(title: "Autorisations", symbol: "lock.shield") {
+        DashboardCard(title: "Autorisations", symbol: "lock.shield", centered: true) {
             switch permissions.fullDiskAccess {
             case .granted:
                 Label(String(localized: "Accès complet au disque accordé"), systemImage: "checkmark.circle.fill").foregroundStyle(.green)

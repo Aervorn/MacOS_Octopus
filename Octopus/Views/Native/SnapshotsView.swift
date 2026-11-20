@@ -68,20 +68,30 @@ struct SnapshotsView: View {
     }
 
     private var summary: some View {
-        HStack(spacing: 24) {
-            BigValue(value: "\(store.snapshots.count)", caption: store.snapshots.count > 1 ? String(localized: "instantanés locaux") : String(localized: "instantané local"))
-            BigValue(value: Fmt.bytes(store.freeSpace), caption: "libres")
-            if let purgeable = store.purgeable {
-                BigValue(value: Fmt.bytes(purgeable), caption: String(localized: "purgeables (instantanés, caches…)"), color: .orange)
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 12) {
+                StatCard(symbol: "clock.arrow.circlepath",
+                         value: "\(store.snapshots.count)",
+                         caption: store.snapshots.count > 1 ? String(localized: "instantanés locaux") : String(localized: "instantané local"))
+                StatCard(symbol: "internaldrive",
+                         value: Fmt.bytes(store.freeSpace),
+                         caption: String(localized: "d'espace libre"))
+                if let purgeable = store.purgeable {
+                    StatCard(symbol: "arrow.3.trianglepath",
+                             value: Fmt.bytes(purgeable),
+                             caption: String(localized: "purgeables, gérés par macOS"),
+                             color: .secondary,
+                             info: String(localized: "Instantanés, caches, fichiers iCloud déjà dans le cloud… macOS libère cet espace tout seul dès qu'une app en a besoin : on ne peut pas le vider à la main."))
+                }
             }
-            Spacer()
-            Text(String(localized: "Time Machine garde ces instantanés sur le Mac entre deux sauvegardes. macOS les supprime de lui-même quand la place manque, mais ils occupent de l'espace d'ici là."))
+            Text(String(localized: "Time Machine garde ces instantanés sur le Mac entre deux sauvegardes. macOS les supprime de lui-même quand la place manque, mais ils occupent de l'espace d'ici là. L'espace purgeable compte aussi des caches et des fichiers iCloud : macOS le libère tout seul, il n'y a rien à supprimer."))
                 .font(.callout)
                 .foregroundStyle(.secondary)
-                .frame(maxWidth: 380, alignment: .trailing)
-                .multilineTextAlignment(.trailing)
+                .lineLimit(3)
+                .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(16)
+        .layoutPriority(1)
     }
 
     private var footer: some View {

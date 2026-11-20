@@ -52,7 +52,7 @@ Mac health, disk and memory at a glance, the result of the security checks, the 
 - **Clean the disk**: caches, logs, temporary files and leftovers of apps already uninstalled. Protected paths can be edited.
 - **Project artifacts**: old build artifacts (`node_modules`, `DerivedData`…), with the folders to scan.
 - **Installer files**: `.dmg`, `.pkg`, `.iso`, `.xip`, `.zip` lying around.
-- **Time Machine snapshots**: local snapshots, their size, and deletion.
+- **Time Machine snapshots**: local snapshots and their deletion, free space, and the purgeable space macOS frees on its own.
 - **Preview first**: `--dry-run` is checked by default on every command that deletes; a real run asks for confirmation. The generated command line is always shown before launch.
 
 ### 📦 App management
@@ -61,7 +61,7 @@ Mac health, disk and memory at a glance, the result of the security checks, the 
 - **Slim universal apps** (Mole, Apple Silicon): removes the Intel code.
 - **Default apps**: which app opens which file type or URL scheme, and change it.
 - **Startup items**: LaunchAgents and LaunchDaemons installed by apps, with their signature; enable, disable or reveal them, several at a time.
-- **Homebrew**: outdated packages and one-click upgrades, installed formulae and casks (with the icon of each cask's app), services, cleanup and `autoremove`. Octopus also detects and repairs a cask stuck on “already an App at…”. A package can be excluded from updates (an app that updates itself, for example) and included again at any time.
+- **Homebrew**: outdated packages and one-click upgrades, installed formulae and casks (with the icon of each cask's app), services, cleanup and `autoremove`. Octopus also detects and repairs a cask stuck on “already an App at…”. A package can be excluded from updates and included again at any time; apps that update themselves are flagged and left out of “Update all”. Uninstalling can also delete the app's data (`--zap`), warns before removing a formula other packages need, and runs `autoremove` afterwards. A **Consistency** tab finds apps updated without Homebrew (and resyncs them, or makes Homebrew forget them without touching the app), apps installed by hand that a cask could manage, and duplicate apps.
 
 ### 📊 System (Mole)
 
@@ -135,6 +135,14 @@ Octopus collects nothing and sends nothing about you: no account, no analytics, 
 Octopus updates itself: it checks for a new version once a day and offers to install it, with its release notes (or use **Octopus › Check for Updates…**). Updates are signed, and Octopus refuses any file that wasn't signed by the author. Automatic checking can be turned off in **Settings › General**.
 
 ## 📝 Changelog
+
+### 0.3.0
+- Homebrew: new **Consistency** tab. It finds apps updated outside Homebrew (a DMG installed by hand…) and resyncs them, or makes Homebrew forget an app without touching it (a beta, for example). It also lists apps installed by hand that a cask could manage, and apps installed twice.
+- Homebrew: updates show the version actually on your Mac; apps that update themselves are flagged and left out of **Update all**.
+- Homebrew: uninstalling can also delete the app's data (`--zap`), warns when other packages need a formula, and removes unneeded dependencies afterwards (`autoremove`).
+- Works with the new location of Homebrew's package catalog (Homebrew 7).
+- Time Machine: purgeable space explained (macOS frees it on its own), shown in grey instead of orange.
+- New card design for the figures in Time Machine and the disk explorer, and outlined cards on the home page and in system status.
 
 ### 0.2.0
 - Each tool now has its own terminal: switching tools no longer shows the previous tool's command.

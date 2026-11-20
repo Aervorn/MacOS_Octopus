@@ -89,7 +89,7 @@ struct StatusDashboardView: View {
     // MARK: - Cartes
 
     private func cpuCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: String(localized: "Processeur"), symbol: "cpu") {
+        DashboardCard(title: String(localized: "Processeur"), symbol: "cpu", outlined: true) {
             HStack(alignment: .firstTextBaseline) {
                 BigValue(value: Fmt.percent(status.cpu?.usage),
                          caption: coreCaption(status.cpu))
@@ -124,7 +124,7 @@ struct StatusDashboardView: View {
     }
 
     private func memoryCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: String(localized: "Mémoire"), symbol: "memorychip") {
+        DashboardCard(title: String(localized: "Mémoire"), symbol: "memorychip", outlined: true) {
             let memory = status.memory
             BigValue(value: Fmt.percent(memory?.usedPercent),
                      caption: "\(Fmt.bytes(memory?.used)) sur \(Fmt.bytes(memory?.total))")
@@ -138,7 +138,7 @@ struct StatusDashboardView: View {
     }
 
     private func disksCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: String(localized: "Disques"), symbol: "internaldrive") {
+        DashboardCard(title: String(localized: "Disques"), symbol: "internaldrive", outlined: true) {
             ForEach(status.disks ?? []) { disk in
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -166,7 +166,7 @@ struct StatusDashboardView: View {
     }
 
     private func batteryCard(_ battery: MoleStatus.Battery, thermal: MoleStatus.Thermal?) -> some View {
-        DashboardCard(title: String(localized: "Batterie"), symbol: "battery.75percent") {
+        DashboardCard(title: String(localized: "Batterie"), symbol: "battery.75percent", outlined: true) {
             BigValue(value: battery.percent.map { "\($0) %" } ?? "—",
                      caption: battery.status == "AC" ? "Sur secteur" : battery.status)
             ValueRow(label: String(localized: "Santé"), value: battery.health ?? "—")
@@ -182,7 +182,7 @@ struct StatusDashboardView: View {
     }
 
     private func networkCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: String(localized: "Réseau"), symbol: "network") {
+        DashboardCard(title: String(localized: "Réseau"), symbol: "network", outlined: true) {
             let active = (status.network ?? []).filter(\.isActive)
             if active.isEmpty {
                 Text(String(localized: "Aucune interface connectée")).foregroundStyle(.secondary)
@@ -210,7 +210,7 @@ struct StatusDashboardView: View {
     }
 
     private func processesCard(_ status: MoleStatus) -> some View {
-        DashboardCard(title: String(localized: "Processus les plus gourmands"), symbol: "list.number") {
+        DashboardCard(title: String(localized: "Processus les plus gourmands"), symbol: "list.number", outlined: true) {
             ForEach(status.topProcesses ?? []) { process in
                 HStack {
                     Text(process.name ?? process.command ?? "?")

@@ -142,20 +142,23 @@ struct AnalyzeView: View {
     }
 
     private func summary(_ result: MoleAnalysis) -> some View {
-        HStack(spacing: 20) {
-            BigValue(value: Fmt.bytes(result.totalSize), caption: String(localized: "au total"))
-            BigValue(value: Fmt.integer(result.totalFiles), caption: "fichiers")
-            Spacer()
+        VStack(alignment: .leading, spacing: 10) {
+            HStack(spacing: 12) {
+                StatCard(symbol: "internaldrive", value: Fmt.bytes(result.totalSize),
+                         caption: String(localized: "au total"))
+                StatCard(symbol: "doc.on.doc", value: Fmt.integer(result.totalFiles),
+                         caption: String(localized: "fichiers"))
+            }
             if result.scanStatus == .partial {
                 Label(String(localized: "Analyse partielle : certains dossiers protégés n'ont pas pu être lus."),
                       systemImage: "info.circle")
                     .font(.caption)
                     .foregroundStyle(.secondary)
-                    .frame(maxWidth: 260, alignment: .trailing)
-                    .multilineTextAlignment(.trailing)
+                    .lineLimit(2)
             }
         }
         .padding(14)
+        .layoutPriority(1)
     }
 
     private func largeFiles(_ files: [MoleAnalysis.LargeFile]) -> some View {

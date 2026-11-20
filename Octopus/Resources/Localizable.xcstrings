@@ -1,6 +1,86 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
+    "fichiers" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "files"
+          }
+        }
+      }
+    },
+    "d'espace libre" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "free space"
+          }
+        }
+      }
+    },
+    "Oublier dans Homebrew…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forget in Homebrew…"
+          }
+        }
+      }
+    },
+    "Oublier dans Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forget in Homebrew"
+          }
+        }
+      }
+    },
+    "Homebrew ne gère plus cette app. L'app elle-même n'est pas touchée." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew stops managing this app. The app itself is not touched."
+          }
+        }
+      }
+    },
+    "Faire oublier « %@ » à Homebrew ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make Homebrew forget “%@”?"
+          }
+        }
+      }
+    },
+    "Homebrew considérera l'app comme non installée : il ne la mettra plus à jour et ne pourra plus la désinstaller. %@ n'est pas touchée, tu la mets à jour par elle-même.\n\nSeul le registre de Homebrew (Caskroom/%@) part à la Corbeille." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew will consider the app not installed: it won't update or uninstall it anymore. %1$@ is not touched; you update it by itself.\n\nOnly Homebrew's record (Caskroom/%2$@) goes to the Trash."
+          }
+        }
+      }
+    },
+    "Impossible de retirer %@ du registre de Homebrew : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't remove %1$@ from Homebrew's records: %2$@"
+          }
+        }
+      }
+    },
     "" : {
 
     },
@@ -163,6 +243,26 @@
     "%" : {
 
     },
+    "%@\n\nC'est la copie gérée par Homebrew : il ne pourra plus la mettre à jour. Garde plutôt celle-ci et supprime l'autre." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@\n\nThis is the copy Homebrew manages: it won't be able to update it anymore. Keep this one and remove the other instead."
+          }
+        }
+      }
+    },
+    "%@\n\nTu pourras la récupérer dans la Corbeille." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@\n\nYou can get it back from the Trash."
+          }
+        }
+      }
+    },
     "%@ — équipe %@" : {
       "localizations" : {
         "en" : {
@@ -253,8 +353,38 @@
         }
       }
     },
+    "%@ sert à : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ is used by: %2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
+    },
+    "%lld app(s) qui se mettent à jour seules : non incluses dans « Tout mettre à jour »" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld self-updating app(s): not included in “Update all”"
+          }
+        }
+      }
+    },
+    "%lld app(s) qui se mettent à jour seules ont aussi une autre version que celle notée par Homebrew : c'est normal, rien à faire." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld self-updating app(s) also have a different version than the one Homebrew recorded: that's normal, nothing to do."
+          }
+        }
+      }
     },
     "%lld cœurs" : {
       "localizations" : {
@@ -352,6 +482,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld snapshots deleted."
+          }
+        }
+      }
+    },
+    "%lld mise(s) à jour masquée(s) : paquet exclu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld update(s) hidden: package excluded"
+          }
+        }
+      }
+    },
+    "%lld paquet(s) exclu(s) des mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld package(s) excluded from updates"
           }
         }
       }
@@ -932,6 +1082,16 @@
         }
       }
     },
+    "Afficher" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show"
+          }
+        }
+      }
+    },
     "Afficher ~/.ssh" : {
       "localizations" : {
         "en" : {
@@ -1222,6 +1382,16 @@
         }
       }
     },
+    "Analyser à nouveau" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan again"
+          }
+        }
+      }
+    },
     "Analyser ce dossier" : {
       "localizations" : {
         "en" : {
@@ -1340,6 +1510,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apps"
+          }
+        }
+      }
+    },
+    "Apps en double" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicate apps"
+          }
+        }
+      }
+    },
+    "Apps installées à la main alors qu'un cask existe. Confiées à Homebrew, elles apparaîtront dans les mises à jour. Les apps du Mac App Store et d'Apple sont ignorées." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps installed by hand although a cask exists. Once handed over to Homebrew, they will show up in updates. Mac App Store and Apple apps are ignored."
+          }
+        }
+      }
+    },
+    "Apps mises à jour sans Homebrew (DMG installé à la main…) : Homebrew croit qu'elles ont encore l'ancienne version." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps updated outside Homebrew (DMG installed by hand…): Homebrew thinks they still have the old version."
           }
         }
       }
@@ -1560,6 +1760,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No apps"
+          }
+        }
+      }
+    },
+    "Aucune app en double." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No duplicate apps."
+          }
+        }
+      }
+    },
+    "Aucune app installée à la main n'a de cask." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No manually installed app has a cask."
           }
         }
       }
@@ -1870,6 +2090,36 @@
         }
       }
     },
+    "Cask « %@ » · sur le Mac : %@ · cask : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cask “%1$@” · on this Mac: %2$@ · cask: %3$@"
+          }
+        }
+      }
+    },
+    "Cask « %@ » · version %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cask “%1$@” · version %2$@"
+          }
+        }
+      }
+    },
+    "Catalogue des casks introuvable : « Rechercher les mises à jour » dans l'onglet Mises à jour le télécharge." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cask catalog not found: “Check for updates” in the Updates tab downloads it."
+          }
+        }
+      }
+    },
     "Certaines fonctions sont basées sur l'utilitaire en ligne de commande **Mole**." : {
       "localizations" : {
         "en" : {
@@ -1906,6 +2156,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "This update requires restarting the Mac."
+          }
+        }
+      }
+    },
+    "Chaîne : " : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chain: "
           }
         }
       }
@@ -2141,6 +2401,17 @@
         }
       }
     },
+    "Cohérence" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consistency"
+          }
+        }
+      }
+    },
     "Commande" : {
       "localizations" : {
         "en" : {
@@ -2157,6 +2428,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Comment"
+          }
+        }
+      }
+    },
+    "Compare ce que Homebrew a noté avec les apps vraiment présentes dans /Applications et ~/Applications." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compares what Homebrew recorded with the apps actually in /Applications and ~/Applications."
           }
         }
       }
@@ -2187,6 +2468,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacy & Security"
+          }
+        }
+      }
+    },
+    "Confier à Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hand over to Homebrew"
           }
         }
       }
@@ -2331,6 +2622,26 @@
         }
       }
     },
+    "Corbeille…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trash…"
+          }
+        }
+      }
+    },
+    "Courant hors App Store. Ce sont alors surtout les demandes d'autorisation de macOS (fichiers, caméra, micro…) qui limitent ce qu'elle peut faire." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Common outside the App Store. macOS privacy prompts (files, camera, microphone…) are then the main limit on what it can do."
+          }
+        }
+      }
+    },
     "Créé par Aervorn, avec l'aide de Claude." : {
       "localizations" : {
         "en" : {
@@ -2377,6 +2688,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Based on the last downloaded list. “Check for updates” refreshes it (brew update)."
+          }
+        }
+      }
+    },
+    "D'autres paquets en ont besoin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other packages need it"
           }
         }
       }
@@ -2477,6 +2798,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Set in other blocks that also apply to this host."
+          }
+        }
+      }
+    },
+    "déjà à jour sur le Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "already up to date on this Mac"
           }
         }
       }
@@ -2913,6 +3244,16 @@
         }
       }
     },
+    "Droits : bac à sable (app-sandbox => true)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entitlements: sandbox (app-sandbox => true)"
+          }
+        }
+      }
+    },
     "Droits (entitlements)" : {
       "localizations" : {
         "en" : {
@@ -2983,6 +3324,16 @@
         }
       }
     },
+    "Efface aussi les préférences, caches et données de l'app. Irréversible : à éviter si tu comptes la réinstaller." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Also deletes the app's preferences, caches and data. Irreversible: avoid it if you plan to reinstall the app."
+          }
+        }
+      }
+    },
     "Efface puis reconstruit l'index du disque système. La recherche est incomplète pendant quelques dizaines de minutes." : {
       "localizations" : {
         "en" : {
@@ -3029,6 +3380,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Items"
+          }
+        }
+      }
+    },
+    "Elle se termine en arrière-plan ; reviens dans son outil pour la suivre." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It keeps running in the background; go back to its tool to follow it."
           }
         }
       }
@@ -3305,6 +3666,36 @@
         }
       }
     },
+    "exclu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "excluded"
+          }
+        }
+      }
+    },
+    "Exclure des mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclude from updates"
+          }
+        }
+      }
+    },
+    "Exclure les %lld des mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exclude these %lld from updates"
+          }
+        }
+      }
+    },
     "Exécute du code non signé en mémoire" : {
       "localizations" : {
         "en" : {
@@ -3457,6 +3848,16 @@
         }
       }
     },
+    "Forcer la désinstallation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force uninstall"
+          }
+        }
+      }
+    },
     "Format" : {
       "localizations" : {
         "en" : {
@@ -3494,6 +3895,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Embedded frameworks"
+          }
+        }
+      }
+    },
+    "Gatekeeper : App Store ou notarisation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gatekeeper: App Store or notarization"
           }
         }
       }
@@ -3598,6 +4009,26 @@
         }
       }
     },
+    "Homebrew : %@ · sur le Mac : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew: %1$@ · on this Mac: %2$@"
+          }
+        }
+      }
+    },
+    "Homebrew connaît la bonne version de chaque app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew knows the right version of every app."
+          }
+        }
+      }
+    },
     "Homebrew installe les outils en ligne de commande et de nombreuses apps. L'installation officielle se fait dans le terminal et demande ton mot de passe." : {
       "localizations" : {
         "en" : {
@@ -3618,12 +4049,33 @@
         }
       }
     },
+    "Homebrew pas à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew out of sync"
+          }
+        }
+      }
+    },
     "Homebrew refusera de désinstaller un paquet dont d'autres dépendent. Les apps (casks) sont supprimées de /Applications." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Homebrew will refuse to uninstall a package others depend on. Apps (casks) are removed from /Applications."
+          }
+        }
+      }
+    },
+    "Homebrew reprend l'app telle quelle, sans rien retélécharger" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Homebrew takes over the app as it is, without downloading anything"
           }
         }
       }
@@ -3820,6 +4272,16 @@
         }
       }
     },
+    "Impossible de mettre à la Corbeille : %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't move to the Trash: %@"
+          }
+        }
+      }
+    },
     "Impossible de préparer la clé : %@" : {
       "localizations" : {
         "en" : {
@@ -3866,6 +4328,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detailed info (brew info)"
+          }
+        }
+      }
+    },
+    "Inhabituel pour une app du Mac App Store." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unusual for a Mac App Store app."
           }
         }
       }
@@ -3970,6 +4442,16 @@
         }
       }
     },
+    "Installées hors Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installed outside Homebrew"
+          }
+        }
+      }
+    },
     "Installer" : {
       "localizations" : {
         "en" : {
@@ -4057,6 +4539,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "local snapshots"
+          }
+        }
+      }
+    },
+    "Instantanés, caches, fichiers iCloud déjà dans le cloud… macOS libère cet espace tout seul dès qu'une app en a besoin : on ne peut pas le vider à la main." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snapshots, caches, iCloud files already in the cloud… macOS frees this space on its own as soon as an app needs it: it can't be emptied by hand."
           }
         }
       }
@@ -4231,6 +4723,36 @@
         }
       }
     },
+    "L'app a été mise à jour sans Homebrew, qui ne le sait pas. La mettre à jour ici retélécharge la même version et remet Homebrew d'accord." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app was updated outside Homebrew, which doesn't know it. Updating it here downloads the same version again and brings Homebrew back in sync."
+          }
+        }
+      }
+    },
+    "L'app est plus récente que ce que Homebrew connaît : sa liste est peut-être ancienne" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app is newer than what Homebrew knows: its list may be out of date"
+          }
+        }
+      }
+    },
+    "L'app se met à jour elle-même. « Tout mettre à jour » la laisse de côté." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app updates itself. “Update all” leaves it out."
+          }
+        }
+      }
+    },
     "L'installation demande ton mot de passe administrateur ou Touch ID." : {
       "localizations" : {
         "en" : {
@@ -4257,6 +4779,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The public key is added to the host's ~/.ssh/authorized_keys file. You'll be asked for the remote account's password once, in the terminal. For a port other than 22, create the host in the Hosts tab instead."
+          }
+        }
+      }
+    },
+    "La même app présente à plusieurs endroits (même identifiant)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The same app in several places (same identifier)."
           }
         }
       }
@@ -4511,6 +5043,16 @@
         }
       }
     },
+    "Les apps qui se mettent à jour seules ne sont pas incluses : sélectionne-les pour les mettre à jour quand même." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apps that update themselves are not included: select them to update them anyway."
+          }
+        }
+      }
+    },
     "Les apps téléchargées ne sont plus vérifiées avant leur ouverture." : {
       "localizations" : {
         "en" : {
@@ -4527,6 +5069,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conditional blocks can't be edited here. They're kept as they are."
+          }
+        }
+      }
+    },
+    "Les dépendances devenues inutiles sont retirées ensuite (brew autoremove)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dependencies that are no longer needed are removed afterwards (brew autoremove)."
           }
         }
       }
@@ -4577,6 +5129,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove them (brew autoremove)"
+          }
+        }
+      }
+    },
+    "Les versions diffèrent : Homebrew installe la sienne à la place de l'app actuelle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The versions differ: Homebrew installs its own in place of the current app"
           }
         }
       }
@@ -4857,6 +5419,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Move to Trash…"
+          }
+        }
+      }
+    },
+    "Mettre cette copie à la Corbeille ?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Move this copy to the Trash?"
           }
         }
       }
@@ -5407,6 +5979,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Notarized by Apple"
+          }
+        }
+      }
+    },
+    "Notarisée signifie seulement que l'analyse automatique d'Apple n'a rien trouvé : personne n'a examiné l'app, contrairement au Mac App Store." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notarized only means Apple's automated scan found nothing: nobody reviewed the app, unlike on the Mac App Store."
           }
         }
       }
@@ -5993,11 +6575,22 @@
       }
     },
     "purgeables (instantanés, caches…)" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "purgeable (snapshots, caches…)"
+          }
+        }
+      }
+    },
+    "purgeables, gérés par macOS" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "purgeable, managed by macOS"
           }
         }
       }
@@ -6088,6 +6681,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Looking for Mole…"
+          }
+        }
+      }
+    },
+    "Recherche des paquets qui en dépendent…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looking for packages that depend on it…"
           }
         }
       }
@@ -6292,6 +6895,26 @@
         }
       }
     },
+    "Réintégrer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include again"
+          }
+        }
+      }
+    },
+    "Réintégrer aux mises à jour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Include in updates again"
+          }
+        }
+      }
+    },
     "Relancer le Dock" : {
       "localizations" : {
         "en" : {
@@ -6328,6 +6951,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "replaced · %@"
+          }
+        }
+      }
+    },
+    "Remplacer par la version Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace with Homebrew's version"
           }
         }
       }
@@ -6418,6 +7051,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Result"
+          }
+        }
+      }
+    },
+    "Resynchroniser" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resync"
+          }
+        }
+      }
+    },
+    "Retélécharge la dernière version avec Homebrew pour qu'il note la bonne version" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Downloads the latest version again with Homebrew so it records the right version"
           }
         }
       }
@@ -6538,6 +7191,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Invalid script."
+          }
+        }
+      }
+    },
+    "se met à jour seule" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "updates itself"
           }
         }
       }
@@ -6669,6 +7332,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "If Octopus isn't in the list, add it with the + button."
+          }
+        }
+      }
+    },
+    "Si tu forces, ces paquets risquent de ne plus fonctionner." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you force it, these packages may stop working."
+          }
+        }
+      }
+    },
+    "Signataire" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signer"
           }
         }
       }
@@ -6829,6 +7512,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sparkle (automatic)"
+          }
+        }
+      }
+    },
+    "spctl --assess, codesign --entitlements et codesign -dv : les sorties brutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "spctl --assess, codesign --entitlements and codesign -dv: the raw output"
+          }
+        }
+      }
+    },
+    "Suppression complète (--zap)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete removal (--zap)"
           }
         }
       }
@@ -7010,6 +7713,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "deleted"
+          }
+        }
+      }
+    },
+    "Sur le Mac" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On this Mac"
           }
         }
       }
@@ -7196,11 +7909,22 @@
       }
     },
     "Time Machine garde ces instantanés sur le Mac entre deux sauvegardes. macOS les supprime de lui-même quand la place manque, mais ils occupent de l'espace d'ici là." : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Time Machine keeps these snapshots on the Mac between backups. macOS deletes them on its own when space runs low, but they take up space until then."
+          }
+        }
+      }
+    },
+    "Time Machine garde ces instantanés sur le Mac entre deux sauvegardes. macOS les supprime de lui-même quand la place manque, mais ils occupent de l'espace d'ici là. L'espace purgeable compte aussi des caches et des fichiers iCloud : macOS le libère tout seul, il n'y a rien à supprimer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Machine keeps these snapshots on the Mac between backups. macOS deletes them on its own when space runs low, but they take up space until then. Purgeable space also includes caches and iCloud files: macOS frees it on its own, there's nothing to delete."
           }
         }
       }
@@ -7475,6 +8199,16 @@
         }
       }
     },
+    "Une commande tourne dans un autre outil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A command is running in another tool"
+          }
+        }
+      }
+    },
     "Une entrée désactivée est conservée en commentaire. Les entrées de macOS (localhost) sont verrouillées." : {
       "localizations" : {
         "en" : {
@@ -7656,6 +8390,16 @@
         }
       }
     },
+    "Vérifier dans le terminal" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check in Terminal"
+          }
+        }
+      }
+    },
     "Vérifier sur iCloud" : {
       "localizations" : {
         "en" : {
@@ -7702,6 +8446,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version %@ available"
+          }
+        }
+      }
+    },
+    "Version réelle de l'app, si elle diffère de celle notée par Homebrew" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app's actual version, if it differs from the one Homebrew recorded"
           }
         }
       }
@@ -7822,186 +8576,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "XProtect Remediator"
-          }
-        }
-      }
-    },
-    "%lld mise(s) à jour masquée(s) : paquet exclu" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld update(s) hidden: package excluded"
-          }
-        }
-      }
-    },
-    "%lld paquet(s) exclu(s) des mises à jour" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld package(s) excluded from updates"
-          }
-        }
-      }
-    },
-    "Chaîne : " : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chain: "
-          }
-        }
-      }
-    },
-    "Courant hors App Store. Ce sont alors surtout les demandes d'autorisation de macOS (fichiers, caméra, micro…) qui limitent ce qu'elle peut faire." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Common outside the App Store. macOS privacy prompts (files, camera, microphone…) are then the main limit on what it can do."
-          }
-        }
-      }
-    },
-    "Droits : bac à sable (app-sandbox => true)" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entitlements: sandbox (app-sandbox => true)"
-          }
-        }
-      }
-    },
-    "Elle se termine en arrière-plan ; reviens dans son outil pour la suivre." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It keeps running in the background; go back to its tool to follow it."
-          }
-        }
-      }
-    },
-    "Exclure des mises à jour" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exclude from updates"
-          }
-        }
-      }
-    },
-    "Exclure les %lld des mises à jour" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exclude these %lld from updates"
-          }
-        }
-      }
-    },
-    "Gatekeeper : App Store ou notarisation" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gatekeeper: App Store or notarization"
-          }
-        }
-      }
-    },
-    "Inhabituel pour une app du Mac App Store." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unusual for a Mac App Store app."
-          }
-        }
-      }
-    },
-    "Notarisée signifie seulement que l'analyse automatique d'Apple n'a rien trouvé : personne n'a examiné l'app, contrairement au Mac App Store." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Notarized only means Apple's automated scan found nothing: nobody reviewed the app, unlike on the Mac App Store."
-          }
-        }
-      }
-    },
-    "Réintégrer" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Include again"
-          }
-        }
-      }
-    },
-    "Réintégrer aux mises à jour" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Include in updates again"
-          }
-        }
-      }
-    },
-    "Signataire" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Signer"
-          }
-        }
-      }
-    },
-    "Une commande tourne dans un autre outil" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A command is running in another tool"
-          }
-        }
-      }
-    },
-    "Vérifier dans le terminal" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check in Terminal"
-          }
-        }
-      }
-    },
-    "exclu" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "excluded"
-          }
-        }
-      }
-    },
-    "spctl --assess, codesign --entitlements et codesign -dv : les sorties brutes" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "spctl --assess, codesign --entitlements and codesign -dv: the raw output"
           }
         }
       }
