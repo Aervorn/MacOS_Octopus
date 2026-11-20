@@ -4,24 +4,14 @@
     <title>Octopus</title>
     <link>https://github.com/Aervorn/MacOS_Octopus</link>
     <item>
-      <title>Octopus 0.3.0</title>
-      <pubDate>Fri, 20 Nov 2026 19:27:10 +0000</pubDate>
-      <sparkle:version>3</sparkle:version>
-      <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
+      <title>Octopus 0.3.1</title>
+      <pubDate>Fri, 20 Nov 2026 20:26:50 +0000</pubDate>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>0.3.1</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>Homebrew: new <b>Consistency</b> tab. It finds apps updated outside Homebrew (a DMG installed by hand…) and resyncs them, or makes Homebrew forget an app without touching it (a beta, for example). It also lists apps installed by hand that a cask could manage, and apps installed twice.</li>
-<li>Homebrew: updates show the version actually on your Mac; apps that update themselves are flagged and left out of <b>Update all</b>.</li>
-<li>Homebrew: uninstalling can also delete the app's data (<code>--zap</code>), warns when other packages need a formula, and removes unneeded dependencies afterwards (<code>autoremove</code>).</li>
-<li>Works with the new location of Homebrew's package catalog (Homebrew 7).</li>
-<li>Time Machine: purgeable space explained (macOS frees it on its own), shown in grey instead of orange.</li>
-<li>New card design for the figures in Time Machine and the disk explorer, and outlined cards on the home page and in system status.</li></ul>]]></description>
-      <description xml:lang="fr"><![CDATA[<ul><li>Homebrew : nouvel onglet <b>Cohérence</b>. Il repère les apps mises à jour sans Homebrew (DMG installé à la main…) pour les resynchroniser, ou pour faire oublier une app à Homebrew sans y toucher (une bêta, par exemple). Il liste aussi les apps installées à la main qu'un cask pourrait gérer, et les apps installées en double.</li>
-<li>Homebrew : les mises à jour affichent la version réellement présente sur le Mac ; les apps qui se mettent à jour seules sont signalées et laissées de côté par <b>Tout mettre à jour</b>.</li>
-<li>Homebrew : la désinstallation peut aussi effacer les données de l'app (<code>--zap</code>), prévient quand d'autres paquets ont besoin d'une formule, et retire ensuite les dépendances inutiles (<code>autoremove</code>).</li>
-<li>Compatible avec le nouvel emplacement du catalogue des paquets de Homebrew (Homebrew 7).</li>
-<li>Time Machine : l'espace purgeable est expliqué (macOS le libère tout seul) et affiché en gris plutôt qu'en orange.</li>
-<li>Nouvelles cartes pour les chiffres de Time Machine et de l'explorateur de disque, et cartes encadrées sur l'accueil et dans l'état du système.</li></ul>]]></description>
-      <enclosure url="https://github.com/Aervorn/MacOS_Octopus/releases/download/v0.3.0/Octopus-0.3.0.dmg" type="application/octet-stream" sparkle:edSignature="CJJLgPgg2QfYl0iWBM3OFZXEO7935eCaUlMxF/sbJw54fAwloBiJXZGYcIkdWRkEK+YQcIiX4y7r5F4TxVAyCA==" length="8163335" />
+      <description><![CDATA[<ul><li>Security: installing XProtect data updates from <b>Pending updates</b> no longer fails with “No such update”.</li></ul>]]></description>
+      <description xml:lang="fr"><![CDATA[<ul><li>Sécurité : l'installation des mises à jour des données XProtect depuis <b>Mises à jour en attente</b> n'échoue plus avec « No such update ».</li></ul>]]></description>
+      <enclosure url="https://github.com/Aervorn/MacOS_Octopus/releases/download/v0.3.1/Octopus-0.3.1.dmg" type="application/octet-stream" sparkle:edSignature="cRK+fflj7e7AYVOwzs0wZ52JnYK5OFshDAW37oWP+LisJwuUVqOV3RK8Cfinc8ZPIVHnrRm4DuyO9yLTGulXBg==" length="8163349" />
     </item>
   </channel>
 </rss>
